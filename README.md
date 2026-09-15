@@ -1,4 +1,4 @@
-# TB DEG Pipeline — GSE222001, GSE161829, GSE99374, GSE229020
+# TB DEG Pipeline — GSE99374, GSE222001, GSE161829, GSE229020
 
 ## What this is
 A complete, ready-to-run R/Bioconductor pipeline (DESeq2-based) that takes
