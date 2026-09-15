@@ -2,19 +2,18 @@
 ## Sensitivity check: re-run HC vs LTBI DEG analysis for GSE99374
 ## WITHOUT the two apparent outlier samples (TU0021_CD8_LTBI,
 ## TP0015_CD8_LTBI) and compare against the original 4 significant genes.
-## Standalone — rebuilds everything from the saved filtered counts.
+
 ## =============================================================
 
-setwd("/Users/negin/Desktop/TB_DEG_pipeline/scripts")   # <-- edit this
+setwd("../scripts")  
 source("00_functions.R")
 
 BASE_DIR   <- file.path("..", "GSE99374")
-OUTLIERS <- c("TU0021_CD8_LTBI", "TP0001_CD8_LTBI")   # samples to drop
+OUTLIERS <- c("TU0021_CD8_LTBI", "TP0001_CD8_LTBI")   
 LFC_TH     <- 1
 PADJ_TH    <- 0.05
 
-## Where the sensitivity-check outputs will go (separate from the
-## original results, so nothing you already have gets overwritten)
+
 SENS_DIR <- file.path(BASE_DIR, "sensitivity_no_outliers")
 for (d in c("results", "figures")) dir.create(file.path(SENS_DIR, d), recursive = TRUE, showWarnings = FALSE)
 
@@ -38,7 +37,7 @@ dds <- DESeqDataSetFromMatrix(filt_counts, metadata, design = ~ group)
 dds <- DESeq(dds)
 vst_mat <- run_vst(dds)
 
-## ---- 3. PCA — confirm the outliers are actually gone / groups look different now ----
+## ---- 3. PCA — confirm the outliers are actually gone ----
 plot_pca(vst_mat, metadata, out_png = file.path(SENS_DIR, "figures", "GSE99374_PCA_no_outliers.png"),
           title = "GSE99374 PCA (outliers removed)")
 
