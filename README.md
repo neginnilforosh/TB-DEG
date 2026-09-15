@@ -2,8 +2,7 @@
 
 ## What this is
 A complete, ready-to-run R/Bioconductor pipeline (DESeq2-based) that takes
-each dataset from raw counts through DEG calling, producing every file and
-figure requested, organized in one folder per dataset:
+each dataset from raw counts through DEG calling :
 
 ```
 TB_DEG_pipeline/
