@@ -7,7 +7,7 @@
 ##           RColorBrewer, UpSetR, matrixStats
 ##
 ## install.packages/BiocManager calls are left commented out --
-## run once, interactively, on a machine with internet access.
+##
 ## =============================================================
 
 #if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
@@ -56,9 +56,7 @@ plot_filtering_summary <- function(n_before, n_after, out_png, title = "Gene fil
 ## 2. NORMALIZATION (VST) + PCA
 ## -------------------------------------------------------------
 run_vst <- function(dds) {
-  # blind=FALSE uses the design to estimate dispersion trend but does NOT
-  # use the design labels for the transformation itself when blind=TRUE.
-  # Use blind=TRUE for QC/exploratory PCA (recommended before DEG calling).
+
   vst_obj <- vst(dds, blind = TRUE)
   assay(vst_obj)
 }
