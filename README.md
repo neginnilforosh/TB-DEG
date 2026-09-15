@@ -32,16 +32,6 @@ TB_DEG_pipeline/
 └── GSE229020/  (same subfolders)
 ```
 
-## IMPORTANT — why this hasn't been run yet
-This sandbox's code-execution environment does not have network access to
-NCBI/GEO (`ftp.ncbi.nlm.nih.gov`, `www.ncbi.nlm.nih.gov`) or to CRAN/
-Bioconductor package mirrors — its outbound network is restricted to a
-short allow-list (PyPI, npm, GitHub, crates.io, Ubuntu package mirrors).
-A direct test (`curl` to both GEO endpoints) returned `403`, confirming
-the block. So the raw count matrices for these four datasets could not be
-downloaded here, and no numbers/figures have actually been generated —
-doing so would mean fabricating results, which isn't something to do for
-data that feeds into a real WGCNA analysis downstream.
 
 ## How to actually run this
 
