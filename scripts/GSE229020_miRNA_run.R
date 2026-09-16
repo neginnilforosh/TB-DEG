@@ -12,12 +12,8 @@
 ##  - Differential expression uses limma (moderated t-test on log2 values),
 ##    NOT DESeq2 -- DESeq2 assumes raw integer RNA-seq counts and a negative-
 ##    binomial model, which does not apply to normalized NanoString intensities.
-##  - Everything downstream (PCA, correlation, volcano, significant-miRNA
-##    heatmap, WGCNA-ready export) mirrors the same file/figure structure
-##    Ratul asked for, just adapted to this data type.
-##
-## Run from inside TB_DEG_pipeline/scripts/, with the two downloaded GEO
-## files placed in ../GSE229020/01_raw_data/
+
+
 ## =============================================================
 
 suppressPackageStartupMessages({
@@ -39,7 +35,7 @@ dir_meta  <- file.path(BASE_DIR, "02_metadata")
 dir_filt  <- file.path(BASE_DIR, "03_filtered")
 dir_norm  <- file.path(BASE_DIR, "04_normalized")
 dir_corr  <- file.path(BASE_DIR, "05_sample_correlation")
-dir_deg   <- file.path(BASE_DIR, "06_deg_results")     # "DEG" = differentially expressed miRNA here
+dir_deg   <- file.path(BASE_DIR, "06_deg_results")    
 dir_sig   <- file.path(BASE_DIR, "07_significant_degs")
 dir_share <- file.path(BASE_DIR, "08_shared_unique_degs")
 dir_wgcna <- file.path(BASE_DIR, "09_wgcna_input")
@@ -50,8 +46,7 @@ for (d in c(dir_raw, dir_meta, dir_filt, dir_norm, dir_corr,
   dir.create(d, recursive = TRUE, showWarnings = FALSE)
 }
 
-## ---- 1. Load the deposited normalized miRNA matrix ----
-## Put GSE229020_normalized_data_txt (unzipped) in dir_raw first.
+
 ## ---- 1. Load the deposited normalized miRNA matrix ----
 candidates <- list.files(dir_raw, pattern = "normalized_data", full.names = TRUE)
 cat("Found candidate file(s):\n"); print(candidates)
