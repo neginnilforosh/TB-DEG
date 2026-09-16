@@ -1,13 +1,5 @@
 ## =============================================================
 ## GSE161829 — TBneg vs LTBI, TBneg vs ATB
-## Cleaned, runnable version (same structure as GSE222001_run_clean.R).
-##
-## HOW TO USE:
-##   PART A (below) is interactive — you run it, look at the output,
-##   and fill in two things (the group column name + the count file name).
-##   PART B then runs top-to-bottom with no edits.
-##
-## Run from inside TB_DEG_pipeline/scripts/
 ## =============================================================
 source("00_functions.R")
 library(GEOquery)
@@ -59,7 +51,7 @@ GROUP_MAP <- c(
 count_path <- file.path(dir_raw, ACC, COUNT_FILE)
 raw_counts <- read.delim(count_path, row.names = 1, check.names = FALSE)
 
-# --- FIX: Replace generic "SampleX" names with official GSM IDs ---
+
 if(ncol(raw_counts) == nrow(pheno)) {
   colnames(raw_counts) <- rownames(pheno)
 }
@@ -74,12 +66,12 @@ metadata <- data.frame(
 )
 stopifnot(!any(is.na(metadata$group)))
 
-## حذف نمونه‌های پس از درمان
+
 metadata <- metadata[metadata$group != "Exclude", ]
 metadata$group <- factor(metadata$group, levels = c("TBneg", "LTBI", "ATB"))
 rownames(metadata) <- metadata$sample_id
 
-## حالا نام‌ها دقیقاً با هم اشتراک دارند
+
 common <- intersect(colnames(raw_counts), metadata$sample_id)
 stopifnot(length(common) > 0)
 raw_counts <- raw_counts[, common]
