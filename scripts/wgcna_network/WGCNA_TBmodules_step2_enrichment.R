@@ -26,8 +26,7 @@ if (!all(pkg_ok)) {
        "\n  Try: BiocManager::install(c(", paste0('"', required_pkgs[!pkg_ok], '"', collapse = ", "), "))",
        "\n  Then confirm each loads cleanly with library(<name>) BEFORE rerunning this script.")
 }
-# from here on, every Bioconductor/CRAN function is called explicitly as
-# pkg::fn() rather than relying on library() attach order/state
+
 have_msigdbr <- requireNamespace("msigdbr", quietly = TRUE)
 if (!have_msigdbr) {
   cat("!! msigdbr not installed -> Hallmark enrichment will be SKIPPED.\n")
@@ -38,7 +37,7 @@ if (!have_msigdbr) {
 ACC         <- "GSE114192"
 PADJ_CUTOFF <- 0.05   # for the "top term" summary only; full tables are saved unfiltered
 
-## ---- locate this script's own folder (same fix as step 1) ----
+## ---- locate this script's own folder  ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)
@@ -145,6 +144,3 @@ write.csv(top_summary, file.path(dir_enrich, paste0(ACC, "_TopTerms_Summary.csv"
 
 cat("\n>>> DONE. Per-module GO_BP/KEGG/Reactome/Hallmark tables +",
     paste0(ACC, "_TopTerms_Summary.csv"), "in", dir_enrich, "\n")
-cat(">>> Open the summary + full tables, look at the strongest and most CONSISTENT\n")
-cat("    terms per module (not just the single top hit), and name from there\n")
-cat("    (e.g. M1_Inflammation, M2_Interferon_Response, M3_T_Cell_Immunity).\n")

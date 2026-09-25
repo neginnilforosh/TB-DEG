@@ -1,12 +1,5 @@
 ## =============================================================
-## STEP 4 of Ratul's roadmap: connect DEG results with WGCNA modules
-##
-## "For every important module, check which genes are also
-##  significant TB-vs-Control DEGs. Save a table containing Gene,
-##  log2FC, FDR, WGCNA module, MM/kME, and Gene Significance. The
-##  genes that are both strong DEGs AND strong members of TB-related
-##  modules will become the main disease genes for the next analyses."
-##
+## connect DEG results with WGCNA modules
 ## Pure base-R table join -- no Bioconductor packages needed.
 ## =============================================================
 
@@ -66,4 +59,3 @@ write.csv(out, out_file, row.names = FALSE)
 cat("\n>>> Disease genes (significant DEG AND TB-module member):", nrow(out), "total\n")
 print(table(out$Module))
 cat("\n>>> Saved:", out_file, "\n")
-cat(">>> Next (Ratul step 5): build one STRING PPI network PER MODULE from these genes\n")

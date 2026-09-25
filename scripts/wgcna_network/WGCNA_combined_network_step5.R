@@ -1,11 +1,4 @@
 ## =============================================================
-## STEP 6 of Ratul's roadmap: ONE combined TB PPI network
-##
-## "After analyzing each module separately, combine the important
-##  genes from all significant modules into one TB PPI network.
-##  Keep the module identity of every gene." -- used later for
-##  RWR, network proximity, and diffusion.
-##
 ## Re-queries STRING on the UNION of all modules' genes (not just
 ## pooling the 3 separate per-module edge lists from step 5) so
 ## cross-module ("bridge") interactions are actually captured --
@@ -19,7 +12,7 @@ if (!all(pkg_ok)) {
        "\n  Install with: install.packages(c(", paste0('"', required_pkgs[!pkg_ok], '"', collapse = ", "), "))")
 }
 
-## ---- CONFIG (keep consistent with step 5) ----
+## ---- CONFIG  ----
 ACC             <- "GSE114192"
 SPECIES         <- 9606
 REQUIRED_SCORE  <- 400
@@ -44,7 +37,7 @@ dir_wgcna  <- file.path(BASE_DIR, "10_wgcna_results")
 dir_string <- file.path(BASE_DIR, "12_string_ppi")
 dir.create(dir_string, recursive = TRUE, showWarnings = FALSE)
 
-## ---- load module gene lists (same logic/choice as step 5) ----
+## ---- load module gene lists ----
 if (USE_FULL_MODULE) {
   all_genes   <- read.csv(file.path(dir_wgcna, paste0(ACC, "_Gene_Module_Assignment.csv")), stringsAsFactors = FALSE)
   mod_summary <- read.csv(file.path(dir_wgcna, paste0(ACC, "_ModuleTrait_Correlation.csv")), stringsAsFactors = FALSE)
@@ -79,7 +72,7 @@ if (length(dupes) > 0) {
 cat(">>> Combined set:", nrow(symbol_module_map), "genes across", length(unique(symbol_module_map$Module)),
     "modules (", paste(table(symbol_module_map$Module), names(table(symbol_module_map$Module)), collapse = ", "), ")\n")
 
-## ---- STRING REST API helpers (same as step 5) ----
+## ---- STRING REST API helpers ----
 string_get_ids <- function(symbols) {
   r <- httr::POST("https://string-db.org/api/tsv/get_string_ids",
                    body = list(identifiers = paste(symbols, collapse = "\r"),
@@ -100,8 +93,8 @@ string_get_network <- function(string_ids) {
 }
 
 ## ---- one fresh STRING query on the COMBINED gene set ----
-## (this is what actually reveals cross-module "bridge" interactions --
-##  simply pooling step 5's 3 separate network CSVs would miss those entirely)
+## (this is what actually reveals cross-module "bridge" interactions 
+
 cat("\n>>> Querying STRING on the combined set (may take longer than any single module)...\n")
 ids_df <- string_get_ids(symbol_module_map$Symbol)
 cat("  resolved", length(unique(ids_df$stringId)), "/", nrow(symbol_module_map), "to STRING IDs\n")
@@ -120,7 +113,7 @@ combined_net_file <- file.path(dir_string, paste0(ACC, "_COMBINED_STRING_network
 write.csv(net_df, combined_net_file, row.names = FALSE)
 cat("  ", nrow(net_df), "interactions ->", combined_net_file, "\n")
 
-## ---- build graph using STRING IDs as node identity (stable, guaranteed to match id_module_map) ----
+## ---- build graph using STRING IDs as node identity ----
 g <- igraph::simplify(igraph::graph_from_data_frame(
   net_df[, c("stringId_A", "stringId_B")], directed = FALSE))
 
@@ -137,7 +130,7 @@ if (n_unmapped > 0) cat("  !!", n_unmapped, "node(s) still unmapped after the fi
                          paste(utils::head(igraph::V(g)$displayName[is.na(igraph::V(g)$module)], 10), collapse = ", "), "\n")
 igraph::V(g)$module[is.na(igraph::V(g)$module)] <- "unmapped"
 
-## ---- flag cross-module ("bridge") edges: these are new information step 5 couldn't see ----
+## ---- flag cross-module ("bridge") edges ----
 em      <- igraph::ends(g, igraph::E(g), names = TRUE)  # STRING IDs (stable join key)
 mod_a   <- igraph::V(g)$module[match(em[, 1], igraph::V(g)$name)]
 mod_b   <- igraph::V(g)$module[match(em[, 2], igraph::V(g)$name)]
@@ -200,4 +193,3 @@ tryCatch({
 }, error = function(e) cat("!! plotting failed:", conditionMessage(e), "(tables above are still saved fine)\n"))
 
 cat("\n>>> DONE. Combined network + bridge edges + centrality in", dir_string, "\n")
-cat(">>> Next (Ratul step 7): prepare the TB_UP / TB_DOWN expression signature for iLINCS.\n")

@@ -1,11 +1,7 @@
 ## =============================================================
 ## Test whether TARGET_MODULE (e.g. "blue": 1377 genes, no
 ## significant GO/KEGG/Reactome term) is an over-merging artifact.
-##
-## Does NOT rebuild the network/TOM from scratch -- reuses
-## the pre-merge module calls already saved by step 1
-## (net$unmergedColors inside <ACC>_WGCNA_workspace.rds) and just
-## re-cuts the merge threshold. Fast.
+
 ## =============================================================
 
 library(WGCNA)
@@ -76,8 +72,3 @@ for (ch in NEW_CUT_HEIGHTS) {
   cat("\n")
 }
 
-cat(">>> If a cutHeight here gives you a few reasonably-sized, still-TB-correlated\n")
-cat("    pieces (not another single 1000+ gene blob, not 40 singleton modules),\n")
-cat("    that's a good candidate mergeCutHeight to re-run WGCNA_TBmodules_step1.R\n")
-cat("    with (change the mergeCutHeight value inside blockwiseModules() there) --\n")
-cat("    then re-run WGCNA_TBmodules_step2_enrichment.R on the new module set.\n")

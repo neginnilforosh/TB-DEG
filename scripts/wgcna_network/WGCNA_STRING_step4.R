@@ -1,11 +1,5 @@
 ## =============================================================
-## STEP 5 of Ratul's roadmap: STRING PPI network PER MODULE
-##
-## "Upload the genes of each selected module to STRING separately...
-##  Export the STRING interaction table... Calculate at least Degree,
-##  Betweenness centrality, Closeness centrality, and Eigenvector
-##  centrality. Identify the important PPI hubs."
-##
+
 ## Uses STRING's REST API directly (https://string-db.org/help/api/) --
 ## no manual upload needed, no STRINGdb Bioconductor package required.
 ## =============================================================
@@ -28,7 +22,7 @@ USE_FULL_MODULE <- TRUE     # TRUE  = every gene in the module (what Ratul's wor
 N_LABELS_FULL   <- 15        # how many top hubs to label on the full-network plot (rest stay unlabeled dots)
 N_HUBS_SUBNET   <- 30        # size of the separate, fully-labeled "hub-only" zoomed-in plot
 
-## ---- locate script dir (same pattern as earlier steps) ----
+## ---- locate script dir  ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)
@@ -112,7 +106,7 @@ for (mod in names(gene_lists)) {
   cat("  network columns:", paste(colnames(net_df), collapse = ", "), "\n")
   cat("  ", nrow(net_df), "interactions ->", net_file, "\n")
 
-  ## ---- build graph + the 4 centrality measures Ratul asked for ----
+  ## ---- build graph + the 4 centrality measures  ----
   g <- igraph::simplify(igraph::graph_from_data_frame(
     net_df[, c("preferredName_A", "preferredName_B")], directed = FALSE))
 
@@ -129,7 +123,7 @@ for (mod in names(gene_lists)) {
   cat("  top 5 hubs by degree:\n")
   print(utils::head(cent, 5))
 
-  ## ---- network diagrams (this is what was missing before: tables only, no plot) ----
+  ## ---- network diagrams ----
   tryCatch({
     top_labels <- utils::head(cent$Gene, N_LABELS_FULL)
 
@@ -144,7 +138,7 @@ for (mod in names(gene_lists)) {
     layout_full <- igraph::layout_with_fr(g, niter = 2000)  # more iterations -> nodes spread out more, less crowding
 
     ## push each label OUTWARD, away from the graph's center, instead of centering it on
-    ## the node -- this is what was making the hub cluster's labels overlap into a blob
+    ## the node
     centroid <- colMeans(layout_full)
     ang <- atan2(layout_full[, 2] - centroid[2], layout_full[, 1] - centroid[1])
     igraph::V(g)$label.degree <- ang
@@ -159,7 +153,7 @@ for (mod in names(gene_lists)) {
     grDevices::dev.off()
     cat("  network plot ->", full_plot_file, "\n")
 
-    ## zoomed, fully-labeled view of just the top hub genes + their edges among each other
+    ## fully-labeled view of just the top hub genes + their edges among each other
     n_sub <- min(N_HUBS_SUBNET, igraph::vcount(g))
     hub_genes_sub <- utils::head(cent$Gene, n_sub)
     g_sub <- igraph::induced_subgraph(g, vids = which(igraph::V(g)$name %in% hub_genes_sub))
@@ -182,5 +176,3 @@ for (mod in names(gene_lists)) {
 }
 
 cat("\n>>> DONE. Per-module STRING interaction tables + centrality tables in", dir_string, "\n")
-cat(">>> Next (Ratul step 6): combine genes from ALL modules into ONE TB PPI network,\n")
-cat("    keeping each gene's module label -- used later for RWR/proximity/diffusion.\n")
