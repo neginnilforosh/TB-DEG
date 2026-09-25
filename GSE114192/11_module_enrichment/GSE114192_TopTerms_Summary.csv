@@ -1,0 +1,13 @@
+"Module","Source","Term","p.adjust","Count"
+"blue","GO_BP",NA,NA,NA
+"blue","KEGG",NA,NA,NA
+"blue","Reactome",NA,NA,NA
+"blue","Hallmark",NA,NA,NA
+"green","GO_BP","defense response to virus",7.23059072158146e-41,65
+"green","KEGG","Influenza A",3.79798840599427e-07,20
+"green","Reactome","Interferon Signaling",1.23032250345312e-31,55
+"green","Hallmark",NA,NA,NA
+"purple","GO_BP","ribonucleoprotein complex biogenesis",3.72365662490261e-06,28
+"purple","KEGG","ATP-dependent chromatin remodeling",0.0144456738234954,9
+"purple","Reactome","SUMO E3 ligases SUMOylate target proteins",0.00265633248777118,13
+"purple","Hallmark",NA,NA,NA
