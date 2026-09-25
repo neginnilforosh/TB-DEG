@@ -17,8 +17,7 @@ Two connected stages:
 GSE114192 (Healthy_Control vs TB_Only, n=82) was chosen as the WGCNA pilot:
 it's the largest clean binary TB-vs-Control comparison of the 5 datasets.
 The other four remain at the DEG stage until the pilot's approach is
-validated (per advisor: "do one full TB vs Control comparison first, other
-subtypes later").
+validated .
 
 ```
 TB_DEG_pipeline/
