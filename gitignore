@@ -1,0 +1,28 @@
+# ============================================================
+# Raw per-sample GEO files -- large, and re-downloadable any time
+# from the accession noted in each dataset's 02_metadata/ file.
+# Derived matrices (e.g. *_raw_count_matrix.csv, *_filtered_*.csv)
+# are NOT excluded -- those are real pipeline inputs, keep them.
+# ============================================================
+**/01_raw_counts/**/*.gz
+**/01_raw_counts/**/*.tar
+**/01_raw_counts/**/*.RCC.gz
+**/01_raw_counts/**/*.txt
+**/01_raw_counts/**/*.xlsx
+**/01_raw_data/**/*.gz
+**/01_raw_data/**/*.tar
+**/01_raw_data/**/*.RCC.gz
+**/01_raw_data/**/*.txt
+
+# Microsoft Office lock files (e.g. ~$GSE99374_RawCounts_CD8.xlsx)
+~$*
+
+# R session / project junk
+.Rhistory
+.Rproj.user/
+*.Rproj
+.Renviron
+
+# OS junk
+.DS_Store
+Thumbs.db
