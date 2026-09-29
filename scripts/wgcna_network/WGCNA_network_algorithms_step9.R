@@ -10,7 +10,8 @@
 ##   - Diffusion: symmetric-normalized adjacency (Vanunu et al. 2010
 ##                network propagation) -- treats the walk symmetrically
 ##                rather than direction-biased by node out-degree
-
+## Only Community Detection needs igraph (already installed from
+## steps 4/5).
 ## =============================================================
 
 required_pkgs <- c("igraph")
@@ -44,7 +45,7 @@ dir_dt     <- file.path(BASE_DIR, "14_drug_targets")
 dir_out    <- file.path(BASE_DIR, "15_network_algorithms")
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 
-## ---- rebuild the combined network graph (same construction as step 5) ----
+## ---- rebuild the combined network graph ----
 net_df  <- read.csv(file.path(dir_string, paste0(ACC, "_COMBINED_STRING_network.csv")), stringsAsFactors = FALSE)
 cent_df <- read.csv(file.path(dir_string, paste0(ACC, "_COMBINED_centrality.csv")), stringsAsFactors = FALSE)  # Gene(=displayName), Module
 dg      <- read.csv(file.path(dir_wgcna, paste0(ACC, "_DiseaseGenes_DEG_WGCNA.csv")), stringsAsFactors = FALSE)  # 188 seed genes (Ensembl IDs)
@@ -141,42 +142,79 @@ diffusion_score <- setNames(q, node_names)
 ## =============================================================
 ## 3. NETWORK PROXIMITY 
 ##    for each drug: how close are ITS TARGETS to the disease seeds?
+##
+## Two fixes vs the first version (found by auditing the real output, where 378 of 395
+## drugs came back with Z = NaN):
+##  (a) UNREACHABLE NODES. A few nodes sit in small components with no path to any seed.
+##      Their distance is Inf; min(..., na.rm=TRUE) of an all-NA row is also Inf, and one Inf in a
+##      random draw made the whole null mean Inf -> Z = NaN. Now: unreachable nodes are excluded
+##      from BOTH the drug's targets and the null pool, and the count is reported.
+##  (b) DEGREE-MATCHED NULL. Hubs are close to everything, so a null drawn uniformly at random is
+##      biased against drugs that hit hubs. Each random target is now drawn from the same
+##      degree bin as the real target (equal-size bins, as in the original method).
+## Also reported: an empirical p-value (fraction of random sets at least as close), because with
+## 1-2 targets the null is discrete and a Z-score alone is a poor summary.
 ## =============================================================
 cat("\n========== 3. Network Proximity (per drug) ==========\n")
 dist_mat <- igraph::distances(g)  # full shortest-path matrix, reused for every drug (compute once)
+N_DEGREE_BINS <- 20
+
+nearest_seed_dist <- apply(dist_mat[, seed_idx, drop = FALSE], 1, min)
+reachable <- is.finite(nearest_seed_dist)
+cat(">>>", sum(!reachable), "of", n_nodes, "nodes have no path to any seed (small disconnected components) -- excluded from proximity.\n")
 
 closest_distance <- function(target_idx, seed_idx) {
   if (length(target_idx) == 0) return(NA_real_)
-  sub <- dist_mat[target_idx, seed_idx, drop = FALSE]
-  sub[is.infinite(sub)] <- NA  # disconnected components
-  mean(apply(sub, 1, min, na.rm = TRUE), na.rm = TRUE)
+  d <- apply(dist_mat[target_idx, seed_idx, drop = FALSE], 1, min)
+  d <- d[is.finite(d)]
+  if (length(d) == 0) return(NA_real_)
+  mean(d)
+}
+
+## Bins are cut on degree VALUES (quantile breaks), so nodes with the same degree always share a bin
+## -- important because PPI networks have huge ties (thousands of degree-1/2/3 nodes); ranking with
+## ties.method="first" would have split equal-degree nodes across bins by their arbitrary row order.
+deg_breaks <- unique(stats::quantile(deg_vec, probs = seq(0, 1, length.out = N_DEGREE_BINS + 1), type = 1))
+bin_id <- as.integer(cut(deg_vec, breaks = deg_breaks, include.lowest = TRUE, labels = FALSE))
+pool_by_bin <- split(which(reachable), bin_id[reachable])
+sample_degree_matched <- function(target_idx) {
+  vapply(target_idx, function(t) {
+    p <- pool_by_bin[[as.character(bin_id[t])]]
+    if (is.null(p) || length(p) == 0) p <- which(reachable)
+    p[sample.int(length(p), 1)]
+  }, integer(1))
 }
 
 set.seed(42)
-null_pool <- seq_len(n_nodes)
 proximity_results <- list()
 drugs <- unique(dt$Drug)
 for (drug in drugs) {
-  targets <- unique(dt$Drug_Target[dt$Drug == drug])
+  targets    <- unique(dt$Drug_Target[dt$Drug == drug])
   target_idx <- which(igraph::V(g)$displayName %in% targets)
   if (length(target_idx) == 0) next
-  d_obs <- closest_distance(target_idx, seed_idx)
-
-  null_d <- vapply(seq_len(N_PERMUTATIONS), function(i) {
-    rand_idx <- sample(null_pool, length(target_idx))
-    closest_distance(rand_idx, seed_idx)
-  }, numeric(1))
-  z <- (d_obs - mean(null_d, na.rm = TRUE)) / stats::sd(null_d, na.rm = TRUE)
+  reach_idx  <- target_idx[reachable[target_idx]]
+  if (length(reach_idx) == 0) {
+    proximity_results[[drug]] <- data.frame(Drug = drug, N_targets_in_network = length(target_idx),
+        N_targets_reachable = 0, Observed_distance = NA_real_, Null_mean = NA_real_, Null_sd = NA_real_,
+        Z_score = NA_real_, P_empirical = NA_real_)
+    next
+  }
+  d_obs  <- closest_distance(reach_idx, seed_idx)
+  null_d <- vapply(seq_len(N_PERMUTATIONS), function(i) closest_distance(sample_degree_matched(reach_idx), seed_idx), numeric(1))
+  null_sd <- stats::sd(null_d, na.rm = TRUE)
+  z <- if (is.finite(null_sd) && null_sd > 0) (d_obs - mean(null_d, na.rm = TRUE)) / null_sd else NA_real_
+  p_emp <- (sum(null_d <= d_obs, na.rm = TRUE) + 1) / (sum(!is.na(null_d)) + 1)  # smaller = closer than chance
 
   proximity_results[[drug]] <- data.frame(Drug = drug, N_targets_in_network = length(target_idx),
-                                           Observed_distance = d_obs, Null_mean = mean(null_d, na.rm = TRUE),
-                                           Z_score = z)
+      N_targets_reachable = length(reach_idx), Observed_distance = d_obs,
+      Null_mean = mean(null_d, na.rm = TRUE), Null_sd = null_sd, Z_score = z, P_empirical = p_emp)
 }
 proximity_table <- do.call(rbind, proximity_results)
 proximity_table <- proximity_table[order(proximity_table$Z_score), ]  # most negative = closest to disease = best
 write.csv(proximity_table, file.path(dir_out, paste0(ACC, "_NetworkProximity.csv")), row.names = FALSE)
-cat(">>> Network proximity computed for", nrow(proximity_table), "/", length(drugs), "drugs (rest had 0 targets in network).\n")
-cat(">>> Most disease-proximal (most negative Z, i.e. closer than random targets would be):\n")
+cat(">>> Network proximity computed for", nrow(proximity_table), "/", length(drugs), "drugs;",
+    sum(is.finite(proximity_table$Z_score)), "have a finite Z-score.\n")
+cat(">>> Most disease-proximal (most negative Z, i.e. closer than degree-matched random targets would be):\n")
 print(utils::head(proximity_table, 5))
 
 ## =============================================================
@@ -229,4 +267,3 @@ cat("  -", paste0(ACC, "_GeneScores_RWR_Diffusion.csv"))
 cat("\n  -", paste0(ACC, "_NetworkProximity.csv"), "(per drug)")
 cat("\n  -", paste0(ACC, "_Communities.csv"))
 cat("\n  -", paste0(ACC, "_ModuleOverlapScoring.csv"), "(per drug x module)")
-

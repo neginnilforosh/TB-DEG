@@ -1,5 +1,5 @@
 ## =============================================================
-
+##
 ## Pure local data wrangling -- everything needed was already produced
 ## by steps 1-9, no new network calls.
 ## =============================================================
@@ -16,7 +16,7 @@ ACC <- "GSE114192"
 MODULE_NAMES <- c(green = "Interferon_Response", purple = "Ribosome_Biogenesis_Chromatin", blue = NA)
 
 
-## ---- name harmonization helper----
+## ---- name harmonization helper (same as step 9) ----
 ## Network node names (STRING preferredName) can differ from the current org.Hs.eg.db SYMBOL
 ## for the same gene (e.g. RIGI vs DDX58). Joining PPI/RWR columns on SYMBOL alone would
 ## leave exactly those genes -- often important hubs -- with empty PPI/RWR cells, so:
@@ -45,6 +45,26 @@ ensembl_to_network_name <- function(ens_ids, network_names, annot = NULL) {
   nm[ok] <- viaal[ok]
   first_sym <- vapply(syms, function(s) if (length(s)) s[1] else NA_character_, character(1))
   data.frame(ENSEMBL = ens_ids, SYMBOL = unname(first_sym), NetName = unname(nm), stringsAsFactors = FALSE)
+}
+
+
+## ---- drug-name key (used to join DGIdb drug names onto iLINCS compound names) ----
+## DGIdb names are UPPERCASE and often carry salt/hydrate suffixes ("AMLODIPINE BESYLATE",
+## "AFURESERTIB HYDROCHLORIDE"); iLINCS uses mixed case and the bare name ("Amlodipine").
+## An exact string match therefore found only 32 of 395 drugs; upper-casing gets 297, and
+## also stripping trailing salt/hydrate words gets 367 (measured on the real GSE114192 files).
+SALT_WORDS <- paste0("(DIHYDROCHLORIDE|HYDROCHLORIDE|HYDROBROMIDE|HCL|MESYLATE|MESILATE|BESYLATE|BESILATE|",
+                     "MALEATE|FUMARATE|CITRATE|SULFATE|SULPHATE|PHOSPHATE|TARTRATE|ACETATE|SUCCINATE|",
+                     "TOSYLATE|TOSILATE|LACTATE|GLUCONATE|NITRATE|SODIUM|POTASSIUM|CALCIUM|MAGNESIUM|",
+                     "CHLORIDE|BROMIDE|ANHYDROUS|MONOHYDRATE|DIHYDRATE|TRIHYDRATE|HEMIHYDRATE|HYDRATE)")
+drug_key <- function(x) {
+  x <- toupper(trimws(x))
+  repeat {
+    y <- trimws(sub(paste0("[[:space:],()-]+", SALT_WORDS, "$"), "", x))
+    if (identical(y, x)) break
+    x <- y
+  }
+  x
 }
 
 ## ---- locate script dir ----
@@ -127,6 +147,7 @@ cat("\n>>> Building drug table...\n")
 cand  <- read.csv(file.path(dir_sig, paste0(ACC, "_iLINCS_candidate_compounds.csv")), stringsAsFactors = FALSE)
 dt    <- read.csv(file.path(dir_dt, paste0(ACC, "_Drug_Target_TBnetwork.csv")), stringsAsFactors = FALSE)
 prox  <- read.csv(file.path(dir_net, paste0(ACC, "_NetworkProximity.csv")), stringsAsFactors = FALSE)
+cand$.key <- drug_key(cand$Target)
 
 drugs <- unique(dt$Drug)  # scope = drugs that have at least one target IN the TB network
 rows <- list()
@@ -136,18 +157,19 @@ for (drug in drugs) {
   modules_affected <- unique(d_sub$TB_Module)
   pathways_affected <- unique(na.omit(MODULE_NAMES[modules_affected]))
 
-  sim_rows <- cand[cand$Target == drug, ]
+  sim_rows <- cand[cand$.key == drug_key(drug), ]
   reversal_score <- if (nrow(sim_rows)) min(sim_rows$Similarity) else NA  # most negative = strongest reversal
 
   prox_row <- prox[prox$Drug == drug, ]
   proximity_z <- if (nrow(prox_row)) prox_row$Z_score[1] else NA
+  proximity_p <- if (nrow(prox_row) && "P_empirical" %in% names(prox_row)) prox_row$P_empirical[1] else NA   # present from the fixed step 9 on
 
   target_scores <- scores$RWR_score[scores$Gene %in% targets]
   rwr_drug_score <- if (length(target_scores)) mean(target_scores, na.rm = TRUE) else NA
 
   rows[[length(rows) + 1]] <- data.frame(
     Drug = drug, iLINCS_Reversal_Score = reversal_score, Known_Targets = paste(targets, collapse = ";"),
-    Network_Proximity_Z = proximity_z, RWR_score = rwr_drug_score,
+    Network_Proximity_Z = proximity_z, Network_Proximity_P = proximity_p, RWR_score = rwr_drug_score,
     Modules_Affected = paste(modules_affected, collapse = ";"),
     Pathways_Affected = if (length(pathways_affected)) paste(pathways_affected, collapse = ";") else NA_character_
   )
@@ -156,6 +178,10 @@ drug_table_out <- do.call(rbind, rows)
 drug_table_out <- drug_table_out[order(drug_table_out$iLINCS_Reversal_Score), ]  # strongest reversal first
 write.csv(drug_table_out, file.path(dir_out, paste0(ACC, "_FINAL_DrugTable.csv")), row.names = FALSE)
 cat(">>> Drug table:", nrow(drug_table_out), "drugs.\n")
+cat(">>>", sum(!is.na(drug_table_out$iLINCS_Reversal_Score)), "/", nrow(drug_table_out),
+    "have an iLINCS reversal score;", sum(is.finite(drug_table_out$Network_Proximity_Z)), "have a finite proximity Z.\n")
+if (mean(is.na(drug_table_out$iLINCS_Reversal_Score)) > 0.3)
+  cat("!! More than 30% of drugs have no iLINCS score -- check the drug-name join before trusting the ranking.\n")
 
 cat("\n>>> DONE. Both final tables in", dir_out, ":\n")
 cat("  -", paste0(ACC, "_FINAL_GeneTable.csv"))
