@@ -1,5 +1,6 @@
 ## =============================================================
-## Uses the real drugfindR package (CogDisResLab/drugfindR, on
+## STEP 6: TB_UP / TB_DOWN expression signature for iLINCS
+## Uses the drugfindR package (CogDisResLab/drugfindR, on
 ## r-universe) rather than hand-rolling the L1000 gene-space mapping:
 ##   prepareSignature() -- maps genes to L1000 space, standardizes columns
 ##   filterSignature()  -- splits into up/down by direction + threshold
@@ -17,7 +18,7 @@ if (!all(pkg_ok)) {
 
 ## ---- CONFIG ----
 ACC             <- "GSE114192"
-LOGFC_THRESHOLD <- 0.5   # matches the existing significance convention (padj<0.05 & |log2FC|>=1)
+LOGFC_THRESHOLD <- 0.5   # minimum |log2FC| for TB_UP / TB_DOWN (applied after prepareSignature)
 
 ## ---- locate script dir  ----
 get_script_dir <- function() {
@@ -36,7 +37,7 @@ dir_deg    <- file.path(BASE_DIR, "06_deg_results")
 dir_out    <- file.path(BASE_DIR, "13_ilincs_signature")
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 
-## ---- load the significant DEGs (already padj<0.05 & |log2FC|>=1 -- 
+## ---- load all DEGs with padj < 0.05 (the |log2FC| filter is applied below) ----
 deg_file <- file.path(dir_deg, paste0(ACC, "_HealthyControl_vs_TBOnly_DEG.csv"))
 if (!file.exists(deg_file)) stop("Missing: ", deg_file)
 deg <- read.csv(deg_file, stringsAsFactors = FALSE)
@@ -63,8 +64,7 @@ TB_DOWN <- drugfindR::filterSignature(signature, direction = "down", threshold =
 cat(">>> TB_UP:  ", nrow(TB_UP),   "genes\n")
 cat(">>> TB_DOWN:", nrow(TB_DOWN), "genes\n")
 
-# getConcordants() will hard-error later on any missing values in the signature
-# (per its own docs)
+# getConcordants() errors on missing values in the signature, so check here
 for (nm in c("TB_UP", "TB_DOWN")) {
   d <- get(nm)
   if (anyNA(d)) cat("!! WARNING:", sum(!complete.cases(d)), "row(s) in", nm,

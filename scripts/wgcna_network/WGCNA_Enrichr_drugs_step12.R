@@ -60,7 +60,7 @@ dir_cache <- file.path(dir_out, "cache")
 dir.create(dir_cache, recursive = TRUE, showWarnings = FALSE)
 
 ## =============================================================
-## helpers (pure R, unit-tested separately from the web calls)
+## helpers (pure R)
 ## =============================================================
 # newest library whose name matches the pattern (year = the 4 digits in the name)
 pick_library <- function(available, pattern) {

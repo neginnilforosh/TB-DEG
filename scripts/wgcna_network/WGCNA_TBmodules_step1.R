@@ -1,6 +1,6 @@
 ## =============================================================
-## What this does, per the brief:
-##   1. Build the WGCNA network (same as WGCNA_GSE114192_run.R)
+## STEP 1: WGCNA module-trait analysis (GSE114192, TB vs Control)
+##   1. Build the WGCNA network
 ##   2. Module-trait correlation heatmap (TB vs Control)
 ##   3. Select ONLY the modules significantly associated with TB
 ##   4. For each selected module, export: module color, N genes,
@@ -50,7 +50,7 @@ dir_results <- file.path(BASE_DIR, "10_wgcna_results")
 dir_fig     <- file.path(BASE_DIR, "figures")
 dir.create(dir_results, recursive = TRUE, showWarnings = FALSE)
 
-## ---- 2. Load data (same convention as WGCNA_GSE114192_run.R) ----
+## ---- 2. Load data ----
 cat("\n========== STEP 1: LOAD AND FORMAT DATA ==========\n")
 
 expr_file <- file.path(dir_wgcna, paste0(ACC, "_WGCNA_expression_matrix.csv"))

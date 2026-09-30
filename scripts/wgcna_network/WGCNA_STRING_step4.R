@@ -1,5 +1,5 @@
 ## =============================================================
-
+## STEP 4: STRING PPI network and centrality, per module
 ## Uses STRING's REST API directly (https://string-db.org/help/api/) --
 ## no manual upload needed, no STRINGdb Bioconductor package required.
 ## =============================================================
@@ -17,7 +17,7 @@ if (!all(pkg_ok)) {
 ACC             <- "GSE114192"
 SPECIES         <- 9606     # human
 REQUIRED_SCORE  <- 400      # STRING "medium confidence" default (0-1000); use 700+ for high-confidence only
-USE_FULL_MODULE <- TRUE     # TRUE  = every gene in the module (what Ratul's wording asks for)
+USE_FULL_MODULE <- TRUE     # TRUE  = every gene in the module (default)
                              # FALSE = only the step-3 "disease genes" (DEG + module overlap) subset
 N_LABELS_FULL   <- 15        # how many top hubs to label on the full-network plot (rest stay unlabeled dots)
 N_HUBS_SUBNET   <- 30        # size of the separate, fully-labeled "hub-only" zoomed-in plot

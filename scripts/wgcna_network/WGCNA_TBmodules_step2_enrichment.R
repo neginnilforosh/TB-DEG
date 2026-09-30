@@ -1,4 +1,5 @@
 ## =============================================================
+## STEP 2: biological naming of the TB modules by enrichment
 ## Input:  <ACC>_TBmodules_MM_GS.csv  (from WGCNA_TBmodules_step1.R —
 ##          already just the Selected top-N modules, e.g. green/purple/blue)
 ## Output, per module: one CSV each for GO Biological Process, KEGG,

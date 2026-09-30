@@ -1,5 +1,5 @@
 ## =============================================================
-
+## STEP 11: GSEA on the full ranked DEG list, per comparison
 ## Why GSEA (and not another over-representation tool) for the blue module: blue is
 ## ~1,400 genes that mostly shift a little and together (961 lower / 416 higher in TB),
 ## which a hard cutoff + ORA blurs. GSEA uses every gene, needs no cutoff, and reports a
@@ -51,7 +51,7 @@ ROOT_DIR <- local({ d <- SCRIPT_DIR
 cat(">>> Repo root:", ROOT_DIR, "\n")
 
 ## =============================================================
-## helpers (pure R, unit-tested separately from the clusterProfiler calls)
+## helpers (pure R)
 ## =============================================================
 # DEG table (ENSEMBL ids) + mapping table -> named, decreasing ranking vector keyed by SYMBOL
 build_ranking <- function(deg, id_map) {

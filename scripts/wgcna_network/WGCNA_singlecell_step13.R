@@ -1,11 +1,11 @@
 ## =============================================================
 ## STEP 13: where are the module genes (and the drug targets) expressed, cell type by cell type?
 ##
-## Ratul's request: "combine single-cell expression data like where your module genes are expressed
-## and can also later imply they are related to drugs at cellular level."
+## Aim: place the module genes and the drug targets in cell types, so drug candidates can be
+## interpreted at the cellular level.
 ##
 ## Data: the 4-week M. tuberculosis granuloma dataset from the Broad Single Cell Portal
-## (SCP1749), as used in Ratul's repository RajarshiRay25/Single-Cell-Analysis---Tuberculosis:
+## (SCP1749), as packaged in the repository RajarshiRay25/Single-Cell-Analysis---Tuberculosis:
 ##   10,006 cells, 11 annotated cell types (Macrophage, T, Neutrophil, T2P, Mast, B, Fibroblast,
 ##   Endothelial, Club, pDC, Plasma), 2 cynomolgus macaques, human-style gene symbols.
 ## How to get it: download "data files.zip" from that repository, unzip it, and put the four files
@@ -65,7 +65,7 @@ if (!all(file.exists(need))) stop("Single-cell files not found in ", SC_DIR, ":\
                                   "\n  (see the header of this script for where to get them)")
 
 ## =============================================================
-## helpers (pure R; unit-tested separately from the file reading)
+## helpers (pure R)
 ## =============================================================
 # genes x cell-type CP10K from a sparse counts matrix and a cell-type vector
 pseudobulk_cp10k <- function(X, celltype) {

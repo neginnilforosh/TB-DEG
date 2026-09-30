@@ -1,12 +1,11 @@
 ## =============================================================
-## STEP 10 (FINAL) of Ratul's roadmap: two master tables.
+## STEP 10: final master tables.
 ##
-## "The first should be a gene table containing: Gene, log2FC, FDR,
-##  Module, Module biological name, MM/kME, Gene Significance, PPI
-##  degree, Betweenness, RWR score, Diffusion score, and Pathways.
-##  The second should be a drug table containing: Drug, iLINCS
-##  reversal score, Known targets, Network proximity, RWR score,
-##  Modules affected, and Pathways affected."
+## Gene table: Gene, log2FC, FDR, Module, module biological name, MM/kME,
+##   Gene Significance, PPI degree, Betweenness, RWR score, Diffusion score, pathway.
+## Drug table: Drug, iLINCS reversal score, known targets, network proximity,
+##   RWR score, modules affected, pathways affected (+ Enrichr and single-cell
+##   columns when steps 12 and 13 have been run).
 ##
 ## Pure local data wrangling -- everything needed was already produced
 ## by steps 1-9, no new network calls.
@@ -170,7 +169,7 @@ for (drug in drugs) {
 
   prox_row <- prox[prox$Drug == drug, ]
   proximity_z <- if (nrow(prox_row)) prox_row$Z_score[1] else NA
-  proximity_p <- if (nrow(prox_row) && "P_empirical" %in% names(prox_row)) prox_row$P_empirical[1] else NA   # present from the fixed step 9 on
+  proximity_p <- if (nrow(prox_row) && "P_empirical" %in% names(prox_row)) prox_row$P_empirical[1] else NA   # empirical p-value from step 9
 
   target_scores <- scores$RWR_score[scores$Gene %in% targets]
   rwr_drug_score <- if (length(target_scores)) mean(target_scores, na.rm = TRUE) else NA

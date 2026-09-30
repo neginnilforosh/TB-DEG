@@ -1,5 +1,5 @@
 ## =============================================================
-
+## STEP 7: iLINCS query for compounds that reverse the TB signature
 ## Follows drugfindR's own documented paired workflow exactly:
 ##   getConcordants(TB_UP,   ilincsLibrary="CP")
 ##   getConcordants(TB_DOWN, ilincsLibrary="CP")

@@ -1,6 +1,7 @@
 ## =============================================================
+## STEP 5: one combined TB PPI network (module identity kept per gene)
 ## Re-queries STRING on the UNION of all modules' genes (not just
-## pooling the 3 separate per-module edge lists from step 5) so
+## pooling the 3 separate per-module edge lists from step 4) so
 ## cross-module ("bridge") interactions are actually captured --
 ## those are exactly what a combined network is for.
 ## =============================================================
@@ -102,8 +103,8 @@ cat("  resolved", length(unique(ids_df$stringId)), "/", nrow(symbol_module_map),
 ## Authoritative StringID -> Module map, built from OUR OWN query (queryItem = the exact
 ## symbol we submitted, already tied to a module in symbol_module_map) -- never by matching
 ## STRING's own preferredName afterward. (queryItem and STRING's preferredName can legitimately
-## differ for the same protein, e.g. via a synonym -- that mismatch is what silently dropped
-## DDX58 and 9 other genes to "unmapped" last run, even though DDX58 was genuinely in green.)
+## differ for the same protein, e.g. via a synonym; matching on names would leave such genes
+## (e.g. DDX58) without a module label.)
 id_module_map <- merge(ids_df[, c("queryItem", "stringId")], symbol_module_map,
                         by.x = "queryItem", by.y = "Symbol")
 id_module_map <- id_module_map[!duplicated(id_module_map$stringId), ]

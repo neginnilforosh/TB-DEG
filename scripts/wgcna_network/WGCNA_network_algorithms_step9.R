@@ -1,17 +1,13 @@
 ## =============================================================
 
-## RWR and Diffusion are implemented BY HAND (plain matrix algebra,
-## base R) rather than via an extra package: they're simple enough
-## to write and test directly, and it's one less new install after
-## everything already needed this project (WGCNA, clusterProfiler,
-## msigdbr/msigdbdf, drugfindR...). They ARE methodologically
-## distinct from each other, not the same thing twice:
+## STEP 9: network algorithms (RWR, diffusion, proximity, communities, module overlap)
+## RWR and diffusion are implemented directly in base R (matrix algebra).
+## They are methodologically distinct:
 ##   - RWR:       row-normalized (asymmetric) transition matrix
 ##   - Diffusion: symmetric-normalized adjacency (Vanunu et al. 2010
 ##                network propagation) -- treats the walk symmetrically
 ##                rather than direction-biased by node out-degree
-## Only Community Detection needs igraph (already installed from
-## steps 4/5).
+## Community detection uses igraph.
 ## =============================================================
 
 required_pkgs <- c("igraph")
@@ -63,8 +59,8 @@ cat(">>> Network:", n_nodes, "nodes,", igraph::ecount(g), "edges.\n")
 ## ---- seed genes = the 188 disease genes (Ensembl IDs in the file) ----
 ## They have to be matched to network nodes BY NAME, and the network's node names are
 ## STRING's preferredName -- which can differ from the current org.Hs.eg.db SYMBOL for the
-## very same gene (real example seen in this project: org.Hs.eg.db says RIGI, STRING says
-## DDX58 -- exactly the drift behind step 5's old "unmapped" bug). Matching on SYMBOL alone
+## very same gene (e.g. org.Hs.eg.db says RIGI, STRING says
+## DDX58). Matching on SYMBOL alone
 ## would silently drop such seeds, so: exact SYMBOL match first, ALIAS as a guarded fallback (see below).
 ensembl_to_network_name <- function(ens_ids, network_names, annot = NULL) {
   ens_ids <- unique(ens_ids)
@@ -143,15 +139,13 @@ diffusion_score <- setNames(q, node_names)
 ## 3. NETWORK PROXIMITY 
 ##    for each drug: how close are ITS TARGETS to the disease seeds?
 ##
-## Two fixes vs the first version (found by auditing the real output, where 378 of 395
-## drugs came back with Z = NaN):
-##  (a) UNREACHABLE NODES. A few nodes sit in small components with no path to any seed.
-##      Their distance is Inf; min(..., na.rm=TRUE) of an all-NA row is also Inf, and one Inf in a
-##      random draw made the whole null mean Inf -> Z = NaN. Now: unreachable nodes are excluded
-##      from BOTH the drug's targets and the null pool, and the count is reported.
-##  (b) DEGREE-MATCHED NULL. Hubs are close to everything, so a null drawn uniformly at random is
-##      biased against drugs that hit hubs. Each random target is now drawn from the same
-##      degree bin as the real target (equal-size bins, as in the original method).
+## Design notes:
+##  (a) UNREACHABLE NODES. A few nodes sit in small components with no path to any seed; their
+##      distance is Inf, which would make the null mean Inf and Z = NaN. They are excluded from
+##      both the drug's targets and the null pool, and the count is reported.
+##  (b) DEGREE-MATCHED NULL. Hubs are close to everything, so a uniformly random null is biased
+##      against drugs that hit hubs. Each random target is drawn from the same degree bin as
+##      the real target (Guney et al. 2016).
 ## Also reported: an empirical p-value (fraction of random sets at least as close), because with
 ## 1-2 targets the null is discrete and a Z-score alone is a poor summary.
 ## =============================================================
@@ -172,8 +166,8 @@ closest_distance <- function(target_idx, seed_idx) {
 }
 
 ## Bins are cut on degree VALUES (quantile breaks), so nodes with the same degree always share a bin
-## -- important because PPI networks have huge ties (thousands of degree-1/2/3 nodes); ranking with
-## ties.method="first" would have split equal-degree nodes across bins by their arbitrary row order.
+## -- important because PPI networks have huge ties (thousands of degree-1/2/3 nodes); rank-based
+## bins would split equal-degree nodes across bins by their arbitrary row order.
 deg_breaks <- unique(stats::quantile(deg_vec, probs = seq(0, 1, length.out = N_DEGREE_BINS + 1), type = 1))
 bin_id <- as.integer(cut(deg_vec, breaks = deg_breaks, include.lowest = TRUE, labels = FALSE))
 pool_by_bin <- split(which(reachable), bin_id[reachable])

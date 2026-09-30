@@ -1,4 +1,5 @@
 ## =============================================================
+## STEP 8: known targets of the iLINCS compounds (DGIdb), mapped onto the TB network
 ## Target lookup: DGIdb v5's public GraphQL API (dgidb.org/api/graphql,
 ## no key needed).
 ## =============================================================
@@ -47,7 +48,7 @@ if (is.na(drug_col)) stop("Couldn't find a compound-name column in ", cand_file,
 drug_names <- unique(candidates[[drug_col]])
 cat(">>> Looking up targets for", length(drug_names), "candidate compounds via DGIdb...\n")
 
-## ---- DGIdb GraphQL query (drug -> target genes), by symmetry with the confirmed gene-side query ----
+## ---- DGIdb GraphQL query (drug -> target genes) ----
 dgidb_query <- '
 query GetDrugInteractions($drugs: [String!]!) {
   drugs(names: $drugs) {
@@ -70,7 +71,7 @@ resp <- httr::POST(DGIDB_URL, encode = "json", httr::timeout(120),
 if (httr::status_code(resp) != 200 || !is.null(httr::content(resp, "parsed")$errors)) {
   cat("!! DGIdb query failed or returned GraphQL errors. Response:\n")
   print(httr::content(resp, "text", encoding = "UTF-8"))
-  cat("\n>>> Fetching DGIdb's own schema so you can see the real field name instead of guessing:\n")
+  cat("\n>>> Fetching DGIdb's schema to show the available query fields:\n")
   schema_q <- '{ __schema { queryType { fields { name } } } }'
   schema_resp <- httr::POST(DGIDB_URL, encode = "json", body = list(query = schema_q))
   print(httr::content(schema_resp, "parsed"))
