@@ -1,18 +1,4 @@
-## =============================================================
-## 00_functions.R
-## Shared helper functions for the TB DEG pipeline
-## (GSE222001, GSE161829, GSE99374, GSE229020, GSE114192)
-##
-## Requires: DESeq2, GEOquery, pheatmap, ggplot2, ggrepel,
-##           RColorBrewer, UpSetR, matrixStats
-##
-## Package installation: see PACKAGES.md in the repo root.
-##
-## =============================================================
-
-#if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocManager")
-#BiocManager::install(c("DESeq2","GEOquery","pheatmap","apeglm"))
-#install.packages(c("ggplot2","ggrepel","RColorBrewer","UpSetR","matrixStats","pheatmap"))
+## Shared helpers for the DEG pipeline: filtering, VST/PCA, correlation, DEG calling, heatmaps, UpSet, WGCNA export.
 
 suppressPackageStartupMessages({
   library(DESeq2)
@@ -24,12 +10,7 @@ suppressPackageStartupMessages({
   library(matrixStats)
 })
 
-## -------------------------------------------------------------
-## 1. FILTERING
-##    Removes very low-expression genes.
-##    Rule: keep genes with >= min_count reads in >= min_samples
-##    samples (min_samples defaults to size of the smallest group).
-## -------------------------------------------------------------
+## ---- 1. Filtering: keep genes with >= min_count reads in >= min_samples samples (default: smallest group) ----
 filter_low_expression <- function(counts, min_count = 10, min_samples = 3) {
   keep <- rowSums(counts >= min_count) >= min_samples
   list(filtered = counts[keep, , drop = FALSE],
@@ -52,9 +33,7 @@ plot_filtering_summary <- function(n_before, n_after, out_png, title = "Gene fil
   p
 }
 
-## -------------------------------------------------------------
-## 2. NORMALIZATION (VST) + PCA
-## -------------------------------------------------------------
+## ---- 2. VST normalization + PCA ----
 run_vst <- function(dds) {
 
   vst_obj <- vst(dds, blind = TRUE)
@@ -80,9 +59,7 @@ plot_pca <- function(vst_mat, metadata, group_col = "group", out_png,
   p
 }
 
-## -------------------------------------------------------------
-## 3. SAMPLE CORRELATION HEATMAP
-## -------------------------------------------------------------
+## ---- 3. Sample correlation heatmap ----
 sample_correlation <- function(vst_mat, metadata, group_col = "group",
                                 out_matrix_csv, out_png,
                                 title = "Sample-to-sample correlation") {
@@ -102,10 +79,7 @@ sample_correlation <- function(vst_mat, metadata, group_col = "group",
   cor_mat
 }
 
-## -------------------------------------------------------------
-## 4. DESeq2 DEG CALLING + VOLCANO PLOT
-##    contrast = c("group", "TreatmentLevel", "ReferenceLevel")
-## -------------------------------------------------------------
+## ---- 4. DESeq2 DEG calling + volcano plot; contrast = c("group", treatment, reference) ----
 run_deg <- function(dds, contrast, out_csv,
                      lfc_thresh = 1, padj_thresh = 0.05, shrink = TRUE) {
   res <- results(dds, contrast = contrast, alpha = padj_thresh)
@@ -150,9 +124,7 @@ volcano_plot <- function(res_df, out_png, title,
   p
 }
 
-## -------------------------------------------------------------
-## 5. SIGNIFICANT DEG LIST + HEATMAP
-## -------------------------------------------------------------
+## ---- 5. Significant DEG list + heatmap ----
 get_significant_degs <- function(res_df, out_csv, lfc_thresh = 1, padj_thresh = 0.05) {
   sig <- res_df[!is.na(res_df$padj) & res_df$padj < padj_thresh & abs(res_df$log2FoldChange) >= lfc_thresh, ]
   sig <- sig[order(sig$padj), ]
@@ -180,10 +152,7 @@ sig_deg_heatmap <- function(vst_mat, sig_genes, metadata, group_col = "group",
   dev.off()
 }
 
-## -------------------------------------------------------------
-## 6. SHARED / UNIQUE DEGs ACROSS COMPARISONS (UpSet plot)
-##    deg_lists = named list of character vectors of significant gene IDs
-## -------------------------------------------------------------
+## ---- 6. Shared/unique DEGs across comparisons (UpSet); deg_lists = named list of gene vectors ----
 shared_unique_degs <- function(deg_lists, out_csv, out_png,
                                 title = "Shared and unique DEGs") {
   all_genes <- unique(unlist(deg_lists))
@@ -201,25 +170,19 @@ shared_unique_degs <- function(deg_lists, out_csv, out_png,
   out_df
 }
 
-## -------------------------------------------------------------
-## 7. WGCNA-READY EXPORTS
-##    (full VST matrix -- NOT restricted to significant DEGs -- + trait file)
-## -------------------------------------------------------------
+## ---- 7. WGCNA exports: full VST matrix (not DEG-restricted) + trait file ----
 export_wgcna_expression <- function(vst_mat, out_csv) {
   write.csv(vst_mat, out_csv)
 }
 
 export_wgcna_traits <- function(metadata, trait_cols, out_csv) {
-  # trait_cols: named list mapping trait name -> 0/1 (or numeric) vector
-  # Example: list(TB_only = c(1,1,0,0), Comorbidity_only = c(0,0,1,1))
+  # trait_cols: named list of 0/1 (or numeric) vectors, e.g. list(TB_only = c(1,1,0,0))
   traits <- as.data.frame(trait_cols)
   rownames(traits) <- rownames(metadata)
   write.csv(traits, out_csv)
 }
 
-## -------------------------------------------------------------
-## 8. SAMPLE-DESIGN SCHEMATIC (simple bar of n per group)
-## -------------------------------------------------------------
+## ---- 8. Sample-design bar plot (n per group) ----
 plot_sample_design <- function(metadata, group_col = "group", out_png,
                                 title = "Sample design") {
   df <- as.data.frame(table(metadata[[group_col]]))

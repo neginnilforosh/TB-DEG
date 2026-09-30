@@ -1,7 +1,4 @@
-## =============================================================
-## GSE229020 — miRNA (NanoString nCounter) analysis
-## HC vs LTB (Latent), HC vs DS-TB (Drug-Susceptible), HC vs DR-TB (Drug-Resistant)
-## =============================================================
+## GSE229020: miRNA panel (NanoString nCounter); HC vs Latent, Drug-susceptible and Drug-resistant TB (limma).
 
 suppressPackageStartupMessages({
   library(limma)
@@ -45,7 +42,6 @@ full_tbl <- full_tbl[, !grepl("^(V\\d+|X\\.)$|^$", names(full_tbl))]  # drop str
 cat("\nRows before row-level cleanup:", nrow(full_tbl), "\n")
 cat("Class Name breakdown (blank = the spreadsheet-export junk rows we're about to drop):\n")
 print(table(full_tbl$`Class Name`, useNA = "ifany"))
-
 
 full_tbl <- full_tbl[!is.na(full_tbl$`Class Name`) &
                       full_tbl$`Class Name` == "Endogenous1" &
@@ -127,7 +123,7 @@ pheatmap(sample_cor, annotation_col = ann, annotation_row = ann,
         main = paste(ACC, "miRNA sample correlation"))
 dev.off()
 
-## ---- Outlier check  ----
+## ---- Outlier check ----
 avg_corr <- sort(rowMeans(sample_cor))
 cat("\n--- Lowest mean sample correlation (possible outliers) ---\n")
 print(head(avg_corr, 5))
@@ -213,5 +209,4 @@ for (cmp_name in names(all_sig)) {
   cat(sprintf("%-25s : %d significant miRNAs\n", cmp_name, length(all_sig[[cmp_name]])))
 }
 cat("(threshold: adj.P.Val < ", PADJ_TH, ", |log2FC| >= ", LFC_TH, ")\n", sep = "")
-
 

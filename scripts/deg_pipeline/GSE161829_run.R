@@ -1,6 +1,5 @@
-## =============================================================
-## GSE161829 — TBneg vs LTBI, TBneg vs ATB
-## =============================================================
+## GSE161829: TBneg vs LTBI and TBneg vs ATB (DESeq2).
+
 source("00_functions.R")
 library(GEOquery)
 library(DESeq2)
@@ -29,9 +28,7 @@ for (d in c(dir_raw, dir_meta, dir_filt, dir_norm, dir_corr,
 gse   <- getGEO(ACC, GSEMatrix = TRUE, getGPL = FALSE)[[1]]
 pheno <- pData(gse)
 
-## =============================================================
-## CONFIG
-## =============================================================
+## ---- CONFIG ----
 
 GROUP_COL   <- "disease group:ch1"
 COUNT_FILE  <- "GSE161829_RawCounts_CD4m.txt.gz"
@@ -43,14 +40,11 @@ GROUP_MAP <- c(
   "ATB_Post_treatment" = "Exclude"
 )
 
-## =============================================================
-## PART B
-## =============================================================
+## ---- PART B ----
 
 ## ---- Load counts ----
 count_path <- file.path(dir_raw, ACC, COUNT_FILE)
 raw_counts <- read.delim(count_path, row.names = 1, check.names = FALSE)
-
 
 if(ncol(raw_counts) == nrow(pheno)) {
   colnames(raw_counts) <- rownames(pheno)
@@ -66,11 +60,9 @@ metadata <- data.frame(
 )
 stopifnot(!any(is.na(metadata$group)))
 
-
 metadata <- metadata[metadata$group != "Exclude", ]
 metadata$group <- factor(metadata$group, levels = c("TBneg", "LTBI", "ATB"))
 rownames(metadata) <- metadata$sample_id
-
 
 common <- intersect(colnames(raw_counts), metadata$sample_id)
 stopifnot(length(common) > 0)

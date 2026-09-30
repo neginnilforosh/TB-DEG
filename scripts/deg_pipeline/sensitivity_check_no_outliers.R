@@ -1,18 +1,12 @@
-## =============================================================
-## Sensitivity check: re-run HC vs LTBI DEG analysis for GSE99374
-## WITHOUT the two apparent outlier samples (TU0021_CD8_LTBI,
-## TP0001_CD8_LTBI) and compare against the original 4 significant genes.
+## GSE99374 sensitivity check: HC vs LTBI without outliers TU0021_CD8_LTBI and TP0001_CD8_LTBI.
+## Run with the working directory = scripts/deg_pipeline.
 
-## =============================================================
-
-# Run with the working directory = scripts/deg_pipeline
 source("00_functions.R")
 
 BASE_DIR   <- file.path("..", "..", "GSE99374")
-OUTLIERS <- c("TU0021_CD8_LTBI", "TP0001_CD8_LTBI")   
+OUTLIERS <- c("TU0021_CD8_LTBI", "TP0001_CD8_LTBI")
 LFC_TH     <- 1
 PADJ_TH    <- 0.05
-
 
 SENS_DIR <- file.path(BASE_DIR, "sensitivity_no_outliers")
 for (d in c("results", "figures")) dir.create(file.path(SENS_DIR, d), recursive = TRUE, showWarnings = FALSE)

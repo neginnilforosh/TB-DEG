@@ -1,6 +1,4 @@
-## =============================================================
-## GSE222001 — Healthy vs Active TB, Healthy vs Latent TB
-## =============================================================
+## GSE222001: Healthy vs Active TB and Healthy vs Latent TB (DESeq2).
 
 source("00_functions.R")
 library(GEOquery)
@@ -22,23 +20,19 @@ dir_share <- file.path(BASE_DIR, "08_shared_unique_degs")
 dir_wgcna <- file.path(BASE_DIR, "09_wgcna_input")
 dir_fig   <- file.path(BASE_DIR, "figures")
 
-## Create all folders up front so nothing fails later on a missing dir
+## Create output folders
 for (d in c(dir_raw, dir_meta, dir_filt, dir_norm, dir_corr,
             dir_deg, dir_sig, dir_share, dir_wgcna, dir_fig)) {
   dir.create(d, recursive = TRUE, showWarnings = FALSE)
 }
 
-
-## =============================================================
-## PART A 
-## =============================================================
+## ---- PART A ----
 
 gse   <- getGEO(ACC, GSEMatrix = TRUE, getGPL = FALSE)[[1]]
 pheno <- pData(gse)
 getGEOSuppFiles(ACC, baseDir = dir_raw)
 
-## --- A1. Which column holds the group label? ---
-## Candidate columns (these are the ones that actually vary across samples):
+## --- A1. Group-label column (candidates that vary across samples): ---
 vary <- names(pheno)[sapply(pheno, function(x) length(unique(x)) > 1 &&
                                                  length(unique(x)) <= 10)]
 cat("\n--- Candidate group columns ---\n")
@@ -48,25 +42,19 @@ for (v in vary) cat(sprintf("  %-40s : %s\n", v, paste(unique(pheno[[v]]), colla
 cat("\n--- Downloaded supplementary files ---\n")
 print(list.files(file.path(dir_raw, ACC), full.names = FALSE))
 
-
-## =============================================================
-## CONFIG 
-## =============================================================
+## ---- CONFIG ----
 
 GROUP_COL   <- "disease state:ch1"        # <-- from A1
 COUNT_FILE  <- "GSE222001_count.txt" # <-- from A2
 
-## Map the raw labels GEO uses onto clean names. 
+## Map the raw labels GEO uses onto clean names.
 GROUP_MAP <- c(
   "Healthy control"                = "Healthy",
   "Active tuberculosis infection"  = "Active",
   "Latent tuberculosis infection"  = "Latent"
 )
 
-
-## =============================================================
-## PART B — runs straight through, no edits needed
-## =============================================================
+## ---- PART B ----
 
 ## ---- Load counts ----
 count_path <- file.path(dir_raw, ACC, COUNT_FILE)
@@ -130,9 +118,7 @@ sample_correlation(vst_mat, metadata,
                    out_png = file.path(dir_fig, paste0(ACC, "_sample_correlation_heatmap.png")),
                    title = paste(ACC, "sample correlation"))
 
-## ---- Outlier check ----
-## Ranks samples by mean correlation to all others. Anything sitting well
-## below the pack is worth a sensitivity re-run before trusting the DEGs.
+## ---- Outlier check: samples with low mean correlation to the others ----
 corr_mat <- cor(vst_mat, method = "pearson")
 avg_corr <- sort(rowMeans(corr_mat))
 cat("\n--- Lowest mean sample correlation (possible outliers) ---\n")
@@ -187,7 +173,7 @@ export_wgcna_traits(metadata,
                     Latent  = as.integer(metadata$group == "Latent")),
   out_csv = file.path(dir_wgcna, paste0(ACC, "_WGCNA_trait_file.csv")))
 
-## ---- The number of significants ----
+## ---- Summary: number of significant DEGs ----
 cat("\n========== DEG COUNT SUMMARY ==========\n")
 cat("Healthy vs Active : ", nrow(sig_active), " significant DEGs\n", sep = "")
 cat("Healthy vs Latent : ", nrow(sig_latent), " significant DEGs\n", sep = "")
