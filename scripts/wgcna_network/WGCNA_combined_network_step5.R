@@ -1,10 +1,5 @@
-## =============================================================
-## STEP 5: one combined TB PPI network (module identity kept per gene)
-## Re-queries STRING on the UNION of all modules' genes (not just
-## pooling the 3 separate per-module edge lists from step 4) so
-## cross-module ("bridge") interactions are actually captured --
-## those are exactly what a combined network is for.
-## =============================================================
+## STEP 5: combined TB PPI network. One STRING query on all module genes (captures cross-module
+## "bridge" edges); each gene keeps its module label.
 
 required_pkgs <- c("httr", "igraph")
 pkg_ok <- vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)
@@ -13,7 +8,7 @@ if (!all(pkg_ok)) {
        "\n  Install with: install.packages(c(", paste0('"', required_pkgs[!pkg_ok], '"', collapse = ", "), "))")
 }
 
-## ---- CONFIG  ----
+## ---- CONFIG ----
 ACC             <- "GSE114192"
 SPECIES         <- 9606
 REQUIRED_SCORE  <- 400
@@ -21,7 +16,7 @@ USE_FULL_MODULE <- TRUE
 N_LABELS_FULL   <- 20
 MODULE_COLORS   <- c(green = "#2ecc71", purple = "#9b59b6", blue = "#3498db")  # plot colors, edit if you rename blue
 
-## ---- locate script dir ----
+## ---- paths ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)
@@ -93,18 +88,14 @@ string_get_network <- function(string_ids) {
   read.delim(text = httr::content(r, "text", encoding = "UTF-8"), stringsAsFactors = FALSE)
 }
 
-## ---- one fresh STRING query on the COMBINED gene set ----
-## (this is what actually reveals cross-module "bridge" interactions 
+## ---- one STRING query on the combined gene set ----
 
 cat("\n>>> Querying STRING on the combined set (may take longer than any single module)...\n")
 ids_df <- string_get_ids(symbol_module_map$Symbol)
 cat("  resolved", length(unique(ids_df$stringId)), "/", nrow(symbol_module_map), "to STRING IDs\n")
 
-## Authoritative StringID -> Module map, built from OUR OWN query (queryItem = the exact
-## symbol we submitted, already tied to a module in symbol_module_map) -- never by matching
-## STRING's own preferredName afterward. (queryItem and STRING's preferredName can legitimately
-## differ for the same protein, e.g. via a synonym; matching on names would leave such genes
-## (e.g. DDX58) without a module label.)
+## StringID -> module map from our own query (queryItem), not STRING's preferredName,
+## which can be a synonym (e.g. DDX58).
 id_module_map <- merge(ids_df[, c("queryItem", "stringId")], symbol_module_map,
                         by.x = "queryItem", by.y = "Symbol")
 id_module_map <- id_module_map[!duplicated(id_module_map$stringId), ]
@@ -177,7 +168,7 @@ tryCatch({
   igraph::E(g)$width <- ifelse(is_bridge, 1.2, 0.3)
 
   set.seed(42)
-  layout_combined <- igraph::layout_with_fr(g, niter = 3000)  # this graph is the biggest one, needs the most spreading-out
+  layout_combined <- igraph::layout_with_fr(g, niter = 3000)  # more iterations for the larger graph
 
   centroid <- colMeans(layout_combined)
   ang <- atan2(layout_combined[, 2] - centroid[2], layout_combined[, 1] - centroid[1])

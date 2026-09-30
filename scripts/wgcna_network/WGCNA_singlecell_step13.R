@@ -1,35 +1,9 @@
-## =============================================================
-## STEP 13: where are the module genes (and the drug targets) expressed, cell type by cell type?
-##
-## Aim: place the module genes and the drug targets in cell types, so drug candidates can be
-## interpreted at the cellular level.
-##
-## Data: the 4-week M. tuberculosis granuloma dataset from the Broad Single Cell Portal
-## (SCP1749), as packaged in the repository RajarshiRay25/Single-Cell-Analysis---Tuberculosis:
-##   10,006 cells, 11 annotated cell types (Macrophage, T, Neutrophil, T2P, Mast, B, Fibroblast,
-##   Endothelial, Club, pDC, Plasma), 2 cynomolgus macaques, human-style gene symbols.
-## How to get it: download "data files.zip" from that repository, unzip it, and put the four files
-##   4Week_countsmatrix.mtx  4Week_features.tsv  4Week_barcodes.tsv  metadata.txt
-## into   <repo root>/external_data/SCP1749/     (add external_data/ to .gitignore: 175 MB).
-##
-## READ THIS BEFORE INTERPRETING (limits of this dataset for our question):
-##   * MACAQUE LUNG GRANULOMAS, not human blood. Circulating neutrophils/monocytes/NK/T cells are not the
-##     same populations as granuloma cells; lung cell types (T2P, Club, Fibroblast, Endothelial) are
-##     irrelevant for a blood transcriptome. Read the result as "which immune cell type does this gene
-##     belong to", not as blood composition.
-##   * TWO animals; no statistics across animals. The p-values below treat genes as independent
-##     (they are not) -- use them to rank/describe, not as formal evidence.
-##   * COARSE labels: one "T" class (no CD4/CD8/NK split), no monocyte or NK class.
-##   * ~86% of our module genes exist in the macaque feature list; the rest are simply not assessed.
-##
-## Method (deliberately simple, all base R + Matrix):
-##   1. pool the counts of every cell type ("pseudo-bulk") -> CP10K per gene per cell type
-##   2. per gene: share = its expression in a cell type / its expression summed over cell types
-##      (uniform expectation = 1/11 = 9%); "detected" = >= 1 CP10K in its best cell type;
-##      "specific" = detected and >= 50% of its expression in ONE cell type
-##   3. per module x direction in TB (log2FC sign): mean share per cell type over detected genes
-##   4. per drug: mean share over its detected known targets (needs >= MIN_TARGETS_SC of them)
-## =============================================================
+## STEP 13: cell-type profile of module genes and drug targets, using the 4-week M. tuberculosis granuloma
+## single-cell dataset (Broad Single Cell Portal SCP1749: macaque, 11 cell types, 2 animals).
+## Data: the four files of "data files.zip" in RajarshiRay25/Single-Cell-Analysis---Tuberculosis,
+## placed in external_data/SCP1749/.
+## Method: pseudo-bulk CP10K per cell type; per gene, the share of its expression in each cell type
+## (uniform = 9%). Lung granuloma, not blood: read it as the cell-type origin of a gene.
 
 if (!requireNamespace("Matrix", quietly = TRUE)) stop("Missing package Matrix (ships with standard R; or install.packages(\"Matrix\")).")
 
@@ -44,7 +18,7 @@ MIN_GENES_TEST  <- 10       # min genes per group for the module-level tests
 IMMUNE_TYPES    <- c("Macrophage", "T", "Neutrophil", "Mast", "B", "pDC", "Plasma")   # for the blood-relevant drug view
 DIFFUSE_FACTOR  <- 1.5      # a top cell type must hold >= this x the uniform share, otherwise the drug is labelled "diffuse"
 
-## ---- locate script folder, repo root, dataset folder ----
+## ---- paths ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)
@@ -64,9 +38,7 @@ need <- file.path(SC_DIR, c("4Week_countsmatrix.mtx", "4Week_features.tsv", "4We
 if (!all(file.exists(need))) stop("Single-cell files not found in ", SC_DIR, ":\n  missing: ", paste(basename(need[!file.exists(need)]), collapse = ", "),
                                   "\n  (see the header of this script for where to get them)")
 
-## =============================================================
-## helpers (pure R)
-## =============================================================
+## ---- helpers ----
 # genes x cell-type CP10K from a sparse counts matrix and a cell-type vector
 pseudobulk_cp10k <- function(X, celltype) {
   types <- names(sort(table(celltype), decreasing = TRUE))
@@ -96,9 +68,7 @@ mean_share_by_group <- function(share, groups) {
   }))
 }
 
-## =============================================================
-## 1. read the single-cell data
-## =============================================================
+## ---- 1. read the single-cell data ----
 cat(">>> Reading the single-cell data (the 175 MB matrix takes a minute or two)...\n")
 feat <- read.delim(file.path(SC_DIR, "4Week_features.tsv"), header = FALSE, stringsAsFactors = FALSE)[[1]]
 bar  <- read.delim(file.path(SC_DIR, "4Week_barcodes.tsv"), header = FALSE, stringsAsFactors = FALSE)[[1]]
@@ -125,9 +95,7 @@ got <- cc$calls$top_celltype[match(names(chk), cc$calls$Gene)]
 cat(">>> Marker sanity check:", paste0(names(chk), "->", got, ifelse(got == chk, "(ok)", paste0("(EXPECTED ", chk, ")")), collapse = "  "), "\n")
 if (mean(got == chk) < 0.75) stop("Canonical markers do not land in the expected cell types -- wrong annotation column or wrong file pairing?")
 
-## =============================================================
-## 2. module genes -> cell types
-## =============================================================
+## ---- 2. module genes -> cell types ----
 gt <- read.csv(file.path(BASE_DIR, "16_final_tables", paste0(ACC, "_FINAL_GeneTable.csv")), stringsAsFactors = FALSE)
 gt <- gt[!is.na(gt$Gene) & nzchar(gt$Gene) & !duplicated(gt$Gene), ]
 gt$in_singlecell <- toupper(gt$Gene) %in% toupper(rownames(cp10k))
@@ -192,9 +160,7 @@ tryCatch({
   graphics::par(op); grDevices::dev.off()
 }, error = function(e) cat("  (heatmap skipped:", conditionMessage(e), ")\n"))
 
-## =============================================================
-## 3. drug targets -> cell types
-## =============================================================
+## ---- 3. drug targets -> cell types ----
 tg_file  <- file.path(BASE_DIR, "14_drug_targets", paste0(ACC, "_drug_targets_ALL.csv"))
 fin_file <- file.path(BASE_DIR, "16_final_tables", paste0(ACC, "_FINAL_DrugTable.csv"))
 if (file.exists(tg_file) && file.exists(fin_file)) {

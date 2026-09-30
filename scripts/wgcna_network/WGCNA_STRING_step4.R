@@ -1,10 +1,4 @@
-## =============================================================
-## STEP 4: STRING PPI network and centrality, per module
-## Uses STRING's REST API directly (https://string-db.org/help/api/) --
-## no manual upload needed, no STRINGdb Bioconductor package required.
-## =============================================================
-
-# install.packages(c("httr", "igraph"))   # both plain CRAN, no Bioconductor
+## STEP 4: STRING PPI network (REST API) per module, centrality measures and network plots.
 
 required_pkgs <- c("httr", "igraph")
 pkg_ok <- vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)
@@ -22,7 +16,7 @@ USE_FULL_MODULE <- TRUE     # TRUE  = every gene in the module (default)
 N_LABELS_FULL   <- 15        # how many top hubs to label on the full-network plot (rest stay unlabeled dots)
 N_HUBS_SUBNET   <- 30        # size of the separate, fully-labeled "hub-only" zoomed-in plot
 
-## ---- locate script dir  ----
+## ---- paths ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)
@@ -106,7 +100,7 @@ for (mod in names(gene_lists)) {
   cat("  network columns:", paste(colnames(net_df), collapse = ", "), "\n")
   cat("  ", nrow(net_df), "interactions ->", net_file, "\n")
 
-  ## ---- build graph + the 4 centrality measures  ----
+  ## ---- build graph + the 4 centrality measures ----
   g <- igraph::simplify(igraph::graph_from_data_frame(
     net_df[, c("preferredName_A", "preferredName_B")], directed = FALSE))
 
@@ -137,8 +131,7 @@ for (mod in names(gene_lists)) {
     set.seed(42)
     layout_full <- igraph::layout_with_fr(g, niter = 2000)  # more iterations -> nodes spread out more, less crowding
 
-    ## push each label OUTWARD, away from the graph's center, instead of centering it on
-    ## the node
+    ## labels placed outward from the centre to limit overlap
     centroid <- colMeans(layout_full)
     ang <- atan2(layout_full[, 2] - centroid[2], layout_full[, 1] - centroid[1])
     igraph::V(g)$label.degree <- ang

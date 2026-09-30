@@ -1,15 +1,4 @@
-## =============================================================
-## STEP 10: final master tables.
-##
-## Gene table: Gene, log2FC, FDR, Module, module biological name, MM/kME,
-##   Gene Significance, PPI degree, Betweenness, RWR score, Diffusion score, pathway.
-## Drug table: Drug, iLINCS reversal score, known targets, network proximity,
-##   RWR score, modules affected, pathways affected (+ Enrichr and single-cell
-##   columns when steps 12 and 13 have been run).
-##
-## Pure local data wrangling -- everything needed was already produced
-## by steps 1-9, no new network calls.
-## =============================================================
+## STEP 10: final gene table and drug table (adds the step 12 and step 13 columns when present).
 
 required_pkgs <- c("AnnotationDbi", "org.Hs.eg.db")
 pkg_ok <- vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)
@@ -18,16 +7,10 @@ if (!all(pkg_ok)) stop("Missing package(s): ", paste(required_pkgs[!pkg_ok], col
 
 ## ---- CONFIG ----
 ACC <- "GSE114192"
-## Fill in blue's name here once you have one (Hallmark run, or a manual call) --
-## everything below carries NA through gracefully until then.
+## set blue's name once it is known (NA until then)
 MODULE_NAMES <- c(green = "Interferon_Response", purple = "Ribosome_Biogenesis_Chromatin", blue = NA)
 
-
-## ---- name harmonization helper (same as step 9) ----
-## Network node names (STRING preferredName) can differ from the current org.Hs.eg.db SYMBOL
-## for the same gene (e.g. RIGI vs DDX58). Joining PPI/RWR columns on SYMBOL alone would
-## leave exactly those genes -- often important hubs -- with empty PPI/RWR cells, so:
-## exact SYMBOL match first, ALIAS as a guarded fallback (see below).
+## ---- gene name matching (as in step 9): exact symbol first, alias as fallback ----
 ensembl_to_network_name <- function(ens_ids, network_names, annot = NULL) {
   ens_ids <- unique(ens_ids)
   if (is.null(annot)) {
@@ -43,8 +26,7 @@ ensembl_to_network_name <- function(ens_ids, network_names, annot = NULL) {
   viaal  <- vapply(aliases, first_hit, character(1))   # 2) ALIAS match (fallback only)
   nm <- exact
   use_alias <- is.na(exact) & !is.na(viaal)
-  ## An alias hit is only trusted when it can't be a false friend: the network node must NOT already
-  ## be claimed by another gene's exact symbol, and must not be claimed by 2+ different genes' aliases.
+  ## an alias hit is used only if the node is not claimed by another gene's symbol or by 2+ aliases
   claimed      <- unique(stats::na.omit(exact))
   alias_counts <- table(viaal[use_alias])
   unique_alias <- names(alias_counts)[alias_counts == 1]
@@ -54,12 +36,8 @@ ensembl_to_network_name <- function(ens_ids, network_names, annot = NULL) {
   data.frame(ENSEMBL = ens_ids, SYMBOL = unname(first_sym), NetName = unname(nm), stringsAsFactors = FALSE)
 }
 
-
-## ---- drug-name key (used to join DGIdb drug names onto iLINCS compound names) ----
-## DGIdb names are UPPERCASE and often carry salt/hydrate suffixes ("AMLODIPINE BESYLATE",
-## "AFURESERTIB HYDROCHLORIDE"); iLINCS uses mixed case and the bare name ("Amlodipine").
-## An exact string match therefore found only 32 of 395 drugs; upper-casing gets 297, and
-## also stripping trailing salt/hydrate words gets 367 (measured on the real GSE114192 files).
+## ---- drug-name key: case-insensitive, trailing salt/hydrate words removed ----
+## (DGIdb "AMLODIPINE BESYLATE" = iLINCS "Amlodipine")
 SALT_WORDS <- paste0("(DIHYDROCHLORIDE|HYDROCHLORIDE|HYDROBROMIDE|HCL|MESYLATE|MESILATE|BESYLATE|BESILATE|",
                      "MALEATE|FUMARATE|CITRATE|SULFATE|SULPHATE|PHOSPHATE|TARTRATE|ACETATE|SUCCINATE|",
                      "TOSYLATE|TOSILATE|LACTATE|GLUCONATE|NITRATE|SODIUM|POTASSIUM|CALCIUM|MAGNESIUM|",
@@ -74,7 +52,7 @@ drug_key <- function(x) {
   x
 }
 
-## ---- locate script dir ----
+## ---- paths ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)
@@ -97,9 +75,7 @@ dir_net    <- file.path(BASE_DIR, "15_network_algorithms")
 dir_out    <- file.path(BASE_DIR, "16_final_tables")
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 
-## =============================================================
-## GENE TABLE
-## =============================================================
+## ---- GENE TABLE ----
 cat(">>> Building gene table...\n")
 deg    <- read.csv(file.path(dir_deg, paste0(ACC, "_HealthyControl_vs_TBOnly_DEG.csv")), stringsAsFactors = FALSE)
 mm_gs  <- read.csv(file.path(dir_wgcna, paste0(ACC, "_TBmodules_MM_GS.csv")), stringsAsFactors = FALSE)  # Ensembl IDs
@@ -120,9 +96,7 @@ gene_table <- merge(gene_table, scores[, c("Gene", "RWR_score", "Diffusion_score
 gene_table <- gene_table[!duplicated(gene_table$Gene), ]   # Gene here = Ensembl ID; one row per gene
 gene_table$Module_Name <- MODULE_NAMES[gene_table$Module]
 
-## Pathway per gene: is this gene among the members of its module's TOP GO_BP term?
-## (enrichGO(readable=TRUE) result has a "geneID" column: "/"-separated org.Hs.eg.db symbols,
-##  so this compares against SYMBOL, not the network name)
+## pathway per gene = its module's top GO BP term, if the gene is in that term
 gene_table$Top_Pathway <- NA_character_
 for (mod in unique(gene_table$Module)) {
   go_file <- file.path(dir_enrich, paste0(ACC, "_", mod, "_GO_BP.csv"))
@@ -147,9 +121,7 @@ gene_table_out <- gene_table_out[order(gene_table_out$Module, -gene_table_out$RW
 write.csv(gene_table_out, file.path(dir_out, paste0(ACC, "_FINAL_GeneTable.csv")), row.names = FALSE)
 cat(">>> Gene table:", nrow(gene_table_out), "genes.\n")
 
-## =============================================================
-## DRUG TABLE
-## =============================================================
+## ---- DRUG TABLE ----
 cat("\n>>> Building drug table...\n")
 cand  <- read.csv(file.path(dir_sig, paste0(ACC, "_iLINCS_candidate_compounds.csv")), stringsAsFactors = FALSE)
 dt    <- read.csv(file.path(dir_dt, paste0(ACC, "_Drug_Target_TBnetwork.csv")), stringsAsFactors = FALSE)
@@ -184,7 +156,7 @@ for (drug in drugs) {
 drug_table_out <- do.call(rbind, rows)
 drug_table_out <- drug_table_out[order(drug_table_out$iLINCS_Reversal_Score), ]  # strongest reversal first
 
-## ---- optional: per-drug pathways from Enrichr on the drug's known targets (made by step 12) ----
+## ---- optional: Enrichr pathways per drug (step 12) ----
 enr_file <- file.path(BASE_DIR, "17_pathway_annotation", paste0(ACC, "_DrugPathways_Enrichr_summary.csv"))
 if (file.exists(enr_file)) {
   enr <- read.csv(enr_file, stringsAsFactors = FALSE)
@@ -195,7 +167,7 @@ if (file.exists(enr_file)) {
   cat(">>> (No Enrichr summary yet -- run WGCNA_Enrichr_drugs_step12.R, then re-run this script to add the pathway columns.)\n")
 }
 
-## ---- optional: cell-type profile of each drug's targets (made by step 13, macaque TB-granuloma single-cell data) ----
+## ---- optional: single-cell cell-type profile per drug (step 13) ----
 sc_file <- file.path(BASE_DIR, "18_singlecell", paste0(ACC, "_drug_celltype.csv"))
 if (file.exists(sc_file)) {
   sc <- read.csv(sc_file, stringsAsFactors = FALSE)

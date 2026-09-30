@@ -1,10 +1,4 @@
-## =============================================================
-## STEP 6: TB_UP / TB_DOWN expression signature for iLINCS
-## Uses the drugfindR package (CogDisResLab/drugfindR, on
-## r-universe) rather than hand-rolling the L1000 gene-space mapping:
-##   prepareSignature() -- maps genes to L1000 space, standardizes columns
-##   filterSignature()  -- splits into up/down by direction + threshold
-## =============================================================
+## STEP 6: TB_UP / TB_DOWN signature for iLINCS (drugfindR prepareSignature + filterSignature).
 
 install.packages("drugfindR", repos = c("https://cogdisreslab.r-universe.dev", "https://cran.r-project.org"))
 
@@ -20,7 +14,7 @@ if (!all(pkg_ok)) {
 ACC             <- "GSE114192"
 LOGFC_THRESHOLD <- 0.5   # minimum |log2FC| for TB_UP / TB_DOWN (applied after prepareSignature)
 
-## ---- locate script dir  ----
+## ---- paths ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)

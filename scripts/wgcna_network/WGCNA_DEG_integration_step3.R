@@ -1,12 +1,8 @@
-## =============================================================
-## connect DEG results with WGCNA modules
-## Pure base-R table join -- no Bioconductor packages needed.
-## =============================================================
+## STEP 3: DEG x WGCNA integration -> "main disease genes" (significant DEG and TB-module member).
 
-## ---- CONFIG ----
 ACC <- "GSE114192"
 
-## ---- locate script dir (same pattern as step 1/2) ----
+## ---- paths ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)

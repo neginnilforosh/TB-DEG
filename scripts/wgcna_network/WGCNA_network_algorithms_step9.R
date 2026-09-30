@@ -1,14 +1,6 @@
-## =============================================================
-
-## STEP 9: network algorithms (RWR, diffusion, proximity, communities, module overlap)
-## RWR and diffusion are implemented directly in base R (matrix algebra).
-## They are methodologically distinct:
-##   - RWR:       row-normalized (asymmetric) transition matrix
-##   - Diffusion: symmetric-normalized adjacency (Vanunu et al. 2010
-##                network propagation) -- treats the walk symmetrically
-##                rather than direction-biased by node out-degree
-## Community detection uses igraph.
-## =============================================================
+## STEP 9: RWR, diffusion, network proximity, community detection and module-overlap scoring
+## on the combined TB network. RWR uses a column-normalized transition matrix, diffusion a
+## symmetric-normalized one (Vanunu et al. 2010).
 
 required_pkgs <- c("igraph")
 pkg_ok <- vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)
@@ -17,12 +9,12 @@ if (!all(pkg_ok)) stop("Missing package: igraph. Install with: install.packages(
 ## ---- CONFIG ----
 ACC          <- "GSE114192"
 RESTART_R    <- 0.5     # RWR restart probability (0.3-0.5 is standard)
-DIFFUSE_A    <- 0.5     # diffusion "keep vs spread" balance (same role as RESTART_R, kept separate to tune independently)
+DIFFUSE_A    <- 0.5     # diffusion keep-vs-spread balance
 MAX_ITER     <- 200
 TOLERANCE    <- 1e-10
 N_PERMUTATIONS <- 1000  # for the network-proximity null distribution
 
-## ---- locate script dir ----
+## ---- paths ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)
@@ -56,12 +48,8 @@ igraph::V(g)$displayName <- ifelse(igraph::V(g)$name %in% names(name_lookup),
 n_nodes <- igraph::vcount(g)
 cat(">>> Network:", n_nodes, "nodes,", igraph::ecount(g), "edges.\n")
 
-## ---- seed genes = the 188 disease genes (Ensembl IDs in the file) ----
-## They have to be matched to network nodes BY NAME, and the network's node names are
-## STRING's preferredName -- which can differ from the current org.Hs.eg.db SYMBOL for the
-## very same gene (e.g. org.Hs.eg.db says RIGI, STRING says
-## DDX58). Matching on SYMBOL alone
-## would silently drop such seeds, so: exact SYMBOL match first, ALIAS as a guarded fallback (see below).
+## ---- seed genes = the 188 disease genes ----
+## matched to network nodes by name: exact symbol first, alias as fallback (e.g. RIGI = DDX58)
 ensembl_to_network_name <- function(ens_ids, network_names, annot = NULL) {
   ens_ids <- unique(ens_ids)
   if (is.null(annot)) {
@@ -77,8 +65,7 @@ ensembl_to_network_name <- function(ens_ids, network_names, annot = NULL) {
   viaal  <- vapply(aliases, first_hit, character(1))   # 2) ALIAS match (fallback only)
   nm <- exact
   use_alias <- is.na(exact) & !is.na(viaal)
-  ## An alias hit is only trusted when it can't be a false friend: the network node must NOT already
-  ## be claimed by another gene's exact symbol, and must not be claimed by 2+ different genes' aliases.
+  ## an alias hit is used only if the node is not claimed by another gene's symbol or by 2+ aliases
   claimed      <- unique(stats::na.omit(exact))
   alias_counts <- table(viaal[use_alias])
   unique_alias <- names(alias_counts)[alias_counts == 1]
@@ -100,9 +87,7 @@ if (length(seed_idx) == 0) stop("No seed genes matched the network -- check gene
 adj <- igraph::as_adjacency_matrix(g, sparse = FALSE)
 node_names <- igraph::V(g)$name  # STRING IDs, stable row/col order for everything below
 
-## =============================================================
-## 1. RANDOM WALK WITH RESTART (RWR)
-## =============================================================
+## ---- 1. RANDOM WALK WITH RESTART (RWR) ----
 cat("\n========== 1. RWR ==========\n")
 deg_vec <- igraph::degree(g)
 W <- sweep(adj, 2, pmax(colSums(adj), 1e-12), "/")  # column-normalize -> transition matrix
@@ -117,10 +102,7 @@ for (i in seq_len(MAX_ITER)) {
 cat(">>> RWR converged after", i, "iterations.\n")
 rwr_score <- setNames(p, node_names)
 
-## =============================================================
-## 2. NETWORK PROPAGATION / DIFFUSION (symmetric normalization --
-##    methodologically distinct from RWR's asymmetric transition matrix)
-## =============================================================
+## ---- 2. Diffusion (symmetric normalization) ----
 cat("\n========== 2. Diffusion ==========\n")
 d_sqrt_inv <- 1 / sqrt(pmax(deg_vec, 1e-12))
 W_sym <- sweep(sweep(adj, 1, d_sqrt_inv, "*"), 2, d_sqrt_inv, "*")  # D^-1/2 A D^-1/2
@@ -135,20 +117,8 @@ for (i in seq_len(MAX_ITER)) {
 cat(">>> Diffusion converged after", i, "iterations.\n")
 diffusion_score <- setNames(q, node_names)
 
-## =============================================================
-## 3. NETWORK PROXIMITY 
-##    for each drug: how close are ITS TARGETS to the disease seeds?
-##
-## Design notes:
-##  (a) UNREACHABLE NODES. A few nodes sit in small components with no path to any seed; their
-##      distance is Inf, which would make the null mean Inf and Z = NaN. They are excluded from
-##      both the drug's targets and the null pool, and the count is reported.
-##  (b) DEGREE-MATCHED NULL. Hubs are close to everything, so a uniformly random null is biased
-##      against drugs that hit hubs. Each random target is drawn from the same degree bin as
-##      the real target (Guney et al. 2016).
-## Also reported: an empirical p-value (fraction of random sets at least as close), because with
-## 1-2 targets the null is discrete and a Z-score alone is a poor summary.
-## =============================================================
+## ---- 3. Network proximity: closest distance from drug targets to seeds (Guney et al. 2016) ----
+## unreachable nodes excluded; degree-matched null; empirical p-value reported with the Z-score
 cat("\n========== 3. Network Proximity (per drug) ==========\n")
 dist_mat <- igraph::distances(g)  # full shortest-path matrix, reused for every drug (compute once)
 N_DEGREE_BINS <- 20
@@ -165,9 +135,7 @@ closest_distance <- function(target_idx, seed_idx) {
   mean(d)
 }
 
-## Bins are cut on degree VALUES (quantile breaks), so nodes with the same degree always share a bin
-## -- important because PPI networks have huge ties (thousands of degree-1/2/3 nodes); rank-based
-## bins would split equal-degree nodes across bins by their arbitrary row order.
+## degree bins cut on degree values, so equal-degree nodes share a bin
 deg_breaks <- unique(stats::quantile(deg_vec, probs = seq(0, 1, length.out = N_DEGREE_BINS + 1), type = 1))
 bin_id <- as.integer(cut(deg_vec, breaks = deg_breaks, include.lowest = TRUE, labels = FALSE))
 pool_by_bin <- split(which(reachable), bin_id[reachable])
@@ -211,9 +179,7 @@ cat(">>> Network proximity computed for", nrow(proximity_table), "/", length(dru
 cat(">>> Most disease-proximal (most negative Z, i.e. closer than degree-matched random targets would be):\n")
 print(utils::head(proximity_table, 5))
 
-## =============================================================
-## 4. COMMUNITY DETECTION
-## =============================================================
+## ---- 4. COMMUNITY DETECTION ----
 cat("\n========== 4. Community Detection ==========\n")
 communities <- igraph::cluster_louvain(g)
 comm_table <- data.frame(Gene = igraph::V(g)$displayName, Community = igraph::membership(communities),
@@ -223,10 +189,7 @@ cat(">>> Found", length(unique(comm_table$Community)), "communities. Modularity:
 cat(">>> Community x WGCNA-module cross-tab (do communities line up with modules, or cut across them?):\n")
 print(table(comm_table$Community, comm_table$Module, useNA = "ifany"))
 
-## =============================================================
-## 5. MODULE-OVERLAP SCORING (per drug, which module(s) does it hit,
-##    and is that hit more than expected by chance -- hypergeometric test)
-## =============================================================
+## ---- 5. Module-overlap scoring (hypergeometric, per drug and module) ----
 cat("\n========== 5. Module-Overlap Scoring ==========\n")
 module_sizes <- table(cent_df$Module)
 overlap_rows <- list()
@@ -236,8 +199,7 @@ for (drug in drugs) {
   for (mod in names(module_sizes)) {
     n_hit <- length(unique(d_sub$Drug_Target[d_sub$TB_Module == mod]))
     if (n_hit == 0) next
-    # hypergeometric: P(>= n_hit successes) drawing n_drug_targets from n_nodes total,
-    # with module_sizes[mod] "successes" available
+    # P(>= n_hit targets in the module) under the hypergeometric null
     p_val <- stats::phyper(n_hit - 1, module_sizes[[mod]], n_nodes - module_sizes[[mod]], n_drug_targets, lower.tail = FALSE)
     overlap_rows[[length(overlap_rows) + 1]] <- data.frame(
       Drug = drug, Module = mod, N_targets_in_module = n_hit,
@@ -250,7 +212,7 @@ overlap_table <- overlap_table[order(overlap_table$P_value), ]
 write.csv(overlap_table, file.path(dir_out, paste0(ACC, "_ModuleOverlapScoring.csv")), row.names = FALSE)
 cat(">>> Module-overlap scored for", length(unique(overlap_table$Drug)), "drugs across", length(module_sizes), "modules.\n")
 
-## ---- combine RWR + diffusion scores into the per-gene master table (feeds the final tables) ----
+## ---- per-gene RWR + diffusion scores ----
 gene_scores <- data.frame(Gene = igraph::V(g)$displayName, Module = cent_df$Module[match(igraph::V(g)$displayName, cent_df$Gene)],
                            RWR_score = rwr_score[node_names], Diffusion_score = diffusion_score[node_names])
 gene_scores <- gene_scores[order(-gene_scores$RWR_score), ]

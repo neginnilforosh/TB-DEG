@@ -1,8 +1,4 @@
-## =============================================================
-## STEP 8: known targets of the iLINCS compounds (DGIdb), mapped onto the TB network
-## Target lookup: DGIdb v5's public GraphQL API (dgidb.org/api/graphql,
-## no key needed).
-## =============================================================
+## STEP 8: known targets of the iLINCS compounds (DGIdb GraphQL API), mapped onto the TB network.
 
 required_pkgs <- c("httr", "jsonlite")
 pkg_ok <- vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)
@@ -15,7 +11,7 @@ if (!all(pkg_ok)) {
 ACC <- "GSE114192"
 DGIDB_URL <- "https://dgidb.org/api/graphql"
 
-## ---- locate script dir ----
+## ---- paths ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)
@@ -126,5 +122,4 @@ no_hit <- setdiff(drug_names, unique(merged$Drug))
 if (length(no_hit)) print(no_hit) else cat("  (none -- every compound had at least one hit)\n")
 cat("\n>>> Note: 'Biological pathway' labels are only available for the green/purple modules (Interferon_Response / Ribosome_Biogenesis-Chromatin).\n")
 cat("    blue still has no enrichment name, so its targets show Module='blue' with no pathway label.\n")
-
 

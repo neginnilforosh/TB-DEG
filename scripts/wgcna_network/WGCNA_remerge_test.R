@@ -1,8 +1,5 @@
-## =============================================================
-## Test whether TARGET_MODULE (e.g. "blue": 1377 genes, no
-## significant GO/KEGG/Reactome term) is an over-merging artifact.
-
-## =============================================================
+## Diagnostic: re-merge WGCNA modules at lower mergeCutHeight to test whether a module (e.g. blue)
+## is an over-merging artifact. Uses the step-1 workspace, no network rebuild.
 
 library(WGCNA)
 options(stringsAsFactors = FALSE)
@@ -13,7 +10,7 @@ TRAIT_COL       <- "TB_Only"
 TARGET_MODULE   <- "blue"                 # the module you're trying to split
 NEW_CUT_HEIGHTS <- c(0.10, 0.15, 0.20)    # compare against the original 0.25
 
-## ---- locate script dir (same as step 1/step 2) ----
+## ---- paths ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)

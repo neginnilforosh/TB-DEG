@@ -1,19 +1,6 @@
-## =============================================================
-## STEP 11: GSEA on the full ranked DEG list, per comparison
-## Why GSEA (and not another over-representation tool) for the blue module: blue is
-## ~1,400 genes that mostly shift a little and together (961 lower / 416 higher in TB),
-## which a hard cutoff + ORA blurs. GSEA uses every gene, needs no cutoff, and reports a
-## direction (NES > 0 = higher in TB_Only / the case group, NES < 0 = lower).
-##
-## What it does, per comparison found in <dataset>/06_deg_results/*_DEG.csv (DESeq2-style):
-##   1. ranking statistic = sign(log2FC) * -log10(pvalue)        (all genes, no filtering)
-##   2. clusterProfiler::GSEA against MSigDB sets: Hallmark, Reactome, GO BP and the
-##      C8 cell-type signature sets (the direct test of the "blue = lymphocyte signal" idea)
-##   3. saves every result (unfiltered) + a significant-only table
-##   4. for GSE114192 only: a term x WGCNA-module table -- how many of each significant
-##      pathway's leading-edge genes sit in green / purple / blue
-## The miRNA (GSE229020) tables are skipped: gene sets are for genes, not miRNAs.
-## =============================================================
+## STEP 11: GSEA on the full ranked DEG list of each DESeq2 comparison (rank = sign(log2FC) * -log10(p);
+## Hallmark, Reactome, GO BP, C8 cell types). NES > 0 = higher in the case group. For GSE114192 the
+## leading-edge genes of significant terms are counted per WGCNA module. miRNA tables are skipped.
 
 required_pkgs <- c("clusterProfiler", "org.Hs.eg.db", "msigdbr")
 pkg_ok <- vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)
@@ -34,7 +21,7 @@ COLLECTIONS <- list(            # name -> arguments for msigdbr()
   CELLTYPE = list(collection = "C8")
 )
 
-## ---- locate this script's folder and the repo root (works from scripts/ or scripts/wgcna_network/) ----
+## ---- paths ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)
@@ -50,9 +37,7 @@ ROOT_DIR <- local({ d <- SCRIPT_DIR
   while (length(list.files(d, pattern = "^GSE[0-9]+$")) == 0 && dirname(d) != d) d <- dirname(d); d })
 cat(">>> Repo root:", ROOT_DIR, "\n")
 
-## =============================================================
-## helpers (pure R)
-## =============================================================
+## ---- helpers ----
 # DEG table (ENSEMBL ids) + mapping table -> named, decreasing ranking vector keyed by SYMBOL
 build_ranking <- function(deg, id_map) {
   deg <- deg[!is.na(deg$pvalue) & !is.na(deg$log2FoldChange), ]
@@ -86,9 +71,7 @@ leading_edge_by_module <- function(gsea_df, module_map) {
   if (length(out)) do.call(rbind, out) else NULL
 }
 
-## =============================================================
-## gene sets (once)
-## =============================================================
+## ---- gene sets (once) ----
 cat(">>> Loading MSigDB gene sets...\n")
 term2gene <- list()
 for (nm in names(COLLECTIONS)) {
@@ -100,9 +83,7 @@ for (nm in names(COLLECTIONS)) {
 }
 if (length(term2gene) == 0) stop("No gene-set collection could be loaded -- check the msigdbr/msigdbdf install (see PACKAGES.md).")
 
-## =============================================================
-## per-comparison GSEA
-## =============================================================
+## ---- per-comparison GSEA ----
 deg_files <- list.files(ROOT_DIR, pattern = "_DEG\\.csv$", recursive = TRUE, full.names = TRUE)
 deg_files <- deg_files[grepl("/06_deg_results/", deg_files) & !grepl("sensitivity", deg_files)]
 cat(">>> Found", length(deg_files), "DEG tables.\n")

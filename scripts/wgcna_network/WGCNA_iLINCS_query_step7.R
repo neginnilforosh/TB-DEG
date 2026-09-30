@@ -1,10 +1,5 @@
-## =============================================================
-## STEP 7: iLINCS query for compounds that reverse the TB signature
-## Follows drugfindR's own documented paired workflow exactly:
-##   getConcordants(TB_UP,   ilincsLibrary="CP")
-##   getConcordants(TB_DOWN, ilincsLibrary="CP")
-##   consensusConcordants(concordants_up, concordants_down, paired=TRUE)
-## =============================================================
+## STEP 7: iLINCS compounds that reverse the TB signature (drugfindR getConcordants on UP and DOWN,
+## then paired consensusConcordants). Only negative similarity (reversal) is kept.
 
 required_pkgs <- c("drugfindR", "dplyr")
 pkg_ok <- vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)
@@ -20,7 +15,7 @@ ILINCS_LIBRARY       <- "CP"     # Chemical Perturbagen library (drug repurposin
 SIMILARITY_CUTOFF    <- 0.321    # drugfindR's own default for consensusConcordants()
 REVERSAL_ONLY        <- TRUE     # keep only NEGATIVE similarity (true reversal), drop mimetic (positive) hits
 
-## ---- locate script dir ----
+## ---- paths ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)

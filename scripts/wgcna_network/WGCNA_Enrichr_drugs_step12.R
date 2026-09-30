@@ -1,29 +1,9 @@
-## =============================================================
-## STEP 12: Enrichr on each drug's KNOWN target genes -> fills the drug-table "pathway" gap.
-
-##
-## Which target list: the FULL DGIdb list per drug (14_drug_targets/*_drug_targets_ALL.csv),
-## NOT the "Known_Targets" column of the final drug table -- that column only holds the targets
-## that happen to be nodes of the TB network (188 of 395 drugs have >=2 there, 43 have >=5),
-## while the full list gives 352 drugs with >=3 targets and 307 with >=5 (median 13).
-## Over-representation on 1-2 genes is meaningless, so drugs below MIN_TARGETS are skipped and
-## LISTED (not silently dropped).
-##
-## Reading the libraries: GO BP / KEGG / Reactome / WikiPathways answer "which pathways do
-## this drug's targets share". DSigDB is different: it returns *drug signatures* whose gene
-## sets overlap the targets (typically the drug itself and related compounds) -- useful as a
-## "similar drugs" cue, NOT a pathway, so it is kept in its own column.
-##
-## The run makes ~5 web calls per drug (a few seconds each): expect roughly 30-60 minutes for
-## ~350 drugs. Every drug is cached to disk as it finishes, so if the connection drops just
-## re-run the script -- finished drugs are skipped.
-## =============================================================
+## STEP 12: Enrichr (GO BP, KEGG, Reactome, WikiPathways, DSigDB) on each drug's full DGIdb target list.
+## Drugs with < MIN_TARGETS targets are skipped and listed; DSigDB gives similar drug signatures,
+## not pathways. Results are cached per drug, so an interrupted run can simply be restarted.
 
 if (!requireNamespace("enrichR", quietly = TRUE)) stop("Missing package enrichR. Install with: install.packages(\"enrichR\")")
-## enrichR sets its connection options (base address, "live" flag, quiet flag) in .onAttach(), which only
-## runs when the package is ATTACHED with library(). Calling enrichR::listEnrichrDbs() without attaching leaves
-## those options NULL, so it tries to contact a "host" called datasetStatistics ("Could not resolve host:
-## datasetStatistics"). Attach it here, and stop early if the connection check at attach time failed.
+## enrichR sets its connection options only when attached with library()
 library(enrichR)
 if (!isTRUE(getOption("enrichR.live"))) stop("Enrichr website is not reachable from this machine (check internet/VPN); nothing was run.")
 
@@ -33,14 +13,14 @@ MIN_TARGETS  <- 3       # skip drugs with fewer known targets than this
 PADJ_KEEP    <- 0.05
 N_KEEP       <- 10      # top terms kept per drug per library in the long table
 PAUSE_SEC    <- 0.5     # politeness delay between drugs
-## library "families": regex -> the newest matching Enrichr library name is used (names carry years and change)
+## newest Enrichr library matching each pattern (library names carry a year)
 LIB_PATTERNS <- c(GO_BP        = "^GO_Biological_Process_20[0-9]{2}$",
                   KEGG         = "^KEGG_20[0-9]{2}_Human$",
                   Reactome     = "^Reactome_(Pathways_)?20[0-9]{2}$",
                   WikiPathways = "^WikiPathways?_20[0-9]{2}_Human$",
                   DSigDB       = "^DSigDB$")
 
-## ---- locate this script's folder and the dataset folder ----
+## ---- paths ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)
@@ -59,9 +39,7 @@ dir_out <- file.path(BASE_DIR, "17_pathway_annotation")
 dir_cache <- file.path(dir_out, "cache")
 dir.create(dir_cache, recursive = TRUE, showWarnings = FALSE)
 
-## =============================================================
-## helpers (pure R)
-## =============================================================
+## ---- helpers ----
 # newest library whose name matches the pattern (year = the 4 digits in the name)
 pick_library <- function(available, pattern) {
   hit <- available[grepl(pattern, available)]
@@ -103,9 +81,7 @@ summarise_drugs <- function(long, drugs_run, n_targets, families) {
   s
 }
 
-## =============================================================
-## inputs
-## =============================================================
+## ---- inputs ----
 tg  <- read.csv(file.path(dir_dt, paste0(ACC, "_drug_targets_ALL.csv")), stringsAsFactors = FALSE)
 fin <- read.csv(file.path(dir_fin, paste0(ACC, "_FINAL_DrugTable.csv")), stringsAsFactors = FALSE)
 drugs <- unique(fin$Drug)
@@ -127,9 +103,7 @@ libs <- libs[!is.na(libs)]
 if (length(libs) == 0) stop("None of the expected Enrichr libraries were found -- the library naming may have changed.")
 lib_of <- setNames(names(libs), libs)                 # library name -> family
 
-## =============================================================
-## per-drug Enrichr (cached, resumable)
-## =============================================================
+## ---- per-drug Enrichr (cached, resumable) ----
 cat(">>> Running Enrichr for", length(run_drugs), "drugs (cached to", dir_cache, ")...\n")
 long_list <- list(); n_new <- 0; n_fail <- 0
 for (i in seq_along(run_drugs)) {

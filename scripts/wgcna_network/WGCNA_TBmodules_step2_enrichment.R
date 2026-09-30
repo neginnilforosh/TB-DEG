@@ -1,24 +1,7 @@
-## =============================================================
-## STEP 2: biological naming of the TB modules by enrichment
-## Input:  <ACC>_TBmodules_MM_GS.csv  (from WGCNA_TBmodules_step1.R —
-##          already just the Selected top-N modules, e.g. green/purple/blue)
-## Output, per module: one CSV each for GO Biological Process, KEGG,
-##          Reactome, and Hallmark (MSigDB H), plus one
-##          <ACC>_TopTerms_Summary.csv to actually pick the name from.
-##
-## =============================================================
+## STEP 2: GO BP, KEGG, Reactome and Hallmark enrichment of each selected module, used to name it.
 
-# One-time setup (Bioconductor + CRAN):
 if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")
 BiocManager::install(c("clusterProfiler", "org.Hs.eg.db", "ReactomePA"))
-#
-# msigdbr changed its data delivery in v10+: it now needs the separate
-# 'msigdbdf' package (gene-set data moved out of CRAN for size reasons).
-# Install BOTH from the maintainer's r-universe repo:
-#install.packages(c("msigdbr", "msigdbdf"),
-#                  repos = c("https://igordot.r-universe.dev", "https://cloud.r-project.org"))
-# If that's out of date by the time you run this, check https://igordot.github.io/msigdbr/
-
 
 required_pkgs <- c("clusterProfiler", "org.Hs.eg.db", "ReactomePA", "dplyr")
 pkg_ok <- vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)
@@ -38,7 +21,7 @@ if (!have_msigdbr) {
 ACC         <- "GSE114192"
 PADJ_CUTOFF <- 0.05   # for the "top term" summary only; full tables are saved unfiltered
 
-## ---- locate this script's own folder  ----
+## ---- paths ----
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
   file_arg <- grep("^--file=", cmd_args, value = TRUE)
@@ -63,8 +46,7 @@ genes_tab <- read.csv(mm_gs_file, stringsAsFactors = FALSE)
 SELECTED_MODULES <- unique(genes_tab$Module)
 cat(">>> Modules to annotate:", paste(SELECTED_MODULES, collapse = ", "), "\n")
 
-## background = every gene that went into the WGCNA network (fair test),
-## NOT the whole genome
+## background = all genes in the WGCNA network, not the whole genome
 bg_file <- file.path(dir_results, paste0(ACC, "_Gene_Module_Assignment.csv"))
 if (!file.exists(bg_file)) stop("Missing: ", bg_file)
 bg_ensembl <- read.csv(bg_file, stringsAsFactors = FALSE)$Gene

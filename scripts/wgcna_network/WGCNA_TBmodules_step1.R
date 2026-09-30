@@ -1,31 +1,17 @@
-## =============================================================
-## STEP 1: WGCNA module-trait analysis (GSE114192, TB vs Control)
-##   1. Build the WGCNA network
-##   2. Module-trait correlation heatmap (TB vs Control)
-##   3. Select ONLY the modules significantly associated with TB
-##   4. For each selected module, export: module color, N genes,
-##      correlation with TB, p-value + FDR, module membership
-##      (MM/kME), and gene significance (GS)
-##
-## Reusable for any dataset: just edit ACC and TRAIT_COL below.
-## =============================================================
-
-# if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")
-# BiocManager::install(c("impute", "preprocessCore", "GO.db", "AnnotationDbi"))
-# install.packages("WGCNA")
+## STEP 1: WGCNA network, module-trait correlation (TB vs Control), top modules by |r|,
+## module membership (MM/kME) and gene significance (GS). Edit ACC and TRAIT_COL per dataset.
 
 library(WGCNA)
 library(dplyr)
 options(stringsAsFactors = FALSE)
 enableWGCNAThreads()
 
-## ---- 1. CONFIG — edit these two lines per dataset -----------
+## ---- 1. CONFIG (edit per dataset) ----
 
 ACC       <- "GSE114192"   # folder name, matches the rest of the repo
 TRAIT_COL <- "TB_Only"     # which trait column = "has TB" (1) vs control (0)
 FDR_CUTOFF      <- 0.05
-MAX_SIG_MODULES <- 3   # cap: at most this many modules go on to step 3 (naming/enrichment) —
-                        # picked as the strongest |correlation| among the FDR-significant ones
+MAX_SIG_MODULES <- 3   # max modules kept (strongest |r| among FDR < 0.05)
 
 get_script_dir <- function() {
   cmd_args <- commandArgs(trailingOnly = FALSE)
@@ -33,7 +19,7 @@ get_script_dir <- function() {
   if (length(file_arg)) {
     return(dirname(normalizePath(sub("^--file=", "", file_arg[1]))))
   }
-  
+
   if (requireNamespace("rstudioapi", quietly = TRUE) && rstudioapi::isAvailable()) {
     ctx <- tryCatch(rstudioapi::getActiveDocumentContext(), error = function(e) NULL)
     if (!is.null(ctx) && nzchar(ctx$path)) return(dirname(normalizePath(ctx$path)))
@@ -120,8 +106,7 @@ dev.off()
 MEs0 <- moduleEigengenes(datExpr, moduleColors)$eigengenes
 MEs  <- orderMEs(MEs0)
 
-# save the network so later steps (DEG integration, STRING export, etc.)
-# don't have to rebuild it from scratch
+# saved so later steps don't have to rebuild the network
 saveRDS(list(net = net, moduleColors = moduleColors, MEs = MEs,
              datExpr = datExpr, datTraits = datTraits),
         file.path(dir_results, paste0(ACC, "_WGCNA_workspace.rds")))
@@ -168,8 +153,7 @@ cat(">>> Modules passing FDR <", FDR_CUTOFF, ":",
     if (length(SIG_MODULES_ALL)) paste(SIG_MODULES_ALL, collapse = ", ") else "NONE",
     "(", length(SIG_MODULES_ALL), "total )\n")
 
-# cap at MAX_SIG_MODULES, keeping the strongest EFFECT SIZE (|correlation|), not just lowest p/FDR —
-# with large N, weak-but-"significant" modules (e.g. r~0.3) shouldn't outrank strong ones
+# rank by |r|, not FDR: with large N even weak modules (r ~ 0.3) reach FDR < 0.05
 ranked_sig <- module_summary[module_summary$Module %in% SIG_MODULES_ALL, ]
 ranked_sig <- ranked_sig[order(-abs(ranked_sig$Correlation)), ]
 SIG_MODULES <- head(ranked_sig$Module, MAX_SIG_MODULES)
