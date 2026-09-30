@@ -18,8 +18,11 @@ BiocManager::install(c(
 # CRAN
 install.packages(c(
   "pheatmap", "ggplot2", "ggrepel", "RColorBrewer", "UpSetR",
-  "matrixStats", "dplyr", "httr", "igraph"
+  "matrixStats", "dplyr", "httr", "jsonlite", "igraph", "enrichR", "Matrix"
 ))
+
+# drugfindR (iLINCS, steps 6-7) is distributed via r-universe
+install.packages("drugfindR", repos = c("https://cogdisreslab.r-universe.dev", "https://cloud.r-project.org"))
 
 # msigdbr changed its data delivery in v10+: the gene-set data itself moved
 # out of the CRAN package into a separate 'msigdbdf' package (too big for
@@ -48,6 +51,11 @@ install.packages(c("msigdbr", "msigdbdf"),
   `rest.kegg.jp` live every time (not bundled offline). Usually transient —
   just retry. If it keeps failing, `options(timeout = 300)` before
   running.
+- **`Could not resolve host: datasetStatistics`** from enrichR: the package sets its connection
+  options only when attached with `library(enrichR)`; calling `enrichR::listEnrichrDbs()` without
+  attaching leaves them empty. Step 12 attaches it itself.
+- **iLINCS / DGIdb / Enrichr calls fail or time out**: these are live web services. Retry later;
+  step 12 keeps a per-drug cache in `17_pathway_annotation/cache/`, so a re-run only redoes failed drugs.
 - **STRING API (`string-db.org`) calls slow/fail for large gene sets**:
   normal for 1000+ genes (the `blue` module, for example) — just slower,
   not broken. Each script uses `httr::timeout()` generously for this.
@@ -58,7 +66,14 @@ install.packages(c("msigdbr", "msigdbdf"),
 |---|---|
 | `00_functions.R`, `GSE*_run.R` | DESeq2, GEOquery, pheatmap, ggplot2, ggrepel, RColorBrewer, UpSetR, matrixStats, apeglm |
 | `GSE229020_miRNA_run.R` | limma, ggplot2, ggrepel, pheatmap, UpSetR, WGCNA |
-| `WGCNA_GSE114192_run.R`, `WGCNA_TBmodules_step1.R`, `WGCNA_remerge_test.R` | WGCNA |
-| `WGCNA_TBmodules_step2_enrichment.R` | clusterProfiler, org.Hs.eg.db, ReactomePA, dplyr, (optional) msigdbr + msigdbdf |
+| `WGCNA_TBmodules_step1.R`, `WGCNA_remerge_test.R` | WGCNA |
+| `WGCNA_TBmodules_step2_enrichment.R` | clusterProfiler, org.Hs.eg.db, ReactomePA, dplyr |
 | `WGCNA_DEG_integration_step3.R` | none beyond base R |
-| `WGCNA_STRING_step4.R`, `WGCNA_combined_network_step5.R` | httr, igraph, (optional) clusterProfiler + org.Hs.eg.db for ENSEMBL→SYMBOL mapping |
+| `WGCNA_STRING_step4.R`, `WGCNA_combined_network_step5.R` | httr, igraph, clusterProfiler + org.Hs.eg.db (ENSEMBL→SYMBOL) |
+| `WGCNA_iLINCS_signature_step6.R`, `WGCNA_iLINCS_query_step7.R` | drugfindR, dplyr, clusterProfiler + org.Hs.eg.db |
+| `WGCNA_drug_targets_step8.R` | httr, jsonlite |
+| `WGCNA_network_algorithms_step9.R` | igraph, org.Hs.eg.db, AnnotationDbi |
+| `WGCNA_final_tables_step10.R` | org.Hs.eg.db, AnnotationDbi |
+| `WGCNA_GSEA_step11.R` | clusterProfiler, org.Hs.eg.db, msigdbr + msigdbdf |
+| `WGCNA_Enrichr_drugs_step12.R` | enrichR |
+| `WGCNA_singlecell_step13.R` | Matrix (+ the SCP1749 files in `external_data/SCP1749/`, see README) |
