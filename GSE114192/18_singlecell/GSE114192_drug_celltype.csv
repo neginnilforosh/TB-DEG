@@ -1,0 +1,396 @@
+"Drug","N_known_targets","N_targets_detected_sc","SC_Top_CellType","SC_Top_Share_pct","SC_Top_Immune_CellType","SC_Top_Immune_Share_pct","SC_Profile"
+"CALCIMYCIN",16,6,"diffuse",13.3,"diffuse",18.9,"pDC 13%; Club 12%; Macrophage 11%"
+"WORTMANNIN",36,19,"Mast",14.2,"diffuse",20.2,"Mast 14%; T 13%; pDC 11%"
+"MESALAMINE",21,11,"Mast",32.7,"Mast",40.6,"Mast 33%; Endothelial 9%; pDC 8%"
+"QUIZARTINIB",13,9,"Fibroblast",25.5,"Macrophage",25,"Fibroblast 25%; Mast 15%; pDC 15%"
+"TICAGRELOR",9,2,NA,NA,NA,NA,NA
+"DIHYDROSPHINGOSINE",5,2,NA,NA,NA,NA,NA
+"PILOCARPINE HYDROCHLORIDE",15,2,NA,NA,NA,NA,NA
+"ALISKIREN",2,1,NA,NA,NA,NA,NA
+"ENZASTAURIN",9,4,"Mast",16.2,"diffuse",20.4,"Mast 16%; pDC 16%; T 14%"
+"ENALAPRIL MALEATE",16,4,"T2P",19.2,"T",28.8,"T2P 19%; Club 19%; Fibroblast 15%"
+"PTEROSTILBENE",4,1,NA,NA,NA,NA,NA
+"TENOXICAM",6,3,"Mast",50.7,"Mast",59,"Mast 51%; Endothelial 9%; Neutrophil 8%"
+"CYCLOHEXIMIDE",95,57,"B",14.9,"B",21.6,"B 15%; T 12%; pDC 11%"
+"BUDESONIDE",16,3,"Endothelial",21.2,"Macrophage",23.1,"Endothelial 21%; T 14%; Club 12%"
+"GEFITINIB",69,31,"diffuse",12.5,"diffuse",17.8,"T2P 12%; Endothelial 12%; Neutrophil 11%"
+"DESOXYCORTICOSTERONE",4,1,NA,NA,NA,NA,NA
+"DESOXYCORTICOSTERONE ACETATE",2,0,NA,NA,NA,NA,NA
+"TAMATINIB",81,33,"Fibroblast",15.2,"diffuse",18.2,"Fibroblast 15%; Endothelial 13%; Neutrophil 10%"
+"TENIPOSIDE",8,5,"T",18.9,"T",25.1,"T 19%; Mast 14%; Neutrophil 12%"
+"NAFTIFINE HYDROCHLORIDE",1,1,NA,NA,NA,NA,NA
+"ZAFIRLUKAST",17,6,"pDC",20.2,"pDC",28.8,"pDC 20%; Neutrophil 10%; T 9%"
+"FLUFENAMIC ACID",38,7,"Endothelial",23.2,"Mast",28.4,"Endothelial 23%; Mast 18%; Fibroblast 13%"
+"LAPATINIB",29,10,"T2P",24.3,"diffuse",20.6,"T2P 24%; Fibroblast 14%; Endothelial 12%"
+"GLUTAMINE",8,5,"Fibroblast",21.7,"Neutrophil",24.3,"Fibroblast 22%; Endothelial 12%; Plasma 10%"
+"HALOFANTRINE HYDROCHLORIDE",3,2,NA,NA,NA,NA,NA
+"NELARABINE",1,0,NA,NA,NA,NA,NA
+"IPRIFLAVONE",12,5,"diffuse",12.2,"diffuse",17.6,"T 12%; Mast 11%; pDC 11%"
+"IVERMECTIN",3,1,NA,NA,NA,NA,NA
+"DICLOFENAC SODIUM",34,9,"Mast",28.8,"Mast",33.9,"Mast 29%; Neutrophil 19%; T 10%"
+"CYCLOSPORINE",87,35,"Endothelial",15,"diffuse",18.1,"Endothelial 15%; T 12%; Fibroblast 11%"
+"ROFECOXIB",9,4,"Mast",43.1,"Mast",57.7,"Mast 43%; Fibroblast 17%; Club 12%"
+"ROTENONE",14,3,"diffuse",12.7,"Mast",22,"Fibroblast 13%; Club 12%; Mast 11%"
+"CHOLIC ACID",12,2,NA,NA,NA,NA,NA
+"RANOLAZINE",6,2,NA,NA,NA,NA,NA
+"FLUOROURACIL",127,43,"Fibroblast",13.9,"diffuse",19.1,"Fibroblast 14%; T2P 12%; Endothelial 11%"
+"TAMOXIFEN",46,12,"Club",25.1,"diffuse",19.7,"Club 25%; Endothelial 14%; T2P 10%"
+"TAMOXIFEN CITRATE",46,18,"Club",17.2,"Mast",25.6,"Club 17%; Mast 17%; Endothelial 13%"
+"ZOLPIDEM TARTRATE",9,2,NA,NA,NA,NA,NA
+"GOSSYPOL",48,18,"diffuse",12.3,"diffuse",20,"Mast 12%; Endothelial 12%; pDC 11%"
+"FLUTICASONE",19,9,"Mast",15.3,"diffuse",20.2,"Mast 15%; Neutrophil 13%; Macrophage 13%"
+"RISPERIDONE",66,9,"Mast",16.4,"Mast",26.6,"Mast 16%; Endothelial 13%; Fibroblast 13%"
+"CHLOROQUINE",16,5,"Endothelial",29.2,"Macrophage",40.1,"Endothelial 29%; Mast 23%; Macrophage 14%"
+"FLUOXETINE HYDROCHLORIDE",30,4,"Endothelial",40.5,"Macrophage",23.2,"Endothelial 40%; Fibroblast 13%; Mast 7%"
+"SORAFENIB",100,39,"Endothelial",15.9,"diffuse",20.5,"Endothelial 16%; Fibroblast 15%; Mast 12%"
+"SORAFENIB TOSYLATE",16,7,"Endothelial",25,"pDC",29.4,"Endothelial 25%; Fibroblast 17%; Mast 16%"
+"GATIFLOXACIN ANHYDROUS",7,4,"Macrophage",20.4,"Macrophage",28.2,"Macrophage 20%; pDC 13%; Plasma 10%"
+"AFURESERTIB",4,3,"B",15,"B",22.5,"B 15%; Mast 12%; Endothelial 11%"
+"AFURESERTIB HYDROCHLORIDE",3,2,NA,NA,NA,NA,NA
+"E319",11,4,"Neutrophil",18.7,"Neutrophil",26.2,"Neutrophil 19%; Club 16%; Mast 12%"
+"SIROLIMUS",57,23,"Fibroblast",14.9,"diffuse",18,"Fibroblast 15%; Endothelial 12%; T 11%"
+"EMTRICITABINE",4,0,NA,NA,NA,NA,NA
+"THIORIDAZINE",17,0,NA,NA,NA,NA,NA
+"THIORIDAZINE HYDROCHLORIDE",15,2,NA,NA,NA,NA,NA
+"SIMVASTATIN",50,18,"Endothelial",16.8,"Macrophage",33.4,"Endothelial 17%; Fibroblast 17%; Macrophage 13%"
+"MITOXANTRONE",37,10,"Endothelial",23.9,"diffuse",19.7,"Endothelial 24%; pDC 13%; T 11%"
+"MITOXANTRONE HYDROCHLORIDE",38,10,"pDC",16.3,"pDC",23.5,"pDC 16%; T 12%; Mast 12%"
+"LY-294002",15,10,"diffuse",13.4,"diffuse",19.7,"Mast 13%; T 12%; Neutrophil 11%"
+"DINACICLIB",8,2,NA,NA,NA,NA,NA
+"VALPROIC ACID",59,13,"Mast",14.8,"Mast",22.1,"Mast 15%; Fibroblast 14%; Neutrophil 11%"
+"ALVOCIDIB",15,3,"T2P",17,"Mast",30.5,"T2P 17%; Endothelial 13%; Mast 13%"
+"ALVOCIDIB HYDROCHLORIDE",6,2,NA,NA,NA,NA,NA
+"AKT INHIBITOR VIII",4,2,NA,NA,NA,NA,NA
+"INIPARIB",2,1,NA,NA,NA,NA,NA
+"BARICITINIB",8,4,"Neutrophil",16.5,"Neutrophil",22.5,"Neutrophil 16%; B 15%; Mast 11%"
+"VEMURAFENIB",34,20,"Endothelial",15.9,"diffuse",19.9,"Endothelial 16%; T2P 14%; Fibroblast 11%"
+"OXAPROZIN",4,2,NA,NA,NA,NA,NA
+"DEFACTINIB",4,3,"B",14.4,"B",26.1,"B 14%; Endothelial 11%; Mast 11%"
+"ACETYLCYSTEINE",15,5,"Endothelial",23.7,"Mast",31,"Endothelial 24%; Mast 22%; Neutrophil 17%"
+"RUTIN",10,5,"Neutrophil",26.3,"Neutrophil",31.9,"Neutrophil 26%; Macrophage 10%; T 9%"
+"OFLOXACIN",12,3,"Neutrophil",22.4,"Neutrophil",29.8,"Neutrophil 22%; Macrophage 15%; Endothelial 10%"
+"SARACATINIB",11,5,"Endothelial",25.5,"pDC",22.2,"Endothelial 25%; Fibroblast 25%; T2P 10%"
+"RADICICOL",3,3,"Mast",34.5,"Mast",41,"Mast 35%; T 11%; B 8%"
+"PROGESTERONE",61,25,"diffuse",12.5,"Macrophage",24.9,"pDC 13%; Club 12%; Fibroblast 11%"
+"CERULENIN",1,0,NA,NA,NA,NA,NA
+"METITEPINE",21,1,NA,NA,NA,NA,NA
+"DASATINIB ANHYDROUS",73,36,"Fibroblast",16,"diffuse",17.3,"Fibroblast 16%; Endothelial 15%; Neutrophil 10%"
+"PALBOCICLIB",55,22,"diffuse",13.1,"diffuse",18.5,"Endothelial 13%; pDC 12%; T2P 12%"
+"DORAMAPIMOD",21,9,"Endothelial",25.1,"pDC",25.1,"Endothelial 25%; Fibroblast 21%; Neutrophil 13%"
+"IPATASERTIB",8,5,"pDC",25.8,"pDC",32.3,"pDC 26%; B 11%; Mast 9%"
+"TRACAZOLATE",8,2,NA,NA,NA,NA,NA
+"THALIDOMIDE",37,17,"Endothelial",15.4,"diffuse",21.4,"Endothelial 15%; T2P 14%; T 11%"
+"AMPEROZIDE HYDROCHLORIDE",3,1,NA,NA,NA,NA,NA
+"HG-9-91-01",3,1,NA,NA,NA,NA,NA
+"REV-5901",4,3,"Mast",33.7,"Mast",48.4,"Mast 34%; Endothelial 16%; Macrophage 10%"
+"CRIZOTINIB",25,12,"Mast",20.1,"Mast",28.4,"Mast 20%; T2P 15%; Endothelial 13%"
+"LOPINAVIR",5,2,NA,NA,NA,NA,NA
+"PI-103",20,8,"diffuse",13.3,"diffuse",18.4,"T 13%; Mast 12%; Neutrophil 10%"
+"ALISERTIB",47,19,"Endothelial",17,"pDC",26.6,"Endothelial 17%; pDC 14%; Fibroblast 12%"
+"PRAVASTATIN SODIUM",26,10,"Fibroblast",33.3,"Macrophage",41.7,"Fibroblast 33%; Endothelial 26%; Macrophage 13%"
+"MOCETINOSTAT",13,4,"T",15.8,"T",23.4,"T 16%; B 15%; Mast 11%"
+"TROGLITAZONE",24,10,"Endothelial",25.4,"Neutrophil",21.9,"Endothelial 25%; Neutrophil 11%; Macrophage 10%"
+"LEFLUNOMIDE",14,3,"Neutrophil",24.6,"Neutrophil",34,"Neutrophil 25%; Mast 10%; Macrophage 10%"
+"APIGENIN",31,10,"Mast",19,"Mast",28.7,"Mast 19%; Endothelial 11%; Neutrophil 10%"
+"ENZALUTAMIDE",15,4,"diffuse",12.2,"diffuse",18.7,"Endothelial 12%; B 12%; T 12%"
+"TOLMETIN",4,2,NA,NA,NA,NA,NA
+"RALTEGRAVIR POTASSIUM",4,0,NA,NA,NA,NA,NA
+"DEXAMETHASONE",83,32,"Endothelial",17,"Mast",22.8,"Endothelial 17%; Mast 15%; Fibroblast 12%"
+"FENOLDOPAM MESYLATE",7,0,NA,NA,NA,NA,NA
+"BMS-345541",10,4,"B",15.6,"B",23.6,"B 16%; T 12%; Endothelial 10%"
+"IXABEPILONE",21,8,"pDC",16.5,"Mast",23.9,"pDC 17%; Mast 14%; Plasma 14%"
+"TENOFOVIR",13,1,NA,NA,NA,NA,NA
+"PHA-793887",21,4,"Endothelial",16.1,"diffuse",19,"Endothelial 16%; Fibroblast 13%; T2P 11%"
+"BOSUTINIB",20,8,"Neutrophil",14.5,"diffuse",20,"Neutrophil 15%; Endothelial 14%; T 13%"
+"BOSUTINIB MONOHYDRATE",2,1,NA,NA,NA,NA,NA
+"PROPOFOL",37,4,"pDC",19.2,"pDC",25.7,"pDC 19%; Mast 19%; Endothelial 16%"
+"CC-401",4,0,NA,NA,NA,NA,NA
+"IOX1",5,3,"Neutrophil",19.7,"Neutrophil",25.6,"Neutrophil 20%; pDC 13%; B 12%"
+"TELATINIB",6,5,"Fibroblast",40.4,"Macrophage",28.2,"Fibroblast 40%; Endothelial 31%; Mast 18%"
+"DOVITINIB",91,38,"Fibroblast",13.8,"diffuse",18.6,"Fibroblast 14%; Endothelial 13%; Mast 12%"
+"CEFUROXIME SODIUM",4,1,NA,NA,NA,NA,NA
+"OSI-930",7,5,"Endothelial",35.4,"Mast",25.5,"Endothelial 35%; Mast 21%; Macrophage 9%"
+"AZELASTINE HYDROCHLORIDE",4,2,NA,NA,NA,NA,NA
+"SALIRASIB",11,2,NA,NA,NA,NA,NA
+"EVEROLIMUS",35,13,"pDC",14.5,"diffuse",20.5,"pDC 14%; Fibroblast 12%; Endothelial 12%"
+"FLUMAZENIL",19,2,NA,NA,NA,NA,NA
+"MLN-8054",27,11,"Neutrophil",14.7,"pDC",26.9,"Neutrophil 15%; Endothelial 14%; Fibroblast 14%"
+"MEGESTROL ACETATE",8,3,"Endothelial",29.2,"T",26.6,"Endothelial 29%; T 14%; Macrophage 11%"
+"PP-242",4,2,NA,NA,NA,NA,NA
+"FORETINIB",15,10,"Endothelial",30.2,"Macrophage",25.2,"Endothelial 30%; Fibroblast 26%; Mast 11%"
+"PAZOPANIB",49,21,"Fibroblast",20,"Mast",23.1,"Fibroblast 20%; Endothelial 17%; T2P 12%"
+"PAZOPANIB HYDROCHLORIDE",11,8,"Fibroblast",33.2,"Macrophage",25.9,"Fibroblast 33%; Endothelial 25%; Mast 15%"
+"TEMOZOLOMIDE",22,9,"diffuse",12.9,"diffuse",18.2,"Club 13%; Endothelial 12%; Fibroblast 11%"
+"METHOTREXATE",114,38,"diffuse",12.7,"diffuse",19.4,"Mast 13%; Endothelial 12%; T 12%"
+"MK-2206",6,2,NA,NA,NA,NA,NA
+"TANESPIMYCIN",13,6,"diffuse",13,"Mast",21.6,"Mast 13%; Endothelial 12%; Fibroblast 11%"
+"VANDETANIB",56,25,"Endothelial",21,"diffuse",19,"Endothelial 21%; Fibroblast 19%; T2P 10%"
+"MAPROTILINE",11,0,NA,NA,NA,NA,NA
+"MAPROTILINE HYDROCHLORIDE",7,1,NA,NA,NA,NA,NA
+"PROCHLORPERAZINE",24,2,NA,NA,NA,NA,NA
+"LEVOTHYROXINE SODIUM",14,5,"Endothelial",23.3,"Macrophage",32.5,"Endothelial 23%; Mast 22%; Macrophage 14%"
+"AZATHIOPRINE",43,12,"Endothelial",17.1,"Mast",24.3,"Endothelial 17%; Mast 14%; Fibroblast 12%"
+"MEFLOQUINE HYDROCHLORIDE",2,1,NA,NA,NA,NA,NA
+"VORINOSTAT",49,20,"diffuse",13.3,"diffuse",20.9,"pDC 13%; Mast 12%; Fibroblast 10%"
+"PLERIXAFOR",5,3,"T",25.9,"T",33.4,"T 26%; B 11%; Neutrophil 11%"
+"AMLODIPINE BESYLATE",15,2,NA,NA,NA,NA,NA
+"KU-55933",2,2,NA,NA,NA,NA,NA
+"ZOSUQUIDAR",1,1,NA,NA,NA,NA,NA
+"LONIDAMINE",5,1,NA,NA,NA,NA,NA
+"ETOPOSIDE",58,22,"diffuse",11.8,"diffuse",20.5,"Endothelial 12%; T 12%; T2P 11%"
+"TOSEDOSTAT",20,8,"diffuse",11.7,"diffuse",17.6,"T 12%; Macrophage 11%; Endothelial 10%"
+"ERLOTINIB",57,27,"Endothelial",17.1,"pDC",23.2,"Endothelial 17%; T2P 12%; Fibroblast 11%"
+"PF-562271",104,43,"diffuse",12.5,"diffuse",18.1,"Endothelial 12%; T 11%; Fibroblast 11%"
+"GEMCITABINE",81,27,"diffuse",13.4,"diffuse",19.9,"Mast 13%; Endothelial 12%; Neutrophil 11%"
+"GEMCITABINE HYDROCHLORIDE",15,3,"T",18.9,"T",25.8,"T 19%; Mast 17%; Plasma 12%"
+"EPIRUBICIN",34,10,"Endothelial",16.3,"diffuse",19.4,"Endothelial 16%; T2P 14%; Mast 13%"
+"EPIRUBICIN HYDROCHLORIDE",12,6,"Endothelial",25.8,"Macrophage",26.7,"Endothelial 26%; Fibroblast 11%; Mast 9%"
+"CALCITRIOL",11,3,"Neutrophil",21.4,"Neutrophil",27.9,"Neutrophil 21%; Fibroblast 16%; pDC 15%"
+"CI-1040",17,9,"diffuse",12.9,"diffuse",18,"B 13%; T 12%; Mast 11%"
+"PHENOTHIAZINE",16,4,"Endothelial",26.5,"Macrophage",26.9,"Endothelial 27%; T2P 12%; Macrophage 12%"
+"GENISTEIN",58,13,"Mast",18.4,"Mast",25.1,"Mast 18%; Club 12%; T 11%"
+"VANOXERINE",13,1,NA,NA,NA,NA,NA
+"OMEPRAZOLE",34,13,"Mast",21.4,"Mast",28.6,"Mast 21%; Neutrophil 15%; Endothelial 14%"
+"CARBACYCLIN",8,1,NA,NA,NA,NA,NA
+"PHENSUXIMIDE",3,0,NA,NA,NA,NA,NA
+"ROSIGLITAZONE MALEATE",17,5,"Macrophage",18.2,"Macrophage",30.9,"Macrophage 18%; Endothelial 13%; pDC 11%"
+"COUMESTROL",10,2,NA,NA,NA,NA,NA
+"BELINOSTAT",14,5,"T",15.5,"T",22.5,"T 16%; B 15%; Mast 11%"
+"FOLIC ACID",23,10,"Endothelial",16.3,"Macrophage",23.5,"Endothelial 16%; Neutrophil 14%; Mast 12%"
+"EQUILIN",4,2,NA,NA,NA,NA,NA
+"NAPROXEN SODIUM",19,8,"Mast",31.3,"Mast",36.8,"Mast 31%; Neutrophil 23%; Endothelial 15%"
+"CEDIRANIB",49,18,"Fibroblast",19.2,"diffuse",20.8,"Fibroblast 19%; Endothelial 16%; pDC 13%"
+"PICTILISIB",30,13,"T2P",14.4,"diffuse",19.7,"T2P 14%; Fibroblast 12%; Endothelial 11%"
+"LISOFYLLINE",2,1,NA,NA,NA,NA,NA
+"DINOPROST",8,1,NA,NA,NA,NA,NA
+"VINBLASTINE",31,11,"Fibroblast",14.6,"pDC",21.7,"Fibroblast 15%; pDC 14%; Endothelial 13%"
+"VINBLASTINE SULFATE",20,10,"pDC",13.9,"Mast",25.1,"pDC 14%; Mast 14%; Plasma 12%"
+"QUINACRINE DIHYDROCHLORIDE",12,3,"Fibroblast",18.3,"T",23.5,"Fibroblast 18%; T 13%; B 11%"
+"TORCETRAPIB",1,0,NA,NA,NA,NA,NA
+"DACINOSTAT",11,4,"T",15.8,"T",23.4,"T 16%; B 15%; Mast 11%"
+"TANGERETIN",4,2,NA,NA,NA,NA,NA
+"ALPELISIB",33,13,"diffuse",12.5,"Mast",22.2,"T2P 12%; Fibroblast 12%; pDC 10%"
+"EDARAVONE",5,3,"pDC",17.2,"Mast",26.8,"pDC 17%; Club 15%; Mast 14%"
+"PF750",2,0,NA,NA,NA,NA,NA
+"NVP-BHG712",4,3,"Endothelial",31.2,"Neutrophil",38.7,"Endothelial 31%; Fibroblast 11%; Neutrophil 9%"
+"SU-11652",4,4,"Fibroblast",38.5,"Mast",39.2,"Fibroblast 39%; Endothelial 26%; Mast 24%"
+"4-HYDROXYTAMOXIFEN",14,2,NA,NA,NA,NA,NA
+"MIDOSTAURIN",34,19,"Fibroblast",20.8,"diffuse",17.6,"Fibroblast 21%; Endothelial 12%; Mast 11%"
+"FASUDIL",27,13,"T",14.3,"T",21.7,"T 14%; Mast 14%; B 11%"
+"FASUDIL HYDROCHLORIDE",3,1,NA,NA,NA,NA,NA
+"GELDANAMYCIN",15,10,"diffuse",12.8,"pDC",25,"pDC 13%; T 11%; Fibroblast 11%"
+"AMIFOSTINE ANHYDROUS",5,2,NA,NA,NA,NA,NA
+"NICARDIPINE",11,0,NA,NA,NA,NA,NA
+"DAUNORUBICIN HYDROCHLORIDE",44,20,"Endothelial",16.1,"diffuse",19.9,"Endothelial 16%; pDC 13%; T 11%"
+"PIMOZIDE",31,4,"diffuse",13.2,"Macrophage",23.1,"Club 13%; Macrophage 13%; Endothelial 12%"
+"TRIFLUOPERAZINE",26,3,"T",16.4,"T",24.4,"T 16%; Mast 12%; B 11%"
+"RANITIDINE HYDROCHLORIDE",15,4,"T2P",31.4,"pDC",28.2,"T2P 31%; Endothelial 20%; pDC 19%"
+"SNS-314",42,12,"Fibroblast",16.8,"Mast",25.8,"Fibroblast 17%; Endothelial 15%; Mast 15%"
+"CLOSANTEL",11,3,"pDC",20.7,"pDC",31.5,"pDC 21%; B 11%; Fibroblast 9%"
+"TANDUTINIB",10,6,"Fibroblast",33.2,"Macrophage",27.8,"Fibroblast 33%; Mast 19%; pDC 17%"
+"LORGLUMIDE SODIUM",1,0,NA,NA,NA,NA,NA
+"ALLOPURINOL",32,3,"T",17.7,"T",29.7,"T 18%; Neutrophil 12%; Endothelial 10%"
+"ENCLOMIPHENE",5,0,NA,NA,NA,NA,NA
+"ENCLOMIPHENE CITRATE",8,1,NA,NA,NA,NA,NA
+"RUXOLITINIB",13,7,"Neutrophil",22.5,"Neutrophil",28.5,"Neutrophil 22%; pDC 20%; T 10%"
+"NIMESULIDE",13,5,"Mast",35.2,"Mast",42.7,"Mast 35%; Endothelial 9%; Neutrophil 8%"
+"MIBEFRADIL",16,1,NA,NA,NA,NA,NA
+"MIBEFRADIL DIHYDROCHLORIDE",7,1,NA,NA,NA,NA,NA
+"ACETAZOLAMIDE",13,5,"Fibroblast",30.8,"Macrophage",44.7,"Fibroblast 31%; Endothelial 31%; T2P 29%"
+"VERAPAMIL",45,12,"Neutrophil",15.6,"diffuse",20.7,"Neutrophil 16%; Endothelial 14%; Macrophage 13%"
+"IFOSFAMIDE",13,7,"Endothelial",17.2,"Macrophage",22.6,"Endothelial 17%; Fibroblast 12%; Club 12%"
+"EMAPUNIL",1,1,NA,NA,NA,NA,NA
+"PAROXETINE HYDROCHLORIDE, HEMIHYDRATE",19,4,"Fibroblast",19.1,"Macrophage",38.8,"Fibroblast 19%; Macrophage 17%; Endothelial 14%"
+"IMIQUIMOD",3,0,NA,NA,NA,NA,NA
+"CLOZAPINE",92,12,"Endothelial",19.6,"Macrophage",27.7,"Endothelial 20%; T2P 15%; Fibroblast 11%"
+"LUTEOLIN",34,9,"Mast",18.3,"Mast",28.3,"Mast 18%; Endothelial 11%; Club 10%"
+"METRONIDAZOLE",4,3,"Fibroblast",21.7,"Macrophage",35.5,"Fibroblast 22%; Club 20%; Macrophage 15%"
+"FLOXURIDINE",14,7,"Mast",15.3,"Mast",22.7,"Mast 15%; T 12%; B 10%"
+"VINCRISTINE",101,40,"Endothelial",14.2,"diffuse",17.8,"Endothelial 14%; pDC 12%; T 11%"
+"VELIPARIB",12,5,"Macrophage",13.9,"Macrophage",26.7,"Macrophage 14%; Endothelial 12%; T2P 10%"
+"DACTOLISIB",44,15,"diffuse",12.2,"diffuse",18.3,"Neutrophil 12%; T2P 11%; T 10%"
+"PONATINIB",24,15,"Fibroblast",24,"diffuse",20.6,"Fibroblast 24%; Endothelial 16%; T2P 11%"
+"PONATINIB HYDROCHLORIDE",2,1,NA,NA,NA,NA,NA
+"TICLOPIDINE",13,1,NA,NA,NA,NA,NA
+"TRANILAST",12,3,"Mast",33.4,"Mast",43.3,"Mast 33%; Macrophage 13%; Endothelial 11%"
+"INOSITOL",15,6,"Endothelial",17.6,"Macrophage",34.3,"Endothelial 18%; T 17%; T2P 15%"
+"IMATINIB",73,37,"Fibroblast",15.3,"diffuse",18.5,"Fibroblast 15%; T2P 12%; Mast 11%"
+"IMATINIB MESYLATE",6,4,"Fibroblast",27.6,"Mast",34.6,"Fibroblast 28%; Mast 26%; Endothelial 20%"
+"NIACIN",15,4,"Neutrophil",22.1,"Neutrophil",25,"Neutrophil 22%; Macrophage 14%; B 10%"
+"CAPSAICIN",16,6,"Endothelial",22.1,"Mast",33.5,"Endothelial 22%; Mast 22%; T2P 15%"
+"ATENOLOL",36,9,"Endothelial",22.2,"diffuse",20.8,"Endothelial 22%; Mast 13%; pDC 10%"
+"AMOXICILLIN ANHYDROUS",20,4,"T",18.6,"T",24.4,"T 19%; pDC 15%; Neutrophil 11%"
+"THIOGUANINE",32,13,"Mast",17.4,"Mast",27.2,"Mast 17%; T2P 14%; Fibroblast 11%"
+"RESIQUIMOD",2,0,NA,NA,NA,NA,NA
+"CP466722",1,1,NA,NA,NA,NA,NA
+"PICEATANNOL",21,1,NA,NA,NA,NA,NA
+"NEFAZODONE",11,2,NA,NA,NA,NA,NA
+"DIGITOXIGENIN",4,2,NA,NA,NA,NA,NA
+"BENZETHONIUM CHLORIDE",16,6,"diffuse",13.1,"Mast",21.6,"Mast 13%; Macrophage 11%; Endothelial 11%"
+"COBIMETINIB",17,9,"pDC",16.1,"pDC",21.4,"pDC 16%; T 11%; B 11%"
+"TASELISIB",12,6,"T",15.4,"diffuse",20.6,"T 15%; Mast 12%; pDC 12%"
+"JNJ-7706621",52,17,"Endothelial",19.5,"Mast",21.5,"Endothelial 19%; Fibroblast 13%; Mast 11%"
+"ALVESPIMYCIN",3,2,NA,NA,NA,NA,NA
+"NOVOBIOCIN",5,4,"T",16,"T",26,"T 16%; Mast 16%; Fibroblast 13%"
+"RILUZOLE",23,2,NA,NA,NA,NA,NA
+"BITHIONOL",24,8,"Mast",18.8,"Mast",28.8,"Mast 19%; Club 12%; pDC 12%"
+"IDARUBICIN",40,11,"Endothelial",18.8,"diffuse",19.8,"Endothelial 19%; pDC 15%; Mast 11%"
+"IDARUBICIN HYDROCHLORIDE",14,4,"Endothelial",27.8,"Mast",39.6,"Endothelial 28%; Mast 15%; T 14%"
+"PHENYLBUTAZONE",12,4,"Mast",37.8,"Neutrophil",46.6,"Mast 38%; Fibroblast 26%; Neutrophil 19%"
+"N-DESMETHYLCLOZAPINE",19,2,NA,NA,NA,NA,NA
+"LEVETIRACETAM",7,0,NA,NA,NA,NA,NA
+"AMCINONIDE",7,4,"Mast",15.1,"Mast",27.2,"Mast 15%; Club 13%; Macrophage 12%"
+"LEVOMEPROMAZINE MALEATE",1,1,NA,NA,NA,NA,NA
+"TRIFLUPROMAZINE HYDROCHLORIDE",6,3,"Club",17.6,"Macrophage",29.1,"Club 18%; Fibroblast 14%; Macrophage 13%"
+"PENFLURIDOL",3,0,NA,NA,NA,NA,NA
+"STAUROSPORINE",45,21,"diffuse",12.1,"diffuse",20.3,"T 12%; pDC 12%; Macrophage 11%"
+"FLAVOKAWAIN B",2,1,NA,NA,NA,NA,NA
+"FUSARIC ACID",7,3,"diffuse",12.8,"diffuse",19,"Endothelial 13%; Mast 12%; pDC 11%"
+"PERPHENAZINE",25,0,NA,NA,NA,NA,NA
+"ILOPROST",9,1,NA,NA,NA,NA,NA
+"TIVOZANIB HYDROCHLORIDE",5,4,"Endothelial",39.1,"Mast",28.1,"Endothelial 39%; Fibroblast 26%; Mast 23%"
+"THIOCTIC ACID",16,7,"diffuse",13.2,"diffuse",21.4,"pDC 13%; Fibroblast 12%; Endothelial 10%"
+"FLUDARABINE",32,11,"Endothelial",16.8,"diffuse",18.7,"Endothelial 17%; T 13%; Fibroblast 12%"
+"IGURATIMOD",7,3,"Endothelial",28.2,"Mast",28.2,"Endothelial 28%; Mast 21%; T2P 10%"
+"BMS-509744",2,2,NA,NA,NA,NA,NA
+"PYRIMETHAMINE",10,3,"Macrophage",18.2,"Macrophage",34.5,"Macrophage 18%; Endothelial 13%; Club 11%"
+"PRALATREXATE",3,1,NA,NA,NA,NA,NA
+"ORLISTAT",10,3,"Endothelial",28.5,"Macrophage",55,"Endothelial 29%; Fibroblast 27%; Macrophage 18%"
+"STROPHANTHIDIN",6,2,NA,NA,NA,NA,NA
+"STROPHANTHIDIN ACETATE",2,1,NA,NA,NA,NA,NA
+"CHELERYTHRINE",14,3,"pDC",18.2,"pDC",23.2,"pDC 18%; Neutrophil 10%; T 10%"
+"CHELERYTHRINE CHLORIDE",4,1,NA,NA,NA,NA,NA
+"BREFELDIN A",7,3,"Mast",18,"Mast",30.8,"Mast 18%; Macrophage 15%; Club 12%"
+"INDOMETHACIN",42,15,"Mast",24.8,"Mast",30.7,"Mast 25%; Neutrophil 13%; Macrophage 9%"
+"METHAZOLAMIDE",9,2,NA,NA,NA,NA,NA
+"CAMPTOTHECIN",36,18,"Endothelial",15,"diffuse",17.5,"Endothelial 15%; Fibroblast 15%; Mast 10%"
+"FLUCONAZOLE",12,2,NA,NA,NA,NA,NA
+"GALANTAMINE HYDROBROMIDE",2,1,NA,NA,NA,NA,NA
+"LENALIDOMIDE",15,8,"Endothelial",16.1,"diffuse",21.2,"Endothelial 16%; Neutrophil 16%; Mast 10%"
+"LENALIDOMIDE HYDROCHLORIDE MONOHYDRATE",4,2,NA,NA,NA,NA,NA
+"EPLERENONE",2,1,NA,NA,NA,NA,NA
+"SINENSETIN",2,1,NA,NA,NA,NA,NA
+"TYRPHOSTIN A9",22,6,"diffuse",13.6,"Mast",24.5,"Club 14%; Macrophage 13%; Mast 13%"
+"KETOPROFEN",6,3,"Mast",56.9,"Mast",79.7,"Mast 57%; Fibroblast 23%; Neutrophil 6%"
+"CHENODEOXYCHOLIC ACID",8,3,"T2P",36.9,"Neutrophil",46.7,"T2P 37%; Neutrophil 22%; Endothelial 7%"
+"NILOTINIB",14,8,"Fibroblast",36.5,"Mast",25.1,"Fibroblast 37%; Mast 14%; pDC 12%"
+"NILOTINIB HYDROCHLORIDE MONOHYDRATE",2,1,NA,NA,NA,NA,NA
+"FLUVASTATIN",7,2,NA,NA,NA,NA,NA
+"PHLORETIN",21,6,"Mast",20.1,"Mast",28.9,"Mast 20%; Endothelial 12%; Macrophage 9%"
+"FLUSPIRILENE",22,3,"Club",15.8,"Macrophage",22.8,"Club 16%; Plasma 13%; Mast 12%"
+"MOTESANIB",8,6,"Fibroblast",37.7,"Macrophage",25.9,"Fibroblast 38%; Endothelial 32%; Mast 15%"
+"CHLORPROMAZINE",33,4,"Endothelial",25.5,"Macrophage",30.3,"Endothelial 25%; T2P 15%; Macrophage 13%"
+"CHLORPROMAZINE HYDROCHLORIDE",17,2,NA,NA,NA,NA,NA
+"CYCLOPHOSPHAMIDE ANHYDROUS",85,25,"Neutrophil",17.6,"Neutrophil",25.7,"Neutrophil 18%; Endothelial 12%; T 11%"
+"CLOMIPRAMINE",17,2,NA,NA,NA,NA,NA
+"ALPROSTADIL",21,4,"Endothelial",33,"Macrophage",27.5,"Endothelial 33%; T 13%; Club 10%"
+"LOPERAMIDE HYDROCHLORIDE",3,1,NA,NA,NA,NA,NA
+"AMUVATINIB",7,5,"Fibroblast",43.4,"Mast",33,"Fibroblast 43%; Mast 20%; pDC 16%"
+"TRETINOIN",87,33,"diffuse",12.3,"diffuse",18.2,"Fibroblast 12%; pDC 12%; Mast 11%"
+"COTININE",6,1,NA,NA,NA,NA,NA
+"TERBINAFINE",2,0,NA,NA,NA,NA,NA
+"DECITABINE",24,15,"diffuse",12.8,"diffuse",19.1,"Mast 13%; B 12%; pDC 11%"
+"CLEMASTINE FUMARATE",2,0,NA,NA,NA,NA,NA
+"CLOFAZIMINE",6,0,NA,NA,NA,NA,NA
+"FLAVANONE",8,2,NA,NA,NA,NA,NA
+"GW441756X",65,30,"diffuse",12.7,"diffuse",17.1,"Endothelial 13%; T 11%; B 11%"
+"CARPROFEN",2,1,NA,NA,NA,NA,NA
+"DINOPROSTONE",15,2,NA,NA,NA,NA,NA
+"ETORICOXIB",2,1,NA,NA,NA,NA,NA
+"DALCETRAPIB",2,0,NA,NA,NA,NA,NA
+"DIAZEPAM",29,3,"Endothelial",31.5,"Macrophage",29,"Endothelial 31%; Macrophage 14%; T2P 11%"
+"FLURBIPROFEN",9,3,"Mast",52.1,"Mast",61.2,"Mast 52%; Endothelial 10%; Neutrophil 8%"
+"LONAFARNIB",10,5,"Endothelial",22.1,"diffuse",20,"Endothelial 22%; Mast 12%; T2P 10%"
+"MOXIFLOXACIN",7,2,NA,NA,NA,NA,NA
+"EZETIMIBE",7,2,NA,NA,NA,NA,NA
+"ELLAGIC ACID",28,10,"Mast",15.9,"Mast",22.6,"Mast 16%; pDC 12%; Fibroblast 10%"
+"LEVODOPA",35,7,"Mast",20.1,"Mast",28.2,"Mast 20%; Fibroblast 11%; T 10%"
+"N6022",2,0,NA,NA,NA,NA,NA
+"OSIMERTINIB",20,10,"Endothelial",18.7,"diffuse",19.2,"Endothelial 19%; T2P 18%; Fibroblast 18%"
+"FENRETINIDE",27,7,"Neutrophil",15.8,"diffuse",21.2,"Neutrophil 16%; Club 12%; Mast 11%"
+"PINDOLOL",10,2,NA,NA,NA,NA,NA
+"AFATINIB",20,9,"T2P",17.9,"pDC",25.6,"T2P 18%; pDC 11%; Club 11%"
+"DOXORUBICIN HYDROCHLORIDE",166,60,"diffuse",13,"diffuse",17.3,"Endothelial 13%; Mast 11%; Fibroblast 10%"
+"BIFONAZOLE",11,6,"T2P",23.4,"Mast",21.5,"T2P 23%; Club 13%; Mast 11%"
+"CABAZITAXEL",21,9,"pDC",15,"pDC",23.2,"pDC 15%; Endothelial 15%; Mast 13%"
+"SULFAMETHOXAZOLE",3,1,NA,NA,NA,NA,NA
+"CLOTRIMAZOLE",36,8,"Neutrophil",20.1,"Neutrophil",25.3,"Neutrophil 20%; Macrophage 11%; Endothelial 10%"
+"LANATOSIDE C",15,5,"Club",17.3,"Macrophage",35.9,"Club 17%; T2P 17%; Macrophage 15%"
+"METFORMIN",54,16,"diffuse",12.1,"diffuse",21.2,"T2P 12%; pDC 11%; Endothelial 11%"
+"METFORMIN HYDROCHLORIDE",56,24,"diffuse",12.2,"diffuse",19.7,"Mast 12%; Plasma 10%; Macrophage 10%"
+"DEQUALINIUM CHLORIDE",5,0,NA,NA,NA,NA,NA
+"DEXIBUPROFEN",4,3,"Mast",52.1,"Mast",61.2,"Mast 52%; Endothelial 10%; Neutrophil 8%"
+"TRICLOSAN",6,3,"Mast",33.4,"Mast",44.9,"Mast 33%; Endothelial 12%; Club 8%"
+"ACIVICIN",4,2,NA,NA,NA,NA,NA
+"CORTICOSTERONE",3,1,NA,NA,NA,NA,NA
+"CARBIMAZOLE",6,0,NA,NA,NA,NA,NA
+"OXIDOPAMINE",20,6,"pDC",16.1,"Macrophage",23.3,"pDC 16%; Fibroblast 13%; Macrophage 12%"
+"OXIDOPAMINE HYDROCHLORIDE",17,5,"pDC",16.3,"pDC",22.8,"pDC 16%; T 14%; B 10%"
+"REFAMETINIB",11,5,"pDC",20.6,"pDC",26.2,"pDC 21%; T 14%; B 10%"
+"CLADRIBINE",15,9,"T",16.1,"T",22.2,"T 16%; Mast 11%; Endothelial 11%"
+"GW501516",3,0,NA,NA,NA,NA,NA
+"ACENOCOUMAROL",5,2,NA,NA,NA,NA,NA
+"ENMD-2076",25,15,"Endothelial",18.9,"Mast",25.5,"Endothelial 19%; Fibroblast 17%; Mast 14%"
+"DESLORATADINE",2,0,NA,NA,NA,NA,NA
+"DEXRAZOXANE",5,3,"T2P",25.3,"Macrophage",28.5,"T2P 25%; T 16%; Mast 14%"
+"DEXRAZOXANE HYDROCHLORIDE",2,2,NA,NA,NA,NA,NA
+"ELLIPTECINE",32,11,"diffuse",11.9,"diffuse",20.1,"Fibroblast 12%; Macrophage 11%; Mast 11%"
+"(R,S)-INDATRALINE",11,1,NA,NA,NA,NA,NA
+"TESTOSTERONE PROPIONATE",7,2,NA,NA,NA,NA,NA
+"ISOLIQUIRITIGENIN",12,5,"diffuse",13.5,"diffuse",19,"pDC 14%; Club 12%; Fibroblast 11%"
+"SEMAXANIB",15,8,"Endothelial",26.1,"pDC",25.9,"Endothelial 26%; Fibroblast 18%; Mast 14%"
+"LESTAURTINIB",11,4,"Mast",26.2,"Mast",30.3,"Mast 26%; pDC 23%; Macrophage 8%"
+"LAMOTRIGINE",22,3,"T2P",35,"Mast",30.1,"T2P 35%; Mast 25%; Macrophage 10%"
+"WARFARIN",33,10,"Endothelial",28.1,"Macrophage",24.4,"Endothelial 28%; Fibroblast 14%; pDC 11%"
+"CEPHARANTHINE",4,1,NA,NA,NA,NA,NA
+"PHENYTOIN SODIUM",40,6,"Mast",31.1,"Mast",39.1,"Mast 31%; T2P 25%; Macrophage 9%"
+"LEVOFLOXACIN ANHYDROUS",8,2,NA,NA,NA,NA,NA
+"DACTINOMYCIN",35,14,"T",15.1,"diffuse",20.4,"T 15%; Mast 15%; Neutrophil 10%"
+"TERFENADINE",14,5,"pDC",24.4,"pDC",29.3,"pDC 24%; Endothelial 19%; Neutrophil 13%"
+"COLCHICINE",51,17,"diffuse",12.8,"diffuse",19,"pDC 13%; Endothelial 12%; Mast 11%"
+"AZD1208",5,3,"Neutrophil",20.8,"Neutrophil",29.8,"Neutrophil 21%; pDC 10%; Fibroblast 10%"
+"TOPIRAMATE",52,6,"Endothelial",30.1,"Macrophage",31.9,"Endothelial 30%; T2P 24%; Fibroblast 14%"
+"DOCETAXEL ANHYDROUS",90,32,"diffuse",10.4,"diffuse",16.7,"Club 10%; pDC 10%; Endothelial 10%"
+"CLOPIDOGREL",39,10,"pDC",19.8,"pDC",25.7,"pDC 20%; Mast 15%; Endothelial 12%"
+"SUCCIMER",7,3,"T",18.3,"T",24.3,"T 18%; Mast 13%; B 10%"
+"CEFMETAZOLE SODIUM",2,1,NA,NA,NA,NA,NA
+"ALITRETINOIN",17,4,"Endothelial",28.9,"Macrophage",26.2,"Endothelial 29%; Fibroblast 20%; pDC 13%"
+"DORSOMORPHIN",9,5,"Endothelial",38.6,"pDC",35.8,"Endothelial 39%; pDC 19%; Club 8%"
+"PAXILLINE",4,2,NA,NA,NA,NA,NA
+"CHLOROXINE",10,2,NA,NA,NA,NA,NA
+"ECONAZOLE NITRATE",14,5,"pDC",17.6,"pDC",25.3,"pDC 18%; Neutrophil 15%; Macrophage 12%"
+"CLARITHROMYCIN",19,4,"Neutrophil",23.5,"Neutrophil",30.8,"Neutrophil 23%; Endothelial 22%; pDC 12%"
+"PROPYLPYRAZOLETRIOL",11,3,"diffuse",11.9,"diffuse",17.7,"Endothelial 12%; Mast 12%; T 11%"
+"METHIMAZOLE",21,6,"Neutrophil",23.7,"Neutrophil",29.3,"Neutrophil 24%; T 18%; Fibroblast 15%"
+"DIGOXIN",33,10,"Endothelial",15.8,"Macrophage",26.1,"Endothelial 16%; T2P 12%; Neutrophil 12%"
+"DISULFIRAM",41,13,"Mast",21.4,"Mast",30.6,"Mast 21%; Macrophage 12%; Endothelial 10%"
+"SULINDAC",18,6,"Mast",31.3,"Mast",40.7,"Mast 31%; Endothelial 12%; Fibroblast 11%"
+"DOXYCYCLINE ANHYDROUS",13,4,"T2P",33.8,"diffuse",20.6,"T2P 34%; Endothelial 22%; Fibroblast 7%"
+"BITHIONOLATE SODIUM",8,3,"pDC",21,"pDC",29.4,"pDC 21%; Club 12%; T 11%"
+"BITHIONOLOXIDE",7,1,NA,NA,NA,NA,NA
+"CABOZANTINIB S-MALATE",20,12,"Endothelial",23.9,"Mast",23.5,"Endothelial 24%; Mast 13%; T2P 12%"
+"CAFFEIC ACID PHENETHYL ESTER",14,2,NA,NA,NA,NA,NA
+"CEFUROXIME AXETIL",4,1,NA,NA,NA,NA,NA
+"DAPHNETIN",9,2,NA,NA,NA,NA,NA
+"DAPHNORIN",7,2,NA,NA,NA,NA,NA
+"DAUNORUBICIN LIPOSOMAL",88,31,"diffuse",11.8,"diffuse",18,"pDC 12%; Fibroblast 12%; T 12%"
+"ESTRADIOL 3-BENZOATE",8,1,NA,NA,NA,NA,NA
+"ESTRADIOL BENZOATE",3,1,NA,NA,NA,NA,NA
+"ESTRADIOL VALERATE",45,13,"Mast",18,"Mast",24.3,"Mast 18%; Club 13%; pDC 12%"
+"FENOFIBRATE MICRONIZED",24,9,"Endothelial",30,"Macrophage",31.4,"Endothelial 30%; Fibroblast 17%; Macrophage 13%"
+"HYDROCORTISONE BUTYRATE",40,17,"diffuse",12.8,"diffuse",17.2,"Neutrophil 13%; pDC 12%; Endothelial 11%"
+"LASALOCID A SODIUM",9,2,NA,NA,NA,NA,NA
+"SALMETEROL XINAFOATE",7,2,NA,NA,NA,NA,NA
+"SULFAMETHOXAZOLE / TRIMETHOPRIM",5,0,NA,NA,NA,NA,NA
+"SYK INHIBITOR III",9,2,NA,NA,NA,NA,NA
+"TENOFOVIR ALAFENAMIDE",4,1,NA,NA,NA,NA,NA
+"TRAMETINIB DIMETHYL SULFOXIDE",46,24,"T2P",13.9,"Mast",22.2,"T2P 14%; pDC 12%; Mast 11%"
+"TRICHOSTATIN A",38,12,"Endothelial",16.7,"Mast",24.1,"Endothelial 17%; Mast 13%; Macrophage 10%"
+"ESTRADIOL 17-ACETATE",2,1,NA,NA,NA,NA,NA
+"DECITABINE AND CEDAZURIDINE",1,1,NA,NA,NA,NA,NA
+"DESOXYCORTICOSTERONE PIVALATE",2,0,NA,NA,NA,NA,NA
+"MOTESANIB DIPHOSPHATE",1,1,NA,NA,NA,NA,NA
+"PALACAPARIB",2,1,NA,NA,NA,NA,NA
+"DEXAMETHASONE PALMITATE",1,0,NA,NA,NA,NA,NA
+"SYK INHIBITOR II",2,1,NA,NA,NA,NA,NA
+"RESIQUIMOD PEGOL",2,0,NA,NA,NA,NA,NA

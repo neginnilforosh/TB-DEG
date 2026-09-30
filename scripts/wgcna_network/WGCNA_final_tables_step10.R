@@ -1,4 +1,12 @@
 ## =============================================================
+## STEP 10 (FINAL) of Ratul's roadmap: two master tables.
+##
+## "The first should be a gene table containing: Gene, log2FC, FDR,
+##  Module, Module biological name, MM/kME, Gene Significance, PPI
+##  degree, Betweenness, RWR score, Diffusion score, and Pathways.
+##  The second should be a drug table containing: Drug, iLINCS
+##  reversal score, Known targets, Network proximity, RWR score,
+##  Modules affected, and Pathways affected."
 ##
 ## Pure local data wrangling -- everything needed was already produced
 ## by steps 1-9, no new network calls.
@@ -176,6 +184,29 @@ for (drug in drugs) {
 }
 drug_table_out <- do.call(rbind, rows)
 drug_table_out <- drug_table_out[order(drug_table_out$iLINCS_Reversal_Score), ]  # strongest reversal first
+
+## ---- optional: per-drug pathways from Enrichr on the drug's known targets (made by step 12) ----
+enr_file <- file.path(BASE_DIR, "17_pathway_annotation", paste0(ACC, "_DrugPathways_Enrichr_summary.csv"))
+if (file.exists(enr_file)) {
+  enr <- read.csv(enr_file, stringsAsFactors = FALSE)
+  drug_table_out <- merge(drug_table_out, enr, by = "Drug", all.x = TRUE, sort = FALSE)
+  drug_table_out <- drug_table_out[order(drug_table_out$iLINCS_Reversal_Score), ]
+  cat(">>> Merged Enrichr pathway summary:", sum(!is.na(drug_table_out$Enrichr_N_targets_used)), "drugs have Enrichr results.\n")
+} else {
+  cat(">>> (No Enrichr summary yet -- run WGCNA_Enrichr_drugs_step12.R, then re-run this script to add the pathway columns.)\n")
+}
+
+## ---- optional: cell-type profile of each drug's targets (made by step 13, macaque TB-granuloma single-cell data) ----
+sc_file <- file.path(BASE_DIR, "18_singlecell", paste0(ACC, "_drug_celltype.csv"))
+if (file.exists(sc_file)) {
+  sc <- read.csv(sc_file, stringsAsFactors = FALSE)
+  sc <- sc[, c("Drug", "N_targets_detected_sc", "SC_Top_CellType", "SC_Top_Share_pct", "SC_Top_Immune_CellType", "SC_Top_Immune_Share_pct", "SC_Profile")]
+  drug_table_out <- merge(drug_table_out, sc, by = "Drug", all.x = TRUE, sort = FALSE)
+  drug_table_out <- drug_table_out[order(drug_table_out$iLINCS_Reversal_Score), ]
+  cat(">>> Merged single-cell cell-type profile:", sum(!is.na(drug_table_out$SC_Top_CellType)), "drugs have one.\n")
+} else {
+  cat(">>> (No single-cell profile yet -- run WGCNA_singlecell_step13.R, then re-run this script.)\n")
+}
 write.csv(drug_table_out, file.path(dir_out, paste0(ACC, "_FINAL_DrugTable.csv")), row.names = FALSE)
 cat(">>> Drug table:", nrow(drug_table_out), "drugs.\n")
 cat(">>>", sum(!is.na(drug_table_out$iLINCS_Reversal_Score)), "/", nrow(drug_table_out),
