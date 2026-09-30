@@ -1,5 +1,5 @@
 ## =============================================================
-## GSE229020 — miRNA (NanoString nCounter) analysis  [FIXED]
+## GSE229020 — miRNA (NanoString nCounter) analysis
 ## HC vs LTB (Latent), HC vs DS-TB (Drug-Susceptible), HC vs DR-TB (Drug-Resistant)
 ## =============================================================
 

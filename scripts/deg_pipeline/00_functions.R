@@ -1,12 +1,12 @@
 ## =============================================================
 ## 00_functions.R
 ## Shared helper functions for the TB DEG pipeline
-## (GSE222001, GSE161829, GSE99374, GSE229020)
+## (GSE222001, GSE161829, GSE99374, GSE229020, GSE114192)
 ##
 ## Requires: DESeq2, GEOquery, pheatmap, ggplot2, ggrepel,
 ##           RColorBrewer, UpSetR, matrixStats
 ##
-## install.packages/BiocManager calls are left commented out --
+## Package installation: see PACKAGES.md in the repo root.
 ##
 ## =============================================================
 

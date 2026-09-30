@@ -1,11 +1,11 @@
 ## =============================================================
 ## Sensitivity check: re-run HC vs LTBI DEG analysis for GSE99374
 ## WITHOUT the two apparent outlier samples (TU0021_CD8_LTBI,
-## TP0015_CD8_LTBI) and compare against the original 4 significant genes.
+## TP0001_CD8_LTBI) and compare against the original 4 significant genes.
 
 ## =============================================================
 
-# (removed: setwd("../scripts") -- run this script with the working directory = scripts/deg_pipeline)
+# Run with the working directory = scripts/deg_pipeline
 source("00_functions.R")
 
 BASE_DIR   <- file.path("..", "..", "GSE99374")
@@ -17,7 +17,7 @@ PADJ_TH    <- 0.05
 SENS_DIR <- file.path(BASE_DIR, "sensitivity_no_outliers")
 for (d in c("results", "figures")) dir.create(file.path(SENS_DIR, d), recursive = TRUE, showWarnings = FALSE)
 
-## ---- 1. Load what you already produced, drop the outliers ----
+## ---- 1. Load the filtered counts, drop the outliers ----
 filt_counts <- read.csv(file.path(BASE_DIR, "03_filtered_counts", "GSE99374_filtered_count_matrix.csv"),
                          row.names = 1, check.names = FALSE)
 metadata <- read.csv(file.path(BASE_DIR, "02_metadata", "GSE99374_sample_metadata.csv"))
@@ -53,7 +53,7 @@ sig_new <- get_significant_degs(res_new,
                                  file.path(SENS_DIR, "results", "GSE99374_sigDEGs_no_outliers.csv"),
                                  lfc_thresh = LFC_TH, padj_thresh = PADJ_TH)
 
-## ---- 5. THE ANSWER: compare against your original 4 genes ----
+## ---- 5. Compare against the original 4 genes ----
 original_genes <- read.csv(file.path(BASE_DIR, "07_significant_degs", "GSE99374_HC_vs_LTBI_sigDEGs.csv"))$gene
 new_genes      <- sig_new$gene
 
