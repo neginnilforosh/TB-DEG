@@ -13,7 +13,9 @@
 **/01_raw_data/**/*.tar
 **/01_raw_data/**/*.RCC.gz
 **/01_raw_data/**/*.txt
-
+external_data/
+GSE*/17_pathway_annotation/cache/
+.DS_Store
 # Microsoft Office lock files (e.g. ~$GSE99374_RawCounts_CD8.xlsx)
 ~$*
 
