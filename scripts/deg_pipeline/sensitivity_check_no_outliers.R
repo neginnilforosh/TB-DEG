@@ -5,10 +5,10 @@
 
 ## =============================================================
 
-setwd("../scripts")  
+# (removed: setwd("../scripts") -- run this script with the working directory = scripts/deg_pipeline)
 source("00_functions.R")
 
-BASE_DIR   <- file.path("..", "GSE99374")
+BASE_DIR   <- file.path("..", "..", "GSE99374")
 OUTLIERS <- c("TU0021_CD8_LTBI", "TP0001_CD8_LTBI")   
 LFC_TH     <- 1
 PADJ_TH    <- 0.05

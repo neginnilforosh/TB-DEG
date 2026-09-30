@@ -6,7 +6,7 @@ library(GEOquery)
 library(DESeq2)
 
 ACC      <- "GSE161829"
-BASE_DIR <- file.path("..", ACC)
+BASE_DIR <- file.path("..", "..", ACC)
 LFC_TH   <- 1
 PADJ_TH  <- 0.05
 

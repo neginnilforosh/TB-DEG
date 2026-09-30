@@ -5,7 +5,7 @@ source("00_functions.R")
 library(GEOquery)
 
 ACC       <- "GSE99374"
-BASE_DIR  <- file.path("..", ACC)
+BASE_DIR  <- file.path("..", "..", ACC)
 LFC_TH    <- 1
 PADJ_TH   <- 0.05
 
@@ -27,13 +27,13 @@ pheno <- pData(gse)
 getGEOSuppFiles(ACC, baseDir = dir_raw)
 
 ## STEP 2. Metadata -----------------------------------------------------
-metadata <- read.csv("../GSE99374/01_raw_counts/GSE99374_CD8_sample_metadata.csv")
+metadata <- read.csv("../../GSE99374/01_raw_counts/GSE99374_CD8_sample_metadata.csv")
 metadata$group <- factor(metadata$group, levels = c("HC", "LTBI"))
 rownames(metadata) <- metadata$sample_id
 write.csv(metadata, file.path(dir_meta, "GSE99374_sample_metadata.csv"), row.names = FALSE)
 plot_sample_design(metadata, out_png = file.path(dir_fig, "GSE99374_sample_design.png"))
 
-raw_counts <- read.csv("../GSE99374/01_raw_counts/GSE99374_CD8_raw_counts.csv", row.names = 1, check.names = FALSE)
+raw_counts <- read.csv("../../GSE99374/01_raw_counts/GSE99374_raw_count_matrix.csv", row.names = 1, check.names = FALSE)
 raw_counts <- raw_counts[, rownames(metadata)]
 
 ## STEP 3. Filtering (RNA-seq path) ------------------------------------------
