@@ -44,7 +44,7 @@ get_script_dir <- function() {
 
 SCRIPT_DIR <- get_script_dir()
 cat("Script folder detected as:", SCRIPT_DIR, "\n")
-BASE_DIR    <- file.path(SCRIPT_DIR, "..", ACC)
+BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
 dir_wgcna   <- file.path(BASE_DIR, "09_wgcna_input")
 dir_results <- file.path(BASE_DIR, "10_wgcna_results")
 dir_fig     <- file.path(BASE_DIR, "figures")
