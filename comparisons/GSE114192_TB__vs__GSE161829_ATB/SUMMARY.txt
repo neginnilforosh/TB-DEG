@@ -1,0 +1,21 @@
+Comparison: GSE114192_TB vs GSE161829_ATB
+Date: 2026-10-04
+
+DEGs: 12074 shared genes; Spearman correlation of log2FC = 0.22
+Significant (padj < 0.05, |log2FC| >= 1): GSE114192_TB 177, GSE161829_ATB 39; in both 5 (expected by chance 0.6, Fisher p = 0.00025); same direction: 5/5
+Modules (universe = 12074 genes in both networks). Best match in GSE161829_ATB for each selected GSE114192_TB module:
+  green (302 genes) -> magenta [selected]: 9 shared (expected 3, FDR 0.034), same direction 88.9%
+  purple (209 genes) -> blue: 27 shared (expected 15.8, FDR 0.034), same direction 63%
+  blue (1294 genes) -> black: 31 shared (expected 18.1, FDR 0.034), same direction 6.5%
+GSEA HALLMARK: 48 sets in both; NES correlation (Spearman) 0.35; replicated (FDR < 0.05 in both, same sign) 14, opposite 5
+  replicated Hallmark: INTERFERON_GAMMA_RESPONSE (+2.72/+2.49), INTERFERON_ALPHA_RESPONSE (+2.69/+2.51), OXIDATIVE_PHOSPHORYLATION (+1.97/+1.90), IL6_JAK_STAT3_SIGNALING (+2.10/+1.75), ALLOGRAFT_REJECTION (+1.73/+1.99), MTORC1_SIGNALING (+1.42/+2.16), COMPLEMENT (+1.86/+1.55), ADIPOGENESIS (+1.70/+1.66), UV_RESPONSE_DN (-1.95/-1.40), UV_RESPONSE_UP (+1.66/+1.66), CHOLESTEROL_HOMEOSTASIS (+1.60/+1.67), FATTY_ACID_METABOLISM (+1.51/+1.75), APOPTOSIS (+1.80/+1.46), XENOBIOTIC_METABOLISM (+1.64/+1.39)
+GSEA CELLTYPE: 645 sets in both; NES correlation (Spearman) 0.39; replicated (FDR < 0.05 in both, same sign) 86, opposite 5
+GSEA REACTOME: 950 sets in both; NES correlation (Spearman) 0.41; replicated (FDR < 0.05 in both, same sign) 76, opposite 6
+Self-check: rebuilt UP-only reversal list for GSE161829_ATB matches step 7 output: TRUE
+Drugs (UP-only signatures, compounds tested in both = 2801): reversal in GSE114192_TB 796, in GSE161829_ATB 1336; in both 350 (expected 380, Fisher p = 0.99)
+  rank agreement over 1223 compounds scored in both: Spearman of similarity -0.1
+  top-50 strongest reversers: 5 shared (expected 2, p = 0.049)
+  top-100 strongest reversers: 11 shared (expected 8.2, p = 0.19)
+  same LINCS signatures scored in both: 1147; Spearman of similarity -0.42
+  TB_UP signature genes: 67 vs 18; shared: PSME2, STAT1, UBE2L6
+Drugs in both final drug tables (target in both TB networks): 102; of these reversing in both (UP-only): 29
