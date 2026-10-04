@@ -1,6 +1,5 @@
 ## STEP 3: DEG x WGCNA integration -> "main disease genes" (significant DEG and TB-module member).
 
-ACC <- "GSE114192"
 
 ## ---- paths ----
 get_script_dir <- function() {
@@ -14,17 +13,21 @@ get_script_dir <- function() {
   getwd()
 }
 SCRIPT_DIR <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
+OUT_DIR <- run_out_dir(BASE_DIR)
 dir_deg    <- file.path(BASE_DIR, "06_deg_results")
-dir_wgcna  <- file.path(BASE_DIR, "10_wgcna_results")
+dir_wgcna  <- file.path(OUT_DIR, "10_wgcna_results")
 
 ## ---- load DEG results + WGCNA module membership/gene significance ----
-deg_file <- file.path(dir_deg, paste0(ACC, "_HealthyControl_vs_TBOnly_DEG.csv"))
+deg_file <- file.path(dir_deg, DEG_FILE_NAME)
 mm_file  <- file.path(dir_wgcna, paste0(ACC, "_TBmodules_MM_GS.csv"))
 if (!file.exists(deg_file)) stop("Missing: ", deg_file)
 if (!file.exists(mm_file))  stop("Missing: ", mm_file, " -- run WGCNA_TBmodules_step1.R first.")
 
 deg <- read.csv(deg_file, stringsAsFactors = FALSE)
+
+deg$gene <- clean_gene_ids(deg$gene); deg <- deg[order(deg$padj), ]; deg <- deg[!duplicated(deg$gene), ]
 mm  <- read.csv(mm_file,  stringsAsFactors = FALSE)
 cat("DEG table:", nrow(deg), "genes.  WGCNA TB-module table:", nrow(mm), "genes across",
     length(unique(mm$Module)), "modules (", paste(unique(mm$Module), collapse=", "), ")\n")

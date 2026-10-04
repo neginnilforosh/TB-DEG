@@ -8,7 +8,6 @@ if (!all(pkg_ok)) {
 }
 
 ## ---- CONFIG ----
-ACC             <- "GSE114192"
 SPECIES         <- 9606     # human
 REQUIRED_SCORE  <- 400      # STRING "medium confidence" default (0-1000); use 700+ for high-confidence only
 USE_FULL_MODULE <- TRUE     # TRUE  = every gene in the module (default)
@@ -28,9 +27,11 @@ get_script_dir <- function() {
   getwd()
 }
 SCRIPT_DIR <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
-dir_wgcna  <- file.path(BASE_DIR, "10_wgcna_results")
-dir_string <- file.path(BASE_DIR, "12_string_ppi")
+OUT_DIR <- run_out_dir(BASE_DIR)
+dir_wgcna  <- file.path(OUT_DIR, "10_wgcna_results")
+dir_string <- file.path(OUT_DIR, "12_string_ppi")
 dir.create(dir_string, recursive = TRUE, showWarnings = FALSE)
 
 ## ---- load module gene lists ----
@@ -169,3 +170,5 @@ for (mod in names(gene_lists)) {
 }
 
 cat("\n>>> DONE. Per-module STRING interaction tables + centrality tables in", dir_string, "\n")
+
+

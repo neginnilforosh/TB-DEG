@@ -28,3 +28,7 @@ GSE*/17_pathway_annotation/cache/
 # OS junk
 .DS_Store
 Thumbs.db
+
+# per-drug Enrichr cache (any run folder) and R junk
+**/17_pathway_annotation/cache/
+.Rapp.history

@@ -5,8 +5,6 @@ library(WGCNA)
 options(stringsAsFactors = FALSE)
 
 ## ---- CONFIG ----
-ACC             <- "GSE114192"
-TRAIT_COL       <- "TB_Only"
 TARGET_MODULE   <- "blue"                 # the module you're trying to split
 NEW_CUT_HEIGHTS <- c(0.10, 0.15, 0.20)    # compare against the original 0.25
 
@@ -22,8 +20,10 @@ get_script_dir <- function() {
   getwd()
 }
 SCRIPT_DIR  <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
-dir_results <- file.path(BASE_DIR, "10_wgcna_results")
+OUT_DIR <- run_out_dir(BASE_DIR)
+dir_results <- file.path(OUT_DIR, "10_wgcna_results")
 
 ## ---- load the saved workspace from step 1 ----
 ws_file <- file.path(dir_results, paste0(ACC, "_WGCNA_workspace.rds"))

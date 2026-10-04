@@ -7,7 +7,6 @@ pkg_ok <- vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)
 if (!all(pkg_ok)) stop("Missing package: igraph. Install with: install.packages(\"igraph\")")
 
 ## ---- CONFIG ----
-ACC          <- "GSE114192"
 RESTART_R    <- 0.5     # RWR restart probability (0.3-0.5 is standard)
 DIFFUSE_A    <- 0.5     # diffusion keep-vs-spread balance
 MAX_ITER     <- 200
@@ -26,11 +25,13 @@ get_script_dir <- function() {
   getwd()
 }
 SCRIPT_DIR <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
-dir_string <- file.path(BASE_DIR, "12_string_ppi")
-dir_wgcna  <- file.path(BASE_DIR, "10_wgcna_results")
-dir_dt     <- file.path(BASE_DIR, "14_drug_targets")
-dir_out    <- file.path(BASE_DIR, "15_network_algorithms")
+OUT_DIR <- run_out_dir(BASE_DIR)
+dir_string <- file.path(OUT_DIR, "12_string_ppi")
+dir_wgcna  <- file.path(OUT_DIR, "10_wgcna_results")
+dir_dt     <- file.path(OUT_DIR, "14_drug_targets")
+dir_out    <- file.path(OUT_DIR, "15_network_algorithms")
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 
 ## ---- rebuild the combined network graph ----

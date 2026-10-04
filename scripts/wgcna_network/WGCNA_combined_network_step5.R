@@ -9,12 +9,10 @@ if (!all(pkg_ok)) {
 }
 
 ## ---- CONFIG ----
-ACC             <- "GSE114192"
 SPECIES         <- 9606
 REQUIRED_SCORE  <- 400
 USE_FULL_MODULE <- TRUE
 N_LABELS_FULL   <- 20
-MODULE_COLORS   <- c(green = "#2ecc71", purple = "#9b59b6", blue = "#3498db")  # plot colors, edit if you rename blue
 
 ## ---- paths ----
 get_script_dir <- function() {
@@ -28,9 +26,12 @@ get_script_dir <- function() {
   getwd()
 }
 SCRIPT_DIR <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
+MODULE_COLORS <- MODULE_PLOT_COLORS
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
-dir_wgcna  <- file.path(BASE_DIR, "10_wgcna_results")
-dir_string <- file.path(BASE_DIR, "12_string_ppi")
+OUT_DIR <- run_out_dir(BASE_DIR)
+dir_wgcna  <- file.path(OUT_DIR, "10_wgcna_results")
+dir_string <- file.path(OUT_DIR, "12_string_ppi")
 dir.create(dir_string, recursive = TRUE, showWarnings = FALSE)
 
 ## ---- load module gene lists ----
@@ -160,6 +161,7 @@ tryCatch({
   igraph::V(g)$label       <- ifelse(igraph::V(g)$displayName %in% top_labels, igraph::V(g)$displayName, NA)
   igraph::V(g)$label.cex   <- 1.1
   igraph::V(g)$label.color <- "black"
+  if (is.null(MODULE_COLORS)) { mods <- sort(unique(igraph::V(g)$module)); MODULE_COLORS <- setNames(ifelse(mods %in% grDevices::colors(), mods, "grey50"), mods) }
   igraph::V(g)$color       <- MODULE_COLORS[igraph::V(g)$module]
   igraph::V(g)$color[is.na(igraph::V(g)$color)] <- "grey50"
   igraph::V(g)$frame.color <- NA

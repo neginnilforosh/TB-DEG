@@ -8,7 +8,6 @@ library(enrichR)
 if (!isTRUE(getOption("enrichR.live"))) stop("Enrichr website is not reachable from this machine (check internet/VPN); nothing was run.")
 
 ## ---- CONFIG ----
-ACC          <- "GSE114192"
 MIN_TARGETS  <- 3       # skip drugs with fewer known targets than this
 PADJ_KEEP    <- 0.05
 N_KEEP       <- 10      # top terms kept per drug per library in the long table
@@ -32,10 +31,12 @@ get_script_dir <- function() {
   getwd()
 }
 SCRIPT_DIR <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
-dir_dt  <- file.path(BASE_DIR, "14_drug_targets")
-dir_fin <- file.path(BASE_DIR, "16_final_tables")
-dir_out <- file.path(BASE_DIR, "17_pathway_annotation")
+OUT_DIR <- run_out_dir(BASE_DIR)
+dir_dt  <- file.path(OUT_DIR, "14_drug_targets")
+dir_fin <- file.path(OUT_DIR, "16_final_tables")
+dir_out <- file.path(OUT_DIR, "17_pathway_annotation")
 dir_cache <- file.path(dir_out, "cache")
 dir.create(dir_cache, recursive = TRUE, showWarnings = FALSE)
 
@@ -137,3 +138,4 @@ cat("  -", paste0(ACC, "_DrugPathways_Enrichr_summary.csv"), "(one row per drug;
 cat("  -", paste0(ACC, "_DrugPathways_Enrichr_long.csv"), "(every significant term, with the overlapping target genes)\n")
 cat("  -", paste0(ACC, "_DrugPathways_skipped.csv"), "(drugs with too few known targets)\n")
 cat(">>> Next: re-run WGCNA_final_tables_step10.R so the drug table picks the summary up.\n")
+

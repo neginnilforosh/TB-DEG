@@ -3,6 +3,7 @@
 install.packages("drugfindR", repos = c("https://cogdisreslab.r-universe.dev", "https://cran.r-project.org"))
 
 required_pkgs <- c("drugfindR", "dplyr")
+
 pkg_ok <- vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)
 if (!all(pkg_ok)) {
   stop("Missing package(s): ", paste(required_pkgs[!pkg_ok], collapse = ", "),
@@ -11,7 +12,6 @@ if (!all(pkg_ok)) {
 }
 
 ## ---- CONFIG ----
-ACC             <- "GSE114192"
 LOGFC_THRESHOLD <- 0.5   # minimum |log2FC| for TB_UP / TB_DOWN (applied after prepareSignature)
 
 ## ---- paths ----
@@ -26,15 +26,18 @@ get_script_dir <- function() {
   getwd()
 }
 SCRIPT_DIR <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
+OUT_DIR <- run_out_dir(BASE_DIR)
 dir_deg    <- file.path(BASE_DIR, "06_deg_results")
-dir_out    <- file.path(BASE_DIR, "13_ilincs_signature")
+dir_out    <- file.path(OUT_DIR, "13_ilincs_signature")
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 
 ## ---- load all DEGs with padj < 0.05 (the |log2FC| filter is applied below) ----
-deg_file <- file.path(dir_deg, paste0(ACC, "_HealthyControl_vs_TBOnly_DEG.csv"))
+deg_file <- file.path(dir_deg, DEG_FILE_NAME)
 if (!file.exists(deg_file)) stop("Missing: ", deg_file)
 deg <- read.csv(deg_file, stringsAsFactors = FALSE)
+deg$gene <- clean_gene_ids(deg$gene); deg <- deg[order(deg$padj), ]; deg <- deg[!duplicated(deg$gene), ]
 deg <- subset(deg, padj < 0.05)
 cat(">>> Loaded", nrow(deg), "significant DEGs (before logFC filter).\n")
 

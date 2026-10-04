@@ -11,7 +11,6 @@ if (!all(pkg_ok)) {
 }
 
 ## ---- CONFIG ----
-MODULE_DATASET <- "GSE114192"   # the dataset whose WGCNA modules get overlaid on the GSEA results
 MIN_GS <- 15; MAX_GS <- 500     # gene-set size limits (genes present in the ranked list)
 PADJ_SIG <- 0.05
 COLLECTIONS <- list(            # name -> arguments for msigdbr()
@@ -33,6 +32,7 @@ get_script_dir <- function() {
   getwd()
 }
 SCRIPT_DIR <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
 ROOT_DIR <- local({ d <- SCRIPT_DIR
   while (length(list.files(d, pattern = "^GSE[0-9]+$")) == 0 && dirname(d) != d) d <- dirname(d); d })
 cat(">>> Repo root:", ROOT_DIR, "\n")
@@ -88,6 +88,9 @@ deg_files <- list.files(ROOT_DIR, pattern = "_DEG\\.csv$", recursive = TRUE, ful
 deg_files <- deg_files[grepl("/06_deg_results/", deg_files) & !grepl("sensitivity", deg_files)]
 cat(">>> Found", length(deg_files), "DEG tables.\n")
 
+## GSEA(seed = TRUE) needs an existing RNG state; a fresh Rscript session has none (".Random.seed not found")
+set.seed(42)
+
 for (f in deg_files) {
   hdr <- names(read.csv(f, nrows = 1))
   if (!all(c("gene", "log2FoldChange", "pvalue") %in% hdr)) { cat("  skipping (not a DESeq2-style table):", basename(f), "\n"); next }
@@ -97,8 +100,14 @@ for (f in deg_files) {
   cat("\n==========", comp, "==========\n")
 
   deg <- read.csv(f, stringsAsFactors = FALSE)
-  id_map <- suppressMessages(clusterProfiler::bitr(unique(deg$gene), fromType = "ENSEMBL", toType = "SYMBOL",
-                                                    OrgDb = org.Hs.eg.db::org.Hs.eg.db))
+
+  deg$gene <- clean_gene_ids(deg$gene); deg <- deg[order(deg$padj), ]; deg <- deg[!duplicated(deg$gene), ]
+  if (mean(grepl("^ENSG", deg$gene)) > 0.5) {
+    id_map <- suppressMessages(clusterProfiler::bitr(unique(deg$gene), fromType = "ENSEMBL", toType = "SYMBOL",
+                                                      OrgDb = org.Hs.eg.db::org.Hs.eg.db))
+  } else {                                           # table already uses gene symbols (e.g. GSE99374)
+    id_map <- data.frame(ENSEMBL = unique(deg$gene), SYMBOL = unique(deg$gene), stringsAsFactors = FALSE)
+  }
   ranking <- build_ranking(deg, id_map)
   cat("  ranked genes:", length(ranking), "(of", nrow(deg), "in the table)\n")
 
@@ -125,8 +134,8 @@ for (f in deg_files) {
   cat("  top 5 significant:\n"); print(utils::head(sig[, c("Collection", "Description", "NES", "p.adjust")], 5), row.names = FALSE)
 
   ## ---- module overlay (only for the dataset that has WGCNA modules) ----
-  mm_file <- file.path(ROOT_DIR, ds, "10_wgcna_results", paste0(ds, "_TBmodules_MM_GS.csv"))
-  if (ds == MODULE_DATASET && file.exists(mm_file) && nrow(sig) > 0) {
+  mm_file <- file.path(run_out_dir(file.path(ROOT_DIR, ds)), "10_wgcna_results", paste0(ds, "_TBmodules_MM_GS.csv"))
+  if (comp == paste0(ACC, "_", DEG_NAME) && file.exists(mm_file) && nrow(sig) > 0) {   # module overlay only for the configured run
     mm  <- read.csv(mm_file, stringsAsFactors = FALSE)
     map <- merge(mm[, c("Gene", "Module")], id_map, by.x = "Gene", by.y = "ENSEMBL")
     map <- unique(map[!is.na(map$SYMBOL), c("SYMBOL", "Module")])

@@ -54,6 +54,9 @@ install.packages(c("msigdbr", "msigdbdf"),
 - **`Could not resolve host: datasetStatistics`** from enrichR: the package sets its connection
   options only when attached with `library(enrichR)`; calling `enrichR::listEnrichrDbs()` without
   attaching leaves them empty. Step 12 attaches it itself.
+- **`object '.Random.seed' not found` in GSEA**: a fresh `Rscript` session has no random-number state yet;
+  step 11 calls `set.seed(42)` before GSEA.
+- **`entrez_gene` not found (msigdbr)**: msigdbr >= 10 renamed it to `ncbi_gene`; step 2 accepts both.
 - **iLINCS / DGIdb / Enrichr calls fail or time out**: these are live web services. Retry later;
   step 12 keeps a per-drug cache in `17_pathway_annotation/cache/`, so a re-run only redoes failed drugs.
 - **STRING API (`string-db.org`) calls slow/fail for large gene sets**:
@@ -77,3 +80,4 @@ install.packages(c("msigdbr", "msigdbdf"),
 | `WGCNA_GSEA_step11.R` | clusterProfiler, org.Hs.eg.db, msigdbr + msigdbdf |
 | `WGCNA_Enrichr_drugs_step12.R` | enrichR |
 | `WGCNA_singlecell_step13.R` | Matrix (+ the SCP1749 files in `external_data/SCP1749/`, see README) |
+| `WGCNA_compare_runs_step14.R` | none beyond base R |

@@ -18,7 +18,6 @@ if (!have_msigdbr) {
 }
 
 ## ---- CONFIG ----
-ACC         <- "GSE114192"
 PADJ_CUTOFF <- 0.05   # for the "top term" summary only; full tables are saved unfiltered
 
 ## ---- paths ----
@@ -33,10 +32,12 @@ get_script_dir <- function() {
   getwd()
 }
 SCRIPT_DIR  <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
 cat("Script folder detected as:", SCRIPT_DIR, "\n")
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
-dir_results <- file.path(BASE_DIR, "10_wgcna_results")
-dir_enrich  <- file.path(BASE_DIR, "11_module_enrichment")
+OUT_DIR <- run_out_dir(BASE_DIR)
+dir_results <- file.path(OUT_DIR, "10_wgcna_results")
+dir_enrich  <- file.path(OUT_DIR, "11_module_enrichment")
 dir.create(dir_enrich, recursive = TRUE, showWarnings = FALSE)
 
 ## ---- load the Selected module gene lists from step 1 ----
@@ -64,10 +65,9 @@ bg_entrez <- unique(na.omit(id_map$ENTREZID))
 
 hallmark_sets <- NULL
 if (have_msigdbr) {
-  hallmark_sets <- dplyr::distinct(
-    msigdbr::msigdbr(species = "Homo sapiens", collection = "H"),
-    gs_name, entrez_gene
-  )
+  hs <- msigdbr::msigdbr(species = "Homo sapiens", collection = "H")
+  gene_col <- intersect(c("ncbi_gene", "entrez_gene"), names(hs))[1]   # msigdbr >= 10 renamed entrez_gene to ncbi_gene
+  hallmark_sets <- unique(data.frame(gs_name = hs$gs_name, gene = as.character(hs[[gene_col]])))
   cat(">>> Loaded", length(unique(hallmark_sets$gs_name)), "Hallmark gene sets.\n")
 }
 

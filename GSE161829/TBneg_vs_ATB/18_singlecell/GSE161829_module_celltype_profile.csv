@@ -1,0 +1,5 @@
+"Group","N_genes","Macrophage","T","Neutrophil","T2P","Mast","B","Fibroblast","Endothelial","Club","pDC","Plasma"
+"green | lower_in_TB",74,7.2,14,5.8,7.9,9.3,11.2,7.6,10.3,9.1,11.2,6.4
+"green | higher_in_TB",138,10.3,10.8,11.3,8.3,11,7.2,8.4,9,7.6,8.9,7.2
+"magenta | higher_in_TB",27,6.4,16.6,9,10,17.7,5.1,6.3,6.9,7.6,7.1,7.3
+"purple | higher_in_TB",28,8.9,20.9,10.1,5.9,8.5,4.5,6.7,9.1,7.3,14.3,3.8

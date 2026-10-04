@@ -10,10 +10,10 @@ if (!all(pkg_ok)) {
 }
 
 ## ---- CONFIG ----
-ACC                  <- "GSE114192"
 ILINCS_LIBRARY       <- "CP"     # Chemical Perturbagen library (drug repurposing)
 SIMILARITY_CUTOFF    <- 0.321    # drugfindR's own default for consensusConcordants()
-REVERSAL_ONLY        <- TRUE     # keep only NEGATIVE similarity (true reversal), drop mimetic (positive) hits
+REVERSAL_ONLY        <- TRUE
+MIN_GENES_DIR        <- 5        # a direction with fewer genes is not queried (too small for iLINCS)     # keep only NEGATIVE similarity (true reversal), drop mimetic (positive) hits
 
 ## ---- paths ----
 get_script_dir <- function() {
@@ -27,8 +27,10 @@ get_script_dir <- function() {
   getwd()
 }
 SCRIPT_DIR <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
-dir_sig    <- file.path(BASE_DIR, "13_ilincs_signature")
+OUT_DIR <- run_out_dir(BASE_DIR)
+dir_sig    <- file.path(OUT_DIR, "13_ilincs_signature")
 dir_out    <- dir_sig
 
 ## ---- load the TB_UP / TB_DOWN signature from step 6 ----
@@ -43,26 +45,34 @@ cat(">>> TB_UP:", nrow(TB_UP), "genes.  TB_DOWN:", nrow(TB_DOWN), "genes.\n")
 cat(">>> Querying iLINCS (", ILINCS_LIBRARY, "library ) -- this makes live network calls",
     "and can take a while for each direction...\n")
 
-## ---- query iLINCS separately for each direction (drugfindR's documented pattern) ----
-concordants_up   <- tryCatch(drugfindR::getConcordants(TB_UP,   ilincsLibrary = ILINCS_LIBRARY),
-                              error = function(e) { cat("!! getConcordants(TB_UP) failed:", conditionMessage(e), "\n"); NULL })
-concordants_down <- tryCatch(drugfindR::getConcordants(TB_DOWN, ilincsLibrary = ILINCS_LIBRARY),
-                              error = function(e) { cat("!! getConcordants(TB_DOWN) failed:", conditionMessage(e), "\n"); NULL })
-
-if (is.null(concordants_up) || is.null(concordants_down)) {
-  stop("At least one getConcordants() call failed -- see message above. Common causes: ",
-       "no internet from this machine to ilincs.org, or ilincs.org temporarily down. ",
-       "Nothing else in this script ran, so nothing was overwritten.")
+## ---- query iLINCS separately for each direction ----
+use_up <- nrow(TB_UP) >= MIN_GENES_DIR; use_down <- nrow(TB_DOWN) >= MIN_GENES_DIR
+if (!use_up && !use_down) stop("TB_UP and TB_DOWN both have fewer than ", MIN_GENES_DIR, " genes: signature too small for iLINCS.")
+if (!use_up)   cat("!! TB_UP has only", nrow(TB_UP), "genes: not queried, TB_DOWN only.\n")
+if (!use_down) cat("!! TB_DOWN has only", nrow(TB_DOWN), "genes: not queried, TB_UP only.\n")
+query <- function(sig, label) tryCatch(drugfindR::getConcordants(sig, ilincsLibrary = ILINCS_LIBRARY),
+                                       error = function(e) { cat("!! getConcordants(", label, ") failed:", conditionMessage(e), "\n"); NULL })
+concordants_up   <- if (use_up)   query(TB_UP, "TB_UP") else NULL
+concordants_down <- if (use_down) query(TB_DOWN, "TB_DOWN") else NULL
+if ((use_up && is.null(concordants_up)) || (use_down && is.null(concordants_down))) {
+  stop("A getConcordants() call failed (see above): check the internet connection to ilincs.org. Nothing was written.")
 }
-cat(">>> Got", nrow(concordants_up), "concordants for TB_UP,", nrow(concordants_down), "for TB_DOWN.\n")
+if (!is.null(concordants_up))   write.csv(concordants_up,   file.path(dir_out, paste0(ACC, "_concordants_UP_raw.csv")),   row.names = FALSE)
+if (!is.null(concordants_down)) write.csv(concordants_down, file.path(dir_out, paste0(ACC, "_concordants_DOWN_raw.csv")), row.names = FALSE)
+cat(">>> Concordants: TB_UP", if (is.null(concordants_up)) "not queried" else nrow(concordants_up),
+    "| TB_DOWN", if (is.null(concordants_down)) "not queried" else nrow(concordants_down), "\n")
 
-write.csv(concordants_up,   file.path(dir_out, paste0(ACC, "_concordants_UP_raw.csv")),   row.names = FALSE)
-write.csv(concordants_down, file.path(dir_out, paste0(ACC, "_concordants_DOWN_raw.csv")), row.names = FALSE)
-
-## ---- paired consensus (drugfindR's documented combination step) ----
-consensus <- drugfindR::consensusConcordants(concordants_up, concordants_down,
-                                              paired = TRUE, cutoff = SIMILARITY_CUTOFF)
-cat(">>> Consensus (|similarity| >=", SIMILARITY_CUTOFF, "):", nrow(consensus), "compounds.\n")
+## ---- consensus: paired if both directions returned results, otherwise the single available one ----
+dirs <- Filter(function(x) !is.null(x) && nrow(x) > 0, list(UP = concordants_up, DOWN = concordants_down))
+if (length(dirs) == 0) stop("iLINCS returned no concordant signatures.")
+mode <- if (length(dirs) == 2) "paired (TB_UP + TB_DOWN)" else paste0("single direction (", names(dirs), " only)")
+consensus <- if (length(dirs) == 2) {
+  drugfindR::consensusConcordants(dirs$UP, dirs$DOWN, paired = TRUE, cutoff = SIMILARITY_CUTOFF)
+} else {
+  drugfindR::consensusConcordants(dirs[[1]], paired = FALSE, cutoff = SIMILARITY_CUTOFF)
+}
+writeLines(mode, file.path(dir_out, paste0(ACC, "_consensus_mode.txt")))
+cat(">>> Consensus mode:", mode, "|", nrow(consensus), "compounds with |similarity| >=", SIMILARITY_CUTOFF, "\n")
 
 sim_col <- if ("similarity" %in% names(consensus)) "similarity" else
            if ("Similarity" %in% names(consensus)) "Similarity" else NA

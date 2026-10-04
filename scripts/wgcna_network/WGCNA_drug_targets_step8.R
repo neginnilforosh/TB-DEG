@@ -8,7 +8,6 @@ if (!all(pkg_ok)) {
 }
 
 ## ---- CONFIG ----
-ACC <- "GSE114192"
 DGIDB_URL <- "https://dgidb.org/api/graphql"
 
 ## ---- paths ----
@@ -23,10 +22,12 @@ get_script_dir <- function() {
   getwd()
 }
 SCRIPT_DIR <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
-dir_sig    <- file.path(BASE_DIR, "13_ilincs_signature")
-dir_string <- file.path(BASE_DIR, "12_string_ppi")
-dir_out    <- file.path(BASE_DIR, "14_drug_targets")
+OUT_DIR <- run_out_dir(BASE_DIR)
+dir_sig    <- file.path(OUT_DIR, "13_ilincs_signature")
+dir_string <- file.path(OUT_DIR, "12_string_ppi")
+dir_out    <- file.path(OUT_DIR, "14_drug_targets")
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 
 ## ---- load candidate compounds (step 7) + combined network (step 5) ----

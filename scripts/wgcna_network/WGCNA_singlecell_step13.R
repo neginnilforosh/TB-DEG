@@ -8,7 +8,6 @@
 if (!requireNamespace("Matrix", quietly = TRUE)) stop("Missing package Matrix (ships with standard R; or install.packages(\"Matrix\")).")
 
 ## ---- CONFIG ----
-ACC             <- "GSE114192"
 SC_SUBDIR       <- file.path("external_data", "SCP1749")
 CELLTYPE_COL    <- "CellTypeAnnotations"
 DETECT_MIN_CP10K <- 1
@@ -30,10 +29,12 @@ get_script_dir <- function() {
   getwd()
 }
 SCRIPT_DIR <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
 ROOT_DIR   <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); d })
 BASE_DIR   <- file.path(ROOT_DIR, ACC)
+OUT_DIR <- run_out_dir(BASE_DIR)
 SC_DIR     <- file.path(ROOT_DIR, SC_SUBDIR)
-dir_out    <- file.path(BASE_DIR, "18_singlecell"); dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
+dir_out    <- file.path(OUT_DIR, "18_singlecell"); dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 need <- file.path(SC_DIR, c("4Week_countsmatrix.mtx", "4Week_features.tsv", "4Week_barcodes.tsv", "metadata.txt"))
 if (!all(file.exists(need))) stop("Single-cell files not found in ", SC_DIR, ":\n  missing: ", paste(basename(need[!file.exists(need)]), collapse = ", "),
                                   "\n  (see the header of this script for where to get them)")
@@ -96,7 +97,7 @@ cat(">>> Marker sanity check:", paste0(names(chk), "->", got, ifelse(got == chk,
 if (mean(got == chk) < 0.75) stop("Canonical markers do not land in the expected cell types -- wrong annotation column or wrong file pairing?")
 
 ## ---- 2. module genes -> cell types ----
-gt <- read.csv(file.path(BASE_DIR, "16_final_tables", paste0(ACC, "_FINAL_GeneTable.csv")), stringsAsFactors = FALSE)
+gt <- read.csv(file.path(OUT_DIR, "16_final_tables", paste0(ACC, "_FINAL_GeneTable.csv")), stringsAsFactors = FALSE)
 gt <- gt[!is.na(gt$Gene) & nzchar(gt$Gene) & !duplicated(gt$Gene), ]
 gt$in_singlecell <- toupper(gt$Gene) %in% toupper(rownames(cp10k))
 cat(">>> Module genes with a gene symbol:", nrow(gt), "| present in the macaque feature list:", sum(gt$in_singlecell),
@@ -161,8 +162,8 @@ tryCatch({
 }, error = function(e) cat("  (heatmap skipped:", conditionMessage(e), ")\n"))
 
 ## ---- 3. drug targets -> cell types ----
-tg_file  <- file.path(BASE_DIR, "14_drug_targets", paste0(ACC, "_drug_targets_ALL.csv"))
-fin_file <- file.path(BASE_DIR, "16_final_tables", paste0(ACC, "_FINAL_DrugTable.csv"))
+tg_file  <- file.path(OUT_DIR, "14_drug_targets", paste0(ACC, "_drug_targets_ALL.csv"))
+fin_file <- file.path(OUT_DIR, "16_final_tables", paste0(ACC, "_FINAL_DrugTable.csv"))
 if (file.exists(tg_file) && file.exists(fin_file)) {
   tg  <- read.csv(tg_file, stringsAsFactors = FALSE); fin <- read.csv(fin_file, stringsAsFactors = FALSE)
   det_genes <- cc$calls[cc$calls$detected, ]

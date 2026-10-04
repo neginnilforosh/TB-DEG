@@ -1,15 +1,13 @@
 ## STEP 1: WGCNA network, module-trait correlation (TB vs Control), top modules by |r|,
-## module membership (MM/kME) and gene significance (GS). Edit ACC and TRAIT_COL per dataset.
+## module membership (MM/kME) and gene significance (GS). Dataset and groups are set in config.R.
 
 library(WGCNA)
 library(dplyr)
 options(stringsAsFactors = FALSE)
 enableWGCNAThreads()
 
-## ---- 1. CONFIG (edit per dataset) ----
+## ---- 1. CONFIG ----
 
-ACC       <- "GSE114192"   # folder name, matches the rest of the repo
-TRAIT_COL <- "TB_Only"     # which trait column = "has TB" (1) vs control (0)
 FDR_CUTOFF      <- 0.05
 MAX_SIG_MODULES <- 3   # max modules kept (strongest |r| among FDR < 0.05)
 
@@ -29,12 +27,15 @@ get_script_dir <- function() {
 }
 
 SCRIPT_DIR <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
 cat("Script folder detected as:", SCRIPT_DIR, "\n")
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
+OUT_DIR <- run_out_dir(BASE_DIR)
 dir_wgcna   <- file.path(BASE_DIR, "09_wgcna_input")
-dir_results <- file.path(BASE_DIR, "10_wgcna_results")
-dir_fig     <- file.path(BASE_DIR, "figures")
+dir_results <- file.path(OUT_DIR, "10_wgcna_results")
+dir_fig     <- file.path(OUT_DIR, "figures")
 dir.create(dir_results, recursive = TRUE, showWarnings = FALSE)
+dir.create(dir_fig, recursive = TRUE, showWarnings = FALSE)
 
 ## ---- 2. Load data ----
 cat("\n========== 1. LOAD DATA ==========\n")
@@ -46,6 +47,8 @@ if (nrow(datExpr) > ncol(datExpr)) {
   cat("Transposing expression matrix (samples as rows)...\n")
   datExpr <- as.data.frame(t(datExpr))
 }
+colnames(datExpr) <- clean_gene_ids(colnames(datExpr))
+datExpr <- datExpr[, !duplicated(colnames(datExpr))]
 cat("Expression data:", nrow(datExpr), "samples,", ncol(datExpr), "genes.\n")
 
 trait_file <- file.path(dir_wgcna, paste0(ACC, "_WGCNA_trait_file.csv"))
@@ -57,6 +60,14 @@ if (length(common_samples) == 0) stop("No matching sample IDs between expression
 datExpr   <- datExpr[common_samples, ]
 datTraits <- datTraits[common_samples, , drop = FALSE]
 cat("Matched", length(common_samples), "samples.\n")
+
+## keep only the CONTROL and CASE samples (e.g. LTBI is dropped for TBneg vs ATB)
+grp_cols <- intersect(c(CONTROL, CASE), colnames(datTraits))
+if (length(grp_cols) != 2) stop("Trait file needs columns '", CONTROL, "' and '", CASE, "'; it has: ", paste(colnames(datTraits), collapse = ", "))
+keep <- rowSums(datTraits[, grp_cols, drop = FALSE]) > 0
+datExpr <- datExpr[keep, ]; datTraits <- datTraits[keep, grp_cols, drop = FALSE]
+datExpr <- datExpr[, apply(datExpr, 2, stats::var) > 0]
+cat("Kept", sum(keep), "samples:", sum(datTraits[[CONTROL]] == 1), CONTROL, "+", sum(datTraits[[CASE]] == 1), CASE, "|", ncol(datExpr), "genes\n")
 
 if (!(TRAIT_COL %in% colnames(datTraits))) {
   stop("TRAIT_COL '", TRAIT_COL, "' not in trait file. Available columns: ",

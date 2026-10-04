@@ -1,0 +1,13 @@
+"Module","Source","Term","p.adjust","Count"
+"green","GO_BP",NA,NA,NA
+"green","KEGG",NA,NA,NA
+"green","Reactome","HSP90 chaperone cycle for steroid hormone receptors (SHR) in the presence of ligand",0.0228300580521648,10
+"green","Hallmark","HALLMARK_INTERFERON_ALPHA_RESPONSE",0.00476888515436135,15
+"magenta","GO_BP","nuclear division",6.46582857523888e-20,36
+"magenta","KEGG","Cell cycle",8.27188408444545e-09,16
+"magenta","Reactome","Cell Cycle Checkpoints",3.84897664778253e-14,29
+"magenta","Hallmark","HALLMARK_G2M_CHECKPOINT",3.40494109926659e-21,33
+"purple","GO_BP","adaptive immune response",1.36888436230306e-09,22
+"purple","KEGG","Allograft rejection",1.06003664194557e-08,8
+"purple","Reactome","Translocation of ZAP-70 to Immunological synapse",8.71737041573827e-06,5
+"purple","Hallmark","HALLMARK_COMPLEMENT",2.2046922313699e-05,10

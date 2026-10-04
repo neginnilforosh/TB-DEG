@@ -6,9 +6,6 @@ if (!all(pkg_ok)) stop("Missing package(s): ", paste(required_pkgs[!pkg_ok], col
                        " (already installed for steps 2/4/5/6/9)")
 
 ## ---- CONFIG ----
-ACC <- "GSE114192"
-## set blue's name once it is known (NA until then)
-MODULE_NAMES <- c(green = "Interferon_Response", purple = "Ribosome_Biogenesis_Chromatin", blue = NA)
 
 ## ---- gene name matching (as in step 9): exact symbol first, alias as fallback ----
 ensembl_to_network_name <- function(ens_ids, network_names, annot = NULL) {
@@ -64,20 +61,23 @@ get_script_dir <- function() {
   getwd()
 }
 SCRIPT_DIR <- get_script_dir()
+source(file.path(SCRIPT_DIR, "config.R"))
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
+OUT_DIR <- run_out_dir(BASE_DIR)
 dir_deg    <- file.path(BASE_DIR, "06_deg_results")
-dir_wgcna  <- file.path(BASE_DIR, "10_wgcna_results")
-dir_enrich <- file.path(BASE_DIR, "11_module_enrichment")
-dir_string <- file.path(BASE_DIR, "12_string_ppi")
-dir_sig    <- file.path(BASE_DIR, "13_ilincs_signature")
-dir_dt     <- file.path(BASE_DIR, "14_drug_targets")
-dir_net    <- file.path(BASE_DIR, "15_network_algorithms")
-dir_out    <- file.path(BASE_DIR, "16_final_tables")
+dir_wgcna  <- file.path(OUT_DIR, "10_wgcna_results")
+dir_enrich <- file.path(OUT_DIR, "11_module_enrichment")
+dir_string <- file.path(OUT_DIR, "12_string_ppi")
+dir_sig    <- file.path(OUT_DIR, "13_ilincs_signature")
+dir_dt     <- file.path(OUT_DIR, "14_drug_targets")
+dir_net    <- file.path(OUT_DIR, "15_network_algorithms")
+dir_out    <- file.path(OUT_DIR, "16_final_tables")
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 
 ## ---- GENE TABLE ----
 cat(">>> Building gene table...\n")
-deg    <- read.csv(file.path(dir_deg, paste0(ACC, "_HealthyControl_vs_TBOnly_DEG.csv")), stringsAsFactors = FALSE)
+deg    <- read.csv(file.path(dir_deg, DEG_FILE_NAME), stringsAsFactors = FALSE)
+deg$gene <- clean_gene_ids(deg$gene); deg <- deg[order(deg$padj), ]; deg <- deg[!duplicated(deg$gene), ]
 mm_gs  <- read.csv(file.path(dir_wgcna, paste0(ACC, "_TBmodules_MM_GS.csv")), stringsAsFactors = FALSE)  # Ensembl IDs
 cent   <- read.csv(file.path(dir_string, paste0(ACC, "_COMBINED_centrality.csv")), stringsAsFactors = FALSE)  # network (STRING) names
 scores <- read.csv(file.path(dir_net, paste0(ACC, "_GeneScores_RWR_Diffusion.csv")), stringsAsFactors = FALSE)  # network (STRING) names
@@ -157,7 +157,7 @@ drug_table_out <- do.call(rbind, rows)
 drug_table_out <- drug_table_out[order(drug_table_out$iLINCS_Reversal_Score), ]  # strongest reversal first
 
 ## ---- optional: Enrichr pathways per drug (step 12) ----
-enr_file <- file.path(BASE_DIR, "17_pathway_annotation", paste0(ACC, "_DrugPathways_Enrichr_summary.csv"))
+enr_file <- file.path(OUT_DIR, "17_pathway_annotation", paste0(ACC, "_DrugPathways_Enrichr_summary.csv"))
 if (file.exists(enr_file)) {
   enr <- read.csv(enr_file, stringsAsFactors = FALSE)
   drug_table_out <- merge(drug_table_out, enr, by = "Drug", all.x = TRUE, sort = FALSE)
@@ -168,7 +168,7 @@ if (file.exists(enr_file)) {
 }
 
 ## ---- optional: single-cell cell-type profile per drug (step 13) ----
-sc_file <- file.path(BASE_DIR, "18_singlecell", paste0(ACC, "_drug_celltype.csv"))
+sc_file <- file.path(OUT_DIR, "18_singlecell", paste0(ACC, "_drug_celltype.csv"))
 if (file.exists(sc_file)) {
   sc <- read.csv(sc_file, stringsAsFactors = FALSE)
   sc <- sc[, c("Drug", "N_targets_detected_sc", "SC_Top_CellType", "SC_Top_Share_pct", "SC_Top_Immune_CellType", "SC_Top_Immune_Share_pct", "SC_Profile")]
