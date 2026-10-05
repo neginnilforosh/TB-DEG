@@ -1,0 +1,10 @@
+Consensus prioritisation for GSE114192 (Healthy_Control vs TB_Only), 2026-10-05.
+Top-ranked = best 20% of a criterion. High = 4+ criteria, Medium = 2-3, Low = below that.
+
+Read with these caveats:
+- RWR and diffusion rank-correlate 0.97, so they are not independent evidence; they count as one criterion here.
+- 323 of 1946 module genes have no STRING node and can reach at most two criteria; a Low tier there means 'not assessable', not 'unimportant' (see In_PPI_network).
+- Network proximity is weak in this run: 4 of 395 drugs reach p < 0.05 and 0 survive FDR correction. Treat it as a tie-breaker, not evidence.
+- Module enrichment reaches p < 0.05 for 11 drugs; most drugs have too few targets for this test.
+- Module labels: green = interferon / innate antimicrobial; purple = ribosome biogenesis and chromatin;
+  blue = mixed immune / cell-composition (myeloid and lymphoid signals together, deliberately not one pathway).
