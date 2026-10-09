@@ -1,8 +1,8 @@
 ## Configuration shared by all wgcna_network scripts.
 ## Pick the run here (or set the environment variable TB_RUN, e.g. TB_RUN=GSE161829_ATB Rscript step1.R).
 
-##ACTIVE_RUN <- "GSE114192_TB"
-ACTIVE_RUN <- "GSE161829_ATB"
+ACTIVE_RUN <- "GSE114192_TB"
+##ACTIVE_RUN <- "GSE161829_ATB"
 PRESETS <- list(
   GSE114192_TB = list(                       # pilot: Healthy_Control vs TB_Only
     ACC = "GSE114192", CONTROL = "Healthy_Control", CASE = "TB_Only",
