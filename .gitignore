@@ -32,3 +32,5 @@ Thumbs.db
 # per-drug Enrichr cache (any run folder) and R junk
 **/17_pathway_annotation/cache/
 .Rapp.history
+external_data/
+external_results/
