@@ -1,0 +1,21 @@
+"Layer","Group","N","Responding","Pct","Pct_rest","P_fisher"
+"RNA_responds_HC","High priority",47,44,93.6,22.7,2.2e-24
+"RNA_responds_HC","DEG-overlap genes",163,113,69.3,20,3.6e-37
+"RNA_responds_HC","module blue",1236,203,16.4,43.8,1
+"RNA_responds_HC","module green",320,211,65.9,15.4,2.58e-70
+"RNA_responds_HC","module purple",208,20,9.6,26.6,1
+"RNA_responds_PLWH","High priority",47,32,68.1,8.2,5.99e-23
+"RNA_responds_PLWH","DEG-overlap genes",163,66,40.5,6.6,2.33e-29
+"RNA_responds_PLWH","module blue",1236,47,3.8,23.7,1
+"RNA_responds_PLWH","module green",320,111,34.7,4.2,3.63e-47
+"RNA_responds_PLWH","module purple",208,14,6.7,10.2,0.96
+"ATAC_responds_HC","High priority",47,1,2.1,0.8,0.334
+"ATAC_responds_HC","DEG-overlap genes",163,3,1.8,0.7,0.155
+"ATAC_responds_HC","module blue",1236,7,0.6,1.5,0.985
+"ATAC_responds_HC","module green",320,5,1.6,0.7,0.119
+"ATAC_responds_HC","module purple",208,3,1.4,0.8,0.256
+"ATAC_responds_PLWH","High priority",47,0,0,0,1
+"ATAC_responds_PLWH","DEG-overlap genes",163,0,0,0,1
+"ATAC_responds_PLWH","module blue",1236,0,0,0,1
+"ATAC_responds_PLWH","module green",320,0,0,0,1
+"ATAC_responds_PLWH","module purple",208,0,0,0,1
