@@ -1,0 +1,7 @@
+"Comparison","N_input","N_symbols","N_unmapped"
+"GSE222001_Healthy_vs_Active",46,36,10
+"GSE222001_Healthy_vs_Latent",2,1,1
+"GSE161829_TBneg_vs_LTBI",0,0,0
+"GSE161829_TBneg_vs_ATB",50,50,0
+"GSE99374_HC_vs_LTBI",4,4,0
+"GSE114192_HC_vs_TBOnly",300,270,30
