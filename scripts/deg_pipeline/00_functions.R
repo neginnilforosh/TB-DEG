@@ -10,6 +10,22 @@ suppressPackageStartupMessages({
   library(matrixStats)
 })
 
+## ---- figure export: every figure as a 600-dpi PNG plus a vector PDF next to it ----
+## (Ratul: raster 600 DPI, vector PDF/SVG for the manuscript). Change here, not in each function.
+FIG_DPI    <- 600
+FIG_VECTOR <- TRUE
+save_gg <- function(out_png, p, width, height) {
+  ggsave(out_png, p, width = width, height = height, dpi = FIG_DPI)
+  if (FIG_VECTOR) ggsave(sub("\\.png$", ".pdf", out_png), p, width = width, height = height)
+  invisible(out_png)
+}
+## base / grid graphics (pheatmap, UpSetR): draw() is called once per device
+save_fig <- function(out_png, width, height, draw) {
+  png(out_png, width = width, height = height, units = "in", res = FIG_DPI); draw(); dev.off()
+  if (FIG_VECTOR) { pdf(sub("\\.png$", ".pdf", out_png), width = width, height = height, onefile = FALSE); draw(); dev.off() }
+  invisible(out_png)
+}
+
 ## ---- 1. Filtering: keep genes with >= min_count reads in >= min_samples samples (default: smallest group) ----
 filter_low_expression <- function(counts, min_count = 10, min_samples = 3) {
   keep <- rowSums(counts >= min_count) >= min_samples
@@ -29,7 +45,7 @@ plot_filtering_summary <- function(n_before, n_after, out_png, title = "Gene fil
     labs(title = title, x = NULL, y = "Number of genes") +
     theme_minimal(base_size = 12) +
     theme(legend.position = "none")
-  ggsave(out_png, p, width = 5, height = 4.5, dpi = 300)
+  save_gg(out_png, p, width = 5, height = 4.5)
   p
 }
 
@@ -55,7 +71,7 @@ plot_pca <- function(vst_mat, metadata, group_col = "group", out_png,
          y = paste0("PC2 (", var_expl[2], "%)"),
          color = "Group") +
     theme_bw(base_size = 12)
-  ggsave(out_png, p, width = 6.5, height = 5.5, dpi = 300)
+  save_gg(out_png, p, width = 6.5, height = 5.5)
   p
 }
 
@@ -69,13 +85,13 @@ sample_correlation <- function(vst_mat, metadata, group_col = "group",
   ann <- data.frame(Group = metadata[[group_col]])
   rownames(ann) <- rownames(metadata)
 
-  png(out_png, width = 7, height = 6.5, units = "in", res = 300)
-  pheatmap(cor_mat,
-           annotation_col = ann,
-           annotation_row = ann,
-           main = title,
-           color = colorRampPalette(rev(brewer.pal(9, "RdBu")))(100))
-  dev.off()
+  save_fig(out_png, 7, 6.5, function() {
+    pheatmap(cor_mat,
+             annotation_col = ann,
+             annotation_row = ann,
+             main = title,
+             color = colorRampPalette(rev(brewer.pal(9, "RdBu")))(100))
+  })
   cor_mat
 }
 
@@ -120,7 +136,7 @@ volcano_plot <- function(res_df, out_png, title,
                               max.overlaps = 30, show.legend = FALSE, color = "black") +
     labs(title = title, x = "log2 Fold Change", y = "-log10 adjusted p-value", color = NULL) +
     theme_bw(base_size = 12)
-  ggsave(out_png, p, width = 6.5, height = 5.5, dpi = 300)
+  save_gg(out_png, p, width = 6.5, height = 5.5)
   p
 }
 
@@ -142,14 +158,14 @@ sig_deg_heatmap <- function(vst_mat, sig_genes, metadata, group_col = "group",
   ann <- data.frame(Group = metadata[[group_col]])
   rownames(ann) <- rownames(metadata)
 
-  png(out_png, width = 7.5, height = 8.5, units = "in", res = 300)
-  pheatmap(mat_scaled,
-           annotation_col = ann,
-           show_rownames = TRUE, show_colnames = TRUE,
-           main = title,
-           color = colorRampPalette(rev(brewer.pal(9, "RdBu")))(100),
-           fontsize_row = 6)
-  dev.off()
+  save_fig(out_png, 7.5, 8.5, function() {
+    pheatmap(mat_scaled,
+             annotation_col = ann,
+             show_rownames = TRUE, show_colnames = TRUE,
+             main = title,
+             color = colorRampPalette(rev(brewer.pal(9, "RdBu")))(100),
+             fontsize_row = 6)
+  })
 }
 
 ## ---- 6. Shared/unique DEGs across comparisons (UpSet); deg_lists = named list of gene vectors ----
@@ -162,11 +178,11 @@ shared_unique_degs <- function(deg_lists, out_csv, out_png,
   write.csv(out_df, out_csv, row.names = FALSE)
 
   upset_input <- as.data.frame(membership * 1L)
-  png(out_png, width = 8, height = 5.5, units = "in", res = 300)
-  print(UpSetR::upset(upset_input, sets = colnames(upset_input),
-                       order.by = "freq", main.bar.color = "#2166ac",
-                       sets.bar.color = "#b2182b", text.scale = 1.2))
-  dev.off()
+  save_fig(out_png, 8, 5.5, function() {
+    print(UpSetR::upset(upset_input, sets = colnames(upset_input),
+                         order.by = "freq", main.bar.color = "#2166ac",
+                         sets.bar.color = "#b2182b", text.scale = 1.2))
+  })
   out_df
 }
 
@@ -193,6 +209,6 @@ plot_sample_design <- function(metadata, group_col = "group", out_png,
     labs(title = title, x = NULL, y = "Number of samples") +
     theme_minimal(base_size = 12) +
     theme(legend.position = "none", axis.text.x = element_text(angle = 30, hjust = 1))
-  ggsave(out_png, p, width = 5, height = 4.5, dpi = 300)
+  save_gg(out_png, p, width = 5, height = 4.5)
   p
 }
