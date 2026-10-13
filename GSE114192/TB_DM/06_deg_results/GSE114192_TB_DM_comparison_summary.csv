@@ -1,0 +1,5 @@
+"Comparison","Case","N_case","Control","N_control","N_significant"
+"DM_only_vs_TB_DM","TB_DM",61,"DM_only",52,295
+"TB_Only_vs_TB_DM","TB_DM",61,"TB_Only",46,31
+"Healthy_Control_vs_TB_DM","TB_DM",61,"Healthy_Control",36,796
+"Healthy_Control_vs_DM_only","DM_only",52,"Healthy_Control",36,74

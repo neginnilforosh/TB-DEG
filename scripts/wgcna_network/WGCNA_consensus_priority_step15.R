@@ -10,6 +10,10 @@ MED_N          <- 2
 PROX_Z_CUT     <- -1      # drug: targets closer to the disease genes than average
 MIN_TARGETS    <- 3       # drug: targets inside the TB network
 P_CUT          <- 0.05    # drug: proximity and module-enrichment p-values
+## drug-target cleaning before counting targets (set both to c()/FALSE to reproduce the original pilot numbers)
+EXCLUDE_SCREEN_TARGETS <- c("NFE2L2")   # linked to >100 compounds by screening-assay records, not mechanism
+EXCLUDE_ADME_TARGETS   <- TRUE          # drug-metabolism / transport genes (CYP, UGT, SULT, SLC, ABC)
+ADME_PATTERN <- "^(CYP[0-9]|UGT[0-9]|SULT[0-9]|SLC[0-9]|ABC[A-G][0-9])"
 
 ## ---- paths ----
 get_script_dir <- function() {
@@ -85,8 +89,29 @@ cat("\n========== DRUGS ==========\n")
 d  <- rd(OUT_DIR, "16_final_tables", paste0(ACC, "_FINAL_DrugTable.csv"))
 mo <- rd(OUT_DIR, "15_network_algorithms", paste0(ACC, "_ModuleOverlapScoring.csv"))
 
-targets <- strsplit(d$Known_Targets, ";")
-d$N_TB_Network_Targets <- vapply(targets, function(x) length(unique(x[nzchar(x)])), integer(1))
+clean_targets <- function(x) {
+  x <- unique(x[!is.na(x) & nzchar(x)])
+  if (length(EXCLUDE_SCREEN_TARGETS)) x <- setdiff(x, EXCLUDE_SCREEN_TARGETS)
+  if (isTRUE(EXCLUDE_ADME_TARGETS)) x <- x[!grepl(ADME_PATTERN, x)]
+  x
+}
+raw_targets <- strsplit(d$Known_Targets, ";")
+targets <- lapply(raw_targets, clean_targets)
+n_raw <- vapply(raw_targets, function(x) length(unique(x[nzchar(x)])), integer(1))
+d$N_TB_Network_Targets <- vapply(targets, length, integer(1))
+cat(">>> target cleaning: excluded", if (length(EXCLUDE_SCREEN_TARGETS)) paste(EXCLUDE_SCREEN_TARGETS, collapse = ",") else "none",
+    "| ADME genes excluded:", isTRUE(EXCLUDE_ADME_TARGETS), "\n")
+cat("    drugs whose network targets all came from excluded genes:", sum(n_raw > 0 & d$N_TB_Network_Targets == 0),
+    "| drugs with >=", MIN_TARGETS, "targets: before", sum(n_raw >= MIN_TARGETS), "after", sum(d$N_TB_Network_Targets >= MIN_TARGETS), "\n")
+d$Known_Targets_used <- vapply(targets, paste, character(1), collapse = ";")
+## informational only: share of the drug's (cleaned) targets that fall in the disease network
+all_t <- file.path(OUT_DIR, "14_drug_targets", paste0(ACC, "_drug_targets_ALL.csv"))
+if (file.exists(all_t)) {
+  at <- read.csv(all_t, stringsAsFactors = FALSE)
+  tot <- vapply(split(at$Target_Gene, at$Drug), function(x) length(clean_targets(x)), integer(1))
+  d$N_targets_total <- unname(tot[d$Drug])
+  d$Target_fraction_in_network <- round(d$N_TB_Network_Targets / d$N_targets_total, 3)
+}
 high_genes <- gene_out$Gene[gene_out$Final_Priority == "High"]
 d$N_HighPriority_Targets <- vapply(targets, function(x) length(intersect(unique(x), high_genes)), integer(1))
 d$HighPriority_Targets   <- vapply(targets, function(x) paste(intersect(unique(x), high_genes), collapse = ";"), character(1))
@@ -111,7 +136,7 @@ cat(">>> drugs meeting each criterion (of", nrow(d), "):",
     paste(names(dcrit), vapply(dcrit, sum, integer(1)), collapse = ", "), "\n")
 
 dcols <- c("Drug", "iLINCS_Reversal_Score", "Network_Proximity_Z", "Network_Proximity_P", "N_TB_Network_Targets",
-           "Known_Targets", "Modules_Affected", "Modules_Enriched", "Module_Enrichment_P",
+           "Known_Targets", "Known_Targets_used", "N_targets_total", "Target_fraction_in_network", "Modules_Affected", "Modules_Enriched", "Module_Enrichment_P",
            "N_HighPriority_Targets", "HighPriority_Targets", "RWR_score", "Enrichr_KEGG", "Enrichr_Reactome",
            "SC_Top_Immune_CellType", names(dcrit), "N_criteria", "Criteria_met", "Final_Priority")
 drug_out <- d[order(-d$N_criteria, d$iLINCS_Reversal_Score), intersect(dcols, names(d))]
@@ -136,7 +161,12 @@ notes <- c(
          " drugs reach p < ", P_CUT, " and ", n_padj, " survive FDR correction. Treat it as a tie-breaker, not evidence."),
   paste0("- Module enrichment reaches p < ", P_CUT, " for ", sum(dcrit$Module_enriched), " drugs; most drugs have ",
          "too few targets for this test."),
-  "- Module labels: green = interferon / innate antimicrobial; purple = ribosome biogenesis and chromatin;",
-  "  blue = mixed immune / cell-composition (myeloid and lymphoid signals together, deliberately not one pathway).")
+  paste0("- Drug targets: ", if (length(EXCLUDE_SCREEN_TARGETS)) paste(EXCLUDE_SCREEN_TARGETS, collapse = ", ") else "no screening-assay genes",
+         " excluded", if (isTRUE(EXCLUDE_ADME_TARGETS)) " and drug-metabolism/transport genes (CYP, UGT, SULT, SLC, ABC) excluded" else "",
+         " before counting; ", sum(n_raw > 0 & d$N_TB_Network_Targets == 0), " drugs lost all their network targets this way."),
+  ## module labels come from this run's MODULE_NAMES in config.R, so they are never another run's labels
+  if (length(MODULE_NAMES))
+    paste0("- Module labels (from config.R): ", paste(names(MODULE_NAMES), "=", MODULE_NAMES, collapse = "; "), ".")
+  else "- Module labels: none set in config.R (MODULE_NAMES is empty), so modules are identified by WGCNA colour only.")
 writeLines(notes, file.path(dir_out, paste0(ACC, "_CONSENSUS_NOTES.txt")))
 cat("\n>>> DONE. Tables and ", paste0(ACC, "_CONSENSUS_NOTES.txt"), " in ", dir_out, "\n", sep = "")

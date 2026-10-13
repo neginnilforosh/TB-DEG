@@ -1,0 +1,21 @@
+"pid","name","cpd","N_metabolites"
+"01100","Metabolic pathways - Homo sapiens (human)","C00078;C00135;C00270",3
+"00970","Aminoacyl-tRNA biosynthesis - Homo sapiens (human)","C00078;C00135",2
+"01230","Biosynthesis of amino acids - Homo sapiens (human)","C00078;C00135",2
+"05230","Central carbon metabolism in cancer - Homo sapiens (human)","C00078;C00135",2
+"04974","Protein digestion and absorption - Homo sapiens (human)","C00078;C00135",2
+"01210","2-Oxocarboxylic acid metabolism - Homo sapiens (human)","C00078",1
+"02010","ABC transporters - Homo sapiens (human)","C00135",1
+"05143","African trypanosomiasis - Homo sapiens (human)","C00078",1
+"00410","beta-Alanine metabolism - Homo sapiens (human)","C00135",1
+"01240","Biosynthesis of cofactors - Homo sapiens (human)","C00078",1
+"01250","Biosynthesis of nucleotide sugars - Homo sapiens (human)","C00270",1
+"00541","Biosynthesis of various nucleotide sugars - Homo sapiens (human)","C00270",1
+"04382","Cornified envelope formation - Homo sapiens (human)","C00135",1
+"00470","D-Amino acid metabolism - Homo sapiens (human)","C00135",1
+"00260","Glycine, serine and threonine metabolism - Homo sapiens (human)","C00078",1
+"00340","Histidine metabolism - Homo sapiens (human)","C00135",1
+"04978","Mineral absorption - Homo sapiens (human)","C00078",1
+"00400","Phenylalanine, tyrosine and tryptophan biosynthesis - Homo sapiens (human)","C00078",1
+"04726","Serotonergic synapse - Homo sapiens (human)","C00078",1
+"00380","Tryptophan metabolism - Homo sapiens (human)","C00078",1

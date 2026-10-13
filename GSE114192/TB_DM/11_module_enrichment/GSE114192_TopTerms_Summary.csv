@@ -1,0 +1,13 @@
+"Module","Source","Term","p.adjust","Count"
+"black","GO_BP","response to type II interferon",0.000581814379239074,16
+"black","KEGG","Complement and coagulation cascades",0.00011852665737718,11
+"black","Reactome","Interferon gamma signaling",3.57986357677375e-06,16
+"black","Hallmark","HALLMARK_INTERFERON_GAMMA_RESPONSE",7.93876063609716e-19,43
+"green","GO_BP","hypersensitivity",0.00902890689462998,8
+"green","KEGG",NA,NA,NA
+"green","Reactome",NA,NA,NA
+"green","Hallmark",NA,NA,NA
+"greenyellow","GO_BP","regulation of MAPK cascade",0.00301657017751069,24
+"greenyellow","KEGG","Toll-like receptor signaling pathway",0.0226850862617777,9
+"greenyellow","Reactome","Signaling by Interleukins",0.0166605860636587,19
+"greenyellow","Hallmark","HALLMARK_TNFA_SIGNALING_VIA_NFKB",0.00076168881741075,15

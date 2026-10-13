@@ -29,7 +29,7 @@ SCRIPT_DIR <- get_script_dir()
 source(file.path(SCRIPT_DIR, "config.R"))
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
 OUT_DIR <- run_out_dir(BASE_DIR)
-dir_deg    <- file.path(BASE_DIR, "06_deg_results")
+dir_deg    <- in_dir(BASE_DIR, "06_deg_results")
 dir_out    <- file.path(OUT_DIR, "13_ilincs_signature")
 dir.create(dir_out, recursive = TRUE, showWarnings = FALSE)
 

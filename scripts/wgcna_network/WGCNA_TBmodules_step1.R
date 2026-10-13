@@ -31,7 +31,7 @@ source(file.path(SCRIPT_DIR, "config.R"))
 cat("Script folder detected as:", SCRIPT_DIR, "\n")
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
 OUT_DIR <- run_out_dir(BASE_DIR)
-dir_wgcna   <- file.path(BASE_DIR, "09_wgcna_input")
+dir_wgcna   <- in_dir(BASE_DIR, "09_wgcna_input")
 dir_results <- file.path(OUT_DIR, "10_wgcna_results")
 dir_fig     <- file.path(OUT_DIR, "figures")
 dir.create(dir_results, recursive = TRUE, showWarnings = FALSE)

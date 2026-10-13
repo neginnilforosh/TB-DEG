@@ -1,23 +1,41 @@
 ## Configuration shared by all wgcna_network scripts.
 ## Pick the run here (or set the environment variable TB_RUN, e.g. TB_RUN=GSE161829_ATB Rscript step1.R).
 
-ACTIVE_RUN <- "GSE114192_TB"
+ACTIVE_RUN <- "GSE114192_TBDM_vs_DM"
+##ACTIVE_RUN <- "GSE114192_TB"
 ##ACTIVE_RUN <- "GSE161829_ATB"
 PRESETS <- list(
   GSE114192_TB = list(                       # pilot: Healthy_Control vs TB_Only
     ACC = "GSE114192", CONTROL = "Healthy_Control", CASE = "TB_Only",
     DEG_NAME = "HealthyControl_vs_TBOnly",     # <ACC>_<DEG_NAME>_DEG.csv in 06_deg_results
     RUN = "",                                  # "" = outputs directly in the dataset folder
-    MODULE_NAMES = c(green = "Interferon_Response", purple = "Ribosome_Biogenesis_Chromatin", blue = NA),
+    MODULE_NAMES = c(green = "Interferon_Response", purple = "Ribosome_Biogenesis_Chromatin", blue = "Mixed_CellComposition"),
     MODULE_PLOT_COLORS = c(green = "#2ecc71", purple = "#9b59b6", blue = "#3498db")),
+  
   GSE161829_ATB = list(                      # replication: TBneg vs active TB (LTBI samples excluded)
     ACC = "GSE161829", CONTROL = "TBneg", CASE = "ATB",
     DEG_NAME = "TBneg_vs_ATB",
     RUN = "TBneg_vs_ATB",                      # outputs in GSE161829/TBneg_vs_ATB/
     MODULE_NAMES = character(0),               # fill in after step 2
-    MODULE_PLOT_COLORS = NULL)                 # NULL = use the WGCNA colour names
-)
+    MODULE_PLOT_COLORS = NULL) ,                # NULL = use the WGCNA colour names
+  
+  GSE114192_TBDM_vs_DM = list(
+    ACC = "GSE114192", CONTROL = "DM_only", CASE = "TB_DM",
+    DEG_NAME = "DM_only_vs_TB_DM",
+    RUN = "TB_DM",
+    MODULE_NAMES = c(black = "M1_Interferon_Complement",
+                 greenyellow = "M2_TLR_NFkB_Inflammation",
+                 green = "M3_Mixed_CellComposition"),
+    MODULE_PLOT_COLORS = NULL),
+	
+  GSE114192_TBDM_vs_TB = list(
+	  ACC = "GSE114192", CONTROL = "TB_Only", CASE = "TB_DM",
+    DEG_NAME = "TB_Only_vs_TB_DM", 
+    RUN = "TB_DM",
+    MODULE_NAMES = character(0), 
+    MODULE_PLOT_COLORS = NULL)
 
+)
 ## ---- apply the active preset ----
 run_id <- Sys.getenv("TB_RUN", ACTIVE_RUN)
 if (!run_id %in% names(PRESETS)) stop("Unknown run '", run_id, "'. Available: ", paste(names(PRESETS), collapse = ", "))
@@ -30,6 +48,12 @@ cat(">>> Run:", run_id, "|", ACC, ":", CONTROL, "vs", CASE, if (nzchar(RUN)) pas
 
 ## output folder of the run (inputs 02/06/07/09 always stay in the dataset folder)
 run_out_dir <- function(base_dir) if (nzchar(RUN)) file.path(base_dir, RUN) else base_dir
+## inputs: the run folder's copy when it has one (e.g. GSE114192/TB_DM/09_wgcna_input),
+## otherwise the dataset folder's -- so existing runs resolve exactly as before
+in_dir <- function(base, sub) {
+  r <- file.path(run_out_dir(base), sub)
+  if (dir.exists(r)) r else file.path(base, sub)
+}
 
 ## "ENSG00000138496.16|PARP9" -> "ENSG00000138496"; plain Ensembl IDs are left unchanged
 clean_gene_ids <- function(x) sub("\\.[0-9]+$", "", sub("\\|.*$", "", x))
