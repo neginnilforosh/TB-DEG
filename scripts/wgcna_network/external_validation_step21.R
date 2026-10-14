@@ -1,7 +1,7 @@
-## STEP 21: external validation of the prioritised genes (Ratul, email of 9 Oct 2026: "use the other active-TB/LTBI
-## datasets mainly as an external validation and phenotype-characterisation layer ... test whether the
-## final prioritised genes are reproduced in independent active-TB datasets, also altered in LTBI, more
-## characteristic of active TB than latent TB. Do not make simple cross-dataset DEG overlap the main analysis.")
+## STEP 21: external validation of the prioritised genes. The other active-TB/LTBI datasets are used mainly
+## as an external validation and phenotype-characterisation layer: test whether the final prioritised genes
+## are reproduced in independent active-TB datasets, also altered in LTBI, and more characteristic of active
+## TB than latent TB. Simple cross-dataset DEG overlap is not the main analysis.
 ##
 ## For the active run's consensus genes (step 15), looks each gene up in every external comparison and asks:
 ##   1. direction:  does it move the same way as in the discovery run?   (sign test against 50%)

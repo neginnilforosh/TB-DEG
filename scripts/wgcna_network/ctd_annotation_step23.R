@@ -1,7 +1,6 @@
-## STEP 23: CTD annotation (Ratul, 10 Oct: "use CTD as a supportive knowledge-annotation resource. For the
-## final important genes, annotate known associations with tuberculosis, diabetes, HIV, relevant
-## immune/inflammatory diseases, chemicals/drugs. Use CTD as an annotation/validation layer rather than
-## as the primary method.")
+## STEP 23: CTD annotation. CTD is a supportive knowledge-annotation resource: for the final important
+## genes, annotate known associations with tuberculosis, diabetes, HIV, relevant immune/inflammatory
+## diseases and chemicals/drugs. It is an annotation/validation layer, not the primary method.
 ##
 ## Queries the CTD Batch Query service for the run's High + Medium consensus genes (curated gene-disease
 ## associations and chemical-gene interactions), caches every answer, and writes one row per gene with

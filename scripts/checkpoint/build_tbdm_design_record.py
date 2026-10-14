@@ -64,10 +64,10 @@ m["site_has_HC_and_DMonly"] = m.field_site_GEO.isin(["South_Africa", "Romania"])
 
 def reason(row):
     if row.disease_state_GEO == "IH":
-        return "Excluded: IH (intermediate hyperglycaemia, no TB); not part of Ratul's 9 Oct comparisons; not reported in Eckold et al."
+        return "Excluded: IH (intermediate hyperglycaemia, no TB); not part of the specified TB-DM comparisons; not reported in Eckold et al."
     if row.disease_state_GEO == "TB_IH":
-        return "Excluded: TB with intermediate hyperglycaemia (HbA1c 5.7-<6.5%); not part of the 9 Oct comparisons; candidate secondary analysis"
-    return "Included: core group for 9 Oct TB-DM comparisons"
+        return "Excluded: TB with intermediate hyperglycaemia (HbA1c 5.7-<6.5%); not part of the specified comparisons; candidate secondary analysis"
+    return "Included: core group for the specified TB-DM comparisons"
 m["inclusion_reason"] = m.apply(reason, axis=1)
 
 flags = []

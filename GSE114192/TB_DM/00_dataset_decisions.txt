@@ -1,11 +1,11 @@
 GSE114192 TB-DM BRANCH - DATASET DECISION RECORD
 Created 2026-10-14 (pre-TB-HIV checkpoint). Repo state at creation: main = f2b3a52 (clean, = origin/main).
-Status key: DECIDED (by an explicit instruction or by data facts) | PROPOSED (awaiting Ratul) | PENDING SUPERVISOR DECISION
+Status key: DECIDED (by an explicit instruction or by data facts) | PROPOSED (awaiting decision) | PENDING DECISION
 
 Sources: GEO series matrix GSE114192 (fetched 14 Oct 2026; 00_design/GSE114192_geo_series_matrix_metadata.tsv);
 HTSeq count files (00_design/GSE114192_htseq_library_qc.tsv); Eckold et al., Clin Infect Dis 2021;72(1):69-78,
-PMID 32533832, main text + Suppl. Methods + Suppl. Tables 1-2; Ratul's emails 9 Oct and 13 Oct 2026; Technical
-document sec.20. Sample-level detail: 00_sample_manifest.csv. Design checks: 00_design/design_identifiability.csv.
+PMID 32533832, main text + Suppl. Methods + Suppl. Tables 1-2; project analysis specification of 9 and 13 Oct
+2026 (TB-DM design section). Sample-level detail: 00_sample_manifest.csv. Design checks: 00_design/design_identifiability.csv.
 
 1. SAMPLES - DECIDED (data facts)
    GEO has 249 samples, one per patient (patient id 1-249), all whole blood, Illumina NextSeq 500 (GPL18573).
@@ -14,13 +14,13 @@ document sec.20. Sample-level detail: 00_sample_manifest.csv. Design checks: 00_
    pipeline group (00_sample_manifest.csv, assertion checked in scripts/checkpoint/build_tbdm_design_record.py).
 
 2. IH (n=10) AND TB-IH (n=44) EXCLUSION - DECIDED for the 9 Oct comparisons, rationale documented
-   Ratul's 9 Oct comparisons are TB-DM vs DM, TB-DM vs TB and TB x DM; none involve IH. Eckold et al. define IH as
+   The specified comparisons are TB-DM vs DM, TB-DM vs TB and TB x DM; none involve IH. Eckold et al. define IH as
    HbA1c 5.7-<6.5% (TANDEM cohort paper uses 6.0-6.4%: definitions differ between the two papers). The 10 IH-only
    samples are listed in Suppl. Table 1 ("pre_DM") but are never analysed or described in the publication.
    TB-IH is a possible future secondary contrast (the paper's main finding is that TB-IH resembles TB-DM);
    excluding it is a scope choice, not a neutral default. Excluding it means TB_only = normoglycaemic TB.
 
-3. SITE DISTRIBUTION AND CONFOUNDING - PENDING SUPERVISOR DECISION (D1)
+3. SITE DISTRIBUTION AND CONFOUNDING - PENDING DECISION (D1)
    Site x group (00_design/site_by_group.csv):
                     Indonesia  Peru  Romania  South_Africa
      Healthy_Control      0      0      12        24
@@ -46,17 +46,17 @@ document sec.20. Sample-level detail: 00_sample_manifest.csv. Design checks: 00_
      B. All sites with ~ site + group: identical group-effect information to A, plus Indonesia/Peru samples for
         dispersion estimation; relies on the assumption that site effects are additive and common to groups.
      C. Keep ~ group on all sites: largest n, but disease and site effects are inseparable for the primary contrast.
-        Acceptable only with Ratul's explicit approval and a stated limitation.
-   Proposal (awaiting Ratul): A for the primary and interaction contrasts, ~ site + group on all sites for the
+        Acceptable only with explicit approval and a stated limitation.
+   Proposal (awaiting decision): A for the primary and interaction contrasts, ~ site + group on all sites for the
    secondary contrast, with C retained as the existing preliminary comparison.
 
-4. SEX - PENDING SUPERVISOR DECISION (D2)
+4. SEX - PENDING DECISION (D2)
    Not in the GEO metadata. Eckold Suppl. Methods: "Gender was added to the model as a confounder." Eckold Table 1
    gives sex only as group/site summaries (e.g. SA TB-only 2 M / 9 F; TB-only 43% male vs TB-DM 61% overall).
    Options: (a) obtain verified per-sample sex from the authors (corresponding author J. Cliff, LSHTM);
    (b) infer sex from expression (e.g. XIST, RPS4Y1, DDX3Y, KDM5D, UTY, EIF1AY) with a documented rule, an
    ambiguity category and a check against Table 1 group/site sex counts; (c) no sex adjustment, stated as a
-   limitation. No sex has been inferred or assigned. Sex inference is not approved in any email.
+   limitation. No sex has been inferred or assigned. Sex inference has not been approved.
 
 5. OUTLIERS - DOCUMENTED; handling PENDING (no removal)
    figures_step24.R flags 14 of 195 samples by low mean sample-sample correlation
@@ -118,8 +118,8 @@ document sec.20. Sample-level detail: 00_sample_manifest.csv. Design checks: 00_
    folder, not over these outputs). TB-DM GSEA results are in GSE114192/17_gsea/ (dataset-level folder, where
    WGCNA_GSEA_step11.R writes every comparison); interaction GSEA is in TB_DM/17_gsea_interaction/.
 
-12. DECISIONS REQUIRED FROM RATUL: see README.md, section "Open decisions (pending Ratul)"
+12. OPEN DECISIONS: see README.md, section "Open methodological decisions"
    (D1 site design, D2 sex, D3 module selection, D4 gene consensus scheme, D5 proximity in drug tiers,
-    D6 thesis scope / drug-resistant TB, D7 role of metabolomics/scRNA/GSE165709, D8 MoA prediction,
-    D9 manuscript vs thesis plan; added at checkpoint: D10 GSE50834 suitability, D11 reruns for label errors
+    D6 project scope / drug-resistant TB, D7 role of metabolomics/scRNA/GSE165709, D8 MoA prediction,
+    D9 publication plan (not tracked here); added at checkpoint: D10 GSE50834 suitability, D11 reruns for label errors
     in GSE222001/GSE161829, D12 ML validation design, D13 TB-DM rerun approval).

@@ -2,7 +2,7 @@
 """Pre-TB-HIV checkpoint: diagnostics for the existing consensus gene and drug rankings (step 15).
 
 DIAGNOSTIC ONLY. Official tiers in 19_consensus/*.csv are NOT changed. All alternative tiers written here are
-DRAFTS for Ratul's decisions D4 (gene scheme) and D5 (proximity in drug tiers).
+DRAFTS for open decisions D4 (gene scheme) and D5 (proximity in drug tiers).
 Outputs: <run>/19_consensus/diagnostics_2026-10-14/
 """
 import os, itertools

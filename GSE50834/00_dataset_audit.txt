@@ -45,7 +45,7 @@ Source: GEO series matrix and supplementary-file index, read 2026-10-14 (ftp.ncb
    Status: NOT READY for the full TB-HIV pipeline until decision D10 is taken.
    Data are accessible and sample IDs can be matched unambiguously. However, the HIV/TB vs HIV comparison is
    confounded with processing period, so the main DE result cannot be attributed to TB alone.
-   Options for Ratul (PENDING SUPERVISOR DECISION D10):
+   Options (PENDING DECISION D10):
      A. Proceed with all 44 arrays (43 patients) and report the batch confounding as a major limitation.
         Treat results as hypothesis-generating. Run a sensitivity check of direction concordance in the
         balanced 2007-2008 subset (5 vs 5; very low power).

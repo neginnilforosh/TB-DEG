@@ -1,5 +1,5 @@
-## STEP 24: manuscript figure set for one run (Ratul, 10 Oct: the A-G figure list, "generate the figures
-## directly from the analysis scripts", 600 DPI raster + vector PDF, consistent labels and sizes).
+## STEP 24: manuscript figure set for one run (the A-G figure list; figures generated directly from the
+## analysis scripts, 600 DPI raster + vector PDF, consistent labels and sizes).
 ##
 ## Reads only the tables earlier steps saved -- nothing is recomputed -- and draws the figures that did not
 ## exist yet. Each figure is independent: if its input is missing it is skipped with a message, so the

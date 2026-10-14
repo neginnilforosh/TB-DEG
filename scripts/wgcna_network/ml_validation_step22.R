@@ -1,4 +1,4 @@
-## STEP 22: machine-learning validation (Ratul, 7 Sep: "you can add the ML validation step after this").
+## STEP 22: machine-learning validation.
 ##
 ## Question: do the prioritised genes, learned in the discovery cohort, separate TB from controls in
 ## cohorts they have never seen -- and do they separate ACTIVE from LATENT TB?

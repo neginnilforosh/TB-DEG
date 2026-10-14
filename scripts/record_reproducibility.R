@@ -1,5 +1,5 @@
-## Reproducibility record (Ratul, 10 Oct: "record software/package versions, important parameter
-## settings, thresholds, database versions where available, random seeds").
+## Reproducibility record: software/package versions, important parameter settings, thresholds,
+## database versions where available, and random seeds.
 ##
 ## Reads every script under scripts/ and writes, into reproducibility/ at the repository root:
 ##   package_versions.csv   every package the scripts use, with the installed version (or "not installed")

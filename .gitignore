@@ -41,3 +41,12 @@ Rplots.pdf
 __pycache__/
 .Rapp.history
 *.zip
+
+# Local-only documents that are not part of the reproducible analysis.
+# Rules are path-specific or extension-specific so that no scientific data or results are matched.
+manuscript_thesis/
+reproducibility/PROJECT_STATUS_CHECKLIST.md
+private/
+*.eml
+*.msg
+*.rtfd/

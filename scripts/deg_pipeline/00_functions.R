@@ -11,7 +11,7 @@ suppressPackageStartupMessages({
 })
 
 ## ---- figure export: every figure as a 600-dpi PNG plus a vector PDF next to it ----
-## (Ratul: raster 600 DPI, vector PDF/SVG for the manuscript). Change here, not in each function.
+## (Requirement: raster 600 DPI, vector PDF/SVG for the manuscript). Change here, not in each function.
 FIG_DPI    <- 600
 FIG_VECTOR <- TRUE
 save_gg <- function(out_png, p, width, height) {
