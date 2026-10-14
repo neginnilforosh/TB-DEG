@@ -37,3 +37,4 @@ external_data/
 .Rhistory
 
 Rplots.pdf
+*_cache.rds
