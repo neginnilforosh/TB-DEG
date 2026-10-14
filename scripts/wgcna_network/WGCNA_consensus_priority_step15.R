@@ -58,6 +58,15 @@ crit <- list(Top_MM = top_flag(abs(g$MM)), Top_GS = top_flag(abs(g$Gene_Signific
              Top_PPI_Degree = top_flag(g$PPI_Degree), Top_RWR = top_flag(g$RWR_score),
              Top_Diffusion = top_flag(g$Diffusion_score))
 for (n in names(crit)) g[[n]] <- crit[[n]]
+## per-metric rank (1 = best; ties share the best rank; genes without a value stay NA), so each
+## Top_* decision can be traced back to where the gene actually sits on that metric
+rank_desc <- function(x) rank(-x, ties.method = "min", na.last = "keep")
+g$Rank_MM             <- rank_desc(abs(g$MM))
+g$Rank_GS             <- rank_desc(abs(g$Gene_Significance))
+g$Rank_PPI_Degree     <- rank_desc(g$PPI_Degree)
+g$Rank_PPI_Betweenness <- rank_desc(g$PPI_Betweenness)   # reported only; not a consensus criterion
+g$Rank_RWR            <- rank_desc(g$RWR_score)
+g$Rank_Diffusion      <- rank_desc(g$Diffusion_score)
 rho <- suppressWarnings(stats::cor(g$RWR_score, g$Diffusion_score, method = "spearman", use = "complete.obs"))
 cat(">>> RWR vs diffusion rank correlation:", round(rho, 2),
     if (MERGE_RWR_DIFF) " -- counted as ONE criterion (MERGE_RWR_DIFF = TRUE)\n" else " -- counted separately\n")
@@ -70,8 +79,9 @@ g$Final_Priority <- ifelse(g$N_criteria >= HIGH_N, "High", ifelse(g$N_criteria >
 g$Direction_in_TB <- ifelse(g$log2FC > 0, "up", "down")
 
 cols <- c("Gene", "Ensembl", "Module", "Module_Name", "log2FC", "FDR", "Direction_in_TB", "MM", "Gene_Significance",
-          "PPI_Degree", "RWR_score", "Diffusion_score", "Top_MM", "Top_GS", "Top_PPI_Degree", "Top_RWR",
-          "Top_Diffusion", "N_criteria", "Criteria_met", "Final_Priority", "DEG_WGCNA_overlap", "In_PPI_network")
+          "PPI_Degree", "PPI_Betweenness", "RWR_score", "Diffusion_score",
+          "Rank_MM", "Rank_GS", "Rank_PPI_Degree", "Rank_PPI_Betweenness", "Rank_RWR", "Rank_Diffusion",
+          "Top_MM", "Top_GS", "Top_PPI_Degree", "Top_RWR", "Top_Diffusion", "N_criteria", "Criteria_met", "Final_Priority", "DEG_WGCNA_overlap", "In_PPI_network")
 gene_out <- g[order(-g$N_criteria, g$FDR), intersect(cols, names(g))]
 write.csv(gene_out, file.path(dir_out, paste0(ACC, "_GenePriority_all_modules.csv")), row.names = FALSE)
 write.csv(gene_out[gene_out$DEG_WGCNA_overlap, ], file.path(dir_out, paste0(ACC, "_GenePriority_DEG_overlap.csv")), row.names = FALSE)
@@ -128,6 +138,10 @@ dcrit <- list(
   Module_enriched   = !is.na(d$Module_Enrichment_P) & d$Module_Enrichment_P < P_CUT,
   Hits_high_gene    = d$N_HighPriority_Targets >= 1,
   Top_target_RWR    = top_flag(d$RWR_score))   # targets well connected to the disease seeds (mean RWR of the drug's targets)
+## drug ranks for the continuous criteria (1 = best); threshold criteria (proximity Z/P, counts) are in their own columns
+d$Rank_iLINCS_reversal <- rank(d$iLINCS_Reversal_Score, ties.method = "min", na.last = "keep")   # most negative first
+d$Rank_Proximity_Z     <- rank(d$Network_Proximity_Z,   ties.method = "min", na.last = "keep")   # most negative first
+d$Rank_Target_RWR      <- rank(-d$RWR_score,            ties.method = "min", na.last = "keep")
 for (n in names(dcrit)) d[[n]] <- dcrit[[n]]
 d$N_criteria <- rowSums(do.call(cbind, dcrit))
 d$Criteria_met <- apply(as.data.frame(dcrit), 1, function(r) paste(names(dcrit)[r], collapse = "+"))
@@ -135,9 +149,9 @@ d$Final_Priority <- ifelse(d$N_criteria >= HIGH_N, "High", ifelse(d$N_criteria >
 cat(">>> drugs meeting each criterion (of", nrow(d), "):",
     paste(names(dcrit), vapply(dcrit, sum, integer(1)), collapse = ", "), "\n")
 
-dcols <- c("Drug", "iLINCS_Reversal_Score", "Network_Proximity_Z", "Network_Proximity_P", "N_TB_Network_Targets",
+dcols <- c("Drug", "iLINCS_Reversal_Score", "Rank_iLINCS_reversal", "Network_Proximity_Z", "Rank_Proximity_Z", "Network_Proximity_P", "N_TB_Network_Targets",
            "Known_Targets", "Known_Targets_used", "N_targets_total", "Target_fraction_in_network", "Modules_Affected", "Modules_Enriched", "Module_Enrichment_P",
-           "N_HighPriority_Targets", "HighPriority_Targets", "RWR_score", "Enrichr_KEGG", "Enrichr_Reactome",
+           "N_HighPriority_Targets", "HighPriority_Targets", "RWR_score", "Rank_Target_RWR", "Enrichr_KEGG", "Enrichr_Reactome",
            "SC_Top_Immune_CellType", names(dcrit), "N_criteria", "Criteria_met", "Final_Priority")
 drug_out <- d[order(-d$N_criteria, d$iLINCS_Reversal_Score), intersect(dcols, names(d))]
 write.csv(drug_out, file.path(dir_out, paste0(ACC, "_DrugPriority.csv")), row.names = FALSE)

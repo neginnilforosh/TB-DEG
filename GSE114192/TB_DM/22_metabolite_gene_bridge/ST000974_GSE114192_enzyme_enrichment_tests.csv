@@ -1,0 +1,5 @@
+"Metabolite_set","Outcome","Enzymes_linked_to_changed","Of_which_outcome","Pct_changed","Enzymes_other","Pct_other","Odds_ratio","P_value"
+"padj<0.05","DEG",18,0,0,630,1.6,0,1
+"padj<0.05","In_module",18,4,22.2,630,11.1,2.28,0.139
+"p<0.01","DEG",111,2,1.8,537,1.5,1.21,0.533
+"p<0.01","In_module",111,17,15.3,537,10.6,1.52,0.107
