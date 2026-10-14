@@ -13,6 +13,7 @@
 TIERS <- c("High", "Medium")
 DISEASE_LABELS <- c(                                   # label = regular expression on the CTD disease name
   Tuberculosis = "Tuberculosis",
+  Mycobacterial = "Mycobacteri|Tuberculosis|BCG",      # wider: also inherited susceptibility to mycobacterial disease
   Diabetes     = "Diabetes Mellitus",
   HIV          = "HIV Infections|Acquired Immunodeficiency Syndrome|HIV",
   Immune_inflammatory = "Inflammation|Arthritis|Lupus|Autoimmune|Sepsis|Psoriasis|Inflammatory Bowel|Crohn|Colitis|Asthma")
@@ -22,6 +23,13 @@ CTD_URL <- "https://ctdbase.org/tools/batchQuery.go"
 ## download as CSV, and put the files here (leave "" to use the online query)
 MANUAL_DISEASES  <- ""   # e.g. "CTD_batch_diseases_curated.csv"
 MANUAL_CHEMICALS <- ""   # e.g. "CTD_batch_cgixns.csv"
+## RECOMMENDED: CTD blocks scripted requests (they are redirected to a browser check), so download the two
+## bulk files once with a browser from https://ctdbase.org/downloads/ and put them in external_data/CTD/:
+##   "Gene-disease associations" -> CTD_curated_genes_diseases.csv.gz   (curated only, small)
+##   "Chemical-gene interactions" -> CTD_chem_gene_ixns.csv.gz          (large; optional)
+## They are then used for every run (pilot, TB-DM, TB-HIV) and take precedence over the online query.
+BULK_DISEASES  <- "CTD_curated_genes_diseases.csv.gz"
+BULK_CHEMICALS <- "CTD_chem_gene_ixns.csv.gz"
 
 for (p in c("httr")) if (!requireNamespace(p, quietly = TRUE)) stop("Missing package: ", p)
 get_script_dir <- function() { a <- grep("^--file=", commandArgs(FALSE), value = TRUE)
@@ -66,7 +74,33 @@ ctd_query <- function(report) {
   }
   do.call(rbind, out)
 }
+## CTD bulk files: comment lines start with '#'; the column names are on the line after "# Fields:"
+read_bulk <- function(path, fallback) {
+  con <- gzfile(path); head <- readLines(con, n = 60); close(con)
+  com <- grep("^#", head); hdr <- NULL
+  fi <- grep("^#\\s*Fields:", head)
+  if (length(fi) && fi[1] < length(head)) hdr <- strsplit(sub("^#\\s*", "", head[fi[1] + 1]), ",")[[1]]
+  if (is.null(hdr) || length(hdr) < 3) hdr <- fallback
+  skip <- if (length(com)) max(com) else 0
+  d <- if (requireNamespace("data.table", quietly = TRUE))
+    as.data.frame(data.table::fread(path, skip = skip, header = FALSE, sep = ",", quote = "\"", fill = TRUE, showProgress = FALSE))
+  else utils::read.csv(gzfile(path), skip = skip, header = FALSE, stringsAsFactors = FALSE, quote = "\"")
+  names(d)[seq_len(min(length(hdr), ncol(d)))] <- hdr[seq_len(min(length(hdr), ncol(d)))]
+  names(d) <- gsub("[^A-Za-z]", "", names(d))
+  d <- d[d$GeneSymbol %in% genes, , drop = FALSE]
+  ## the full (non-curated) gene-disease file also holds inferred rows; keep curated ones only
+  if ("DirectEvidence" %in% names(d)) d <- d[!is.na(d$DirectEvidence) & nzchar(d$DirectEvidence), , drop = FALSE]
+  d
+}
+BULK_DIR <- file.path(ROOT_DIR, "external_data", "CTD")
 get_report <- function(report, manual) {
+  bulk <- file.path(BULK_DIR, if (report == "diseases_curated") BULK_DISEASES else BULK_CHEMICALS)
+  if (file.exists(bulk)) {
+    cat(">>> using CTD bulk file", basename(bulk), "\n")
+    return(read_bulk(bulk, if (report == "diseases_curated")
+      c("GeneSymbol", "GeneID", "DiseaseName", "DiseaseID", "DirectEvidence", "InferenceChemicalName", "InferenceScore", "OmimIDs", "PubMedIDs") else
+      c("ChemicalName", "ChemicalID", "CasRN", "GeneSymbol", "GeneID", "GeneForms", "Organism", "OrganismID", "Interaction", "InteractionActions", "PubMedIDs")))
+  }
   if (nzchar(manual)) { f <- file.path(dir_out, manual); if (!file.exists(f)) stop("Manual file not found: ", f)
     return(read_ctd(paste(readLines(f, warn = FALSE), collapse = "\n"))) }
   ctd_query(report)
@@ -79,6 +113,8 @@ if (!all(need %in% names(dis))) stop("Disease report lacks columns ", paste(setd
                                      "; it has: ", paste(names(dis), collapse = ", "))
 ev_col <- intersect(c("DirectEvidence"), names(dis))
 cat(">>> CTD curated gene-disease rows:", nrow(dis), "for", length(unique(dis$GeneSymbol)), "genes\n")
+tb_rows <- dis[grepl(DISEASE_LABELS[["Tuberculosis"]], dis$DiseaseName, ignore.case = TRUE), ]
+cat(">>> of these, TB rows:", nrow(tb_rows), "|", paste(utils::head(sort(unique(tb_rows$GeneSymbol)), 20), collapse = ", "), "\n")
 
 ann <- data.frame(Gene = genes, stringsAsFactors = FALSE)
 for (lab in names(DISEASE_LABELS)) {
@@ -113,7 +149,7 @@ sm <- do.call(rbind, lapply(TIERS, function(t) { s <- out[out$Final_Priority == 
 names(sm)[-(1:2)] <- paste0("Pct_", names(DISEASE_LABELS)); print(sm, row.names = FALSE)
 write.csv(sm, file.path(dir_out, paste0(ACC, "_CTD_summary.csv")), row.names = FALSE)
 cat("\nKnown TB genes in the High tier:", paste(out$Gene[out$Final_Priority == "High" & out$CTD_Tuberculosis %in% TRUE], collapse = ", "), "\n")
-cat("High-tier genes with NO curated TB association (potentially new):",
+cat("High-tier genes without a CTD-curated TB association (not curated in CTD -- check the literature before calling them new):",
     paste(out$Gene[out$Final_Priority == "High" & out$CTD_Tuberculosis %in% FALSE], collapse = ", "), "\n")
 cat("\nNote: CTD 'curated' associations come from the literature, so well-studied genes collect more labels.\n",
     "A missing label means 'not curated', not 'not involved'.\n", sep = "")
