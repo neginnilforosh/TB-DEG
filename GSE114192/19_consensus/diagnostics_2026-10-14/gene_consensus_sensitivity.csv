@@ -1,0 +1,10 @@
+scenario,n_High,overlap_with_official_High,jaccard_vs_official
+"official (top 20%, RWR|Diffusion merged, High>=4)",47,47,1.0
+top 10% instead of 20%,21,21,0.447
+top 30% instead of 20%,101,47,0.465
+leave out MM (High = all 3 remaining),64,47,0.734
+leave out GS (High = all 3 remaining),72,47,0.653
+leave out Degree (High = all 3 remaining),90,47,0.522
+leave out Propagation (High = all 3 remaining),66,47,0.712
+"RWR and Diffusion counted separately (5 criteria, High>=4)",120,47,0.392
+"family-weighted percentile, top 47 genes (same size as official High)",47,34,0.567

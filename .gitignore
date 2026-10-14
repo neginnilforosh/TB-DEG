@@ -38,3 +38,6 @@ external_data/
 
 Rplots.pdf
 *_cache.rds
+__pycache__/
+.Rapp.history
+*.zip

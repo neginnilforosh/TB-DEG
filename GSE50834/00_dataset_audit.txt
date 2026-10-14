@@ -1,0 +1,59 @@
+GSE50834 READINESS AUDIT (pre-TB-HIV checkpoint, 2026-10-14). No preprocessing or analysis has been run.
+Source: GEO series matrix and supplementary-file index, read 2026-10-14 (ftp.ncbi.nlm.nih.gov). Sample table: 00_sample_table_from_GEO.csv
+
+1. DATASET
+   Title:         Gene expression analysis of PBMC from HIV and HIV/TB co-infected patients (PMID 24587128)
+   Platform:      GPL10558, Illumina HumanHT-12 V4 BeadChip; expression array, NOT RNA-seq
+   Tissue:        PBMC (not whole blood); South African cohort
+   Arrays:        44 = HIV only 23 + HIV/TB 21
+   Patients:      43. "HIV infected patient 2" has two arrays (GSM1230903 and GSM1230904, same BeadChip), a technical or repeat replicate.
+   Covariates:    sex only (HIV only 17 F / 6 M; HIV/TB 11 F / 10 M).
+                  No age, CD4 count, viral load, ART status, TB treatment status, or smear/culture data.
+   Files:
+     - series matrix: quantile-normalised, already probe-FILTERED by the submitters (15,529 probes;
+       "background or max fold change < 1.2" filter applied across samples, i.e. using group-blind but
+       data-driven variability; linear scale, min 108.8, median 782, max 66,956)
+     - GSE50834_non-normalized.txt.gz (13 MB): 47,231 probes x 44 arrays plus detection p-values;
+       columns named by array barcode (for example AAA0VKQN-12_18-Mar-2009)
+     - GSE50834_RAW.tar (26 MB)
+   Sample-to-column mapping: each GSM's !Sample_description gives its barcode, so columns can be matched by NAME. The header order equals GSM order.
+
+2. CRITICAL DESIGN ISSUE: GROUP IS CONFOUNDED WITH PROCESSING PERIOD (from scan dates in array barcodes)
+                           HIV only   HIV/TB
+   2007-2008                   5         5
+   2009 Jan-Jun               18         0
+   2009 Jul-2010 Mar           0        16
+   Each BeadChip carries only one study sample, except the patient-2 pair, so chip cannot be used as a blocking batch.
+   For 34 of 44 arrays, scan period is completely aliased with disease group. Any batch adjustment (ComBat, or a
+   period term in limma) would remove most of the TB signal, and no adjustment leaves the TB effect inseparable
+   from processing date.
+   Only the 2007-2008 subset (5 vs 5) has both groups.
+   Scan date is a proxy: sample collection and RNA extraction dates are unknown.
+
+3. PLATFORM-APPROPRIATE METHOD (proposal; not DESeq2)
+   Start from GSE50834_non-normalized.txt.gz, not the pre-filtered series matrix. Then:
+     - limma::neqc (normexp background correction using detection p-values / negative controls, if
+       available in RAW.tar; otherwise normexp on the non-normalised intensities), then quantile normalisation and log2
+     - keep probes detected (detection p < 0.05) in at least the smaller group size
+     - collapse probes to genes using a documented rule (highest mean expression)
+     - limma ~ group (+ sex), with patient 2 handled by duplicateCorrelation or by averaging the two arrays
+     - WGCNA on the log2 normalised, detection-filtered matrix
+   Thresholds: FDR < 0.05; |log2FC| >= 1 optional, as in other contexts.
+   Note: array log2FC is compressed relative to RNA-seq, so identical fold-change cut-offs are not equivalent across platforms.
+
+4. READINESS STATEMENT
+   Status: NOT READY for the full TB-HIV pipeline until decision D10 is taken.
+   Data are accessible and sample IDs can be matched unambiguously. However, the HIV/TB vs HIV comparison is
+   confounded with processing period, so the main DE result cannot be attributed to TB alone.
+   Options for Ratul (PENDING SUPERVISOR DECISION D10):
+     A. Proceed with all 44 arrays (43 patients) and report the batch confounding as a major limitation.
+        Treat results as hypothesis-generating. Run a sensitivity check of direction concordance in the
+        balanced 2007-2008 subset (5 vs 5; very low power).
+     B. Proceed, but give weight to TB-HIV genes only if they also replicate in the GSE114192 TB-vs-HC reference
+        and/or an independent TB-HIV dataset with balanced processing.
+     C. Search for an alternative or additional TB-HIV dataset (whole blood, with HIV-only and HIV/TB groups)
+        before committing, e.g. a dataset with documented balanced processing.
+   Prerequisites before any TB-HIV DE:
+     D10 decided; download the non-normalised file and RAW.tar into GSE50834/01_raw (not yet done);
+     confirm the BeadChip version and control probes; decide on the patient-2 duplicate.
+   Not done here, by instruction: no DE, WGCNA, networks, drugs, or integration.

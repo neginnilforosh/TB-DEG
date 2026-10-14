@@ -1,0 +1,16 @@
+sample_id,group_in_existing_metadata,GSM_by_GEO_description,true_group_GEO,label_wrong
+TB-rep5,Active,GSM6911479,Active,False
+TB-rep4,Active,GSM6911478,Active,False
+TB-rep3,Active,GSM6911477,Active,False
+TB-rep2,Active,GSM6911476,Active,False
+TB-rep1,Active,GSM6911475,Active,False
+NC-rep5,Latent,GSM6911489,Healthy,True
+NC-rep4,Latent,GSM6911488,Healthy,True
+NC-rep3,Latent,GSM6911487,Healthy,True
+NC-rep2,Latent,GSM6911486,Healthy,True
+NC-rep1,Latent,GSM6911485,Healthy,True
+LTBI-rep5,Healthy,GSM6911484,Latent,True
+LTBI-rep4,Healthy,GSM6911483,Latent,True
+LTBI-rep3,Healthy,GSM6911482,Latent,True
+LTBI-rep2,Healthy,GSM6911481,Latent,True
+LTBI-rep1,Healthy,GSM6911480,Latent,True

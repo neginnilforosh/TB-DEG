@@ -1,0 +1,45 @@
+gsm,title,disease_state,sex,array_barcode_column_in_non_normalized,scan_date,beadchip_id,patient_id,technical_replicate_array,scan_period
+GSM1230902,HIV infected patient 1,HIV only,Female,AAA0VKQN-12_18-Mar-2009,2009-03-18,AAA0VKQN,HIV infected patient 1,False,2009 Jan-Jun
+GSM1230903,HIV infected patient 2_1,HIV only,Female,AAA0W22R-11_16-Apr-2009,2009-04-16,AAA0W22R,HIV infected patient 2,True,2009 Jan-Jun
+GSM1230904,HIV infected patient 2_2,HIV only,Female,AAA0W22R-14_16-Apr-2009,2009-04-16,AAA0W22R,HIV infected patient 2,True,2009 Jan-Jun
+GSM1230905,HIV infected patient 3,HIV only,Male,BAA0V9SR-15_25-Feb-2009,2009-02-25,BAA0V9SR,HIV infected patient 3,False,2009 Jan-Jun
+GSM1230906,HIV infected patient 4,HIV only,Female,BAA0W3BM-11_20-Apr-2009,2009-04-20,BAA0W3BM,HIV infected patient 4,False,2009 Jan-Jun
+GSM1230907,HIV infected patient 5,HIV only,Female,BAA0W69B-10_29-Apr-2009,2009-04-29,BAA0W69B,HIV infected patient 5,False,2009 Jan-Jun
+GSM1230908,HIV infected patient 6,HIV only,Female,BAA0WVPG-10_04-Jun-2009,2009-06-04,BAA0WVPG,HIV infected patient 6,False,2009 Jan-Jun
+GSM1230909,HIV infected patient 7,HIV only,Female,CAA0Q3CK-13_24-Apr-2008,2008-04-24,CAA0Q3CK,HIV infected patient 7,False,2007-2008
+GSM1230910,HIV infected patient 8,HIV only,Male,CAA0W4LJ-15_23-Apr-2009,2009-04-23,CAA0W4LJ,HIV infected patient 8,False,2009 Jan-Jun
+GSM1230911,HIV infected patient 9,HIV only,Female,CAA0W4LT-13_23-Apr-2009,2009-04-23,CAA0W4LT,HIV infected patient 9,False,2009 Jan-Jun
+GSM1230912,HIV infected patient 10,HIV only,Female,DAA0PFCT-11_17-Jan-2008,2008-01-17,DAA0PFCT,HIV infected patient 10,False,2007-2008
+GSM1230913,HIV infected patient 11,HIV only,Female,DAA0V9RP-16_25-Feb-2009,2009-02-25,DAA0V9RP,HIV infected patient 11,False,2009 Jan-Jun
+GSM1230914,HIV infected patient 12,HIV only,Female,DAA0VD27-11_04-Mar-2009,2009-03-04,DAA0VD27,HIV infected patient 12,False,2009 Jan-Jun
+GSM1230915,HIV infected patient 13,HIV only,Male,FAA0W22D-13_16-Apr-2009,2009-04-16,FAA0W22D,HIV infected patient 13,False,2009 Jan-Jun
+GSM1230916,HIV infected patient 14,HIV only,Female,HAA0W3B8-14_20-Apr-2009,2009-04-20,HAA0W3B8,HIV infected patient 14,False,2009 Jan-Jun
+GSM1230917,HIV infected patient 15,HIV only,Female,HAA0W3R9-13_21-Apr-2009,2009-04-21,HAA0W3R9,HIV infected patient 15,False,2009 Jan-Jun
+GSM1230918,HIV infected patient 16,HIV only,Female,JAA0P0DQ-11_15-Feb-2008,2008-02-15,JAA0P0DQ,HIV infected patient 16,False,2007-2008
+GSM1230919,HIV infected patient 17,HIV only,Male,JAA0W223-10_16-Apr-2009,2009-04-16,JAA0W223,HIV infected patient 17,False,2009 Jan-Jun
+GSM1230920,HIV infected patient 18,HIV only,Female,KAA0PBTZ-17_06-Mar-2008,2008-03-06,KAA0PBTZ,HIV infected patient 18,False,2007-2008
+GSM1230921,HIV infected patient 19,HIV only,Male,KAA0Q3QH-14_24-Apr-2008,2008-04-24,KAA0Q3QH,HIV infected patient 19,False,2007-2008
+GSM1230922,HIV infected patient 20,HIV only,Female,AAA0WVKX-11_04-Jun-2009,2009-06-04,AAA0WVKX,HIV infected patient 20,False,2009 Jan-Jun
+GSM1230923,HIV infected patient 21,HIV only,Male,EAA0VKQY-17_18-Mar-2009,2009-03-18,EAA0VKQY,HIV infected patient 21,False,2009 Jan-Jun
+GSM1230924,HIV infected patient 22,HIV only,Female,JAA0WVMP-13_04-Jun-2009,2009-06-04,JAA0WVMP,HIV infected patient 22,False,2009 Jan-Jun
+GSM1230925,HIV/TB co-infected patient 1,HIV/TB,Female,AAA0KHPN-10_14-Jun-2007,2007-06-14,AAA0KHPN,HIV/TB co-infected patient 1,False,2007-2008
+GSM1230926,HIV/TB co-infected patient 2,HIV/TB,Female,AAA0RWJ0-14_02-Sep-2008,2008-09-02,AAA0RWJ0,HIV/TB co-infected patient 2,False,2007-2008
+GSM1230927,HIV/TB co-infected patient 3,HIV/TB,Male,AAA0Z4D1-15_25-Nov-2009,2009-11-25,AAA0Z4D1,HIV/TB co-infected patient 3,False,2009 Jul-2010 Mar
+GSM1230928,HIV/TB co-infected patient 4,HIV/TB,Female,AAA0ZSJX-10_26-Jan-2010,2010-01-26,AAA0ZSJX,HIV/TB co-infected patient 4,False,2009 Jul-2010 Mar
+GSM1230929,HIV/TB co-infected patient 5,HIV/TB,Female,BAA0YXVB-12_12-Nov-2009,2009-11-12,BAA0YXVB,HIV/TB co-infected patient 5,False,2009 Jul-2010 Mar
+GSM1230930,HIV/TB co-infected patient 6,HIV/TB,Male,BAA0ZC4J-13_07-Dec-2009,2009-12-07,BAA0ZC4J,HIV/TB co-infected patient 6,False,2009 Jul-2010 Mar
+GSM1230931,HIV/TB co-infected patient 7,HIV/TB,Female,BAA0ZXTF-11_08-Feb-2010,2010-02-08,BAA0ZXTF,HIV/TB co-infected patient 7,False,2009 Jul-2010 Mar
+GSM1230932,HIV/TB co-infected patient 8,HIV/TB,Male,CAA0ZN6L-12_13-Jan-2010,2010-01-13,CAA0ZN6L,HIV/TB co-infected patient 8,False,2009 Jul-2010 Mar
+GSM1230933,HIV/TB co-infected patient 9,HIV/TB,Male,DAA0Z4CR-10_25-Nov-2009,2009-11-25,DAA0Z4CR,HIV/TB co-infected patient 9,False,2009 Jul-2010 Mar
+GSM1230934,HIV/TB co-infected patient 10,HIV/TB,Male,FAA0Z9CZ-10_03-Dec-2009,2009-12-03,FAA0Z9CZ,HIV/TB co-infected patient 10,False,2009 Jul-2010 Mar
+GSM1230935,HIV/TB co-infected patient 11,HIV/TB,Male,FAA0ZVHT-14_02-Feb-2010,2010-02-02,FAA0ZVHT,HIV/TB co-infected patient 11,False,2009 Jul-2010 Mar
+GSM1230936,HIV/TB co-infected patient 12,HIV/TB,Male,GAA0S8NL-11_30-Sep-2008,2008-09-30,GAA0S8NL,HIV/TB co-infected patient 12,False,2007-2008
+GSM1230937,HIV/TB co-infected patient 13,HIV/TB,Female,HAA0QL3W-13_29-May-2008,2008-05-29,HAA0QL3W,HIV/TB co-infected patient 13,False,2007-2008
+GSM1230938,HIV/TB co-infected patient 14,HIV/TB,Female,HAA0Z4Z0-19_26-Nov-2009,2009-11-26,HAA0Z4Z0,HIV/TB co-infected patient 14,False,2009 Jul-2010 Mar
+GSM1230939,HIV/TB co-infected patient 15,HIV/TB,Female,JAA0Q3QZ-15_24-Apr-2008,2008-04-24,JAA0Q3QZ,HIV/TB co-infected patient 15,False,2007-2008
+GSM1230940,HIV/TB co-infected patient 16,HIV/TB,Female,JAA103SD-11_25-Feb-2010,2010-02-25,JAA103SD,HIV/TB co-infected patient 16,False,2009 Jul-2010 Mar
+GSM1230941,HIV/TB co-infected patient 17,HIV/TB,Female,JAA1063Y-11_03-Mar-2010,2010-03-03,JAA1063Y,HIV/TB co-infected patient 17,False,2009 Jul-2010 Mar
+GSM1230942,HIV/TB co-infected patient 18,HIV/TB,Female,KAA0Z0GV-10_18-Nov-2009,2009-11-18,KAA0Z0GV,HIV/TB co-infected patient 18,False,2009 Jul-2010 Mar
+GSM1230943,HIV/TB co-infected patient 19,HIV/TB,Male,KAA0ZMKX-10_11-Jan-2010,2010-01-11,KAA0ZMKX,HIV/TB co-infected patient 19,False,2009 Jul-2010 Mar
+GSM1230944,HIV/TB co-infected patient 20,HIV/TB,Male,KAA0ZQ5C-11_19-Jan-2010,2010-01-19,KAA0ZQ5C,HIV/TB co-infected patient 20,False,2009 Jul-2010 Mar
+GSM1230945,HIV/TB co-infected patient 21,HIV/TB,Male,EAA0ZNH3-13_13-Jan-2010,2010-01-13,EAA0ZNH3,HIV/TB co-infected patient 21,False,2009 Jul-2010 Mar

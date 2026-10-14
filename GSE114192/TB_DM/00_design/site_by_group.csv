@@ -1,0 +1,8 @@
+disease_state_GEO,Indonesia,Peru,Romania,South_Africa,All
+DM_only,0,0,19,33,52
+Healthy_Control,0,0,12,24,36
+IH,0,0,4,6,10
+TB_DM,19,12,15,15,61
+TB_IH,5,9,10,20,44
+TB_only,14,11,10,11,46
+All,38,32,70,109,249

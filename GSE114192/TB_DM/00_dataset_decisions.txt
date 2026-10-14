@@ -1,0 +1,125 @@
+GSE114192 TB-DM BRANCH - DATASET DECISION RECORD
+Created 2026-10-14 (pre-TB-HIV checkpoint). Repo state at creation: main = f2b3a52 (clean, = origin/main).
+Status key: DECIDED (by an explicit instruction or by data facts) | PROPOSED (awaiting Ratul) | PENDING SUPERVISOR DECISION
+
+Sources: GEO series matrix GSE114192 (fetched 14 Oct 2026; 00_design/GSE114192_geo_series_matrix_metadata.tsv);
+HTSeq count files (00_design/GSE114192_htseq_library_qc.tsv); Eckold et al., Clin Infect Dis 2021;72(1):69-78,
+PMID 32533832, main text + Suppl. Methods + Suppl. Tables 1-2; Ratul's emails 9 Oct and 13 Oct 2026; Technical
+document sec.20. Sample-level detail: 00_sample_manifest.csv. Design checks: 00_design/design_identifiability.csv.
+
+1. SAMPLES - DECIDED (data facts)
+   GEO has 249 samples, one per patient (patient id 1-249), all whole blood, Illumina NextSeq 500 (GPL18573).
+   Core analysis set = 195: TB_DM 61, DM_only 52, TB_only 46, Healthy_Control 36. IDs and order match
+   02_metadata, 03_filtered_counts and 04_normalized (verified 13-14 Oct). Every GEO label maps to exactly one
+   pipeline group (00_sample_manifest.csv, assertion checked in scripts/checkpoint/build_tbdm_design_record.py).
+
+2. IH (n=10) AND TB-IH (n=44) EXCLUSION - DECIDED for the 9 Oct comparisons, rationale documented
+   Ratul's 9 Oct comparisons are TB-DM vs DM, TB-DM vs TB and TB x DM; none involve IH. Eckold et al. define IH as
+   HbA1c 5.7-<6.5% (TANDEM cohort paper uses 6.0-6.4%: definitions differ between the two papers). The 10 IH-only
+   samples are listed in Suppl. Table 1 ("pre_DM") but are never analysed or described in the publication.
+   TB-IH is a possible future secondary contrast (the paper's main finding is that TB-IH resembles TB-DM);
+   excluding it is a scope choice, not a neutral default. Excluding it means TB_only = normoglycaemic TB.
+
+3. SITE DISTRIBUTION AND CONFOUNDING - PENDING SUPERVISOR DECISION (D1)
+   Site x group (00_design/site_by_group.csv):
+                    Indonesia  Peru  Romania  South_Africa
+     Healthy_Control      0      0      12        24
+     TB_only             14     11      10        11
+     DM_only              0      0      19        33
+     TB_DM               19     12      15        15
+     (IH: 0/0/4/6; TB_IH: 5/9/10/20)
+   Core 195: chi-square 67.6 (df 9), Cramer's V 0.34. Healthy_Control and DM_only exist only in South Africa and
+   Romania (Eckold Methods: HC and DM-only were recruited only there).
+   Current preliminary model: design = ~ group across all 4 sites (scripts/deg_pipeline/GSE114192_comorbidity_run.R
+   line 105); interaction model ~ TB + DM + TB:DM also without site.
+   Rank checks (non-inferential, 00_design/design_identifiability.csv):
+     - Every candidate design is full rank and the group coefficient is estimable. Estimable is not the same as
+       unconfounded: without a site term the TB-DM vs DM effect partly reflects Indonesia/Peru vs SA/RO differences.
+     - Adding site to the all-site primary design gives a full-rank model, but only the 82 SA+RO samples inform the
+       group effect; the 31 Indonesia/Peru TB-DM samples only estimate their own site intercepts (and dispersion).
+     - A site-specific group effect (site:group) is NOT estimable for the primary contrast (rank 6 of 7 columns).
+     - Secondary TB-DM vs TB: both groups at all four sites; ~ site + group is full rank and uses all 107 samples.
+     - Interaction: all four cells exist only in SA+RO (n = 139: HC 36, TB 21, DM 52, TB-DM 30).
+   Options (evidence only; no choice made):
+     A. Primary and interaction restricted to SA+RO with ~ site + ... : unconfounded by site; TB-DM n = 30 vs DM 52;
+        less power; results generalise to SA/RO populations only. Mirrors Eckold's discovery (SA) / validation (RO).
+     B. All sites with ~ site + group: identical group-effect information to A, plus Indonesia/Peru samples for
+        dispersion estimation; relies on the assumption that site effects are additive and common to groups.
+     C. Keep ~ group on all sites: largest n, but disease and site effects are inseparable for the primary contrast.
+        Acceptable only with Ratul's explicit approval and a stated limitation.
+   Proposal (awaiting Ratul): A for the primary and interaction contrasts, ~ site + group on all sites for the
+   secondary contrast, with C retained as the existing preliminary comparison.
+
+4. SEX - PENDING SUPERVISOR DECISION (D2)
+   Not in the GEO metadata. Eckold Suppl. Methods: "Gender was added to the model as a confounder." Eckold Table 1
+   gives sex only as group/site summaries (e.g. SA TB-only 2 M / 9 F; TB-only 43% male vs TB-DM 61% overall).
+   Options: (a) obtain verified per-sample sex from the authors (corresponding author J. Cliff, LSHTM);
+   (b) infer sex from expression (e.g. XIST, RPS4Y1, DDX3Y, KDM5D, UTY, EIF1AY) with a documented rule, an
+   ambiguity category and a check against Table 1 group/site sex counts; (c) no sex adjustment, stated as a
+   limitation. No sex has been inferred or assigned. Sex inference is not approved in any email.
+
+5. OUTLIERS - DOCUMENTED; handling PENDING (no removal)
+   figures_step24.R flags 14 of 195 samples by low mean sample-sample correlation
+   (figures_manuscript/GSE114192_A_sample_outliers.csv): DM_only SA 5, DM_only RO 1, TB_DM Peru 4, TB_DM RO 2,
+   TB_only Indonesia 1, TB_only Peru 1. Four of 12 Peru TB-DM samples are flagged, which may itself reflect a site
+   effect. No sample is removed. Planned: sensitivity analysis (with vs without flagged samples) after the design
+   decision, per Project Instructions sec.4A (no removal only because it weakens significance).
+
+6. SUSPECTED FAILED PERU SAMPLE - RESOLVED (data facts)
+   Eckold Suppl. Table 1 highlights one excluded sample: TB only, Peru, 14.95 M input reads, 6.93 M aligned (46.35%).
+   Matching every Suppl. Table 1 row to the GEO samples by aligned reads (HTSeq assigned + no_feature + ambiguous;
+   00_design/GSE114192_supp_table1_alignment_match.csv) gives near-exact matches for most rows (median |diff| ~190
+   reads). The failed row has no GEO counterpart (nearest GEO sample differs by 2.17 M reads), and all 11 GEO Peru
+   TB-only samples correspond to the 11 non-failed Suppl. Table 1 rows (GSM3137651 within 10,411 reads). Conclusion:
+   the failed sample was not deposited in GEO; no exclusion is needed. Two GEO TB-IH samples with "_p1" IDs
+   (GSM3137563, GSM3137622) have no Suppl. Table 1 counterpart, which explains 249 GEO vs 247 analysed samples.
+   Lowest library in the core 195: 6.14 M assigned reads (GSM3137594, DM_only Romania); no core sample is below 6 M.
+
+7. MISSING CLINICAL COVARIATES - DOCUMENTED
+   GEO provides only disease state, field site, patient id and tissue. Age, sex, BMI, HbA1c, glucose, diabetes
+   duration, treatment (insulin/metformin), smoking, HIV status (exclusion criterion: all HIV-negative per Eckold) and
+   TB severity are not available per sample. Known group-level imbalances (Eckold Table 1, Suppl. Table 2): BMI much
+   higher in DM-only (SA 29, RO 28.7) than TB-DM (19.1, 21.5); 41/61 TB-DM had previously diagnosed DM, 13 on insulin
+   (9 of them in Romania); DM-only treatment not reported. These cannot be adjusted for and are listed as limitations.
+
+8. INTERACTION MODEL - PENDING (D1); to be reported as EXPLORATORY
+   Preliminary result: 4 genes with padj < 0.05 for TB:DM; 298 genes have padj = NA (DESeq2 independent filtering =
+   not tested, not "non-significant"). The DM factor is not the same entity in the two TB strata (DM-only: treated,
+   higher BMI; TB-DM: mix of known and newly diagnosed, possible stress hyperglycaemia), so an interaction may partly
+   reflect differences in DM composition rather than biological synergy.
+
+9. LFC SHRINKAGE INCONSISTENCY - DOCUMENTED; fix planned for the rerun
+   run_deg() (scripts/deg_pipeline/00_functions.R) shrinks with apeglm only when the coefficient name exists in
+   resultsNames(dds). With factor levels DM_only/Healthy_Control/TB_DM/TB_Only, only the primary contrast
+   (TB_DM vs DM_only) is shrunk; TB-DM vs TB, TB-DM vs HC and DM vs HC are unshrunk MLE estimates. DEG counts with
+   |log2FC| >= 1 are therefore not comparable across contrasts. Planned (no approval needed, applied at rerun):
+   one shrinkage method for all contrasts (e.g. ashr with contrast=, or releveling) and identical thresholds.
+
+10. LIMITATIONS PER COMPARISON
+   C1 TB-DM vs DM: site-confounded as currently run; BMI/treatment/diabetes-duration differences cannot be adjusted.
+   C2 TB-DM vs TB: sex imbalance; insulin concentrated in Romania; TB-only = normoglycaemic TB (IH excluded).
+   C3 Interaction: exploratory; only SA+RO contain all cells; small TB-only cells (10-11 per site).
+   All: whole-blood transcriptome reflects cell composition as well as regulation; stress hyperglycaemia may
+   misclassify some newly diagnosed TB-DM.
+
+11. STATUS OF EXISTING TB-DM OUTPUTS - PRELIMINARY
+   Everything under GSE114192/TB_DM/ produced up to commit f2b3a52 (9-14 Oct 2026) is preliminary: DE, WGCNA,
+   enrichment, STRING, RWR/diffusion, iLINCS, drug targets, proximity, consensus, external/ML validation, CTD,
+   metabolite bridge and figures. Reasons:
+   - All outputs come from design = ~ group on all four field sites; HC and DM-only exist only in South Africa
+     and Romania, so disease effects are partly confounded with site. Sex is not in the model (not in GEO).
+   - LFC shrinkage differs between contrasts: only DM_only_vs_TB_DM is apeglm-shrunk; the other contrasts are
+     unshrunk, so DEG counts are not comparable across contrasts.
+   - WGCNA module selection used a top-3 cap (MAX_SIG_MODULES = 3); other FDR-significant modules were not
+     carried forward. The soft power is not saved; the fallback power 6 was most likely used (see README).
+   - Drug tiers count network-proximity votes based on nominal p-values (0 drugs FDR-significant).
+   - Drug candidates are computational hypotheses, not validated treatments.
+   These files are kept unchanged for comparison with an approved rerun (proposal: write the rerun to a new run
+   folder, not over these outputs). TB-DM GSEA results are in GSE114192/17_gsea/ (dataset-level folder, where
+   WGCNA_GSEA_step11.R writes every comparison); interaction GSEA is in TB_DM/17_gsea_interaction/.
+
+12. DECISIONS REQUIRED FROM RATUL: see README.md, section "Open decisions (pending Ratul)"
+   (D1 site design, D2 sex, D3 module selection, D4 gene consensus scheme, D5 proximity in drug tiers,
+    D6 thesis scope / drug-resistant TB, D7 role of metabolomics/scRNA/GSE165709, D8 MoA prediction,
+    D9 manuscript vs thesis plan; added at checkpoint: D10 GSE50834 suitability, D11 reruns for label errors
+    in GSE222001/GSE161829, D12 ML validation design, D13 TB-DM rerun approval).

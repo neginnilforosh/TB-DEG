@@ -1,0 +1,2 @@
+Core 195 samples: chi-square = 67.6 (df = 9), Cramer's V = 0.340
+Healthy_Control and DM_only occur only in South_Africa and Romania.

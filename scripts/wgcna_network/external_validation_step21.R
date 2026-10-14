@@ -1,4 +1,4 @@
-## STEP 21: external validation of the prioritised genes (Ratul, 10 Oct: "use the other active-TB/LTBI
+## STEP 21: external validation of the prioritised genes (Ratul, email of 9 Oct 2026: "use the other active-TB/LTBI
 ## datasets mainly as an external validation and phenotype-characterisation layer ... test whether the
 ## final prioritised genes are reproduced in independent active-TB datasets, also altered in LTBI, more
 ## characteristic of active TB than latent TB. Do not make simple cross-dataset DEG overlap the main analysis.")
@@ -12,9 +12,9 @@
 ## ---- CONFIG ----
 ## comparisons: dataset, DEG file stem, phenotype, note. log2FC sign must mean "higher in disease".
 EXTERNAL <- list(
-  list(ds = "GSE161829", stem = "TBneg_vs_ATB",       pheno = "Active", note = "whole blood, n = 20 vs 25"),
+  list(ds = "GSE161829", stem = "TBneg_vs_ATB",       pheno = "Active", note = "CD4 memory T cells (GSE161829_RawCounts_CD4m), not whole blood, n = 20 vs 25"),
   list(ds = "GSE222001", stem = "Healthy_vs_Active",  pheno = "Active", note = "n = 5 vs 5 -- low power"),
-  list(ds = "GSE161829", stem = "TBneg_vs_LTBI",      pheno = "LTBI",   note = "whole blood, n = 20 vs 40"),
+  list(ds = "GSE161829", stem = "TBneg_vs_LTBI",      pheno = "LTBI",   note = "CD4 memory T cells (GSE161829_RawCounts_CD4m), not whole blood, n = 20 vs 40"),
   list(ds = "GSE222001", stem = "Healthy_vs_Latent",  pheno = "LTBI",   note = "n = 5 vs 5 -- low power"),
   list(ds = "GSE99374",  stem = "HC_vs_LTBI",         pheno = "LTBI",   note = "sorted CD8 T cells, not whole blood"))
 PADJ <- 0.05

@@ -1,0 +1,9 @@
+run,rule,n_modules,n_genes,modules,non_grey_modules
+reference,R0_current_FDR_top3_by_absr,3,1946,blue;green;purple,17
+reference,R1_all_FDR_lt_0.05,12,5085,black;blue;brown;cyan;green;grey60;lightcyan;midnightblue;purple;red;tan;yellow,17
+reference,R2_FDR_and_absr_ge_0.3,11,5021,black;blue;brown;cyan;green;grey60;lightcyan;purple;red;tan;yellow,17
+reference,R3_FDR_and_absr_ge_0.5,6,2486,blue;green;lightcyan;purple;red;tan,17
+TB_DM_preliminary,R0_current_FDR_top3_by_absr,3,1563,black;green;greenyellow,28
+TB_DM_preliminary,R1_all_FDR_lt_0.05,18,7582,black;blue;brown;cyan;darkgrey;darkorange;darkred;green;greenyellow;grey60;lightcyan;lightgreen;magenta;midnightblue;pink;salmon;skyblue;white,28
+TB_DM_preliminary,R2_FDR_and_absr_ge_0.3,12,6809,black;blue;brown;cyan;darkgrey;darkorange;green;greenyellow;lightgreen;midnightblue;pink;white,28
+TB_DM_preliminary,R3_FDR_and_absr_ge_0.5,3,1563,black;green;greenyellow,28

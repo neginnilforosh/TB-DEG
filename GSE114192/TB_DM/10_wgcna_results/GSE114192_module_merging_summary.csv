@@ -1,0 +1,3 @@
+stage,n_modules_incl_grey,n_genes,n_grey_genes
+before merging (net$unmergedColors),46,15333,951
+after merging (moduleColors),29,15333,951
