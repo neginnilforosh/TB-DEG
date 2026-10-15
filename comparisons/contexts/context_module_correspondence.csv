@@ -1,0 +1,10 @@
+"Context_A","Module_A","Name_A","Context_B","Module_B","Name_B","Shared_genes","Expected","Enrichment"
+"TB","green","Interferon_Response","TB_DM","black","M1_Interferon_Complement",162,93.4,1.73
+"TB","green","Interferon_Response","TB_DM","greenyellow","M2_TLR_NFkB_Inflammation",5,6.4,0.78
+"TB","green","Interferon_Response","TB_DM","green","M3_Mixed_CellComposition",27,94.3,0.29
+"TB","blue","Mixed_CellComposition","TB_DM","black","M1_Interferon_Complement",40,83.7,0.48
+"TB","blue","Mixed_CellComposition","TB_DM","greenyellow","M2_TLR_NFkB_Inflammation",4,5.7,0.7
+"TB","blue","Mixed_CellComposition","TB_DM","green","M3_Mixed_CellComposition",130,84.5,1.54
+"TB","purple","Ribosome_Biogenesis_Chromatin","TB_DM","black","M1_Interferon_Complement",3,27.9,0.11
+"TB","purple","Ribosome_Biogenesis_Chromatin","TB_DM","greenyellow","M2_TLR_NFkB_Inflammation",5,1.9,2.63
+"TB","purple","Ribosome_Biogenesis_Chromatin","TB_DM","green","M3_Mixed_CellComposition",50,28.2,1.77

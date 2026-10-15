@@ -26,19 +26,24 @@ AMINO <- c("tryptophan", "kynurenine", "histidine", "leucine", "isoleucine", "va
            "tyrosine", "threonine", "serine", "glycine", "alanine", "asparagine", "glutamine", "glutamate", "aspartate",
            "lysine", "arginine", "proline", "kynurenine/tryptophan ratio")
 
+## smoking sensitivity: MET_SMOKING=1 adds the SMOKE field as a covariate everywhere and writes to progression_smoking/
+SMOKING <- identical(Sys.getenv("MET_SMOKING"), "1")
+EXTRA <- if (SMOKING) "SMOKE" else character(0)
 for (p in c("limma", "httr", "jsonlite")) if (!requireNamespace(p, quietly = TRUE)) stop("Missing package: ", p)
 here <- local({ a <- grep("^--file=", commandArgs(FALSE), value = TRUE)
   if (length(a)) dirname(normalizePath(sub("^--file=", "", a[1]))) else getwd() })
 ROOT <- local({ d <- here; while (!dir.exists(file.path(d, "GSE114192")) && dirname(d) != d) d <- dirname(d); d })
 MET  <- file.path(ROOT, "GSE114192", "21_metabolomics")
-OUT  <- file.path(MET, "progression"); dir.create(OUT, showWarnings = FALSE)
+OUT  <- file.path(MET, if (SMOKING) "progression_smoking" else "progression"); dir.create(OUT, showWarnings = FALSE)
+CACHE <- file.path(MET, "progression")   # abundance matrices are shared between the two runs
+if (SMOKING) cat(">>> smoking sensitivity run: SMOKE added as a covariate\n")
 st_file <- file.path(MET, "metadata_check", "GC6-74_metabolomics_sample_table.csv")
 if (!file.exists(st_file)) stop("Run metabolomics_metadata_check.R first (missing ", st_file, ").")
 S_ALL <- read.csv(st_file, stringsAsFactors = FALSE)
 
 ## ---- abundance matrix from the REST service (cached) ----
 get_matrix <- function(st) {
-  cache <- file.path(OUT, paste0(st, "_abundance_matrix.csv"))
+  dir.create(CACHE, showWarnings = FALSE); cache <- file.path(CACHE, paste0(st, "_abundance_matrix.csv"))
   if (file.exists(cache)) { m <- as.matrix(read.csv(cache, row.names = 1, check.names = FALSE)); return(m) }
   r <- httr::GET(paste0("https://www.metabolomicsworkbench.org/rest/study/study_id/", st, "/data"), httr::timeout(300))
   if (httr::status_code(r) != 200) stop("Could not download data for ", st)
@@ -82,6 +87,8 @@ for (st in names(STUDIES)) {
   post <- s$GROUP == "case" & !is.na(s$TIME_TO_TB) & s$TIME_TO_TB < 0
   if (any(post)) cat("  excluded", sum(post), "case sample(s) taken after diagnosis (TIME_TO_TB < 0)\n")
   s <- s[!post, ]
+  if (SMOKING) { ok <- !is.na(s$SMOKE) & nzchar(s$SMOKE); cat("  smoking status:", paste(names(table(s$SMOKE[ok])), table(s$SMOKE[ok]), collapse = ", "),
+                 "| samples without it dropped:", sum(!ok), "\n"); s <- s[ok, ] }
   x <- log2(m[, s$sample, drop = FALSE]); x[!is.finite(x)] <- NA
   ## kynurenine / tryptophan ratio (log2 scale: difference)
   ik <- which(tolower(rownames(x)) == "kynurenine"); it <- which(tolower(rownames(x)) == "tryptophan")
@@ -96,8 +103,8 @@ for (st in names(STUDIES)) {
   cat("  A. baseline:", sum(b$GROUP == "case"), "cases,", sum(b$GROUP == "control"), "controls in", length(unique(b$CASE_GROUP)),
       "matched sets |", nrow(xb), "metabolites\n")
   if (sum(b$GROUP == "case") >= 3) {
-    rA <- fit_limma(xb, model.matrix(~ factor(CASE_GROUP) + GROUP, b), "GROUPcase")$tabs[[1]]
-    covs <- c("REGION", "GENDER", "AGE")[vapply(c("REGION", "GENDER", "AGE"), function(v) length(unique(stats::na.omit(b[[v]]))) > 1, TRUE)]
+    rA <- fit_limma(xb, model.matrix(stats::as.formula(paste("~ factor(CASE_GROUP) +", paste(c(EXTRA, "GROUP"), collapse = " + "))), b), "GROUPcase")$tabs[[1]]
+    cv0 <- c("REGION", "GENDER", "AGE", EXTRA); covs <- cv0[vapply(cv0, function(v) length(unique(stats::na.omit(b[[v]]))) > 1, TRUE)]
     okc <- stats::complete.cases(b[, covs, drop = FALSE])
     rA2 <- fit_limma(xb[, okc], model.matrix(stats::as.formula(paste("~", paste(c(covs, "GROUP"), collapse = " + "))), b[okc, ]), "GROUPcase")$tabs[[1]]
     write.csv(rA[order(rA$pvalue), ], file.path(OUT, paste0(st, "_A_baseline_matched.csv")), row.names = FALSE)
@@ -113,7 +120,7 @@ for (st in names(STUDIES)) {
   s$grp3 <- ifelse(s$GROUP == "control", "control", ifelse(!is.na(s$TIME_TO_TB) & s$TIME_TO_TB < NEAR_MONTHS, "near", "far"))
   s <- s[!(s$GROUP == "case" & is.na(s$TIME_TO_TB)), ]
   s$grp3 <- factor(s$grp3, levels = c("control", "far", "near"))
-  covs <- c("TIMEPOINT", "REGION", "GENDER", "AGE")[vapply(c("TIMEPOINT", "REGION", "GENDER", "AGE"), function(v) length(unique(stats::na.omit(s[[v]]))) > 1, TRUE)]
+  cv1 <- c("TIMEPOINT", "REGION", "GENDER", "AGE", EXTRA); covs <- cv1[vapply(cv1, function(v) length(unique(stats::na.omit(s[[v]]))) > 1, TRUE)]
   s <- s[stats::complete.cases(s[, covs, drop = FALSE]), ]
   xs <- x[, s$sample, drop = FALSE]; xs <- xs[rowMeans(!is.na(xs)) >= MIN_FRAC, , drop = FALSE]
   cat("  B. closeness to diagnosis: case samples <", NEAR_MONTHS, "months:", sum(s$grp3 == "near"), "| >=", NEAR_MONTHS, "months:",
@@ -149,6 +156,9 @@ if (length(key)) {
   K <- do.call(rbind, key); write.csv(K, file.path(OUT, "GC6-74_amino_acids_and_kynurenine.csv"), row.names = FALSE)
   cat("\n========== tryptophan, kynurenine and their ratio ==========\n")
   print(K[tolower(K$Metabolite) %in% c("tryptophan", "kynurenine", "kynurenine/tryptophan ratio"), ], row.names = FALSE)
+  if (SMOKING) { sm <- list.files(OUT, pattern = "_A_baseline_matched\\.csv$", full.names = TRUE)
+    for (f in sm) { t <- read.csv(f); t <- t[grepl("naphthyl|cotinine|hydroxycotinine", t$metabolite, ignore.case = TRUE), ]
+      if (nrow(t)) { cat("\n  smoking markers,", basename(f), "\n"); print(t, row.names = FALSE) } } }
 }
 cat("\nThe three studies share some participants (ST000974-ST000975 and ST000975-ST000976), so they are not independent\n",
     "replicates; read agreement between them as consistency across sample types, not as validation.\n", sep = "")

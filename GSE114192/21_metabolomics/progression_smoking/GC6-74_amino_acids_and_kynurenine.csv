@@ -1,0 +1,253 @@
+"Study","Analysis","Contrast","Metabolite","log2FC","pvalue","padj"
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","alanine",-0.261,0.000157,0.0548
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","arginine",0.031,0.739,1
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","asparagine",-0.131,0.149,0.681
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","aspartate",0.002,0.991,1
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","glutamate",0.118,0.428,0.905
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","glutamine",-0.177,0.0156,0.36
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","glycine",-0.03,0.763,1
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","histidine",-0.078,0.235,0.774
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","isoleucine",-0.038,0.591,0.967
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","kynurenine",-0.131,0.0971,0.612
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","leucine",-0.05,0.454,0.913
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","lysine",-0.062,0.506,0.934
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","methionine",-0.103,0.373,0.88
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","phenylalanine",-0.051,0.375,0.881
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","proline",-0.123,0.103,0.618
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","serine",0.06,0.417,0.905
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","threonine",-0.053,0.469,0.927
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","tryptophan",-0.122,0.0446,0.469
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","tyrosine",-0.275,0.106,0.62
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","valine",-0.108,0.143,0.681
+"ST000974","A baseline","progressor vs non-progressor (matched sets)","kynurenine/tryptophan ratio",-0.009,0.918,1
+"ST000974","B closeness to diagnosis","near_vs_control","alanine",-0.283,0.00123,0.0479
+"ST000974","B closeness to diagnosis","near_vs_control","arginine",0.069,0.588,0.878
+"ST000974","B closeness to diagnosis","near_vs_control","asparagine",-0.321,0.00388,0.0823
+"ST000974","B closeness to diagnosis","near_vs_control","aspartate",0.391,0.0205,0.215
+"ST000974","B closeness to diagnosis","near_vs_control","glutamate",0.686,9.55e-05,0.0148
+"ST000974","B closeness to diagnosis","near_vs_control","glutamine",-0.517,2.66e-06,0.00186
+"ST000974","B closeness to diagnosis","near_vs_control","glycine",-0.116,0.344,0.746
+"ST000974","B closeness to diagnosis","near_vs_control","histidine",-0.174,0.0255,0.239
+"ST000974","B closeness to diagnosis","near_vs_control","isoleucine",-0.058,0.501,0.841
+"ST000974","B closeness to diagnosis","near_vs_control","kynurenine",-0.018,0.863,0.979
+"ST000974","B closeness to diagnosis","near_vs_control","leucine",-0.005,0.955,0.998
+"ST000974","B closeness to diagnosis","near_vs_control","lysine",-0.043,0.695,0.914
+"ST000974","B closeness to diagnosis","near_vs_control","methionine",-0.421,0.0024,0.0729
+"ST000974","B closeness to diagnosis","near_vs_control","phenylalanine",0.115,0.105,0.421
+"ST000974","B closeness to diagnosis","near_vs_control","proline",-0.154,0.116,0.431
+"ST000974","B closeness to diagnosis","near_vs_control","serine",-0.011,0.9,0.987
+"ST000974","B closeness to diagnosis","near_vs_control","threonine",-0.141,0.139,0.464
+"ST000974","B closeness to diagnosis","near_vs_control","tryptophan",-0.154,0.0476,0.317
+"ST000974","B closeness to diagnosis","near_vs_control","tyrosine",-0.179,0.353,0.746
+"ST000974","B closeness to diagnosis","near_vs_control","valine",-0.141,0.104,0.421
+"ST000974","B closeness to diagnosis","near_vs_control","kynurenine/tryptophan ratio",0.136,0.205,0.578
+"ST000974","B closeness to diagnosis","far_vs_control","alanine",-0.253,8.16e-05,0.019
+"ST000974","B closeness to diagnosis","far_vs_control","arginine",0.024,0.794,0.944
+"ST000974","B closeness to diagnosis","far_vs_control","asparagine",-0.157,0.0507,0.408
+"ST000974","B closeness to diagnosis","far_vs_control","aspartate",0.239,0.0518,0.408
+"ST000974","B closeness to diagnosis","far_vs_control","glutamate",0.341,0.00734,0.199
+"ST000974","B closeness to diagnosis","far_vs_control","glutamine",-0.321,5.64e-05,0.019
+"ST000974","B closeness to diagnosis","far_vs_control","glycine",-0.039,0.659,0.895
+"ST000974","B closeness to diagnosis","far_vs_control","histidine",-0.061,0.278,0.708
+"ST000974","B closeness to diagnosis","far_vs_control","isoleucine",-0.008,0.9,0.987
+"ST000974","B closeness to diagnosis","far_vs_control","kynurenine",-0.073,0.329,0.751
+"ST000974","B closeness to diagnosis","far_vs_control","leucine",-0.03,0.614,0.886
+"ST000974","B closeness to diagnosis","far_vs_control","lysine",-0.103,0.197,0.64
+"ST000974","B closeness to diagnosis","far_vs_control","methionine",-0.088,0.381,0.781
+"ST000974","B closeness to diagnosis","far_vs_control","phenylalanine",-0.046,0.371,0.773
+"ST000974","B closeness to diagnosis","far_vs_control","proline",-0.098,0.169,0.604
+"ST000974","B closeness to diagnosis","far_vs_control","serine",0.074,0.243,0.691
+"ST000974","B closeness to diagnosis","far_vs_control","threonine",-0.048,0.49,0.869
+"ST000974","B closeness to diagnosis","far_vs_control","tryptophan",-0.151,0.0081,0.21
+"ST000974","B closeness to diagnosis","far_vs_control","tyrosine",-0.094,0.503,0.881
+"ST000974","B closeness to diagnosis","far_vs_control","valine",-0.076,0.232,0.677
+"ST000974","B closeness to diagnosis","far_vs_control","kynurenine/tryptophan ratio",0.078,0.321,0.749
+"ST000974","B closeness to diagnosis","near_vs_far","alanine",-0.03,0.748,0.936
+"ST000974","B closeness to diagnosis","near_vs_far","arginine",0.045,0.745,0.936
+"ST000974","B closeness to diagnosis","near_vs_far","asparagine",-0.163,0.171,0.564
+"ST000974","B closeness to diagnosis","near_vs_far","aspartate",0.152,0.401,0.761
+"ST000974","B closeness to diagnosis","near_vs_far","glutamate",0.346,0.0655,0.493
+"ST000974","B closeness to diagnosis","near_vs_far","glutamine",-0.196,0.0927,0.521
+"ST000974","B closeness to diagnosis","near_vs_far","glycine",-0.076,0.564,0.876
+"ST000974","B closeness to diagnosis","near_vs_far","histidine",-0.112,0.179,0.578
+"ST000974","B closeness to diagnosis","near_vs_far","isoleucine",-0.05,0.59,0.88
+"ST000974","B closeness to diagnosis","near_vs_far","kynurenine",0.055,0.618,0.88
+"ST000974","B closeness to diagnosis","near_vs_far","leucine",0.026,0.774,0.941
+"ST000974","B closeness to diagnosis","near_vs_far","lysine",0.06,0.611,0.88
+"ST000974","B closeness to diagnosis","near_vs_far","methionine",-0.334,0.0255,0.364
+"ST000974","B closeness to diagnosis","near_vs_far","phenylalanine",0.161,0.036,0.407
+"ST000974","B closeness to diagnosis","near_vs_far","proline",-0.056,0.598,0.88
+"ST000974","B closeness to diagnosis","near_vs_far","serine",-0.084,0.366,0.744
+"ST000974","B closeness to diagnosis","near_vs_far","threonine",-0.093,0.365,0.744
+"ST000974","B closeness to diagnosis","near_vs_far","tryptophan",-0.003,0.968,1
+"ST000974","B closeness to diagnosis","near_vs_far","tyrosine",-0.085,0.683,0.91
+"ST000974","B closeness to diagnosis","near_vs_far","valine",-0.066,0.484,0.827
+"ST000974","B closeness to diagnosis","near_vs_far","kynurenine/tryptophan ratio",0.058,0.615,0.88
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","alanine",-0.026,0.673,0.934
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","arginine",0.088,0.122,0.661
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","asparagine",-0.034,0.548,0.91
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","aspartate",0.175,0.0715,0.585
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","glutamate",0.16,0.135,0.666
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","glutamine",-0.023,0.537,0.906
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","glycine",0.015,0.819,0.959
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","histidine",-0.017,0.729,0.944
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","isoleucine",0.005,0.933,0.983
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","kynurenine",-0.039,0.526,0.903
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","leucine",0.005,0.929,0.983
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","lysine",-0.064,0.519,0.903
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","methionine",0.034,0.507,0.903
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","phenylalanine",0.08,0.086,0.645
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","proline",0.024,0.68,0.934
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","serine",0.06,0.333,0.847
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","threonine",0.014,0.815,0.959
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","tryptophan",-0.023,0.681,0.934
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","tyrosine",0.051,0.384,0.891
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","valine",0.007,0.867,0.968
+"ST000975","A baseline","progressor vs non-progressor (matched sets)","kynurenine/tryptophan ratio",-0.016,0.819,0.959
+"ST000975","B closeness to diagnosis","near_vs_control","alanine",-0.104,0.48,0.888
+"ST000975","B closeness to diagnosis","near_vs_control","arginine",0.133,0.339,0.784
+"ST000975","B closeness to diagnosis","near_vs_control","asparagine",-0.118,0.351,0.794
+"ST000975","B closeness to diagnosis","near_vs_control","aspartate",0.147,0.544,0.916
+"ST000975","B closeness to diagnosis","near_vs_control","glutamate",-0.047,0.852,0.998
+"ST000975","B closeness to diagnosis","near_vs_control","glutamine",-0.083,0.338,0.784
+"ST000975","B closeness to diagnosis","near_vs_control","glycine",-0.086,0.568,0.918
+"ST000975","B closeness to diagnosis","near_vs_control","histidine",-0.44,0.000665,0.0337
+"ST000975","B closeness to diagnosis","near_vs_control","isoleucine",-0.405,0.00354,0.0895
+"ST000975","B closeness to diagnosis","near_vs_control","kynurenine",0.248,0.0782,0.481
+"ST000975","B closeness to diagnosis","near_vs_control","leucine",-0.1,0.421,0.837
+"ST000975","B closeness to diagnosis","near_vs_control","lysine",-0.011,0.961,1
+"ST000975","B closeness to diagnosis","near_vs_control","methionine",-0.353,0.00262,0.0745
+"ST000975","B closeness to diagnosis","near_vs_control","phenylalanine",0.144,0.194,0.622
+"ST000975","B closeness to diagnosis","near_vs_control","proline",-0.13,0.371,0.805
+"ST000975","B closeness to diagnosis","near_vs_control","serine",-0.014,0.917,0.998
+"ST000975","B closeness to diagnosis","near_vs_control","threonine",-0.223,0.12,0.58
+"ST000975","B closeness to diagnosis","near_vs_control","tryptophan",-0.322,0.013,0.171
+"ST000975","B closeness to diagnosis","near_vs_control","tyrosine",-0.024,0.855,0.998
+"ST000975","B closeness to diagnosis","near_vs_control","valine",-0.191,0.0666,0.443
+"ST000975","B closeness to diagnosis","near_vs_control","kynurenine/tryptophan ratio",0.57,0.000349,0.0234
+"ST000975","B closeness to diagnosis","far_vs_control","alanine",-0.019,0.728,0.949
+"ST000975","B closeness to diagnosis","far_vs_control","arginine",0.085,0.101,0.599
+"ST000975","B closeness to diagnosis","far_vs_control","asparagine",-0.002,0.959,0.99
+"ST000975","B closeness to diagnosis","far_vs_control","aspartate",0.14,0.119,0.641
+"ST000975","B closeness to diagnosis","far_vs_control","glutamate",0.166,0.0795,0.54
+"ST000975","B closeness to diagnosis","far_vs_control","glutamine",-0.032,0.316,0.841
+"ST000975","B closeness to diagnosis","far_vs_control","glycine",0.027,0.635,0.931
+"ST000975","B closeness to diagnosis","far_vs_control","histidine",-0.039,0.418,0.899
+"ST000975","B closeness to diagnosis","far_vs_control","isoleucine",0.008,0.884,0.965
+"ST000975","B closeness to diagnosis","far_vs_control","kynurenine",-0.038,0.472,0.899
+"ST000975","B closeness to diagnosis","far_vs_control","leucine",-0.007,0.88,0.964
+"ST000975","B closeness to diagnosis","far_vs_control","lysine",-0.105,0.218,0.764
+"ST000975","B closeness to diagnosis","far_vs_control","methionine",0.025,0.569,0.927
+"ST000975","B closeness to diagnosis","far_vs_control","phenylalanine",0.079,0.0561,0.479
+"ST000975","B closeness to diagnosis","far_vs_control","proline",0.057,0.291,0.825
+"ST000975","B closeness to diagnosis","far_vs_control","serine",0.051,0.296,0.827
+"ST000975","B closeness to diagnosis","far_vs_control","threonine",0.019,0.721,0.949
+"ST000975","B closeness to diagnosis","far_vs_control","tryptophan",-0.026,0.583,0.927
+"ST000975","B closeness to diagnosis","far_vs_control","tyrosine",0.021,0.671,0.932
+"ST000975","B closeness to diagnosis","far_vs_control","valine",-0.027,0.49,0.899
+"ST000975","B closeness to diagnosis","far_vs_control","kynurenine/tryptophan ratio",-0.011,0.847,0.956
+"ST000975","B closeness to diagnosis","near_vs_far","alanine",-0.085,0.57,0.883
+"ST000975","B closeness to diagnosis","near_vs_far","arginine",0.048,0.734,0.933
+"ST000975","B closeness to diagnosis","near_vs_far","asparagine",-0.116,0.367,0.79
+"ST000975","B closeness to diagnosis","near_vs_far","aspartate",0.006,0.98,0.987
+"ST000975","B closeness to diagnosis","near_vs_far","glutamate",-0.213,0.407,0.813
+"ST000975","B closeness to diagnosis","near_vs_far","glutamine",-0.051,0.563,0.883
+"ST000975","B closeness to diagnosis","near_vs_far","glycine",-0.112,0.46,0.822
+"ST000975","B closeness to diagnosis","near_vs_far","histidine",-0.402,0.00214,0.0635
+"ST000975","B closeness to diagnosis","near_vs_far","isoleucine",-0.413,0.00337,0.0767
+"ST000975","B closeness to diagnosis","near_vs_far","kynurenine",0.286,0.0454,0.377
+"ST000975","B closeness to diagnosis","near_vs_far","leucine",-0.093,0.46,0.822
+"ST000975","B closeness to diagnosis","near_vs_far","lysine",0.094,0.685,0.919
+"ST000975","B closeness to diagnosis","near_vs_far","methionine",-0.378,0.0015,0.06
+"ST000975","B closeness to diagnosis","near_vs_far","phenylalanine",0.065,0.562,0.883
+"ST000975","B closeness to diagnosis","near_vs_far","proline",-0.188,0.204,0.669
+"ST000975","B closeness to diagnosis","near_vs_far","serine",-0.065,0.626,0.905
+"ST000975","B closeness to diagnosis","near_vs_far","threonine",-0.242,0.0958,0.502
+"ST000975","B closeness to diagnosis","near_vs_far","tryptophan",-0.295,0.0243,0.296
+"ST000975","B closeness to diagnosis","near_vs_far","tyrosine",-0.045,0.737,0.933
+"ST000975","B closeness to diagnosis","near_vs_far","valine",-0.164,0.119,0.564
+"ST000975","B closeness to diagnosis","near_vs_far","kynurenine/tryptophan ratio",0.581,0.000318,0.026
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","alanine",0.216,0.386,0.923
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","arginine",-0.111,0.846,0.987
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","asparagine",-0.084,0.853,0.987
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","aspartate",-0.033,0.954,0.998
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","glutamate",0.172,0.567,0.968
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","glutamine",0.054,0.845,0.987
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","glycine",0.192,0.373,0.923
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","histidine",-0.21,0.168,0.869
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","isoleucine",-0.203,0.539,0.968
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","kynurenine",0.337,0.201,0.888
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","leucine",-0.099,0.759,0.978
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","lysine",-0.098,0.659,0.972
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","methionine",-0.187,0.439,0.939
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","phenylalanine",-0.038,0.8,0.978
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","proline",0.024,0.878,0.998
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","serine",-0.111,0.708,0.976
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","threonine",-0.008,0.97,0.998
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","tryptophan",-0.039,0.799,0.978
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","tyrosine",0.021,0.891,0.998
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","valine",-0.029,0.828,0.986
+"ST000976","A baseline","progressor vs non-progressor (matched sets)","kynurenine/tryptophan ratio",0.376,0.25,0.889
+"ST000976","B closeness to diagnosis","near_vs_control","alanine",0.281,0.367,0.879
+"ST000976","B closeness to diagnosis","near_vs_control","arginine",-1.202,0.221,0.876
+"ST000976","B closeness to diagnosis","near_vs_control","asparagine",-0.829,0.265,0.878
+"ST000976","B closeness to diagnosis","near_vs_control","aspartate",-1.087,0.247,0.876
+"ST000976","B closeness to diagnosis","near_vs_control","glutamate",-0.323,0.501,0.892
+"ST000976","B closeness to diagnosis","near_vs_control","glutamine",-0.393,0.336,0.878
+"ST000976","B closeness to diagnosis","near_vs_control","glycine",-0.15,0.653,0.948
+"ST000976","B closeness to diagnosis","near_vs_control","histidine",-0.222,0.37,0.88
+"ST000976","B closeness to diagnosis","near_vs_control","isoleucine",-0.728,0.193,0.876
+"ST000976","B closeness to diagnosis","near_vs_control","kynurenine",0.467,0.194,0.876
+"ST000976","B closeness to diagnosis","near_vs_control","leucine",-0.443,0.337,0.878
+"ST000976","B closeness to diagnosis","near_vs_control","lysine",-0.423,0.227,0.876
+"ST000976","B closeness to diagnosis","near_vs_control","methionine",-0.347,0.367,0.879
+"ST000976","B closeness to diagnosis","near_vs_control","phenylalanine",-0.114,0.588,0.926
+"ST000976","B closeness to diagnosis","near_vs_control","proline",0.077,0.719,0.966
+"ST000976","B closeness to diagnosis","near_vs_control","serine",-0.398,0.403,0.881
+"ST000976","B closeness to diagnosis","near_vs_control","threonine",-0.381,0.275,0.878
+"ST000976","B closeness to diagnosis","near_vs_control","tryptophan",-0.212,0.307,0.878
+"ST000976","B closeness to diagnosis","near_vs_control","tyrosine",-0.175,0.45,0.884
+"ST000976","B closeness to diagnosis","near_vs_control","valine",-0.115,0.578,0.926
+"ST000976","B closeness to diagnosis","near_vs_control","kynurenine/tryptophan ratio",0.679,0.125,0.876
+"ST000976","B closeness to diagnosis","far_vs_control","alanine",0.001,0.997,0.999
+"ST000976","B closeness to diagnosis","far_vs_control","arginine",-0.124,0.877,0.998
+"ST000976","B closeness to diagnosis","far_vs_control","asparagine",-0.15,0.806,0.985
+"ST000976","B closeness to diagnosis","far_vs_control","aspartate",-0.066,0.931,0.998
+"ST000976","B closeness to diagnosis","far_vs_control","glutamate",0.132,0.738,0.979
+"ST000976","B closeness to diagnosis","far_vs_control","glutamine",0.271,0.421,0.91
+"ST000976","B closeness to diagnosis","far_vs_control","glycine",0.22,0.427,0.913
+"ST000976","B closeness to diagnosis","far_vs_control","histidine",-0.24,0.242,0.857
+"ST000976","B closeness to diagnosis","far_vs_control","isoleucine",-0.012,0.978,0.999
+"ST000976","B closeness to diagnosis","far_vs_control","kynurenine",0.125,0.671,0.979
+"ST000976","B closeness to diagnosis","far_vs_control","leucine",-0.031,0.935,0.998
+"ST000976","B closeness to diagnosis","far_vs_control","lysine",-0.148,0.605,0.975
+"ST000976","B closeness to diagnosis","far_vs_control","methionine",-0.208,0.511,0.925
+"ST000976","B closeness to diagnosis","far_vs_control","phenylalanine",-0.032,0.851,0.998
+"ST000976","B closeness to diagnosis","far_vs_control","proline",-0.066,0.706,0.979
+"ST000976","B closeness to diagnosis","far_vs_control","serine",-0.163,0.677,0.979
+"ST000976","B closeness to diagnosis","far_vs_control","threonine",-0.003,0.992,0.999
+"ST000976","B closeness to diagnosis","far_vs_control","tryptophan",-0.061,0.72,0.979
+"ST000976","B closeness to diagnosis","far_vs_control","tyrosine",0.046,0.809,0.985
+"ST000976","B closeness to diagnosis","far_vs_control","valine",-0.085,0.619,0.975
+"ST000976","B closeness to diagnosis","far_vs_control","kynurenine/tryptophan ratio",0.186,0.606,0.975
+"ST000976","B closeness to diagnosis","near_vs_far","alanine",0.28,0.473,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","arginine",-1.078,0.379,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","asparagine",-0.679,0.464,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","aspartate",-1.021,0.384,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","glutamate",-0.455,0.449,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","glutamine",-0.663,0.197,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","glycine",-0.37,0.379,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","histidine",0.018,0.954,0.999
+"ST000976","B closeness to diagnosis","near_vs_far","isoleucine",-0.716,0.305,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","kynurenine",0.342,0.444,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","leucine",-0.412,0.475,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","lysine",-0.274,0.529,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","methionine",-0.139,0.772,0.965
+"ST000976","B closeness to diagnosis","near_vs_far","phenylalanine",-0.081,0.756,0.964
+"ST000976","B closeness to diagnosis","near_vs_far","proline",0.143,0.592,0.923
+"ST000976","B closeness to diagnosis","near_vs_far","serine",-0.235,0.692,0.946
+"ST000976","B closeness to diagnosis","near_vs_far","threonine",-0.378,0.386,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","tryptophan",-0.151,0.56,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","tyrosine",-0.221,0.446,0.908
+"ST000976","B closeness to diagnosis","near_vs_far","valine",-0.03,0.907,0.998
+"ST000976","B closeness to diagnosis","near_vs_far","kynurenine/tryptophan ratio",0.493,0.37,0.908
