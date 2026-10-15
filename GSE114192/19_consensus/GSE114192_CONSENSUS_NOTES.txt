@@ -1,4 +1,4 @@
-Consensus prioritisation for GSE114192 (Healthy_Control vs TB_Only).
+Consensus prioritisation for GSE114192 (Healthy_Control vs TB_Only), 2026-10-14.
 Top-ranked = best 20% of a criterion. High = 4+ criteria, Medium = 2-3, Low = below that.
 
 Read with these caveats:
