@@ -13,8 +13,8 @@ Everything here is computational. A drug that ranks highly is a hypothesis worth
 1. **Differential expression.** Compare patients with controls and find the genes that go up or down (DESeq2 for RNA-seq, limma for arrays and miRNA panels).
 2. **Co-expression modules.** Group genes that rise and fall together across all samples (WGCNA), keep the groups most associated with disease, and name them by the pathways they are enriched for.
 3. **Protein networks.** Place the module genes on the STRING protein-interaction network and measure how central each one is (degree, betweenness, random walk with restart, network diffusion).
-4. **Gene ranking.** Rank every gene on each measure separately, then flag the genes that score well on several of them at once.
-5. **Drug search.** Look for compounds whose expression signature reverses the disease signature (iLINCS), map their known targets onto the disease network (DGIdb), and rank them by how many independent lines of evidence agree.
+4. **Gene ranking.** Group the evidence into independent families (expression, co-expression, network, replication in other cohorts, response to infection), give each family one score, combine them, and check how much the ranking moves when one family is left out.
+5. **Drug search.** Look for compounds whose expression signature reverses the disease signature (iLINCS), map their known targets onto the disease network (DGIdb), rank them by evidence families in the same way, and examine the best candidates one by one in evidence cards.
 6. **Supporting layers.** Pathway analysis of the whole ranked gene list (GSEA), cell-type mapping (single-cell data), chromatin accessibility (ATAC-seq), plasma metabolites, literature labels (CTD), and checks in independent cohorts.
 
 ## Datasets
@@ -37,19 +37,19 @@ Everything here is computational. A drug that ranks highly is a hypothesis worth
 - **The blood changes in composition, not only in gene activity.** One large module mixes lymphocyte genes that go down with neutrophil and macrophage genes that go up. Single-cell data and cell-type gene sets agree with this reading.
 - **The core TB genes respond directly to infection.** 44 of the 47 High-priority genes also change significantly when alveolar macrophages from healthy donors are infected with *M. tuberculosis* in the lab, and 32 of 47 in cells from people living with HIV (GSE165709). Some genes appear to respond less in the cells from people living with HIV, but a formal test of the difference between the two groups found no gene or chromatin region significant after multiple-testing correction, so this is a descriptive observation only.
 - **Interferon may link genes to metabolites.** In the GC6-74 cohort the kynurenine/tryptophan ratio, a read-out of the interferon-induced enzyme IDO1, did not differ between future TB cases and controls at enrolment or more than five months before diagnosis, but rose within five months of diagnosis in plasma and in serum (adjusted p 0.12 and 0.03), with a matching fall in tryptophan. IDO1, KYNU and WARS1 are higher in active-TB blood in GSE114192. The metabolite and gene data come from different people, so this is a supporting observation; sample numbers close to diagnosis are small.
-- **Drug predictions are the least stable part.** Ranking compounds by signature reversal changes noticeably between similar inputs, and network proximity does not separate drugs from random after correcting for multiple tests. Drug candidates should therefore be read together with their other evidence, not on their own.
+- **Drug predictions are the least stable part.** Ranking compounds by signature reversal changes noticeably between similar inputs, and network proximity does not separate drugs from random after correcting for multiple tests. Only a few compounds reverse both halves of the signature consistently across LINCS experiments and act on a high-priority gene, and many top candidates also have cell-division targets, so part of the drug ranking reflects antiproliferative effects rather than TB biology.
+- **TB with and without diabetes share an interferon-gamma core.** 25 genes are high-priority in both contexts, nearly all interferon-gamma related (STAT1, GBP1, GBP5, CASP1, CD274, ...). The type I interferon genes (ISG15, IFIT3, IFI6, OASL, ...) still go up in TB with diabetes but form a separate small module there instead of joining the core, which fits the weaker interferon-alpha response in diabetes.
 
 ## Where things stand
 
 | Part | Status |
 |---|---|
-| TB vs healthy | Expression, modules, networks and drug evidence are complete. A site sensitivity analysis (`GSE114192/sensitivity_site/`) keeps all 47 High genes significant with unchanged direction and the interferon responses as the top pathways. The rules for selecting modules and for the final gene and drug tiers are still being finalised, so the priority tables are provisional |
-| Supporting layers (GSEA, single-cell, ATAC-seq, metabolomics, CTD) | Run. Still to do: document the ATAC-seq peak-to-gene annotation method and re-check the CTD annotation independently |
+| TB vs healthy | Complete. Genes and drugs are ranked by evidence families (`20_evidence_families/`), with the criteria count of step 15 kept for comparison. A site sensitivity analysis (`GSE114192/sensitivity_site/`) keeps all 47 High genes of the criteria count significant with unchanged direction and the interferon responses as the top pathways |
+| Supporting layers (GSEA, single-cell, ATAC-seq, metabolomics, CTD) | Complete. The metabolomics result does not change when smoking is added as a covariate (serum) |
 | TB + diabetes | Complete. The main comparison is TB with diabetes vs TB alone on all samples with recruitment site as a covariate (`GSE114192/TB_DM/tb_vs_tbdm_site_adjusted/`); both groups come from all four sites. The interferon-gamma and interferon-alpha responses are weaker in TB with diabetes (NES −1.84 and −2.22), and the TB × diabetes interaction, fitted on the two sites that have all four groups and adjusted for site, gives the same result (`GSE114192/TB_DM/sensitivity_site/`). Neutrophil-granule and red-cell genes are higher in TB with diabetes, which may reflect blood cell composition |
 | Independent cohorts (GSE161829, GSE222001) | Sample labels corrected; all analyses redone. Pathways and the interferon module replicate; drug candidates do not |
 | TB + HIV | Not started. The first candidate (GSE50834) has disease group and processing batch almost completely overlapping, so alternative datasets (GSE37250, GSE107104, GSE162164) have been compared and the choice is being agreed |
-| Comparison of TB, TB-diabetes and TB-HIV | Waits for TB-HIV |
-| Code corrections and reproducibility updates (drug-name matching, proximity P_BH, removal of DSigDB self-hits, nested-CV column labels, GSEA warning log, package checks) | In the scripts and tested; the stored drug, proximity, Enrichr, consensus and ML-label outputs were produced before them and have not been regenerated yet |
+| Comparison across contexts | TB vs TB with diabetes complete (`comparisons/contexts/`); TB with HIV will be added when its dataset is chosen |
 
 
 ## Repository layout
@@ -57,7 +57,7 @@ Everything here is computational. A drug that ranks highly is a hypothesis worth
 ```
 scripts/
   deg_pipeline/      one script per dataset: download, filter, normalise, differential expression
-  wgcna_network/     the network analysis, run step by step (step1 ... step24); config.R picks the dataset
+  wgcna_network/     the network analysis, run step by step (step1 ... step27); config.R picks the dataset
   helpers/           small Python tools for annotated tables and checks
   record_reproducibility.R
 GSE114192/           main analysis; TB_DM/ holds the TB-diabetes analysis in the same structure
@@ -65,15 +65,16 @@ GSE161829/ GSE222001/ GSE99374/ GSE229020/   other cohorts
 GSE50834/            TB-HIV dataset audit
 external_results/    GSE165709 RNA-seq and ATAC-seq results
 reproducibility/     package versions, parameters, seeds, external resources
-comparisons/         reference vs replication run comparison (step 14)
+comparisons/         reference vs replication run (step 14) and comparison across clinical contexts (contexts/, step 27)
 ```
 
-Inside each dataset the folders are numbered in the order they are produced: `01_raw_counts` → `02_metadata` → … → `09_wgcna_input` for the expression stage, then `10_wgcna_results` → … → `19_consensus` for the network stage, and `21`–`25` for the supporting layers. Figures are in `figures/`; the full figure set for each analysis is in `figures_manuscript/` (600 dpi PNG and PDF).
+Inside each dataset the folders are numbered in the order they are produced: `01_raw_counts` → `02_metadata` → … → `09_wgcna_input` for the expression stage, `10_wgcna_results` → … → `19_consensus` for the network stage, `20_evidence_families` for the final ranking, and `21`–`26` for the supporting layers, validation and drug evidence cards. Figures are in `figures/`; the full figure set for each analysis is in `figures_manuscript/` (600 dpi PNG and PDF).
 
-The two final tables most people will want are:
+The final tables most people will want are:
 
-- `GSE114192/19_consensus/GSE114192_GenePriority_all_modules.csv` — every module gene with its expression change, module, network scores, the rank on each measure and the overall priority
-- `GSE114192/19_consensus/GSE114192_DrugPriority.csv` — every candidate compound with its reversal score, targets, modules hit and overall priority
+- `GSE114192/20_evidence_families/GSE114192_Gene_evidence_families.csv` — every module gene with its family scores, evidence score, rank, rank range across variants and tier
+- `GSE114192/20_evidence_families/GSE114192_Drug_evidence_families.csv` and `GSE114192/26_drug_evidence_cards/` — every candidate compound ranked the same way, and a card for each of the best ones
+- `GSE114192/19_consensus/` — the earlier criteria-count ranking, kept for comparison
 
 ## How to run
 
