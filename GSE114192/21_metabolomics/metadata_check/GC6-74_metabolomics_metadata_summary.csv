@@ -1,0 +1,4 @@
+"Study","Sample_type","Analysis","Samples","Participant_IDs","Time_to_diagnosis_field"
+"ST000974","Plasma","AN001595",366,230,"TIMEPOINT;TIME_TO_TB"
+"ST000975","Serum","AN001596",340,220,"TIMEPOINT;TIME_TO_TB"
+"ST000976","Plasma diluted with RPMI","AN001597",45,35,"TIMEPOINT;TIME_TO_TB"
