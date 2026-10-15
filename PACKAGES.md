@@ -96,4 +96,4 @@ install.packages(c("msigdbr", "msigdbdf"),
 | `GSE114192_interaction_gsea.R` | clusterProfiler, msigdbr, org.Hs.eg.db |
 | `05_cross_dataset_upset.R` | org.Hs.eg.db, AnnotationDbi; plus the `00_functions.R` packages it sources (incl. UpSetR) |
 | `record_reproducibility.R` | org.Hs.eg.db, AnnotationDbi (for annotation source dates) |
-| `scripts/checkpoint/*.py` | Python 3 with pandas and numpy; Pillow for `figure_inventory.py` (no R needed) |
+| `scripts/helpers/*.py` | Python 3 with pandas and numpy; Pillow for `figure_inventory.py` (no R needed) |

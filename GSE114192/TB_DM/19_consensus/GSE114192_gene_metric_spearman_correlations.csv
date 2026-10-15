@@ -1,7 +1,0 @@
-,MM,Gene_Significance,PPI_Degree,PPI_Betweenness,RWR_score,Diffusion_score
-MM,1.0,0.764,0.213,0.129,0.259,0.253
-Gene_Significance,0.764,1.0,0.219,0.122,0.365,0.36
-PPI_Degree,0.213,0.219,1.0,0.795,0.64,0.539
-PPI_Betweenness,0.129,0.122,0.795,1.0,0.517,0.404
-RWR_score,0.259,0.365,0.64,0.517,1.0,0.974
-Diffusion_score,0.253,0.36,0.539,0.404,0.974,1.0

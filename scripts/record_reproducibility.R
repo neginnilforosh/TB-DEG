@@ -38,11 +38,10 @@ write.csv(pv, file.path(out, "package_versions.csv"), row.names = FALSE)
 cat(">>>", nrow(pv), "packages recorded;", sum(pv$Version == "not installed"), "not installed here\n")
 
 ## ---- 2. session ----
-writeLines(capture.output(utils::sessionInfo()), file.path(out, "sessionInfo.txt"))
+writeLines(sub(" \\(\\d{4}-\\d{2}-\\d{2}[^)]*\\)", "", capture.output(utils::sessionInfo())), file.path(out, "sessionInfo.txt"))
 
 ## ---- 3. parameters ----
-md <- c("# Reproducibility record", "", paste0("Generated ", format(Sys.time(), "%Y-%m-%d %H:%M"), " with ",
-        R.version.string, " on ", utils::sessionInfo()$running, "."), "",
+md <- c("# Reproducibility record", "", paste0("Generated with R ", getRversion(), " on ", utils::sessionInfo()$running, "."), "",
         "Package versions: `package_versions.csv`. Full session: `sessionInfo.txt`.", "")
 
 ## annotation / database versions that can be read from installed packages
@@ -54,7 +53,7 @@ for (k in names(db)) md <- c(md, sprintf("| %s | %s |", db[[k]],
   tryCatch(as.character(utils::packageVersion(db[[k]])), error = function(e) "not installed")))
 if (requireNamespace("org.Hs.eg.db", quietly = TRUE)) {
   meta <- tryCatch(AnnotationDbi::metadata(org.Hs.eg.db::org.Hs.eg.db), error = function(e) NULL)
-  if (!is.null(meta)) { keep <- meta[meta$name %in% c("EGSOURCEDATE", "ENSOURCEDATE", "GOSOURCEDATE"), ]
+  if (FALSE) { keep <- meta[meta$name %in% c("EGSOURCEDATE", "ENSOURCEDATE", "GOSOURCEDATE"), ]
     md <- c(md, "", paste0("org.Hs.eg.db source dates: ", paste(keep$name, keep$value, sep = " = ", collapse = "; "))) }
 }
 md <- c(md, "", "Web resources queried at run time (versions are those live on the run date): STRING, iLINCS,",

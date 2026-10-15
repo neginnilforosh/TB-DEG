@@ -163,7 +163,7 @@ print(utils::head(drug_out[, c("Drug", "iLINCS_Reversal_Score", "Network_Proximi
 ## ---- caveats, written next to the tables so the numbers are not read alone ----
 n_padj <- sum(stats::p.adjust(d$Network_Proximity_P, "BH") < P_CUT, na.rm = TRUE)
 notes <- c(
-  paste0("Consensus prioritisation for ", ACC, " (", CONTROL, " vs ", CASE, "), ", format(Sys.Date()), "."),
+  paste0("Consensus prioritisation for ", ACC, " (", CONTROL, " vs ", CASE, ")."),
   paste0("Top-ranked = best ", round(100 * TOP_FRACTION), "% of a criterion. High = ", HIGH_N,
          "+ criteria, Medium = ", MED_N, "-", HIGH_N - 1, ", Low = below that."), "",
   "Read with these caveats:",

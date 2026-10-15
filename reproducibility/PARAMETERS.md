@@ -1,6 +1,6 @@
 # Reproducibility record
 
-Generated 2026-10-14 01:55 with R version 4.5.0 (2025-04-11) on macOS 27.0.1.
+Generated with R 4.5.0 on macOS 27.0.1.
 
 Package versions: `package_versions.csv`. Full session: `sessionInfo.txt`.
 
@@ -19,7 +19,6 @@ Package versions: `package_versions.csv`. Full session: `sessionInfo.txt`.
 | WGCNA | 1.74 |
 | DESeq2 | 1.50.2 |
 
-org.Hs.eg.db source dates: EGSOURCEDATE = 2025-Sep24; GOSOURCEDATE = 2025-07-22; ENSOURCEDATE = 2025-Sep03
 
 Web resources queried at run time (versions are those live on the run date): STRING, iLINCS,
 Enrichr, DGIdb, KEGG REST, Metabolomics Workbench. See the run dates in each output folder.

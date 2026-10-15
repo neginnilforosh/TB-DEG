@@ -1,5 +1,5 @@
-GSE50834 READINESS AUDIT (pre-TB-HIV checkpoint, 2026-10-14). No preprocessing or analysis has been run.
-Source: GEO series matrix and supplementary-file index, read 2026-10-14 (ftp.ncbi.nlm.nih.gov). Sample table: 00_sample_table_from_GEO.csv
+GSE50834 READINESS AUDIT. No preprocessing or analysis has been run.
+Source: GEO series matrix and supplementary-file index (ftp.ncbi.nlm.nih.gov). Sample table: 00_sample_table_from_GEO.csv
 
 1. DATASET
    Title:         Gene expression analysis of PBMC from HIV and HIV/TB co-infected patients (PMID 24587128)
@@ -18,17 +18,17 @@ Source: GEO series matrix and supplementary-file index, read 2026-10-14 (ftp.ncb
      - GSE50834_RAW.tar (26 MB)
    Sample-to-column mapping: each GSM's !Sample_description gives its barcode, so columns can be matched by NAME. The header order equals GSM order.
 
-2. CRITICAL DESIGN ISSUE: GROUP IS CONFOUNDED WITH PROCESSING PERIOD (from scan dates in array barcodes)
+2. CRITICAL DESIGN ISSUE: GROUP IS CONFOUNDED WITH PROCESSING PERIOD (from array barcodes)
                            HIV only   HIV/TB
-   2007-2008                   5         5
-   2009 Jan-Jun               18         0
-   2009 Jul-2010 Mar           0        16
+   batch 1                     5         5
+   batch 2                  18         0
+   batch 3                   0        16
    Each BeadChip carries only one study sample, except the patient-2 pair, so chip cannot be used as a blocking batch.
-   For 34 of 44 arrays, scan period is completely aliased with disease group. Any batch adjustment (ComBat, or a
+   For 34 of 44 arrays, processing batch is completely aliased with disease group. Any batch adjustment (ComBat, or a
    period term in limma) would remove most of the TB signal, and no adjustment leaves the TB effect inseparable
    from processing date.
-   Only the 2007-2008 subset (5 vs 5) has both groups.
-   Scan date is a proxy: sample collection and RNA extraction dates are unknown.
+   Only the batch 1   subset (5 vs 5) has both groups.
+   The batch is inferred from the array barcodes; sample collection and RNA extraction batches are unknown.
 
 3. PLATFORM-APPROPRIATE METHOD (proposal; not DESeq2)
    Start from GSE50834_non-normalized.txt.gz, not the pre-filtered series matrix. Then:
@@ -48,7 +48,7 @@ Source: GEO series matrix and supplementary-file index, read 2026-10-14 (ftp.ncb
    Options (PENDING DECISION D10):
      A. Proceed with all 44 arrays (43 patients) and report the batch confounding as a major limitation.
         Treat results as hypothesis-generating. Run a sensitivity check of direction concordance in the
-        balanced 2007-2008 subset (5 vs 5; very low power).
+        balanced batch 1   subset (5 vs 5; very low power).
      B. Proceed, but give weight to TB-HIV genes only if they also replicate in the GSE114192 TB-vs-HC reference
         and/or an independent TB-HIV dataset with balanced processing.
      C. Search for an alternative or additional TB-HIV dataset (whole blood, with HIV-only and HIV/TB groups)

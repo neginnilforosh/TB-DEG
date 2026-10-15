@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Pre-TB-HIV checkpoint (14 Oct 2026): build the GSE114192 TB-DM design record.
+"""Build the GSE114192 TB-DM design record.
 
 NON-INFERENTIAL. Reads existing metadata/QC files only; fits no model; writes new files only.
 Outputs (GSE114192/TB_DM/):
@@ -7,7 +7,7 @@ Outputs (GSE114192/TB_DM/):
   00_design/site_by_group.csv       site x GEO label counts
   00_design/design_identifiability.csv  rank / estimability checks for candidate designs
 Inputs:
-  00_design/GSE114192_geo_series_matrix_metadata.tsv  (GEO series matrix, fetched 14 Oct 2026)
+  00_design/GSE114192_geo_series_matrix_metadata.tsv  (GEO series matrix)
   00_design/GSE114192_htseq_library_qc.tsv            (HTSeq special counters per sample)
   00_design/GSE114192_supp_table1_alignment_match.csv (Eckold et al. Suppl. Table 1 matched by aligned reads)
   02_metadata/GSE114192_TB_DM_sample_metadata.csv, ../02_metadata/GSE114192_sample_metadata.csv
