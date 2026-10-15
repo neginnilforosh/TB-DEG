@@ -46,7 +46,7 @@ Everything here is computational. A drug that ranks highly is a hypothesis worth
 | TB vs healthy | Complete |
 | Supporting layers (GSEA, single-cell, ATAC-seq, metabolomics, CTD) | Complete |
 | TB + diabetes | Full pipeline has run; results are preliminary because healthy and diabetes-only samples come from fewer recruitment sites than the TB samples, which has to be accounted for |
-| Independent cohorts (GSE161829, GSE222001) | Sample labels corrected and differential expression redone; network analysis, cross-cohort comparison and machine-learning validation are being regenerated |
+| Independent cohorts (GSE161829, GSE222001) | Sample labels corrected; all analyses redone. Pathways and the interferon module replicate; drug candidates do not |
 | TB + HIV | Not started. The dataset's two groups were processed at different times, so the best way to use it is still being decided |
 | Comparison of TB, TB-diabetes and TB-HIV | Waits for TB-HIV |
 
