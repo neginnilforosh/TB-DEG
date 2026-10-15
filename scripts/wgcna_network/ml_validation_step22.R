@@ -10,6 +10,13 @@
 ## between studies do not leak into the comparison. AUCs carry bootstrap 95% CIs, and the score's AUC is
 ## compared with 1,000 random gene sets of the same size, so "AUC 0.9" is read against what any blood
 ## gene set achieves. Outputs in <run>/24_ml_validation/.
+##
+## Leakage (D12): the prioritised genes were chosen on ALL discovery samples, so their discovery AUC is
+## in-sample and optimistic; it is kept only as a descriptive row. The honest discovery estimate is a
+## repeated nested cross-validation of the whole signature-building procedure: in every outer training
+## fold the genes are re-selected (Welch t-test, same panel size), standardised with training-fold
+## parameters, the elastic-net lambda is chosen by inner CV, and only then is the held-out fold predicted.
+## External datasets are true hold-outs: nothing is fitted on them.
 
 ## ---- CONFIG ----
 TIERS     <- c("High")              # genes used as features; c("High","Medium") for a larger panel
@@ -20,6 +27,7 @@ TESTS <- list(                       # dataset, group A (control), group B (case
   list(ds = "GSE222001", a = "Healthy", b = "Active", lab = "GSE222001 Active vs Healthy (n=5+5)"),
   list(ds = "GSE222001", a = "Latent",  b = "Active", lab = "GSE222001 Active vs Latent (n=5+5)"))
 SEED <- 42; N_BOOT <- 1000; N_RANDOM <- 1000; ALPHA <- 0.5
+N_OUTER <- 5; N_REPEATS <- 10        # nested CV: 5 outer folds, repeated 10 times
 
 for (p in c("glmnet", "ggplot2")) if (!requireNamespace(p, quietly = TRUE)) stop("Missing package: ", p)
 suppressPackageStartupMessages(library(ggplot2))
@@ -94,9 +102,59 @@ add <- function(label, model, score, y, null = NULL) {
   roc[[length(roc) + 1]] <<- data.frame(Test = label, Model = model, FPR = c(0, fp), TPR = c(0, tp))
 }
 ## discovery
-add(paste0("Discovery (", ACC, ") ", CASE, " vs ", CONTROL, " [in-sample: genes chosen here]"), "Signature score", sig_score(Dz, up, dn), Dy,
+add(paste0("Discovery (", ACC, ") ", CASE, " vs ", CONTROL, " [in-sample, optimistic: genes chosen on these samples]"), "Signature score", sig_score(Dz, up, dn), Dy,
     sapply(rand_sets, function(g) { z <- zscore(Dx[g, ]); s <- colMeans(z); max(auc(s, Dy), auc(-s, Dy)) }))
-add(paste0("Discovery (", ACC, ") ", CASE, " vs ", CONTROL, " [in-sample: genes chosen here]"), "Elastic net (5-fold CV)", cv_pred, Dy)
+add(paste0("Discovery (", ACC, ") ", CASE, " vs ", CONTROL, " [in-sample, optimistic: genes chosen on these samples]"), "Elastic net (5-fold CV)", cv_pred, Dy)
+
+## ---- nested cross-validation of the whole signature-building procedure (leakage-free discovery AUC) ----
+welch <- function(x, y) {                     # row-wise Welch t statistic and two-sided p-value
+  a <- x[, y == 1, drop = FALSE]; b <- x[, y == 0, drop = FALSE]
+  na <- ncol(a); nb <- ncol(b); va <- apply(a, 1, stats::var); vb <- apply(b, 1, stats::var)
+  se <- sqrt(va / na + vb / nb); tt <- (rowMeans(a) - rowMeans(b)) / se
+  df <- se^4 / ((va / na)^2 / (na - 1) + (vb / nb)^2 / (nb - 1))
+  pp <- 2 * stats::pt(-abs(tt), df)
+  tt[!is.finite(tt)] <- 0; pp[!is.finite(pp)] <- 1
+  names(tt) <- rownames(x); names(pp) <- rownames(x)
+  list(t = tt, p = pp)
+}
+strat_folds <- function(y, k) {               # stratified fold labels 1..k
+  f <- integer(length(y))
+  for (cl in c(0, 1)) { i <- which(y == cl); f[i] <- sample(rep_len(seq_len(k), length(i))) }
+  f
+}
+k_feat <- length(genes)                       # same panel size as the prioritised genes
+Xn <- Dx[common, , drop = FALSE]              # candidate genes: everything measured in every dataset
+set.seed(SEED)
+nest <- list()
+for (r in seq_len(N_REPEATS)) {
+  folds <- strat_folds(Dy, N_OUTER); p_sig <- p_en <- rep(NA_real_, length(Dy))
+  for (k in seq_len(N_OUTER)) {
+    tr <- folds != k; te <- folds == k
+    w <- welch(Xn[, tr, drop = FALSE], Dy[tr])
+    sel <- names(sort(w$p))[seq_len(min(k_feat, length(w$p)))]
+    mu <- rowMeans(Xn[sel, tr, drop = FALSE]); sdv <- apply(Xn[sel, tr, drop = FALSE], 1, stats::sd); sdv[!is.finite(sdv) | sdv == 0] <- 1
+    ztr <- (Xn[sel, tr, drop = FALSE] - mu) / sdv
+    zte <- (Xn[sel, te, drop = FALSE] - mu) / sdv
+    up_k <- sel[w$t[sel] > 0]; dn_k <- setdiff(sel, up_k)
+    p_sig[te] <- sig_score(zte, up_k, dn_k)
+    fit <- glmnet::cv.glmnet(t(ztr), Dy[tr], family = "binomial", alpha = ALPHA, nfolds = 5, type.measure = "auc")
+    p_en[te] <- as.numeric(stats::predict(fit, newx = t(zte), s = "lambda.min", type = "link"))
+  }
+  nest[[r]] <- data.frame(Repeat = r, AUC_signature = auc(p_sig, Dy), AUC_elastic_net = auc(p_en, Dy))
+}
+NEST <- do.call(rbind, nest)
+write.csv(NEST, file.path(dir_out, paste0(ACC, "_ml_nested_cv.csv")), row.names = FALSE)
+nest_lab <- paste0("Discovery (", ACC, ") ", CASE, " vs ", CONTROL, " [nested CV ", N_OUTER, "-fold x ", N_REPEATS,
+                   "; genes re-selected in each training fold; CI = 2.5-97.5% of repeats]")
+for (m in c("AUC_signature", "AUC_elastic_net")) {
+  v <- NEST[[m]]
+  res[[length(res) + 1]] <- data.frame(Test = nest_lab, Model = if (m == "AUC_signature") "Signature score (nested CV)" else "Elastic net (nested CV)",
+    N_case = sum(Dy == 1), N_control = sum(Dy == 0), AUC = round(mean(v), 3),
+    CI_low = round(unname(stats::quantile(v, 0.025)), 3), CI_high = round(unname(stats::quantile(v, 0.975)), 3),
+    Random_gene_set_median_AUC = NA, P_vs_random = NA)
+}
+cat(">>> nested CV (", N_OUTER, "x", N_REPEATS, "): signature AUC", round(mean(NEST$AUC_signature), 3),
+    "| elastic net AUC", round(mean(NEST$AUC_elastic_net), 3), "\n")
 
 ## external tests
 for (t in TESTS) {

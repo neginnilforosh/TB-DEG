@@ -12,13 +12,16 @@ if (!requireNamespace("BiocManager", quietly = TRUE)) install.packages("BiocMana
 # Bioconductor
 BiocManager::install(c(
   "DESeq2", "GEOquery", "apeglm", "limma", "WGCNA",
-  "clusterProfiler", "org.Hs.eg.db", "ReactomePA"
+  "clusterProfiler", "org.Hs.eg.db", "ReactomePA", "AnnotationDbi",
+  "ChIPseeker", "TxDb.Hsapiens.UCSC.hg38.knownGene", "GenomicRanges", "IRanges"   # GSE165709 (steps 16-18)
 ))
 
 # CRAN
 install.packages(c(
   "pheatmap", "ggplot2", "ggrepel", "RColorBrewer", "UpSetR",
-  "matrixStats", "dplyr", "httr", "jsonlite", "igraph", "enrichR", "Matrix"
+  "matrixStats", "dplyr", "httr", "jsonlite", "igraph", "enrichR", "Matrix",
+  "glmnet",      # ML validation (step 22)
+  "data.table"   # optional: faster reading of the CTD bulk files (step 23)
 ))
 
 # drugfindR (iLINCS, steps 6-7) is distributed via r-universe
@@ -81,3 +84,16 @@ install.packages(c("msigdbr", "msigdbdf"),
 | `WGCNA_Enrichr_drugs_step12.R` | enrichR |
 | `WGCNA_singlecell_step13.R` | Matrix (+ the SCP1749 files in `external_data/SCP1749/`, see README) |
 | `WGCNA_compare_runs_step14.R` | none beyond base R |
+| `WGCNA_consensus_priority_step15.R` | none beyond base R |
+| `GSE165709_differential_step16.R` | DESeq2, ChIPseeker, TxDb.Hsapiens.UCSC.hg38.knownGene, GenomicRanges, IRanges |
+| `GSE165709_integration_step17.R`, `GSE165709_atac_geneset_step18.R` | none beyond base R |
+| `metabolomics_step19.R` | httr, jsonlite; limma (optional, for covariate adjustment) |
+| `metabolomics_bridge_step20.R` | httr, org.Hs.eg.db, AnnotationDbi |
+| `external_validation_step21.R` | ggplot2 |
+| `ml_validation_step22.R` | glmnet, ggplot2 |
+| `ctd_annotation_step23.R` | httr; data.table (optional) |
+| `figures_step24.R` | ggplot2, igraph, ggrepel |
+| `GSE114192_interaction_gsea.R` | clusterProfiler, msigdbr, org.Hs.eg.db |
+| `05_cross_dataset_upset.R` | org.Hs.eg.db, AnnotationDbi; plus the `00_functions.R` packages it sources (incl. UpSetR) |
+| `record_reproducibility.R` | org.Hs.eg.db, AnnotationDbi (for annotation source dates) |
+| `scripts/checkpoint/*.py` | Python 3 with pandas and numpy; Pillow for `figure_inventory.py` (no R needed) |

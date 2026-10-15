@@ -1,7 +1,0 @@
-"Dataset","Tier","N","Median_shift_active","Median_shift_LTBI","Pct_bigger_in_active","P_paired","N_active_specific"
-"GSE161829","High",33,0.098,0,78.8,8.03e-06,6
-"GSE161829","Medium",226,0.014,0,60.2,6.84e-05,9
-"GSE161829","Low",958,0.006,0,58,5.04e-10,22
-"GSE222001","High",38,0.04,0.003,81.6,0.000122,3
-"GSE222001","Medium",264,0.03,0.002,75.8,1.1e-18,8
-"GSE222001","Low",1018,0.006,0.001,54.6,0.000156,13

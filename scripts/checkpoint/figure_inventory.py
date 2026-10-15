@@ -1,10 +1,9 @@
 #!/usr/bin/env python3
 """Pre-TB-HIV checkpoint: inventory of raster/vector figures with pixel size and embedded DPI (PNG pHYs / TIFF tags).
-Requirement checked: final raster figures at 600 DPI (instructions §11K). Output: reproducibility/checkpoint_2026-10-14/FIGURE_INVENTORY.csv"""
+Checks that final raster figures are exported at 600 DPI. Output: reproducibility/FIGURE_INVENTORY.csv"""
 import os, re, csv
 from PIL import Image
 ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
-man = {r["path"]: r["status"] for r in csv.DictReader(open(os.path.join(ROOT, "reproducibility", "checkpoint_2026-10-14", "RESULTS_MANIFEST.csv")))}
 rows = []
 for top in sorted(os.listdir(ROOT)):
     if not (re.match(r"GSE\d+", top) or top in ("external_results", "figures")): continue
@@ -15,8 +14,7 @@ for top in sorted(os.listdir(ROOT)):
             rel = os.path.relpath(os.path.join(dp, f), ROOT); stem = os.path.splitext(rel)[0]
             r = dict(path=rel, type=ext[1:], width_px="", height_px="", dpi_embedded="", width_in_at_dpi="",
                      meets_600dpi="", has_pdf_or_svg=os.path.exists(stem + ".pdf") or os.path.exists(stem + ".svg"),
-                     has_png_or_tiff=any(os.path.exists(stem + e) for e in (".png", ".tif", ".tiff")),
-                     status=man.get(rel, ""))
+                     has_png_or_tiff=any(os.path.exists(stem + e) for e in (".png", ".tif", ".tiff")))
             if ext in (".png", ".tif", ".tiff"):
                 try:
                     im = Image.open(os.path.join(ROOT, rel)); r["width_px"], r["height_px"] = im.size
@@ -27,7 +25,8 @@ for top in sorted(os.listdir(ROOT)):
                     else: r["meets_600dpi"] = "unknown (no DPI tag)"
                 except Exception as e: r["dpi_embedded"] = f"error: {e}"
             rows.append(r)
-p = os.path.join(ROOT, "reproducibility", "checkpoint_2026-10-14", "FIGURE_INVENTORY.csv")
+rows.sort(key=lambda r: r["path"])          # deterministic order across file systems
+p = os.path.join(ROOT, "reproducibility", "FIGURE_INVENTORY.csv")
 with open(p, "w", newline="") as fh:
     w = csv.DictWriter(fh, fieldnames=list(rows[0])); w.writeheader(); w.writerows(rows)
 import collections
@@ -35,5 +34,5 @@ ras = [r for r in rows if r["type"] in ("png", "tif", "tiff")]
 print("figures:", len(rows), "raster:", len(ras), "vector:", len(rows) - len(ras))
 print("DPI distribution:", collections.Counter(str(r["dpi_embedded"]) for r in ras).most_common())
 print("raster without vector companion:", sum(not r["has_pdf_or_svg"] for r in ras))
-ref = [r for r in ras if r["status"].startswith("REFERENCE")]
+ref = [r for r in ras if r["path"].startswith("GSE114192/") and "/TB_DM/" not in r["path"]]
 print("reference raster:", len(ref), "meeting 600:", sum(r["meets_600dpi"] is True for r in ref))

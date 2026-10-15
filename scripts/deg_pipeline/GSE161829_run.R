@@ -46,9 +46,48 @@ GROUP_MAP <- c(
 count_path <- file.path(dir_raw, ACC, COUNT_FILE)
 raw_counts <- read.delim(count_path, row.names = 1, check.names = FALSE)
 
-if(ncol(raw_counts) == nrow(pheno)) {
-  colnames(raw_counts) <- rownames(pheno)
-}
+## ---- Match count columns to GEO samples by NAME (exact one-to-one) ----
+## GEO's !Sample_description records each GSM's count-column name (Sample1_CD4m ... Sample106_CD4m). Its
+## order differs from pData() order at GEO positions 74-101, so renaming the columns by position mislabelled
+## 7 analysed samples in an earlier run. Every check below stops the script instead of guessing.
+desc_cols <- grep("^description", names(pheno), value = TRUE)
+if (!length(desc_cols)) stop("GEO metadata has no !Sample_description column; cannot match count columns by name.")
+gsm_col <- apply(pheno[, desc_cols, drop = FALSE], 1, function(v) {
+  hit <- unique(grep("^Sample[0-9]+_CD4m$", trimws(as.character(v)), value = TRUE))
+  if (length(hit) == 1) hit else NA_character_
+})
+names(gsm_col) <- rownames(pheno)
+if (anyNA(gsm_col))
+  stop("GSM(s) without exactly one count-column name in !Sample_description: ",
+       paste(names(gsm_col)[is.na(gsm_col)], collapse = ", "))
+if (anyDuplicated(gsm_col))
+  stop("Count-column name(s) claimed by more than one GSM: ",
+       paste(unique(gsm_col[duplicated(gsm_col)]), collapse = ", "))
+if (anyDuplicated(colnames(raw_counts)))
+  stop("Duplicated count-matrix column name(s): ",
+       paste(unique(colnames(raw_counts)[duplicated(colnames(raw_counts))]), collapse = ", "))
+cols_without_gsm <- setdiff(colnames(raw_counts), gsm_col)
+gsm_without_col  <- names(gsm_col)[!gsm_col %in% colnames(raw_counts)]
+if (length(cols_without_gsm) || length(gsm_without_col))
+  stop("Count columns and GEO samples differ. Count columns with no GSM: ",
+       paste(cols_without_gsm, collapse = ", "), " | GSMs with no count column: ",
+       paste(gsm_without_col, collapse = ", "))
+raw_counts <- raw_counts[, unname(gsm_col), drop = FALSE]      # reorder to pData() order ...
+colnames(raw_counts) <- names(gsm_col)                         # ... and name each column by its GSM
+if (!identical(colnames(raw_counts), rownames(pheno)))
+  stop("Count columns are not in GEO sample order after matching.")
+
+## Independent check of the group labels: each GEO title encodes the same group as the disease-group field
+## (..._ATB_V1_... = ATB_Diagnosis, ..._ATB_V2_... = ATB_Post_treatment, ..._LTBI_... = LTBI, ..._TBneg_... = TBneg).
+geo_group   <- as.character(pheno[[GROUP_COL]])
+title_group <- ifelse(grepl("_ATB_V1", pheno$title), "ATB_Diagnosis",
+               ifelse(grepl("_ATB_V2", pheno$title), "ATB_Post_treatment",
+               ifelse(grepl("_LTBI_",  pheno$title), "LTBI",
+               ifelse(grepl("_TBneg_", pheno$title), "TBneg", NA_character_))))
+bad <- which(is.na(title_group) | title_group != geo_group)
+if (length(bad))
+  stop("GEO title and '", GROUP_COL, "' disagree for: ", paste(rownames(pheno)[bad], collapse = ", "))
+cat("Count columns matched one-to-one to", length(gsm_col), "GEO samples via !Sample_description\n")
 
 cat("Raw counts loaded:", nrow(raw_counts), "genes x", ncol(raw_counts), "samples\n")
 
@@ -58,16 +97,30 @@ metadata <- data.frame(
   group     = unname(GROUP_MAP[as.character(pheno[[GROUP_COL]])]),
   stringsAsFactors = FALSE
 )
-stopifnot(!any(is.na(metadata$group)))
+if (anyNA(metadata$group))
+  stop("Unmapped GEO group label(s): ", paste(unique(geo_group[is.na(metadata$group)]), collapse = ", "))
 
+n_before <- ncol(raw_counts)
+cat("\n--- Samples before exclusion:", n_before, "---\n"); print(table(GEO_group = geo_group))
+excluded <- metadata$sample_id[metadata$group == "Exclude"]     # ATB_Post_treatment, excluded by design
 metadata <- metadata[metadata$group != "Exclude", ]
 metadata$group <- factor(metadata$group, levels = c("TBneg", "LTBI", "ATB"))
 rownames(metadata) <- metadata$sample_id
 
 common <- intersect(colnames(raw_counts), metadata$sample_id)
-stopifnot(length(common) > 0)
-raw_counts <- raw_counts[, common]
-metadata   <- metadata[common, ]
+silently_dropped <- setdiff(colnames(raw_counts), c(common, excluded))
+missing_counts   <- setdiff(metadata$sample_id, common)
+if (length(silently_dropped) || length(missing_counts))
+  stop("Unexpected sample loss. Count columns dropped without an exclusion rule: ",
+       paste(silently_dropped, collapse = ", "), " | metadata samples without counts: ",
+       paste(missing_counts, collapse = ", "))
+raw_counts <- raw_counts[, common, drop = FALSE]
+metadata   <- metadata[common, , drop = FALSE]
+if (ncol(raw_counts) + length(excluded) != n_before)
+  stop("Sample accounting failed: ", ncol(raw_counts), " kept + ", length(excluded), " excluded != ", n_before)
+if (!identical(colnames(raw_counts), rownames(metadata)))
+  stop("Count columns and metadata rows are not in the same order.")
+cat("Samples after excluding ATB_Post_treatment:", ncol(raw_counts), "(excluded:", length(excluded), ")\n")
 
 cat("\n--- Final Sample Count per Group ---\n")
 print(table(metadata$group))
@@ -85,6 +138,8 @@ plot_filtering_summary(filt$n_before, filt$n_after,
                        title = paste(ACC, "gene filtering"))
 
 ## ---- DESeq2 + VST + PCA ----
+if (!identical(colnames(filt$filtered), rownames(metadata)))
+  stop("Filtered count matrix and metadata are not in the same sample order.")
 dds <- DESeqDataSetFromMatrix(filt$filtered, metadata, design = ~ group)
 dds <- DESeq(dds)
 

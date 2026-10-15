@@ -14,9 +14,9 @@ BASE_DIR <- file.path("..", "..", ACC)
 LFC_TH   <- 1
 PADJ_TH  <- 0.05
 
-dir_raw   <- file.path(BASE_DIR, "01_raw_data")
+dir_raw   <- file.path(BASE_DIR, "01_raw_counts")
 dir_meta  <- file.path(BASE_DIR, "02_metadata")
-dir_filt  <- file.path(BASE_DIR, "03_filtered")
+dir_filt  <- file.path(BASE_DIR, "03_filtered_counts")
 dir_norm  <- file.path(BASE_DIR, "04_normalized")
 dir_corr  <- file.path(BASE_DIR, "05_sample_correlation")
 dir_deg   <- file.path(BASE_DIR, "06_deg_results")
@@ -81,7 +81,7 @@ design_plot <- ggplot(metadata, aes(group, fill = group)) + geom_bar() +
   theme_minimal(base_size = 12) + theme(legend.position = "none") +
   labs(title = paste(ACC, "miRNA — sample design"), x = NULL, y = "N samples")
 ggsave(file.path(dir_fig, paste0(ACC, "_miRNA_sample_design.png")), design_plot,
-      width = 5, height = 4, dpi = 300)
+      width = 5, height = 4, dpi = 600)
 
 ## ---- 3. Light filtering: drop miRNAs with ~zero signal/variance across ALL samples ----
 keep <- apply(expr, 1, function(x) sd(x) > 0) & rowMeans(expr) > 1
@@ -94,7 +94,7 @@ filt_plot <- ggplot(filt_summary, aes(stage, n, fill = stage)) + geom_col() +
   theme_minimal(base_size = 12) + theme(legend.position = "none") +
   labs(title = paste(ACC, "miRNA filtering"), x = NULL, y = "Number of miRNAs")
 ggsave(file.path(dir_fig, paste0(ACC, "_miRNA_filtering_summary.png")), filt_plot,
-      width = 5, height = 4, dpi = 300)
+      width = 5, height = 4, dpi = 600)
 cat("\nmiRNAs:", nrow(expr), "before filtering,", nrow(expr_filt), "after\n")
 
 ## ---- 4. log2 transform (standard for NanoString/microarray-style intensities) ----
@@ -111,14 +111,14 @@ pca_plot <- ggplot(pca_df, aes(PC1, PC2, color = group, label = sample_id)) +
   labs(title = paste(ACC, "miRNA PCA"),
       x = paste0("PC1 (", pct_var[1], "%)"), y = paste0("PC2 (", pct_var[2], "%)")) +
   theme_minimal(base_size = 12)
-ggsave(file.path(dir_fig, paste0(ACC, "_miRNA_PCA.png")), pca_plot, width = 6, height = 5, dpi = 300)
+ggsave(file.path(dir_fig, paste0(ACC, "_miRNA_PCA.png")), pca_plot, width = 6, height = 5, dpi = 600)
 
 ## ---- 5. Sample correlation ----
 sample_cor <- cor(log2_mat, method = "pearson", use = "pairwise.complete.obs")
 write.csv(sample_cor, file.path(dir_corr, paste0(ACC, "_miRNA_sample_correlation_matrix.csv")))
 ann <- data.frame(Group = metadata$group); rownames(ann) <- metadata$sample_id
 png(file.path(dir_fig, paste0(ACC, "_miRNA_sample_correlation_heatmap.png")),
-   width = 7, height = 6, units = "in", res = 300)
+   width = 7, height = 6, units = "in", res = 600)
 pheatmap(sample_cor, annotation_col = ann, annotation_row = ann,
         main = paste(ACC, "miRNA sample correlation"))
 dev.off()
@@ -157,7 +157,7 @@ for (cmp_name in names(comparisons)) {
     labs(title = paste(ACC, "miRNA —", gsub("_", " ", cmp_name)),
         x = "log2 fold change", y = "-log10(p-value)") +
     theme_minimal(base_size = 12)
-  ggsave(file.path(dir_fig, paste0(ACC, "_", cmp_name, "_volcano.png")), volcano, width = 6, height = 5, dpi = 300)
+  ggsave(file.path(dir_fig, paste0(ACC, "_", cmp_name, "_volcano.png")), volcano, width = 6, height = 5, dpi = 600)
 
   sig_df <- res[res$sig == "Significant", ]
   sig_df <- sig_df[order(sig_df$adj.P.Val), ]
@@ -167,7 +167,7 @@ for (cmp_name in names(comparisons)) {
   if (nrow(sig_df) > 1) {
     top_n <- min(50, nrow(sig_df))
     png(file.path(dir_fig, paste0(ACC, "_", cmp_name, "_heatmap.png")),
-       width = 7, height = 8, units = "in", res = 300)
+       width = 7, height = 8, units = "in", res = 600)
     pheatmap(log2_mat[sig_df$miRNA[1:top_n], ], scale = "row", annotation_col = ann,
             main = paste(ACC, "top", top_n, "miRNAs,", gsub("_", " ", cmp_name)))
     dev.off()
@@ -184,7 +184,7 @@ if (length(non_empty) >= 2) {
   write.csv(cbind(miRNA = rownames(membership), membership),
            file.path(dir_share, paste0(ACC, "_shared_unique_miRNAs.csv")), row.names = FALSE)
 
-  png(file.path(dir_fig, paste0(ACC, "_miRNA_upset.png")), width = 8, height = 5, units = "in", res = 300)
+  png(file.path(dir_fig, paste0(ACC, "_miRNA_upset.png")), width = 8, height = 5, units = "in", res = 600)
   upset(membership, nsets = ncol(membership), order.by = "freq",
        main.bar.color = "steelblue", sets.bar.color = "darkorange")
   dev.off()

@@ -3,7 +3,8 @@
 
 DIAGNOSTIC ONLY. Official tiers in 19_consensus/*.csv are NOT changed. All alternative tiers written here are
 DRAFTS for open decisions D4 (gene scheme) and D5 (proximity in drug tiers).
-Outputs: <run>/19_consensus/diagnostics_2026-10-14/
+Outputs: <run>/19_consensus/GSE114192_{gene_criteria_distribution, gene_consensus_sensitivity, gene_consensus_DRAFT_tiers,
+gene_metric_spearman_correlations, drug_criteria_provenance_and_DRAFT_rules}.csv; summary: reproducibility/consensus_diagnostics_summary.csv
 """
 import os, itertools
 import numpy as np, pandas as pd
@@ -22,7 +23,7 @@ def pct(v):                              # within-context percentile rank (0-1],
 
 summary = []
 for label, rel in RUNS.items():
-    base = os.path.join(ROOT, rel, "19_consensus"); out = os.path.join(base, "diagnostics_2026-10-14")
+    base = os.path.join(ROOT, rel, "19_consensus"); out = base; P = "GSE114192_"   # files sit next to the step-15 outputs
     os.makedirs(out, exist_ok=True)
     g = pd.read_csv(os.path.join(base, "GSE114192_GenePriority_all_modules.csv"))
     # ---- 1. reproduce the official gene criteria exactly ----
@@ -42,7 +43,7 @@ for label, rel in RUNS.items():
     g2["DRAFT_assessability"] = np.where(avail < 4, "partially assessable (no STRING node)", "fully assessable")
     # ---- 2. distribution ----
     dist = pd.crosstab([g2.N_criteria], [g2.In_PPI_network], margins=True)
-    dist.to_csv(os.path.join(out, "gene_criteria_distribution.csv"))
+    dist.to_csv(os.path.join(out, P + "gene_criteria_distribution.csv"))
     # ---- 3. sensitivity analyses (sets keyed by Ensembl ID; some genes lack symbols) ----
     base_high = set(g.Ensembl[g.Final_Priority == "High"])
     rows = []
@@ -71,11 +72,11 @@ for label, rel in RUNS.items():
     fam_top = set(g2.sort_values("DRAFT_family_score", ascending=False).Ensembl.head(k))
     record(f"family-weighted percentile, top {k} genes (same size as official High)", fam_top)
     rho = pd.Series(g2.DRAFT_family_score).rank().corr(pd.Series(n).rank())
-    sens = pd.DataFrame(rows); sens.to_csv(os.path.join(out, "gene_consensus_sensitivity.csv"), index=False)
-    g2.to_csv(os.path.join(out, "gene_consensus_DRAFT_tiers.csv"), index=False)
+    sens = pd.DataFrame(rows); sens.to_csv(os.path.join(out, P + "gene_consensus_sensitivity.csv"), index=False)
+    g2.to_csv(os.path.join(out, P + "gene_consensus_DRAFT_tiers.csv"), index=False)
     # metric redundancy
     cor = g[["MM", "Gene_Significance", "PPI_Degree", "PPI_Betweenness", "RWR_score", "Diffusion_score"]].abs().corr(method="spearman")
-    cor.round(3).to_csv(os.path.join(out, "gene_metric_spearman_correlations.csv"))
+    cor.round(3).to_csv(os.path.join(out, P + "gene_metric_spearman_correlations.csv"))
 
     # ---- 4. drug provenance and alternative proximity rules ----
     d = pd.read_csv(os.path.join(base, "GSE114192_DrugPriority.csv"))
@@ -101,7 +102,7 @@ for label, rel in RUNS.items():
     prov["DRAFT_C_proximity_tiebreak_only"] = alt_C
     prov["tie_break_proximity_Z"] = d.Network_Proximity_Z
     prov["note"] = "Computational candidate (hypothesis), not a validated treatment"
-    prov.to_csv(os.path.join(out, "drug_criteria_provenance_and_DRAFT_rules.csv"), index=False)
+    prov.to_csv(os.path.join(out, P + "drug_criteria_provenance_and_DRAFT_rules.csv"), index=False)
     hi = d.Final_Priority == "High"
     summary.append(dict(run=label, genes=len(g), official_High=len(base_high),
         genes_0_criteria=int((n == 0).sum()), genes_1_criterion=int((n == 1).sum()),
@@ -112,5 +113,5 @@ for label, rel in RUNS.items():
         High_A=int((alt_A == "High").sum()), High_B=int((alt_B == "High").sum()),
         High_B2=int((alt_B2 == "High").sum()), High_C=int((alt_C == "High").sum())))
     print(label, "done:", sens.to_string(index=False))
-pd.DataFrame(summary).to_csv(os.path.join(ROOT, "reproducibility", "checkpoint_2026-10-14", "consensus_diagnostics_summary.csv"), index=False)
+pd.DataFrame(summary).to_csv(os.path.join(ROOT, "reproducibility", "consensus_diagnostics_summary.csv"), index=False)
 print(pd.DataFrame(summary).T.to_string())

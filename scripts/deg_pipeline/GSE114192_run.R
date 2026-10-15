@@ -111,18 +111,10 @@ rownames(metadata) <- metadata$sample_id
 ## Intersect to keep only samples present in both counts and metadata
 common <- intersect(colnames(raw_counts), metadata$sample_id)
 
-if (length(common) == 0) {
-    cat("\nWARNING: Column names in raw_counts do not perfectly match sample_ids in metadata.\n")
-
-    # Fallback: Attempt force-mapping if lengths are exactly the same
-    if(ncol(raw_counts) == nrow(pheno)) {
-        cat("Attempting to force-map colnames to pheno rownames...\n")
-        colnames(raw_counts) <- rownames(pheno)
-        common <- intersect(colnames(raw_counts), metadata$sample_id)
-    } else {
-        stop("Cannot resolve sample name mismatch. Manual inspection of the matrices is required.")
-    }
-}
+## Samples are matched by name only (count columns are GSM IDs taken from the per-sample file names).
+## No positional fallback: pairing columns with pData() by position can silently mislabel samples.
+if (length(common) == 0)
+    stop("Count-matrix column names do not match the GEO sample IDs; manual inspection is required.")
 
 raw_counts <- raw_counts[, common]
 metadata   <- metadata[common, ]

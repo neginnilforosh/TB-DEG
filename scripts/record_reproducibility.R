@@ -24,7 +24,9 @@ src <- sub("#.*$", "", src)                                           # ignore c
 pk <- c(unlist(regmatches(src, gregexpr("(?<=\\blibrary\\()[A-Za-z0-9.]+", src, perl = TRUE))),
         unlist(regmatches(src, gregexpr("(?<=\\brequire\\()[A-Za-z0-9.]+", src, perl = TRUE))),
         unlist(regmatches(src, gregexpr("[A-Za-z][A-Za-z0-9.]+(?=::)", src, perl = TRUE))),
-        unlist(regmatches(src, gregexpr("(?<=requireNamespace\\(\")[A-Za-z0-9.]+", src, perl = TRUE))))
+        unlist(regmatches(src, gregexpr("(?<=requireNamespace\\(\")[A-Za-z0-9.]+", src, perl = TRUE))),
+        ## packages used only through a type = "..." argument (DESeq2::lfcShrink backends)
+        unlist(regmatches(src, gregexpr("(?<=type = \")(apeglm|ashr)(?=\")", src, perl = TRUE))))
 ## packages named inside c("...") vectors of required packages
 for (m in regmatches(src, gregexpr("(req|required_pkgs|pkgs?)\\s*<-\\s*c\\([^)]*\\)", src)))
   for (x in m) pk <- c(pk, regmatches(x, gregexpr("(?<=\")[A-Za-z][A-Za-z0-9.]+(?=\")", x, perl = TRUE))[[1]])

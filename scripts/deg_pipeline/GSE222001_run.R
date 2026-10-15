@@ -45,7 +45,7 @@ print(list.files(file.path(dir_raw, ACC), full.names = FALSE))
 ## ---- CONFIG ----
 
 GROUP_COL   <- "disease state:ch1"        # <-- from A1
-COUNT_FILE  <- "GSE222001_count.txt" # <-- from A2
+COUNT_FILE  <- "GSE222001_count.txt.gz" # <-- from A2 (GEO supplies only the gzipped file; read.delim reads it directly)
 
 ## Map the raw labels GEO uses onto clean names.
 GROUP_MAP <- c(
@@ -73,21 +73,77 @@ raw_counts <- raw_counts[, !colnames(raw_counts) %in% annot_cols, drop = FALSE]
 
 cat("Raw counts loaded:", nrow(raw_counts), "genes x", ncol(raw_counts), "samples\n")
 
+## ---- Match count columns to GEO samples by NAME (exact one-to-one) ----
+## GEO's !Sample_description holds each GSM's count-column name (TB-rep1, LTBI-rep1, NC-rep1, ...).
+## The count file lists its columns in a different order from pData(), so pairing them by position
+## is wrong (it swapped the Healthy and Latent labels in the existing GSE222001 outputs).
+## Every check below stops the script instead of guessing.
+desc_cols <- grep("^description", names(pheno), value = TRUE)
+if (!length(desc_cols)) stop("GEO metadata has no !Sample_description column; cannot match count columns by name.")
+gsm_name <- apply(pheno[, desc_cols, drop = FALSE], 1, function(v) {
+  hit <- unique(grep("^(TB|LTBI|NC)-rep[0-9]+$", trimws(as.character(v)), value = TRUE))
+  if (length(hit) == 1) hit else NA_character_
+})
+names(gsm_name) <- rownames(pheno)
+if (anyNA(gsm_name))
+  stop("GSM(s) without exactly one count-column name in !Sample_description: ",
+       paste(names(gsm_name)[is.na(gsm_name)], collapse = ", "))
+if (anyDuplicated(gsm_name))
+  stop("Count-column name(s) claimed by more than one GSM: ",
+       paste(unique(gsm_name[duplicated(gsm_name)]), collapse = ", "))
+if (anyDuplicated(colnames(raw_counts)))
+  stop("Duplicated count-matrix column name(s): ",
+       paste(unique(colnames(raw_counts)[duplicated(colnames(raw_counts))]), collapse = ", "))
+cols_without_gsm <- setdiff(colnames(raw_counts), gsm_name)
+gsm_without_col  <- names(gsm_name)[!gsm_name %in% colnames(raw_counts)]
+if (length(cols_without_gsm) || length(gsm_without_col))
+  stop("Count columns and GEO samples differ. Count columns with no GSM: ",
+       paste(cols_without_gsm, collapse = ", "), " | GSMs with no count column: ",
+       paste(gsm_without_col, collapse = ", "))
+col_gsm <- setNames(names(gsm_name)[match(colnames(raw_counts), gsm_name)], colnames(raw_counts))
+if (anyNA(col_gsm) || anyDuplicated(col_gsm)) stop("Count-column to GSM mapping is not one-to-one.")
+
+## Independent check of the group labels against GEO: the column-name prefix, the GEO disease state and the
+## GEO title must agree (TB-repN = "Active tuberculosis infection replicate N", LTBI-repN = "Latent
+## tuberculosis infection replicate N", NC-repN = "Healthy control replicate N").
+PREFIX_STATE <- c(TB = "Active tuberculosis infection", LTBI = "Latent tuberculosis infection",
+                  NC = "Healthy control")
+geo_state <- as.character(pheno[col_gsm, GROUP_COL])
+geo_title <- as.character(pheno[col_gsm, "title"])
+prefix    <- sub("-rep[0-9]+$", "", colnames(raw_counts))
+rep_no    <- sub("^.*-rep", "", colnames(raw_counts))
+bad <- which(is.na(PREFIX_STATE[prefix]) | unname(PREFIX_STATE[prefix]) != geo_state |
+             geo_title != paste(geo_state, "replicate", rep_no))
+if (length(bad))
+  stop("Group check failed (count-column name, GEO disease state and GEO title disagree) for: ",
+       paste(colnames(raw_counts)[bad], collapse = ", "))
+cat("Count columns matched one-to-one to", length(col_gsm), "GEO samples; group labels agree with GEO:\n")
+print(data.frame(count_column = names(col_gsm), gsm = unname(col_gsm), geo_disease_state = geo_state,
+                 row.names = NULL))
+
 ## ---- Build metadata ----
 metadata <- data.frame(
   sample_id = colnames(raw_counts),
-  group     = unname(GROUP_MAP[as.character(pheno[[GROUP_COL]])]),
+  group     = unname(GROUP_MAP[as.character(pheno[col_gsm, GROUP_COL])]),
   stringsAsFactors = FALSE
 )
-stopifnot(!any(is.na(metadata$group)))
+if (anyNA(metadata$group))
+  stop("Unmapped GEO group label(s): ", paste(unique(geo_state[is.na(metadata$group)]), collapse = ", "))
 metadata$group <- factor(metadata$group, levels = c("Healthy", "Active", "Latent"))
 rownames(metadata) <- metadata$sample_id
 
-## Keep only samples present in both the counts and the metadata
+## No group is excluded in this dataset: every sample must be kept
+n_before <- ncol(raw_counts)
+cat("\n--- Samples before exclusion:", n_before, "---\n")
 common <- intersect(colnames(raw_counts), metadata$sample_id)
-stopifnot(length(common) > 0)
-raw_counts <- raw_counts[, common]
-metadata   <- metadata[common, ]
+if (length(common) != n_before || nrow(metadata) != n_before)
+  stop("Unexpected sample loss: ", n_before, " count columns, ", nrow(metadata), " metadata rows, ",
+       length(common), " in both. Missing: ", paste(setdiff(colnames(raw_counts), common), collapse = ", "))
+raw_counts <- raw_counts[, common, drop = FALSE]
+metadata   <- metadata[common, , drop = FALSE]
+if (!identical(colnames(raw_counts), rownames(metadata)))
+  stop("Count columns and metadata rows are not in the same order.")
+cat("Samples after exclusion:", ncol(raw_counts), "(none excluded)\n")
 print(table(metadata$group))
 
 write.csv(metadata, file.path(dir_meta, paste0(ACC, "_sample_metadata.csv")), row.names = FALSE)
@@ -104,6 +160,8 @@ plot_filtering_summary(filt$n_before, filt$n_after,
                        title = paste(ACC, "gene filtering"))
 
 ## ---- DESeq2 + VST + PCA ----
+if (!identical(colnames(filt$filtered), rownames(metadata)))
+  stop("Filtered count matrix and metadata are not in the same sample order.")
 dds <- DESeqDataSetFromMatrix(filt$filtered, metadata, design = ~ group)
 dds <- DESeq(dds)
 

@@ -88,9 +88,7 @@ if (anyNA(metadata$group)) stop("Unmapped group label(s): ",
 metadata <- metadata[metadata$group != "Exclude", ]
 rownames(metadata) <- metadata$sample_id
 common <- intersect(colnames(raw_counts), metadata$sample_id)
-if (!length(common) && ncol(raw_counts) == nrow(pheno)) {
-  colnames(raw_counts) <- rownames(pheno); common <- intersect(colnames(raw_counts), metadata$sample_id)
-}
+## matched by name only; no positional fallback (pairing columns with pData() by position can mislabel samples)
 if (!length(common)) stop("Sample names in the counts and the metadata do not match.")
 raw_counts <- raw_counts[, common]; metadata <- metadata[common, ]
 metadata$group <- factor(metadata$group)
@@ -121,7 +119,13 @@ for (cmp in COMPARISONS) {
   tag <- paste0(ctrl, "_vs_", case)
   cat("\n>>>", case, "(", n_case, ") vs", ctrl, "(", n_ctrl, ")\n")
   if (min(n_case, n_ctrl) < MIN_PER_GROUP) { cat("   fewer than", MIN_PER_GROUP, "samples in a group, skipped\n"); next }
-  res <- run_deg(dds, contrast = c("group", case, ctrl),
+  ## One shrinkage method for every contrast: apeglm needs the contrast as a model coefficient, so the
+  ## control is made the reference level and only the Wald test is refitted (dispersions do not depend on
+  ## the reference level). Without this, only contrasts against the first factor level were shrunk.
+  dds_c <- dds
+  dds_c$group <- relevel(dds_c$group, ref = ctrl)
+  dds_c <- nbinomWaldTest(dds_c)
+  res <- run_deg(dds_c, contrast = c("group", case, ctrl),
                  out_csv = P("deg", ACC, "_", tag, "_DEG.csv"), lfc_thresh = LFC_TH, padj_thresh = PADJ_TH)
   volcano_plot(res, out_png = P("fig", ACC, "_", tag, "_volcano.png"),
                title = paste0(ACC, ": ", ctrl, " vs ", case), lfc_thresh = LFC_TH, padj_thresh = PADJ_TH)

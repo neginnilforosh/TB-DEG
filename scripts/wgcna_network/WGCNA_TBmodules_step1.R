@@ -96,6 +96,14 @@ dev.off()
 softPower <- sft$powerEstimate
 if (is.na(softPower)) { cat("WARNING: no power reached R^2 cutoff; defaulting to 6.\n"); softPower <- 6 }
 cat(">>> Selected soft power:", softPower, "\n")
+## record the scale-free fit for every power and the power actually used (powerEstimate is NA when no
+## power reaches the R^2 cut-off; the fallback is then used)
+write.csv(data.frame(sft$fitIndices,
+                     signed_R2      = -sign(sft$fitIndices[, 3]) * sft$fitIndices[, 2],
+                     power_estimate = sft$powerEstimate,
+                     power_used     = softPower,
+                     selected       = sft$fitIndices[, 1] == softPower),
+          file.path(dir_results, paste0(ACC, "_WGCNA_soft_threshold.csv")), row.names = FALSE)
 
 cat("\n========== 3. NETWORK CONSTRUCTION ==========\n")
 net <- blockwiseModules(datExpr, power = softPower,

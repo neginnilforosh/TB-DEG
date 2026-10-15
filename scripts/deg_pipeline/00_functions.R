@@ -99,14 +99,21 @@ sample_correlation <- function(vst_mat, metadata, group_col = "group",
 run_deg <- function(dds, contrast, out_csv,
                      lfc_thresh = 1, padj_thresh = 0.05, shrink = TRUE) {
   res <- results(dds, contrast = contrast, alpha = padj_thresh)
+  lfc_type <- "MLE (unshrunk)"
   if (shrink) {
     coef_name <- paste0(contrast[1], "_", contrast[2], "_vs_", contrast[3])
     if (coef_name %in% resultsNames(dds)) {
       res <- lfcShrink(dds, coef = coef_name, type = "apeglm", res = res)
+      lfc_type <- "apeglm"
+    } else {
+      ## apeglm needs the contrast as a model coefficient; say so instead of silently returning unshrunk LFCs
+      message("run_deg: '", coef_name, "' is not a model coefficient; log2FC left unshrunk (MLE). ",
+              "Relevel the factor so the control is the reference to get apeglm shrinkage.")
     }
   }
   res_df <- as.data.frame(res)
   res_df$gene <- rownames(res_df)
+  res_df$lfc_type <- lfc_type
   res_df <- res_df[, c("gene", setdiff(colnames(res_df), "gene"))]
   res_df$significant <- with(res_df,
                               !is.na(padj) & padj < padj_thresh & abs(log2FoldChange) >= lfc_thresh)

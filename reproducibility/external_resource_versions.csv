@@ -1,0 +1,16 @@
+resource,run,version_evidence,settings,outputs_first_committed
+STRING (REST API string-db.org),GSE114192,version served on query date; not pinned,"species 9606; required_score 400 (scripts/wgcna_network/WGCNA_STRING_step4.R, step5)",2026-09-25
+iLINCS (via drugfindR),GSE114192,drugfindR 1.0.0; iLINCS live service,"scripts/wgcna_network/WGCNA_iLINCS_signature_step6.R, step7",2026-09-27
+DGIdb (GraphQL API dgidb.org),GSE114192,live service; not pinned,scripts/wgcna_network/WGCNA_drug_targets_step8.R,2026-09-27
+Enrichr (per-drug target annotation),GSE114192,libraries: DSigDB;GO_Biological_Process_2026;KEGG_2021_Human;Reactome_Pathways_2024;WikiPathways_2024_Human; enrichR 3.4,scripts/wgcna_network/WGCNA_Enrichr_drugs_step12.R,2026-09-30
+STRING (REST API string-db.org),GSE114192/TB_DM,version served on query date; not pinned,"species 9606; required_score 400 (scripts/wgcna_network/WGCNA_STRING_step4.R, step5)",2026-10-14
+iLINCS (via drugfindR),GSE114192/TB_DM,drugfindR 1.0.0; iLINCS live service,"scripts/wgcna_network/WGCNA_iLINCS_signature_step6.R, step7",2026-10-14
+DGIdb (GraphQL API dgidb.org),GSE114192/TB_DM,live service; not pinned,scripts/wgcna_network/WGCNA_drug_targets_step8.R,2026-10-14
+Enrichr (per-drug target annotation),GSE114192/TB_DM,libraries: DSigDB;GO_Biological_Process_2026;KEGG_2021_Human;Reactome_Pathways_2024;WikiPathways_2024_Human; enrichR 3.4,scripts/wgcna_network/WGCNA_Enrichr_drugs_step12.R,2026-10-14
+MSigDB (via msigdbr),all GSEA,msigdbr 26.1.1,scripts/wgcna_network/WGCNA_GSEA_step11.R; seed 42,2026-09-30
+GO / KEGG / Reactome over-representation,module enrichment,clusterProfiler 4.18.4; ReactomePA 1.54.0; org.Hs.eg.db 3.22.0; KEGG via clusterProfiler online query,scripts/wgcna_network/WGCNA_TBmodules_step2_enrichment.R,2026-09-25
+CTD chemical-gene interactions,CTD annotation,report created Tue Sep 29 13:22:17 EDT 2026,external_data/CTD/CTD_chem_gene_ixns.csv.gz (not tracked),2026-10-14
+CTD curated gene-disease associations,CTD annotation,report created Tue Sep 29 13:24:49 EDT 2026,external_data/CTD/CTD_curated_genes_diseases.csv.gz (not tracked),2026-10-14
+GEO series matrices and supplementary counts,all DEG runs,GEOquery 2.78.0; downloaded at run time,scripts/deg_pipeline/*_run.R,2026-09-18
+KEGG REST (metabolomics bridge),ST000974,live service; not pinned,"scripts/wgcna_network/metabolomics_step19.R, step20",2026-10-14
+SCP1749 macaque granuloma single-cell data,cell-type profiles,4-week matrix from the repository named in README,scripts/wgcna_network/WGCNA_singlecell_step13.R,2026-09-30
