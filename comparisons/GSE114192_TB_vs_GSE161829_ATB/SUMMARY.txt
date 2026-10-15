@@ -17,4 +17,4 @@ Drugs (UP-only signatures, compounds tested in both = 2706): reversal in GSE1141
   top-100 strongest reversers: 8 shared (expected 8.4, p = 0.62)
   same LINCS signatures scored in both: 1154; Spearman of similarity -0.38
   TB_UP signature genes: 67 vs 21; shared: GNA15, PSME2, STAT1, UBE2L6
-Drugs in both final drug tables (target in both TB networks): 99; of these reversing in both (UP-only): 26
+Drugs in both final drug tables (target in both TB networks): 101; of these reversing in both (UP-only): 28

@@ -4,7 +4,7 @@ Top-ranked = best 20% of a criterion. High = 4+ criteria, Medium = 2-3, Low = be
 Read with these caveats:
 - RWR and diffusion rank-correlate 0.97, so they are not independent evidence; they count as one criterion here.
 - 242 of 795 module genes have no STRING node and can reach at most two criteria; a Low tier there means 'not assessable', not 'unimportant' (see In_PPI_network).
-- Network proximity is weak in this run: 8 of 217 drugs reach p < 0.05 and 0 survive FDR correction. Treat it as a tie-breaker, not evidence.
+- Network proximity is weak in this run: 5 of 203 drugs reach p < 0.05 and 0 survive FDR correction. Treat it as a tie-breaker, not evidence.
 - Module enrichment reaches p < 0.05 for 15 drugs; most drugs have too few targets for this test.
 - Drug targets: NFE2L2 excluded and drug-metabolism/transport genes (CYP, UGT, SULT, SLC, ABC) excluded before counting; 7 drugs lost all their network targets this way.
 - Module labels (from config.R): midnightblue = M1_Cell_Cycle_Proliferation; greenyellow = M2_Mixed_with_IFN_cluster; salmon = M3_OxPhos_weak.
