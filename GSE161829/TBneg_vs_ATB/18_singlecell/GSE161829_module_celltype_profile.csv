@@ -1,0 +1,7 @@
+"Group","N_genes","Macrophage","T","Neutrophil","T2P","Mast","B","Fibroblast","Endothelial","Club","pDC","Plasma"
+"greenyellow | lower_in_TB",14,7.1,7.1,14.3,6.3,7,12.9,5.2,6.3,11.2,19.7,2.9
+"greenyellow | higher_in_TB",31,9.5,7.6,15.1,10.1,8.3,5.6,12,11.6,8.1,7.4,4.6
+"midnightblue | lower_in_TB",13,12.3,8.9,9.2,8.3,7.8,8.4,9.6,11.6,6.7,14.2,2.9
+"midnightblue | higher_in_TB",45,7.3,16,5.2,10.1,16.3,4.8,7.6,9.7,7.7,8.2,7
+"salmon | lower_in_TB",32,7.1,11.2,8.2,10.8,8.7,12,10.8,10.1,7,10.3,3.9
+"salmon | higher_in_TB",37,8.4,10.1,8.7,11.2,11,9.8,7.9,9.3,9.9,6.9,6.7

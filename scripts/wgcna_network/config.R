@@ -16,7 +16,9 @@ PRESETS <- list(
     ACC = "GSE161829", CONTROL = "TBneg", CASE = "ATB",
     DEG_NAME = "TBneg_vs_ATB",
     RUN = "TBneg_vs_ATB",                      # outputs in GSE161829/TBneg_vs_ATB/
-    MODULE_NAMES = character(0),               # fill in after step 2
+    MODULE_NAMES = c(midnightblue = "M1_Cell_Cycle_Proliferation",
+                greenyellow = "M2_Mixed_with_IFN_cluster",
+                 salmon       = "M3_OxPhos_weak"),              # fill in after step 2
     MODULE_PLOT_COLORS = NULL) ,                # NULL = use the WGCNA colour names
   
   GSE114192_TBDM_vs_DM = list(

@@ -1,0 +1,7 @@
+"GSE161829_signature","Top_N","Shared_with_pilot","Expected_by_chance","P","Drug_rank_rho","Signatures_compared","Per_signature_rho"
+"Full GSE161829 signature",50,2,1.1,0.292,0.161,1154,-0.383
+"Full GSE161829 signature",100,9,4.3,0.0315,0.161,1154,-0.383
+"Full GSE161829 signature",200,32,17.5,0.001,0.161,1154,-0.383
+"Proliferation genes removed",50,1,1.1,0.668,0.148,1008,-0.176
+"Proliferation genes removed",100,8,4.4,0.0645,0.148,1008,-0.176
+"Proliferation genes removed",200,34,17.6,5e-04,0.148,1008,-0.176

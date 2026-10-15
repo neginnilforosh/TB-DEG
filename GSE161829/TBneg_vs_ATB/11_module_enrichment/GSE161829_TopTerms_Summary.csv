@@ -1,0 +1,13 @@
+"Module","Source","Term","p.adjust","Count"
+"greenyellow","GO_BP","negative regulation of substrate adhesion-dependent cell spreading",0.0332338035900566,4
+"greenyellow","KEGG",NA,NA,NA
+"greenyellow","Reactome",NA,NA,NA
+"greenyellow","Hallmark","HALLMARK_INTERFERON_ALPHA_RESPONSE",0.00830410416700858,8
+"midnightblue","GO_BP","chromosome segregation",1.00377354982343e-19,43
+"midnightblue","KEGG","Cell cycle",1.00575637306673e-06,17
+"midnightblue","Reactome","Cell Cycle Checkpoints",4.72009786174687e-11,29
+"midnightblue","Hallmark","HALLMARK_G2M_CHECKPOINT",3.52293789441128e-21,39
+"salmon","GO_BP",NA,NA,NA
+"salmon","KEGG",NA,NA,NA
+"salmon","Reactome",NA,NA,NA
+"salmon","Hallmark","HALLMARK_OXIDATIVE_PHOSPHORYLATION",0.0085099606082446,15
