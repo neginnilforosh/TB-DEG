@@ -1,9 +1,9 @@
 resource,run,version_evidence,settings
-STRING (REST API string-db.org),GSE114192,live service; not version-pinned,"species 9606; required_score 400 (scripts/wgcna_network/WGCNA_STRING_step4.R, step5)"
+STRING (REST API; pinned to version-12-5.string-db.org),GSE114192,12.5,"species 9606; required_score 400 (scripts/wgcna_network/WGCNA_STRING_step4.R, step5)"
 iLINCS (via drugfindR),GSE114192,drugfindR 1.0.0; iLINCS live service,"scripts/wgcna_network/WGCNA_iLINCS_signature_step6.R, step7"
 DGIdb (GraphQL API dgidb.org),GSE114192,live service; not pinned,scripts/wgcna_network/WGCNA_drug_targets_step8.R
 Enrichr (per-drug target annotation),GSE114192,libraries: DSigDB;GO_Biological_Process_2026;KEGG_2021_Human;Reactome_Pathways_2024;WikiPathways_2024_Human; enrichR 3.4,scripts/wgcna_network/WGCNA_Enrichr_drugs_step12.R
-STRING (REST API string-db.org),GSE114192/TB_DM,live service; not version-pinned,"species 9606; required_score 400 (scripts/wgcna_network/WGCNA_STRING_step4.R, step5)"
+STRING (REST API; pinned to version-12-5.string-db.org),GSE114192/TB_DM,12.5,"species 9606; required_score 400 (scripts/wgcna_network/WGCNA_STRING_step4.R, step5)"
 iLINCS (via drugfindR),GSE114192/TB_DM,drugfindR 1.0.0; iLINCS live service,"scripts/wgcna_network/WGCNA_iLINCS_signature_step6.R, step7"
 DGIdb (GraphQL API dgidb.org),GSE114192/TB_DM,live service; not pinned,scripts/wgcna_network/WGCNA_drug_targets_step8.R
 Enrichr (per-drug target annotation),GSE114192/TB_DM,libraries: DSigDB;GO_Biological_Process_2026;KEGG_2021_Human;Reactome_Pathways_2024;WikiPathways_2024_Human; enrichR 3.4,scripts/wgcna_network/WGCNA_Enrichr_drugs_step12.R

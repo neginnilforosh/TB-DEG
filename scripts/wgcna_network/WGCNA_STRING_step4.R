@@ -60,7 +60,7 @@ ens_to_symbol <- function(ens_ids) {
 
 ## ---- STRING REST API helpers ----
 string_get_ids <- function(symbols) {
-  r <- httr::POST("https://string-db.org/api/tsv/get_string_ids",
+  r <- httr::POST("https://version-12-5.string-db.org/api/tsv/get_string_ids",
                    body = list(identifiers = paste(symbols, collapse = "\r"),
                                species = SPECIES, limit = 1, echo_query = 1,
                                caller_identity = "tb_deg_wgcna"),
@@ -69,7 +69,7 @@ string_get_ids <- function(symbols) {
   read.delim(text = httr::content(r, "text", encoding = "UTF-8"), stringsAsFactors = FALSE)
 }
 string_get_network <- function(string_ids) {
-  r <- httr::POST("https://string-db.org/api/tsv/network",
+  r <- httr::POST("https://version-12-5.string-db.org/api/tsv/network",
                    body = list(identifiers = paste(string_ids, collapse = "\r"),
                                species = SPECIES, required_score = REQUIRED_SCORE,
                                caller_identity = "tb_deg_wgcna"),
