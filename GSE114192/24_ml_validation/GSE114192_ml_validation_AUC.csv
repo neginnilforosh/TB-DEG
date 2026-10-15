@@ -1,0 +1,15 @@
+"Test","Model","N_case","N_control","AUC","CI_low","CI_high","Random_gene_set_median_AUC","P_vs_random"
+"Discovery (GSE114192) TB_Only vs Healthy_Control [in-sample, optimistic: genes chosen on these samples]","Signature score",46,36,0.975,0.938,0.998,0.643,0.000999
+"Discovery (GSE114192) TB_Only vs Healthy_Control [in-sample, optimistic: genes chosen on these samples]","Elastic net (5-fold CV)",46,36,0.894,0.817,0.947,NA,NA
+"Discovery (GSE114192) TB_Only vs Healthy_Control [nested CV 5-fold x 10; genes re-selected in each training fold; CI = 2.5-97.5% of repeats]","Signature score (nested CV)",46,36,0.967,0.951,0.975,NA,NA
+"Discovery (GSE114192) TB_Only vs Healthy_Control [nested CV 5-fold x 10; genes re-selected in each training fold; CI = 2.5-97.5% of repeats]","Elastic net (nested CV)",46,36,0.967,0.95,0.986,NA,NA
+"GSE161829 ATB vs TBneg","Signature score",25,20,0.722,0.574,0.864,0.59,0.0769
+"GSE161829 ATB vs TBneg","Elastic net (trained on discovery)",25,20,0.75,0.604,0.876,NA,NA
+"GSE161829 ATB vs LTBI","Signature score",25,40,0.74,0.604,0.855,0.578,0.023
+"GSE161829 ATB vs LTBI","Elastic net (trained on discovery)",25,40,0.69,0.551,0.821,NA,NA
+"GSE161829 LTBI vs TBneg","Signature score",40,20,0.459,0.309,0.616,0.554,1
+"GSE161829 LTBI vs TBneg","Elastic net (trained on discovery)",40,20,0.579,0.419,0.721,NA,NA
+"GSE222001 Active vs Healthy (n=5+5)","Signature score",5,5,0.88,0.6,1,0.64,0.0729
+"GSE222001 Active vs Healthy (n=5+5)","Elastic net (trained on discovery)",5,5,0.84,0.52,1,NA,NA
+"GSE222001 Active vs Latent (n=5+5)","Signature score",5,5,0.88,0.6,1,0.68,0.113
+"GSE222001 Active vs Latent (n=5+5)","Elastic net (trained on discovery)",5,5,0.88,0.6,1,NA,NA
