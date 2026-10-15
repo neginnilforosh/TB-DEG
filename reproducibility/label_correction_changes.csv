@@ -1,0 +1,29 @@
+Area,Result,Before,After,Note
+Differential expression,"GSE161829 TBneg_vs_ATB: significant genes (padj<0.05, |log2FC|>=1)",50,50,7 samples had the wrong group before the fix
+Differential expression,"GSE161829 TBneg_vs_LTBI: significant genes (padj<0.05, |log2FC|>=1)",0,3,7 samples had the wrong group before the fix
+Differential expression,"GSE222001 Healthy_vs_Active: significant genes (padj<0.05, |log2FC|>=1)",46,29,groups swapped before the fix: this was latent vs active TB
+Differential expression,"GSE222001 Healthy_vs_Latent: significant genes (padj<0.05, |log2FC|>=1)",2,3,groups swapped before the fix: sign was reversed
+GSEA,GSE161829 TBneg_vs_ATB: INTERFERON_GAMMA_RESPONSE,"NES +2.49, padj 7.1e-22","NES +2.35, padj 9.5e-17",
+GSEA,GSE161829 TBneg_vs_ATB: INTERFERON_ALPHA_RESPONSE,"NES +2.51, padj 1.7e-17","NES +2.37, padj 8.1e-14",
+GSEA,GSE161829 TBneg_vs_ATB: Hallmark sets with padj<0.05,27,27,
+GSEA,GSE222001 Healthy_vs_Active: INTERFERON_GAMMA_RESPONSE,"NES +2.17, padj 4.3e-10","NES +1.88, padj 8.5e-06",
+GSEA,GSE222001 Healthy_vs_Active: INTERFERON_ALPHA_RESPONSE,"NES +2.34, padj 7.9e-09","NES +1.77, padj 6.5e-04",
+GSEA,GSE222001 Healthy_vs_Active: Hallmark sets with padj<0.05,11,12,
+Replication (GSE161829 vs reference),log2FC correlation between cohorts,0.22,0.24,
+Replication (GSE161829 vs reference),genes significant in both (|log2FC|>=1),5,3,
+Replication (GSE161829 vs reference),"Hallmark sets replicated (FDR<0.05 in both, same sign)",14,15,
+Replication (GSE161829 vs reference),rank agreement of compound scores (Spearman),-0.1,-0.09,
+Replication (GSE161829 vs reference),"same LINCS signatures, Spearman of similarity",-0.42,-0.38,
+Replication (GSE161829 vs reference),best match of the interferon module (reference green),"magenta: 9 shared genes, 88.9% same direction","greenyellow: 17 shared genes, 100% same direction",
+GSE161829 network run,modules passing FDR<0.05,5,8,module colours are not comparable between runs
+GSE161829 network run,High-priority genes (criteria count),20,26,
+GSE161829 network run,High-priority drugs,18,17,7 in both
+Cross-dataset overlap,genes significant in 2+ comparisons,9,9,
+Cross-dataset overlap,list,"AIM2, ATF3, FOSB, GBP1, IFI27, IFIT3, OASL, RSAD2, SDC3","AC004448.1, ATF3, FOSB, GPR27, HDGFL3, IFI27, IFIT3, OASL, RPL10P6",
+External validation (High genes),GSE161829:TBneg_vs_ATB,"93.2% same direction, 36.4% reproduced","90.9% same direction, 36.4% reproduced",
+External validation (High genes),GSE222001:Healthy_vs_Active,"93.6% same direction, 6.4% reproduced","93.6% same direction, 4.3% reproduced",
+External validation (High genes),GSE222001:Healthy_vs_Latent,"61.7% same direction, 0.0% reproduced","31.9% same direction, 0.0% reproduced",
+Machine learning (signature-score AUC),GSE161829 ATB vs TBneg,0.734,0.722,nested cross-validation introduced at the same time
+Machine learning (signature-score AUC),GSE161829 ATB vs LTBI,0.728,0.74,nested cross-validation introduced at the same time
+Machine learning (signature-score AUC),GSE161829 LTBI vs TBneg,0.499,0.459,nested cross-validation introduced at the same time
+Machine learning (signature-score AUC),GSE222001 Active vs Healthy (n=5+5),0.88,0.88,nested cross-validation introduced at the same time
