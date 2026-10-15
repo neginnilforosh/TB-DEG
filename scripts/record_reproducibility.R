@@ -30,6 +30,7 @@ pk <- c(unlist(regmatches(src, gregexpr("(?<=\\blibrary\\()[A-Za-z0-9.]+", src, 
 ## packages named inside c("...") vectors of required packages
 for (m in regmatches(src, gregexpr("(req|required_pkgs|pkgs?)\\s*<-\\s*c\\([^)]*\\)", src)))
   for (x in m) pk <- c(pk, regmatches(x, gregexpr("(?<=\")[A-Za-z][A-Za-z0-9.]+(?=\")", x, perl = TRUE))[[1]])
+if (any(grepl("apeglm", src))) pk <- c(pk, "apeglm")   # called through DESeq2::lfcShrink(type = "apeglm")
 base_pk <- rownames(installed.packages(priority = "base"))
 pk <- sort(setdiff(unique(pk), c(base_pk, "utils", "stats", "grDevices", "graphics", "methods", "tools")))
 ver <- vapply(pk, function(p) tryCatch(as.character(utils::packageVersion(p)), error = function(e) "not installed"), "")
