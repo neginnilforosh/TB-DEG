@@ -59,21 +59,30 @@ dir.create(file.path(out_dir, "figures"), recursive = TRUE, showWarnings = FALSE
 write.csv(rep_df, file.path(out_dir, "cross_dataset_id_conversion_report.csv"), row.names = FALSE)
 
 ## ---- shared / unique ----
-shared_unique_degs(deg_lists,
-                   out_csv = file.path(out_dir, "cross_dataset_shared_unique_DEGs.csv"),
-                   out_png = file.path(out_dir, "figures", "cross_dataset_upset.png"),
-                   title = "Shared and unique DEGs across TB datasets")
+invisible(utils::capture.output(   # the helper prints the whole membership matrix; the summary below is enough
+  shared_unique_degs(deg_lists,
+                     out_csv = file.path(out_dir, "cross_dataset_shared_unique_DEGs.csv"),
+                     out_png = file.path(out_dir, "figures", "cross_dataset_upset.png"),
+                     title = "Shared and unique DEGs across TB datasets")))
 
 ## ---- plain-language summary next to the plot ----
 tab <- read.csv(file.path(out_dir, "cross_dataset_shared_unique_DEGs.csv"), stringsAsFactors = FALSE)
 cols <- setdiff(names(tab), "gene")
-tab$N_datasets <- rowSums(tab[, cols, drop = FALSE])
-write.csv(tab[order(-tab$N_datasets), ], file.path(out_dir, "cross_dataset_shared_unique_DEGs.csv"), row.names = FALSE)
-cat("\n>>> genes by how many comparisons they are significant in:\n"); print(table(tab$N_datasets))
-shared <- tab$gene[tab$N_datasets >= 2]
-cat("\n>>> significant in two or more comparisons:", length(shared), "genes\n")
-if (length(shared)) cat("   ", paste(utils::head(shared, 25), collapse = ", "),
-                        if (length(shared) > 25) paste0(" ... (+", length(shared) - 25, " more)") else "", "\n")
+## two comparisons from the same dataset share their control group, so they are not independent evidence:
+## count comparisons AND independent datasets (the GSE accession before the first underscore)
+ds_of <- sub("_.*$", "", cols)
+tab$N_comparisons <- rowSums(tab[, cols, drop = FALSE])
+tab$N_independent_datasets <- vapply(seq_len(nrow(tab)), function(i) length(unique(ds_of[unlist(tab[i, cols]) == 1])), 0L)
+tab$Datasets <- vapply(seq_len(nrow(tab)), function(i) paste(unique(ds_of[unlist(tab[i, cols]) == 1]), collapse = ";"), "")
+tab <- tab[order(-tab$N_independent_datasets, -tab$N_comparisons), ]
+write.csv(tab, file.path(out_dir, "cross_dataset_shared_unique_DEGs.csv"), row.names = FALSE)
+cat("\n>>> genes by how many INDEPENDENT datasets they are significant in:\n"); print(table(tab$N_independent_datasets))
+shared <- tab[tab$N_independent_datasets >= 2, ]
+cat("\n>>> significant in two or more independent datasets:", nrow(shared), "genes\n")
+if (nrow(shared)) print(shared[, c("gene", "N_independent_datasets", "Datasets")], row.names = FALSE)
+within <- tab$gene[tab$N_comparisons >= 2 & tab$N_independent_datasets == 1]
+if (length(within)) cat("\n    (", length(within), " more genes are significant in two comparisons of ONE dataset, which share a control\n",
+                        "     group, so they are not counted as shared: ", paste(within, collapse = ", "), ")\n", sep = "")
 cat("\n>>> DONE. Files in", normalizePath(out_dir, mustWork = FALSE), "\n")
 cat(">>> Note: the comparisons differ greatly in size (from 0 to ~300 significant genes), so a small\n")
 cat("    overlap mostly reflects that, not a biological disagreement.\n")

@@ -1,0 +1,5 @@
+"Design","Samples","LFC_spearman_vs_reference","Significant","Pct_reference_sig_kept","Pct_reference_sig_same_direction","High_genes_padj_0.05","High_genes_same_direction","High_genes_tested","LFC_shrinkage"
+"A reference: all, ~ group",113,1,295,100,100,38,38,38,"as published"
+"B SA+RO only, ~ group",82,0.931,198,53.9,99.7,38,38,38,"apeglm"
+"C SA+RO only, ~ site + group",82,0.92,211,53.9,99.7,38,38,38,"apeglm"
+"D all, ~ site + group",113,0.919,205,51.9,99.3,38,38,38,"apeglm"
