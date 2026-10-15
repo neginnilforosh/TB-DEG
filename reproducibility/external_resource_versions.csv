@@ -1,9 +1,9 @@
 resource,run,version_evidence,settings
-STRING (REST API; pinned to version-12-5.string-db.org),GSE114192,12.5,"species 9606; required_score 400 (scripts/wgcna_network/WGCNA_STRING_step4.R, step5)"
+STRING (REST API string-db.org; unversioned endpoint at query time),GSE114192,unknown: queried before the version pin; the version live at query time was not recorded,"species 9606; required_score 400 (scripts/wgcna_network/WGCNA_STRING_step4.R, step5)"
 iLINCS (via drugfindR),GSE114192,drugfindR 1.0.0; iLINCS live service,"scripts/wgcna_network/WGCNA_iLINCS_signature_step6.R, step7"
 DGIdb (GraphQL API dgidb.org),GSE114192,live service; not pinned,scripts/wgcna_network/WGCNA_drug_targets_step8.R
 Enrichr (per-drug target annotation),GSE114192,libraries: DSigDB;GO_Biological_Process_2026;KEGG_2021_Human;Reactome_Pathways_2024;WikiPathways_2024_Human; enrichR 3.4,scripts/wgcna_network/WGCNA_Enrichr_drugs_step12.R
-STRING (REST API; pinned to version-12-5.string-db.org),GSE114192/TB_DM,12.5,"species 9606; required_score 400 (scripts/wgcna_network/WGCNA_STRING_step4.R, step5)"
+STRING (REST API string-db.org; unversioned endpoint at query time),GSE114192/TB_DM,unknown: queried before the version pin; the version live at query time was not recorded,"species 9606; required_score 400 (scripts/wgcna_network/WGCNA_STRING_step4.R, step5)"
 iLINCS (via drugfindR),GSE114192/TB_DM,drugfindR 1.0.0; iLINCS live service,"scripts/wgcna_network/WGCNA_iLINCS_signature_step6.R, step7"
 DGIdb (GraphQL API dgidb.org),GSE114192/TB_DM,live service; not pinned,scripts/wgcna_network/WGCNA_drug_targets_step8.R
 Enrichr (per-drug target annotation),GSE114192/TB_DM,libraries: DSigDB;GO_Biological_Process_2026;KEGG_2021_Human;Reactome_Pathways_2024;WikiPathways_2024_Human; enrichR 3.4,scripts/wgcna_network/WGCNA_Enrichr_drugs_step12.R
@@ -14,3 +14,5 @@ CTD curated gene-disease associations,CTD annotation,bulk download (report heade
 GEO series matrices and supplementary counts,all DEG runs,GEOquery 2.78.0; downloaded at run time,scripts/deg_pipeline/*_run.R
 KEGG REST (metabolomics bridge),ST000974,live service; not pinned,"scripts/wgcna_network/metabolomics_step19.R, step20"
 SCP1749 macaque granuloma single-cell data,cell-type profiles,4-week matrix from the repository named in README,scripts/wgcna_network/WGCNA_singlecell_step13.R
+STRING (REST API string-db.org; unversioned endpoint at query time),GSE161829/TBneg_vs_ATB,unknown: queried before the version pin; the version live at query time was not recorded,"species 9606; required_score 400 (scripts/wgcna_network/WGCNA_STRING_step4.R, step5)"
+STRING (REST API; pinned to version-12-5.string-db.org),new runs only,12.5 (applies to queries made with the current step 4 and step 5 scripts; no existing output was produced with the pin),"species 9606; required_score 400 (scripts/wgcna_network/WGCNA_STRING_step4.R, step5)"

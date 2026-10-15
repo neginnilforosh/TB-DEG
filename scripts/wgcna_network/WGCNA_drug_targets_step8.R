@@ -23,6 +23,7 @@ get_script_dir <- function() {
 }
 SCRIPT_DIR <- get_script_dir()
 source(file.path(SCRIPT_DIR, "config.R"))
+source(file.path(SCRIPT_DIR, "drug_name_key.R"))
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
 OUT_DIR <- run_out_dir(BASE_DIR)
 dir_sig    <- file.path(OUT_DIR, "13_ilincs_signature")
@@ -95,7 +96,16 @@ for (n in nodes) {
 drug_target_table <- if (length(rows)) do.call(rbind, rows) else
   data.frame(Drug=character(), Target_Gene=character(), Interaction_Types=character(), Sources=character())
 cat(">>> Total Drug-Target pairs from DGIdb:", nrow(drug_target_table), "\n")
+## keep the iLINCS query name next to DGIdb's entity name; only entities whose normalised name equals a query's
+## go further (see drug_name_key.R). Unmatched entities are written to their own file, not dropped silently.
+name_match <- match_query_names(drug_target_table$Drug, drug_names)
+drug_target_table <- merge(drug_target_table, name_match[, c("Drug", "Query_name", "Name_match")], by = "Drug", all.x = TRUE, sort = FALSE)
 write.csv(drug_target_table, file.path(dir_out, paste0(ACC, "_drug_targets_ALL.csv")), row.names = FALSE)
+unmatched <- name_match[name_match$Name_match == "unmatched", c("Drug", "Name_key")]
+write.csv(unmatched, file.path(dir_out, paste0(ACC, "_drug_targets_unmatched_entities.csv")), row.names = FALSE)
+cat(">>> DGIdb entities matching an iLINCS query name:", sum(name_match$Name_match != "unmatched"), "/", nrow(name_match),
+    "| unmatched (excluded, listed in _drug_targets_unmatched_entities.csv):", nrow(unmatched), "\n")
+drug_target_table <- drug_target_table[drug_target_table$Name_match != "unmatched", , drop = FALSE]
 
 ## ---- keep only targets that are actually IN our combined TB PPI network ----
 
@@ -106,6 +116,7 @@ cat(">>> Of those,", nrow(merged), "pairs have a target gene present in the comb
 
 final_table <- data.frame(
   Drug            = merged$Drug,
+  Query_name      = merged$Query_name,
   Drug_Target     = merged$Target_Gene,
   TB_Module       = merged$Module,
   Target_Degree_in_TB_network = merged$Degree,

@@ -32,6 +32,7 @@ get_script_dir <- function() {
 }
 SCRIPT_DIR <- get_script_dir()
 source(file.path(SCRIPT_DIR, "config.R"))
+source(file.path(SCRIPT_DIR, "drug_name_key.R"))
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
 OUT_DIR <- run_out_dir(BASE_DIR)
 dir_dt  <- file.path(OUT_DIR, "14_drug_targets")
@@ -64,6 +65,18 @@ tidy_enrichr <- function(res, drug, lib_of, padj_keep, n_keep) {
                              Combined.Score = df$Combined.Score, Genes = df$Genes, stringsAsFactors = FALSE)
   }
   if (length(out)) do.call(rbind, out) else NULL
+}
+# DSigDB term -> compound name: drop the trailing source tag ("CTD 00001234", "TTD 00009921", "BOSS", "FDA",
+# "LINCS", "Kinome Scan", or a cell-line suffix such as "MCF7 UP")
+DSIGDB_SOURCE_SUFFIX <- "([[:space:]]+(CTD|TTD)[[:space:]]+[0-9]+|[[:space:]]+(BOSS|FDA|LINCS|Kinome Scan)|[[:space:]]+(MCF7|HL60|PC3|ssMCF7)([[:space:]].*)?)$"
+dsigdb_compound <- function(term) trimws(sub(DSIGDB_SOURCE_SUFFIX, "", term, ignore.case = TRUE))
+# a drug's own DSigDB entry is circular (its targets were the query); remove it. Exact normalised-name equality
+# only, so synonyms and derivatives (e.g. 4-hydroxytamoxifen for tamoxifen) are kept.
+drop_dsigdb_self_hits <- function(long) {
+  if (is.null(long) || nrow(long) == 0) return(long)
+  self <- long$Family == "DSigDB" & drug_key(dsigdb_compound(long$Term)) == drug_key(long$Drug)
+  cat(">>> DSigDB self-hits removed:", sum(self), "rows for", length(unique(long$Drug[self])), "drugs\n")
+  long[!self, , drop = FALSE]
 }
 # long table -> one row per drug, best term per family as "Term [adj p]"
 summarise_drugs <- function(long, drugs_run, n_targets, families) {
@@ -125,6 +138,7 @@ for (i in seq_along(run_drugs)) {
   Sys.sleep(PAUSE_SEC)
 }
 long <- do.call(rbind, long_list[vapply(long_list, function(x) is.data.frame(x) && nrow(x) > 0, logical(1))])
+long <- drop_dsigdb_self_hits(long)        # applied after the cache, so cached results need no re-query
 cat(">>> New Enrichr calls this run:", n_new, "| failed:", n_fail, "| drugs with >=1 significant term:",
     if (is.null(long)) 0 else length(unique(long$Drug)), "\n")
 

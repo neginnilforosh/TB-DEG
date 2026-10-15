@@ -33,21 +33,7 @@ ensembl_to_network_name <- function(ens_ids, network_names, annot = NULL) {
   data.frame(ENSEMBL = ens_ids, SYMBOL = unname(first_sym), NetName = unname(nm), stringsAsFactors = FALSE)
 }
 
-## ---- drug-name key: case-insensitive, trailing salt/hydrate words removed ----
-## (DGIdb "AMLODIPINE BESYLATE" = iLINCS "Amlodipine")
-SALT_WORDS <- paste0("(DIHYDROCHLORIDE|HYDROCHLORIDE|HYDROBROMIDE|HCL|MESYLATE|MESILATE|BESYLATE|BESILATE|",
-                     "MALEATE|FUMARATE|CITRATE|SULFATE|SULPHATE|PHOSPHATE|TARTRATE|ACETATE|SUCCINATE|",
-                     "TOSYLATE|TOSILATE|LACTATE|GLUCONATE|NITRATE|SODIUM|POTASSIUM|CALCIUM|MAGNESIUM|",
-                     "CHLORIDE|BROMIDE|ANHYDROUS|MONOHYDRATE|DIHYDRATE|TRIHYDRATE|HEMIHYDRATE|HYDRATE)")
-drug_key <- function(x) {
-  x <- toupper(trimws(x))
-  repeat {
-    y <- trimws(sub(paste0("[[:space:],()-]+", SALT_WORDS, "$"), "", x))
-    if (identical(y, x)) break
-    x <- y
-  }
-  x
-}
+## drug-name key (salt/hydrate words removed): see drug_name_key.R
 
 ## ---- paths ----
 get_script_dir <- function() {
@@ -62,6 +48,7 @@ get_script_dir <- function() {
 }
 SCRIPT_DIR <- get_script_dir()
 source(file.path(SCRIPT_DIR, "config.R"))
+source(file.path(SCRIPT_DIR, "drug_name_key.R"))
 BASE_DIR <- local({ d <- SCRIPT_DIR; while (!dir.exists(file.path(d, ACC, "02_metadata")) && dirname(d) != d) d <- dirname(d); file.path(d, ACC) })  # walk up until the real dataset folder (has 02_metadata/) is found
 OUT_DIR <- run_out_dir(BASE_DIR)
 dir_deg    <- in_dir(BASE_DIR, "06_deg_results")
@@ -142,13 +129,15 @@ for (drug in drugs) {
   prox_row <- prox[prox$Drug == drug, ]
   proximity_z <- if (nrow(prox_row)) prox_row$Z_score[1] else NA
   proximity_p <- if (nrow(prox_row) && "P_empirical" %in% names(prox_row)) prox_row$P_empirical[1] else NA   # empirical p-value from step 9
+  proximity_p_bh <- if (nrow(prox_row) && "P_BH" %in% names(prox_row)) prox_row$P_BH[1] else NA            # BH over this run's drugs
+  query_name <- if ("Query_name" %in% names(d_sub)) d_sub$Query_name[1] else NA_character_                 # iLINCS name(s) behind the DGIdb entity
 
   target_scores <- scores$RWR_score[scores$Gene %in% targets]
   rwr_drug_score <- if (length(target_scores)) mean(target_scores, na.rm = TRUE) else NA
 
   rows[[length(rows) + 1]] <- data.frame(
-    Drug = drug, iLINCS_Reversal_Score = reversal_score, Known_Targets = paste(targets, collapse = ";"),
-    Network_Proximity_Z = proximity_z, Network_Proximity_P = proximity_p, RWR_score = rwr_drug_score,
+    Drug = drug, Query_name = query_name, iLINCS_Reversal_Score = reversal_score, Known_Targets = paste(targets, collapse = ";"),
+    Network_Proximity_Z = proximity_z, Network_Proximity_P = proximity_p, Network_Proximity_P_BH = proximity_p_bh, RWR_score = rwr_drug_score,
     Modules_Affected = paste(modules_affected, collapse = ";"),
     Pathways_Affected = if (length(pathways_affected)) paste(pathways_affected, collapse = ";") else NA_character_
   )

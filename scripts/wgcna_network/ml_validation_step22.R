@@ -97,7 +97,8 @@ add <- function(label, model, score, y, null = NULL) {
   res[[length(res) + 1]] <<- data.frame(Test = label, Model = model, N_case = sum(y == 1), N_control = sum(y == 0),
     AUC = round(a, 3), CI_low = round(ci[1], 3), CI_high = round(ci[2], 3),
     Random_gene_set_median_AUC = if (is.null(null)) NA else round(stats::median(null), 3),
-    P_vs_random = if (is.null(null)) NA else signif((sum(null >= a) + 1) / (length(null) + 1), 3))
+    P_vs_random = if (is.null(null)) NA else signif((sum(null >= a) + 1) / (length(null) + 1), 3),
+    Repeat_AUC_q025 = NA_real_, Repeat_AUC_q975 = NA_real_)
   o <- order(-score); tp <- cumsum(y[o] == 1) / sum(y == 1); fp <- cumsum(y[o] == 0) / sum(y == 0)
   roc[[length(roc) + 1]] <<- data.frame(Test = label, Model = model, FPR = c(0, fp), TPR = c(0, tp))
 }
@@ -145,13 +146,14 @@ for (r in seq_len(N_REPEATS)) {
 NEST <- do.call(rbind, nest)
 write.csv(NEST, file.path(dir_out, paste0(ACC, "_ml_nested_cv.csv")), row.names = FALSE)
 nest_lab <- paste0("Discovery (", ACC, ") ", CASE, " vs ", CONTROL, " [nested CV ", N_OUTER, "-fold x ", N_REPEATS,
-                   "; genes re-selected in each training fold; CI = 2.5-97.5% of repeats]")
+                   "; genes re-selected in each training fold; Repeat_AUC_q025/q975 = spread over repeats, not a confidence interval]")
 for (m in c("AUC_signature", "AUC_elastic_net")) {
   v <- NEST[[m]]
   res[[length(res) + 1]] <- data.frame(Test = nest_lab, Model = if (m == "AUC_signature") "Signature score (nested CV)" else "Elastic net (nested CV)",
     N_case = sum(Dy == 1), N_control = sum(Dy == 0), AUC = round(mean(v), 3),
-    CI_low = round(unname(stats::quantile(v, 0.025)), 3), CI_high = round(unname(stats::quantile(v, 0.975)), 3),
-    Random_gene_set_median_AUC = NA, P_vs_random = NA)
+    CI_low = NA_real_, CI_high = NA_real_,                 # no confidence interval is computed for nested CV
+    Random_gene_set_median_AUC = NA, P_vs_random = NA,
+    Repeat_AUC_q025 = round(unname(stats::quantile(v, 0.025)), 3), Repeat_AUC_q975 = round(unname(stats::quantile(v, 0.975)), 3))
 }
 cat(">>> nested CV (", N_OUTER, "x", N_REPEATS, "): signature AUC", round(mean(NEST$AUC_signature), 3),
     "| elastic net AUC", round(mean(NEST$AUC_elastic_net), 3), "\n")

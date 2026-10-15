@@ -83,6 +83,16 @@ for (nm in names(COLLECTIONS)) {
 }
 if (length(term2gene) == 0) stop("No gene-set collection could be loaded -- check the msigdbr/msigdbdf install (see PACKAGES.md).")
 
+## ---- warning log: every warning from bitr() and GSEA() is recorded with the call it came from ----
+warn_log <- list()
+record_warnings <- function(expr, comparison, collection, call) {
+  withCallingHandlers(expr, warning = function(w) {
+    warn_log[[length(warn_log) + 1]] <<- data.frame(Comparison = comparison, Collection = collection, Call = call,
+                                                     Message = conditionMessage(w), stringsAsFactors = FALSE)
+    invokeRestart("muffleWarning")
+  })
+}
+
 ## ---- per-comparison GSEA ----
 deg_files <- list.files(ROOT_DIR, pattern = "_DEG\\.csv$", recursive = TRUE, full.names = TRUE)
 deg_files <- deg_files[grepl("/06_deg_results/", deg_files) & !grepl("sensitivity", deg_files)]
@@ -103,8 +113,8 @@ for (f in deg_files) {
 
   deg$gene <- clean_gene_ids(deg$gene); deg <- deg[order(deg$padj), ]; deg <- deg[!duplicated(deg$gene), ]
   if (mean(grepl("^ENSG", deg$gene)) > 0.5) {
-    id_map <- suppressMessages(clusterProfiler::bitr(unique(deg$gene), fromType = "ENSEMBL", toType = "SYMBOL",
-                                                      OrgDb = org.Hs.eg.db::org.Hs.eg.db))
+    id_map <- record_warnings(suppressMessages(clusterProfiler::bitr(unique(deg$gene), fromType = "ENSEMBL", toType = "SYMBOL",
+                                                      OrgDb = org.Hs.eg.db::org.Hs.eg.db)), comp, NA_character_, "bitr")
   } else {                                           # table already uses gene symbols (e.g. GSE99374)
     id_map <- data.frame(ENSEMBL = unique(deg$gene), SYMBOL = unique(deg$gene), stringsAsFactors = FALSE)
   }
@@ -113,9 +123,9 @@ for (f in deg_files) {
 
   all_res <- list()
   for (nm in names(term2gene)) {
-    res <- tryCatch(clusterProfiler::GSEA(geneList = ranking, TERM2GENE = term2gene[[nm]],
+    res <- tryCatch(record_warnings(clusterProfiler::GSEA(geneList = ranking, TERM2GENE = term2gene[[nm]],
                                           minGSSize = MIN_GS, maxGSSize = MAX_GS, pvalueCutoff = 1,
-                                          pAdjustMethod = "BH", eps = 0, seed = TRUE, verbose = FALSE),
+                                          pAdjustMethod = "BH", eps = 0, seed = TRUE, verbose = FALSE), comp, nm, "GSEA"),
                     error = function(e) { cat("  !!", nm, "GSEA failed:", conditionMessage(e), "\n"); NULL })
     if (is.null(res)) next
     df <- as.data.frame(res)
@@ -144,11 +154,25 @@ for (f in deg_files) {
     if (!is.null(tm)) {
       tm <- tm[order(tm$Module, -tm$n_in_module), ]
       write.csv(tm, file.path(out_dir, paste0(comp, "_GSEA_term_by_module.csv")), row.names = FALSE)
-      cat("  module overlay saved (", nrow(tm), "term x module rows). Blue's strongest pathways:\n")
-      b <- tm[tm$Module == "blue", ]; print(utils::head(b[, c("Collection", "Term", "NES", "n_in_module", "pct_of_leading_edge")], 6), row.names = FALSE)
+      cat("  module overlay saved (", nrow(tm), "term x module rows) for the selected modules:",
+          paste(sort(unique(tm$Module)), collapse = ", "), "\n")
+      for (m in sort(unique(tm$Module))) {          # modules come from this run's MM/GS table; none is hard-coded
+        cat("  strongest pathways in", m, ":\n")
+        b <- tm[tm$Module == m, ]
+        print(utils::head(b[order(-b$n_in_module), c("Collection", "Term", "NES", "n_in_module", "pct_of_leading_edge")], 3), row.names = FALSE)
+      }
     }
   }
 }
+
+warn_df <- if (length(warn_log)) do.call(rbind, warn_log) else
+  data.frame(Comparison = character(), Collection = character(), Call = character(), Message = character())
+for (ds in unique(sub("^(GSE[0-9]+)_.*$", "\\1", basename(deg_files)))) {
+  w_ds <- warn_df[sub("^(GSE[0-9]+)_.*$", "\\1", warn_df$Comparison) == ds, , drop = FALSE]
+  write.csv(w_ds, file.path(ROOT_DIR, ds, "17_gsea", paste0(ds, "_GSEA_warnings.csv")), row.names = FALSE)
+}
+cat(">>> warnings recorded:", nrow(warn_df), "(per dataset in <dataset>/17_gsea/<ACC>_GSEA_warnings.csv)\n")
+if (nrow(warn_df)) print(table(Call = warn_df$Call, Collection = ifelse(is.na(warn_df$Collection), "-", warn_df$Collection)))
 
 cat("\n>>> DONE. Results in <dataset>/17_gsea/. How to read them:\n")
 cat("    NES > 0 = higher in the case group, NES < 0 = lower; *_GSEA_term_by_module.csv = leading-edge genes per module.\n")

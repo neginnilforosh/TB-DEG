@@ -53,11 +53,12 @@ for (k in names(db)) md <- c(md, sprintf("| %s | %s |", db[[k]],
   tryCatch(as.character(utils::packageVersion(db[[k]])), error = function(e) "not installed")))
 if (requireNamespace("org.Hs.eg.db", quietly = TRUE)) {
   meta <- tryCatch(AnnotationDbi::metadata(org.Hs.eg.db::org.Hs.eg.db), error = function(e) NULL)
-  if (FALSE) { keep <- meta[meta$name %in% c("EGSOURCEDATE", "ENSOURCEDATE", "GOSOURCEDATE"), ]
+  if (!is.null(meta)) { keep <- meta[meta$name %in% c("EGSOURCEDATE", "ENSOURCEDATE", "GOSOURCEDATE"), ]   # database release dates (provenance)
     md <- c(md, "", paste0("org.Hs.eg.db source dates: ", paste(keep$name, keep$value, sep = " = ", collapse = "; "))) }
 }
 md <- c(md, "", "Web resources queried at run time (versions are those live on the run date): STRING, iLINCS,",
-        "Enrichr, DGIdb, KEGG REST, Metabolomics Workbench. See the run dates in each output folder.", "")
+        "Enrichr, DGIdb, KEGG REST, Metabolomics Workbench. Query dates are not stored in the public outputs;",
+        "see reproducibility/external_resource_versions.csv for which resources are version-pinned.", "")
 
 ## presets
 cfg <- file.path(ROOT, "scripts", "wgcna_network", "config.R")

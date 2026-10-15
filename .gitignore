@@ -50,3 +50,7 @@ private/
 *.msg
 *.rtfd/
 private_notes/
+
+# Local manuscript drafts and the status checklist are not part of the reproducible analysis.
+manuscript*/
+reproducibility/PROJECT_STATUS_CHECKLIST.md

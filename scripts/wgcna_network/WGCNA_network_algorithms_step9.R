@@ -173,6 +173,8 @@ for (drug in drugs) {
       Null_mean = mean(null_d, na.rm = TRUE), Null_sd = null_sd, Z_score = z, P_empirical = p_emp)
 }
 proximity_table <- do.call(rbind, proximity_results)
+## Benjamini-Hochberg over all drugs tested in this run (reported only; how it is used for tiers is a separate decision)
+proximity_table$P_BH <- stats::p.adjust(proximity_table$P_empirical, method = "BH")
 proximity_table <- proximity_table[order(proximity_table$Z_score), ]  # most negative = closest to disease = best
 write.csv(proximity_table, file.path(dir_out, paste0(ACC, "_NetworkProximity.csv")), row.names = FALSE)
 cat(">>> Network proximity computed for", nrow(proximity_table), "/", length(drugs), "drugs;",

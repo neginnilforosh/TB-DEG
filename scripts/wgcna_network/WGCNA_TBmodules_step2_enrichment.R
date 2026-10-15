@@ -1,8 +1,6 @@
 ## STEP 2: GO BP, KEGG, Reactome and Hallmark enrichment of each selected module, used to name it.
 
-if (!require("BiocManager", quietly = TRUE)) install.packages("BiocManager")
-BiocManager::install(c("clusterProfiler", "org.Hs.eg.db", "ReactomePA"))
-
+## packages are checked, never installed, at run time (install once, as in PACKAGES.md)
 required_pkgs <- c("clusterProfiler", "org.Hs.eg.db", "ReactomePA", "dplyr")
 pkg_ok <- vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)
 if (!all(pkg_ok)) {

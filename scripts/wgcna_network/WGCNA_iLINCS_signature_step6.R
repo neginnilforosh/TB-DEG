@@ -1,7 +1,6 @@
 ## STEP 6: TB_UP / TB_DOWN signature for iLINCS (drugfindR prepareSignature + filterSignature).
 
-install.packages("drugfindR", repos = c("https://cogdisreslab.r-universe.dev", "https://cran.r-project.org"))
-
+## packages are checked, never installed, at run time (install once, as in PACKAGES.md)
 required_pkgs <- c("drugfindR", "dplyr")
 
 pkg_ok <- vapply(required_pkgs, requireNamespace, logical(1), quietly = TRUE)

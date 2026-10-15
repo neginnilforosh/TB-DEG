@@ -37,12 +37,7 @@ summary_lines <- c(paste("Comparison:", RUN_A, "vs", RUN_B), "")
 note <- function(...) { line <- paste0(...); cat(line, "\n"); summary_lines <<- c(summary_lines, line) }
 
 ## ---- helpers ----
-drug_key <- function(x) {                             # same key as step 10: case-insensitive, salt/hydrate words removed
-  salts <- "(DIHYDROCHLORIDE|HYDROCHLORIDE|HYDROBROMIDE|HCL|MESYLATE|MESILATE|BESYLATE|BESILATE|MALEATE|FUMARATE|CITRATE|SULFATE|SULPHATE|PHOSPHATE|TARTRATE|ACETATE|SUCCINATE|TOSYLATE|TOSILATE|LACTATE|GLUCONATE|NITRATE|SODIUM|POTASSIUM|CALCIUM|MAGNESIUM|CHLORIDE|BROMIDE|ANHYDROUS|MONOHYDRATE|DIHYDRATE|TRIHYDRATE|HEMIHYDRATE|HYDRATE)"
-  x <- toupper(trimws(x))
-  repeat { y <- trimws(sub(paste0("[[:space:],()-]+", salts, "$"), "", x)); if (identical(y, x)) break; x <- y }
-  x
-}
+source(file.path(SCRIPT_DIR, "drug_name_key.R"))      # drug_key(): the same rule as steps 8, 10 and 12
 consensus_unpaired <- function(raw, cutoff) {         # drugfindR rule: |sim| >= cutoff, keep the strongest signature per compound
   raw <- raw[abs(raw$similarity) >= cutoff, ]
   best <- stats::ave(abs(raw$similarity), raw$treatment, FUN = max)
