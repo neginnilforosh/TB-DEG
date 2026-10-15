@@ -28,7 +28,7 @@ Everything here is computational. A drug that ranks highly is a hypothesis worth
 | GSE99374 | CD8+ T cells, RNA-seq | Healthy 19, latent TB 21 | Early analysis |
 | GSE229020 | miRNA panel (NanoString) | Healthy 4, latent 6, drug-sensitive 6, drug-resistant 4 | miRNA differential expression |
 | GSE165709 | Macrophages, RNA-seq + ATAC-seq | Healthy and people living with HIV, infected vs uninfected | Do the TB genes respond to infection, and is their chromatin opened? |
-| ST000974 | Plasma metabolomics | TB cases vs controls | Metabolite layer |
+| ST000974 | Plasma metabolomics (GC6-74 household contacts) | Contacts who later developed TB vs those who stayed healthy, sampled while still TB-free | Metabolite layer |
 | SCP1749 | Single-cell RNA, lung granuloma | — | Which cell types express the module genes |
 
 ## What we have found so far (TB vs healthy)
@@ -36,7 +36,7 @@ Everything here is computational. A drug that ranks highly is a hypothesis worth
 - **Interferon signalling is the strongest signal.** The top pathways are the interferon-gamma and interferon-alpha responses, and the most connected gene in the disease network is STAT1.
 - **The blood changes in composition, not only in gene activity.** One large module mixes lymphocyte genes that go down with neutrophil and macrophage genes that go up. Single-cell data and cell-type gene sets agree with this reading.
 - **The core TB genes respond directly to infection.** Most of the top-ranked genes also respond when lung macrophages are infected with *M. tuberculosis* in the lab (GSE165709), and several of them, mostly interferon-driven, respond less in cells from people living with HIV.
-- **Interferon links genes to metabolites.** Tryptophan is lower in the plasma of TB cases (ST000974), while IDO1, KYNU and WARS1, the enzymes that use it, are higher in TB blood. All three are switched on by interferon.
+- **Interferon links genes to metabolites.** Tryptophan is lower in the plasma of people who later developed TB, months before diagnosis (ST000974), while IDO1, KYNU and WARS1, the enzymes that use it, are higher in TB blood. All three are switched on by interferon.
 - **Drug predictions are the least stable part.** Ranking compounds by signature reversal changes noticeably between similar inputs, and network proximity does not separate drugs from random after correcting for multiple tests. Drug candidates should therefore be read together with their other evidence, not on their own.
 
 ## Where things stand
