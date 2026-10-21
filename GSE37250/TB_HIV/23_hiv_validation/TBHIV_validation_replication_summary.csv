@@ -1,0 +1,7 @@
+"Dataset","Tier","N","Pct_same_direction","P_direction","Pct_reproduced","P_High_vs_Low"
+"GSE107104","High",23,91.3,3.3e-05,65.2,0.000148
+"GSE107104","Medium",448,85.5,3.27e-56,37.7,NA
+"GSE107104","Low",981,84.5,1.07e-113,26.6,NA
+"GSE162164","High",20,95,2e-05,20,0.0821
+"GSE162164","Medium",334,90.4,1.51e-56,16.5,NA
+"GSE162164","Low",684,92.8,3.15e-131,8.2,NA
