@@ -22,7 +22,10 @@ Everything here is computational. A drug that ranks highly is a hypothesis worth
 | Dataset | Sample type and platform | Groups | Used for |
 |---|---|---|---|
 | GSE114192 | Whole blood, RNA-seq | Healthy 36, TB 46, diabetes 52, TB + diabetes 61 | Main analysis (TB) and TB-diabetes |
-| GSE50834 | PBMC, Illumina arrays | HIV 23, HIV + TB 21 | TB-HIV (planned) |
+| GSE37250 | Whole blood, Illumina arrays | With HIV: active TB 98, latent TB 84, other diseases 92; the same groups without HIV | TB-HIV discovery (active vs latent TB in people with HIV) and TB × HIV interaction |
+| GSE107104 | Whole blood, RNA-seq | Advanced HIV, ART-naive: TB-HIV 15, HIV only 16 | TB-HIV validation |
+| GSE162164 | Whole blood, RNA-seq | Advanced HIV: TB-HIV 14, HIV only 11 | TB-HIV validation |
+| GSE50834 | PBMC, Illumina arrays | HIV 23, HIV + TB 21 | Evaluated, not used: disease group and processing batch overlap almost completely |
 | GSE161829 | Memory CD4+ T cells, RNA-seq | No TB 20, latent TB 40, active TB 25 | Independent check |
 | GSE222001 | NK cells, RNA-seq | Healthy 5, latent TB 5, active TB 5 | Independent check (small) |
 | GSE99374 | CD8+ T cells, RNA-seq | Healthy 19, latent TB 21 | Early analysis |
@@ -39,6 +42,7 @@ Everything here is computational. A drug that ranks highly is a hypothesis worth
 - **Interferon may link genes to metabolites.** In the GC6-74 cohort the kynurenine/tryptophan ratio, a read-out of the interferon-induced enzyme IDO1, did not differ between future TB cases and controls at enrolment or more than five months before diagnosis, but rose within five months of diagnosis in plasma and in serum (adjusted p 0.12 and 0.03), with a matching fall in tryptophan. IDO1, KYNU and WARS1 are higher in active-TB blood in GSE114192. The metabolite and gene data come from different people, so this is a supporting observation; sample numbers close to diagnosis are small.
 - **Drug predictions are the least stable part.** Ranking compounds by signature reversal changes noticeably between similar inputs, and network proximity does not separate drugs from random after correcting for multiple tests. Only a few compounds reverse both halves of the signature consistently across LINCS experiments and act on a high-priority gene, and many top candidates also have cell-division targets, so part of the drug ranking reflects antiproliferative effects rather than TB biology.
 - **TB with and without diabetes share an interferon-gamma core.** 25 genes are high-priority in both contexts, nearly all interferon-gamma related (STAT1, GBP1, GBP5, CASP1, CD274, ...). The type I interferon genes (ISG15, IFIT3, IFI6, OASL, ...) still go up in TB with diabetes but form a separate small module there instead of joining the core, which fits the weaker interferon-alpha response in diabetes.
+- **TB with HIV keeps the core but changes the interferon picture.** Eight genes are high-priority in all three contexts (GBP1, PARP9, FCGR1A, SERPING1, AIM2, CASP1, TNFSF10, FBXO6). In people with HIV, interferon genes are already higher with or without active TB, so the extra increase from TB is smaller; the TNF/NF-κB inflammatory response is raised by TB in all three HIV datasets, while the interferon response is raised in two of them but not in untreated advanced HIV. The TB-HIV signature validates in two independent cohorts (91% and 95% of high-priority genes in the same direction; AUC 0.90 and 0.79).
 
 ## Where things stand
 
@@ -48,8 +52,8 @@ Everything here is computational. A drug that ranks highly is a hypothesis worth
 | Supporting layers (GSEA, single-cell, ATAC-seq, metabolomics, CTD) | Complete. The metabolomics result does not change when smoking is added as a covariate (serum) |
 | TB + diabetes | Complete. The main comparison is TB with diabetes vs TB alone on all samples with recruitment site as a covariate (`GSE114192/TB_DM/tb_vs_tbdm_site_adjusted/`); both groups come from all four sites. The interferon-gamma and interferon-alpha responses are weaker in TB with diabetes (NES −1.84 and −2.22), and the TB × diabetes interaction, fitted on the two sites that have all four groups and adjusted for site, gives the same result (`GSE114192/TB_DM/sensitivity_site/`). Neutrophil-granule and red-cell genes are higher in TB with diabetes, which may reflect blood cell composition |
 | Independent cohorts (GSE161829, GSE222001) | Sample labels corrected; all analyses redone. Pathways and the interferon module replicate; drug candidates do not |
-| TB + HIV | Not started. The first candidate (GSE50834) has disease group and processing batch almost completely overlapping, so alternative datasets (GSE37250, GSE107104, GSE162164) have been compared and the choice is being agreed |
-| Comparison across contexts | TB vs TB with diabetes complete (`comparisons/contexts/`); TB with HIV will be added when its dataset is chosen |
+| TB + HIV | Complete. Discovery in GSE37250 (BeadChips recovered from the data and modelled as a block; `GSE37250/`), the TB × HIV interaction and a within-group HIV comparison, and validation in GSE107104 and GSE162164 (`GSE37250/TB_HIV/23_hiv_validation/`) |
+| Comparison across contexts | Complete for all three contexts (`comparisons/contexts/`), on the genes measured in every dataset. The TB-HIV contrast is active vs latent TB, so genes found only there may partly reflect the different comparison group |
 
 
 ## Repository layout
@@ -62,7 +66,7 @@ scripts/
   record_reproducibility.R
 GSE114192/           main analysis; TB_DM/ holds the TB-diabetes analysis in the same structure
 GSE161829/ GSE222001/ GSE99374/ GSE229020/   other cohorts
-GSE50834/            TB-HIV dataset audit
+GSE37250/ GSE107104/ GSE162164/   TB-HIV discovery and validation; GSE50834/ holds the audit of the first candidate
 external_results/    GSE165709 RNA-seq and ATAC-seq results
 reproducibility/     package versions, parameters, seeds, external resources
 comparisons/         reference vs replication run (step 14) and comparison across clinical contexts (contexts/, step 27)
