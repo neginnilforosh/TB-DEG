@@ -1,0 +1,9 @@
+"Variant","Families","Spearman_with_main","TopN_overlap_with_main","N_High","High_Jaccard_with_main"
+"main","Expression+Coexpression+Network+Replication+Infection",1,50,24,1
+"without_Expression","Coexpression+Network+Replication+Infection",0.947,33,41,0.413
+"without_Coexpression","Expression+Network+Replication+Infection",0.959,35,53,0.305
+"without_Network","Expression+Coexpression+Replication+Infection",0.945,30,62,0.323
+"without_Replication","Expression+Coexpression+Network+Infection",0.932,36,37,0.452
+"without_Infection","Expression+Coexpression+Network+Replication",0.935,30,47,0.479
+"strong_threshold_0.7","Expression+Coexpression+Network+Replication+Infection",1,50,54,0.444
+"strong_threshold_0.9","Expression+Coexpression+Network+Replication+Infection",1,50,1,0.042

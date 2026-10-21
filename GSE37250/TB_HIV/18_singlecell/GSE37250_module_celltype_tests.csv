@@ -1,0 +1,12 @@
+"Module","CellType","N_lower","N_higher","Share_lower_pct","Share_higher_pct","P_wilcoxon"
+"turquoise","T",340,31,17.1,5.4,1.20216210545723e-11
+"turquoise","B",340,31,11.2,5.2,1.18083408547859e-07
+"turquoise","Neutrophil",340,31,3.8,18.4,4.39811801890937e-06
+"turquoise","Plasma",340,31,7.2,4,7.03070481591376e-06
+"turquoise","Club",340,31,8.2,8.9,0.0102752126045742
+"turquoise","pDC",340,31,11.3,8.7,0.0144899409445091
+"turquoise","Mast",340,31,10.6,11.3,0.0708721242567322
+"turquoise","Macrophage",340,31,6.8,9.4,0.113965340024659
+"turquoise","Fibroblast",340,31,7.7,7.1,0.495614020517664
+"turquoise","Endothelial",340,31,8.3,10.4,0.753502544502597
+"turquoise","T2P",340,31,7.8,11.1,0.81805194449766

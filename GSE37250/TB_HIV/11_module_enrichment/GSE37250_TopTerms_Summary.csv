@@ -1,0 +1,13 @@
+"Module","Source","Term","p.adjust","Count"
+"purple","GO_BP","defense response to virus",3.64613040140814e-44,41
+"purple","KEGG","Influenza A",8.84057693187408e-11,13
+"purple","Reactome","Interferon Signaling",1.08691911749018e-39,38
+"purple","Hallmark","HALLMARK_INTERFERON_ALPHA_RESPONSE",1.17422832386848e-58,44
+"turquoise","GO_BP","rRNA processing",1.45880549712934e-13,62
+"turquoise","KEGG","Ribosome biogenesis in eukaryotes",0.00760632049392613,19
+"turquoise","Reactome","rRNA processing",1.940107234089e-12,59
+"turquoise","Hallmark","HALLMARK_MYC_TARGETS_V1",7.57302441736922e-08,49
+"yellow","GO_BP","response to bacterium",9.03919338700161e-11,49
+"yellow","KEGG","Neutrophil extracellular trap formation",2.19470775551859e-11,28
+"yellow","Reactome","Neutrophil degranulation",8.07398566826744e-17,57
+"yellow","Hallmark","HALLMARK_INFLAMMATORY_RESPONSE",5.01967023919447e-09,27

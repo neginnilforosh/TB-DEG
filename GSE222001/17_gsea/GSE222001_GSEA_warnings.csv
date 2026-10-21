@@ -1,0 +1,19 @@
+"Comparison","Collection","Call","Message"
+"GSE222001_Healthy_vs_Active",NA,"bitr","17.48% of input gene IDs are fail to map..."
+"GSE222001_Healthy_vs_Active","HALLMARK","GSEA","There are ties in the preranked stats (1.17% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE222001_Healthy_vs_Active","REACTOME","GSEA","There are ties in the preranked stats (1.17% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE222001_Healthy_vs_Active","GOBP","GSEA","There are ties in the preranked stats (1.17% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE222001_Healthy_vs_Active","CELLTYPE","GSEA","There are ties in the preranked stats (1.17% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE222001_Healthy_vs_Latent",NA,"bitr","17.48% of input gene IDs are fail to map..."
+"GSE222001_Healthy_vs_Latent","HALLMARK","GSEA","There are ties in the preranked stats (1.2% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE222001_Healthy_vs_Latent","REACTOME","GSEA","There are ties in the preranked stats (1.2% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE222001_Healthy_vs_Latent","GOBP","GSEA","There are ties in the preranked stats (1.2% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE222001_Healthy_vs_Latent","CELLTYPE","GSEA","There are ties in the preranked stats (1.2% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."

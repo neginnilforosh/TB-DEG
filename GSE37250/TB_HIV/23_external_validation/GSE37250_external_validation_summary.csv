@@ -1,0 +1,16 @@
+"Comparison","Phenotype","Tier","N_tested","Pct_same_direction","P_direction","N_reproduced","Pct_reproduced","P_High_vs_Low_reproduced"
+"GSE161829:TBneg_vs_ATB","Active","High",6,66.7,0.344,0,0,1
+"GSE161829:TBneg_vs_ATB","Active","Medium",321,61.4,2.73e-05,19,5.9,NA
+"GSE161829:TBneg_vs_ATB","Active","Low",1194,50.6,0.353,34,2.8,NA
+"GSE161829:TBneg_vs_LTBI","LTBI","High",6,83.3,0.109,0,0,1
+"GSE161829:TBneg_vs_LTBI","LTBI","Medium",321,61.4,2.73e-05,0,0,NA
+"GSE161829:TBneg_vs_LTBI","LTBI","Low",1194,54.9,0.000434,0,0,NA
+"GSE222001:Healthy_vs_Active","Active","High",6,66.7,0.344,0,0,1
+"GSE222001:Healthy_vs_Active","Active","Medium",329,60.8,5.37e-05,3,0.9,NA
+"GSE222001:Healthy_vs_Active","Active","Low",1208,50.5,0.376,9,0.7,NA
+"GSE222001:Healthy_vs_Latent","LTBI","High",6,33.3,0.891,0,0,1
+"GSE222001:Healthy_vs_Latent","LTBI","Medium",329,32.8,1,0,0,NA
+"GSE222001:Healthy_vs_Latent","LTBI","Low",1208,36.9,1,1,0.1,NA
+"GSE99374:HC_vs_LTBI","LTBI","High",6,66.7,0.344,0,0,1
+"GSE99374:HC_vs_LTBI","LTBI","Medium",271,55,0.057,0,0,NA
+"GSE99374:HC_vs_LTBI","LTBI","Low",1033,51.5,0.175,1,0.1,NA

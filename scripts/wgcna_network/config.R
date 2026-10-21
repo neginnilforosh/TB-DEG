@@ -5,21 +5,26 @@
 ACTIVE_RUN <- "GSE114192_TB"
 ##ACTIVE_RUN <- "GSE161829_ATB"
 PRESETS <- list(
-  GSE114192_TB = list(                       # pilot: Healthy_Control vs TB_Only
-    ACC = "GSE114192", CONTROL = "Healthy_Control", CASE = "TB_Only",
-    DEG_NAME = "HealthyControl_vs_TBOnly",     # <ACC>_<DEG_NAME>_DEG.csv in 06_deg_results
-    RUN = "",                                  # "" = outputs directly in the dataset folder
-    MODULE_NAMES = c(green = "Interferon_Response", purple = "Ribosome_Biogenesis_Chromatin", blue = "Mixed_CellComposition"),
-    MODULE_PLOT_COLORS = c(green = "#2ecc71", purple = "#9b59b6", blue = "#3498db")),
+  GSE114192_TB = list( 
+    ACC = "GSE114192",
+    CONTROL = "Healthy_Control",
+    CASE = "TB_Only",
+    DEG_NAME = "HealthyControl_vs_TBOnly",
+    RUN = "",
+    MODULE_NAMES = c(green = "Interferon_Response", purple = 							"Ribosome_Biogenesis_Chromatin", blue = 											"Mixed_CellComposition"),
+    MODULE_PLOT_COLORS = c(green = "#2ecc71", purple = "#9b59b6"
+    								, blue = "#3498db")),
   
-  GSE161829_ATB = list(                      # replication: TBneg vs active TB (LTBI samples excluded)
-    ACC = "GSE161829", CONTROL = "TBneg", CASE = "ATB",
+  GSE161829_ATB = list(
+    ACC = "GSE161829",
+    CONTROL = "TBneg",
+    CASE = "ATB",
     DEG_NAME = "TBneg_vs_ATB",
-    RUN = "TBneg_vs_ATB",                      # outputs in GSE161829/TBneg_vs_ATB/
+    RUN = "TBneg_vs_ATB",                
     MODULE_NAMES = c(midnightblue = "M1_Cell_Cycle_Proliferation",
                 greenyellow = "M2_Mixed_with_IFN_cluster",
-                 salmon       = "M3_OxPhos_weak"),              # fill in after step 2
-    MODULE_PLOT_COLORS = NULL) ,                # NULL = use the WGCNA colour names
+                 salmon       = "M3_OxPhos_weak"),        
+    MODULE_PLOT_COLORS = NULL) ,               
   
   GSE114192_TBDM_vs_DM = list(
     ACC = "GSE114192", CONTROL = "DM_only", CASE = "TB_DM",
@@ -31,15 +36,28 @@ PRESETS <- list(
     MODULE_PLOT_COLORS = NULL),
 	
   GSE114192_TBDM_vs_TB = list(
-	  ACC = "GSE114192", CONTROL = "TB_Only", CASE = "TB_DM",
+	 ACC = "GSE114192",
+	 CONTROL = "TB_Only",
+	 CASE = "TB_DM",
     DEG_NAME = "TB_Only_vs_TB_DM", 
     RUN = "TB_DM",
     MODULE_NAMES = character(0), 
-    MODULE_PLOT_COLORS = NULL)
+    MODULE_PLOT_COLORS = NULL),
+    
+  GSE37250_TBHIV = list(
+   ACC = "GSE37250",
+   CONTROL = "LTBI_HIVpos",
+   CASE = "ATB_HIVpos",
+   DEG_NAME = "LTBI_HIVpos_vs_ATB_HIVpos",
+   RUN = "TB_HIV",
+   MODULE_NAMES = c(yellow = "M1_Inflammatory_Neutrophil",
+                 turquoise = "M2_Ribosome_Biogenesis_MYC",
+                 purple = "M3_Interferon_Response"),
+   MODULE_PLOT_COLORS = NULL)
 
 )
 ## ---- apply the active preset ----
-run_id <- Sys.getenv("TB_RUN", ACTIVE_RUN)
+run_id <- trimws(Sys.getenv("TB_RUN", ACTIVE_RUN))
 if (!run_id %in% names(PRESETS)) stop("Unknown run '", run_id, "'. Available: ", paste(names(PRESETS), collapse = ", "))
 cfg <- PRESETS[[run_id]]
 ACC <- cfg$ACC; CONTROL <- cfg$CONTROL; CASE <- cfg$CASE; TRAIT_COL <- CASE

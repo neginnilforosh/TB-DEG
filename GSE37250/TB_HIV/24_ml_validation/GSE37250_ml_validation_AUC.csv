@@ -1,0 +1,15 @@
+"Test","Model","N_case","N_control","AUC","CI_low","CI_high","Random_gene_set_median_AUC","P_vs_random","Repeat_AUC_q025","Repeat_AUC_q975"
+"Discovery (GSE37250) ATB_HIVpos vs LTBI_HIVpos [in-sample, optimistic: genes chosen on these samples]","Signature score",98,84,0.834,0.773,0.886,0.6,0.002,NA,NA
+"Discovery (GSE37250) ATB_HIVpos vs LTBI_HIVpos [in-sample, optimistic: genes chosen on these samples]","Elastic net (5-fold CV)",98,84,0.802,0.733,0.859,NA,NA,NA,NA
+"Discovery (GSE37250) ATB_HIVpos vs LTBI_HIVpos [nested CV 5-fold x 10; genes re-selected in each training fold; Repeat_AUC_q025/q975 = spread over repeats, not a confidence interval]","Signature score (nested CV)",98,84,0.892,NA,NA,NA,NA,0.873,0.909
+"Discovery (GSE37250) ATB_HIVpos vs LTBI_HIVpos [nested CV 5-fold x 10; genes re-selected in each training fold; Repeat_AUC_q025/q975 = spread over repeats, not a confidence interval]","Elastic net (nested CV)",98,84,0.902,NA,NA,NA,NA,0.884,0.922
+"GSE161829 ATB vs TBneg","Signature score",25,20,0.718,0.574,0.864,0.586,0.0729,NA,NA
+"GSE161829 ATB vs TBneg","Elastic net (trained on discovery)",25,20,0.656,0.492,0.814,NA,NA,NA,NA
+"GSE161829 ATB vs LTBI","Signature score",25,40,0.686,0.546,0.813,0.575,0.0759,NA,NA
+"GSE161829 ATB vs LTBI","Elastic net (trained on discovery)",25,40,0.639,0.502,0.772,NA,NA,NA,NA
+"GSE161829 LTBI vs TBneg","Signature score",40,20,0.529,0.352,0.686,0.555,0.719,NA,NA
+"GSE161829 LTBI vs TBneg","Elastic net (trained on discovery)",40,20,0.521,0.35,0.686,NA,NA,NA,NA
+"GSE222001 Active vs Healthy (n=5+5)","Signature score",5,5,0.52,0.16,0.92,0.68,1,NA,NA
+"GSE222001 Active vs Healthy (n=5+5)","Elastic net (trained on discovery)",5,5,0.48,0.16,0.88,NA,NA,NA,NA
+"GSE222001 Active vs Latent (n=5+5)","Signature score",5,5,0.68,0.32,1,0.68,0.568,NA,NA
+"GSE222001 Active vs Latent (n=5+5)","Elastic net (trained on discovery)",5,5,0.68,0.32,1,NA,NA,NA,NA

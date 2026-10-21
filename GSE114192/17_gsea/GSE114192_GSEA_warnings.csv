@@ -1,0 +1,46 @@
+"Comparison","Collection","Call","Message"
+"GSE114192_HealthyControl_vs_TBOnly",NA,"bitr","9.46% of input gene IDs are fail to map..."
+"GSE114192_HealthyControl_vs_TBOnly","HALLMARK","GSEA","There are ties in the preranked stats (0.96% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_HealthyControl_vs_TBOnly","REACTOME","GSEA","There are ties in the preranked stats (0.96% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_HealthyControl_vs_TBOnly","GOBP","GSEA","There are ties in the preranked stats (0.96% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_HealthyControl_vs_TBOnly","CELLTYPE","GSEA","There are ties in the preranked stats (0.96% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_DM_only_vs_TB_DM",NA,"bitr","11.68% of input gene IDs are fail to map..."
+"GSE114192_DM_only_vs_TB_DM","HALLMARK","GSEA","There are ties in the preranked stats (1.07% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_DM_only_vs_TB_DM","REACTOME","GSEA","There are ties in the preranked stats (1.07% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_DM_only_vs_TB_DM","GOBP","GSEA","There are ties in the preranked stats (1.07% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_DM_only_vs_TB_DM","CELLTYPE","GSEA","There are ties in the preranked stats (1.07% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_Healthy_Control_vs_DM_only",NA,"bitr","11.68% of input gene IDs are fail to map..."
+"GSE114192_Healthy_Control_vs_DM_only","HALLMARK","GSEA","There are ties in the preranked stats (1.06% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_Healthy_Control_vs_DM_only","REACTOME","GSEA","There are ties in the preranked stats (1.06% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_Healthy_Control_vs_DM_only","GOBP","GSEA","There are ties in the preranked stats (1.06% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_Healthy_Control_vs_DM_only","CELLTYPE","GSEA","There are ties in the preranked stats (1.06% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_Healthy_Control_vs_TB_DM",NA,"bitr","11.68% of input gene IDs are fail to map..."
+"GSE114192_Healthy_Control_vs_TB_DM","HALLMARK","GSEA","There are ties in the preranked stats (1.07% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_Healthy_Control_vs_TB_DM","REACTOME","GSEA","There are ties in the preranked stats (1.07% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_Healthy_Control_vs_TB_DM","GOBP","GSEA","There are ties in the preranked stats (1.07% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_Healthy_Control_vs_TB_DM","CELLTYPE","GSEA","There are ties in the preranked stats (1.07% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_TB_Only_vs_TB_DM",NA,"bitr","11.68% of input gene IDs are fail to map..."
+"GSE114192_TB_Only_vs_TB_DM","HALLMARK","GSEA","There are ties in the preranked stats (1.05% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_TB_Only_vs_TB_DM","REACTOME","GSEA","There are ties in the preranked stats (1.05% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_TB_Only_vs_TB_DM","GOBP","GSEA","There are ties in the preranked stats (1.05% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE114192_TB_Only_vs_TB_DM","CELLTYPE","GSEA","There are ties in the preranked stats (1.05% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."

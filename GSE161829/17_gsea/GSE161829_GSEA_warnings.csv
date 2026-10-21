@@ -1,0 +1,19 @@
+"Comparison","Collection","Call","Message"
+"GSE161829_TBneg_vs_ATB",NA,"bitr","13.38% of input gene IDs are fail to map..."
+"GSE161829_TBneg_vs_ATB","HALLMARK","GSEA","There are ties in the preranked stats (1.19% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE161829_TBneg_vs_ATB","REACTOME","GSEA","There are ties in the preranked stats (1.19% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE161829_TBneg_vs_ATB","GOBP","GSEA","There are ties in the preranked stats (1.19% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE161829_TBneg_vs_ATB","CELLTYPE","GSEA","There are ties in the preranked stats (1.19% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE161829_TBneg_vs_LTBI",NA,"bitr","13.38% of input gene IDs are fail to map..."
+"GSE161829_TBneg_vs_LTBI","HALLMARK","GSEA","There are ties in the preranked stats (1.2% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE161829_TBneg_vs_LTBI","REACTOME","GSEA","There are ties in the preranked stats (1.2% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE161829_TBneg_vs_LTBI","GOBP","GSEA","There are ties in the preranked stats (1.2% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE161829_TBneg_vs_LTBI","CELLTYPE","GSEA","There are ties in the preranked stats (1.2% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."

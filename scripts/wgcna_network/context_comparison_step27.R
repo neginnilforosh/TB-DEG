@@ -13,7 +13,7 @@
 ## Outputs in comparisons/contexts/.
 
 ## ---- CONFIG ----
-CONTEXTS <- c(TB = "GSE114192_TB", TB_DM = "GSE114192_TBDM_vs_DM")   # add TB_HIV = "<run id>" when available
+CONTEXTS <- c(TB = "GSE114192_TB", TB_DM = "GSE114192_TBDM_vs_DM", TB_HIV = "GSE37250_TBHIV")  
 PADJ <- 0.05; LFC <- 1
 TOP_RANK <- 50          # "prioritised" = in the top 50 by evidence score
 REWIRE_GAP <- 200       # evidence rank difference that counts as a large move

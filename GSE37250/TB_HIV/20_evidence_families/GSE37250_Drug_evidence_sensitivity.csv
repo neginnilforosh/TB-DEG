@@ -1,0 +1,7 @@
+"Variant","Families","Drugs_scored","Spearman_with_main","TopN_overlap_with_main"
+"main","Reversal+Target_network+Target_genes+Module_overlap",359,1,20
+"with_Proximity","Reversal+Target_network+Target_genes+Module_overlap+Proximity",359,0.929,15
+"without_Reversal","Target_network+Target_genes+Module_overlap",352,0.893,11
+"without_Target_network","Reversal+Target_genes+Module_overlap",359,0.962,16
+"without_Target_genes","Reversal+Target_network+Module_overlap",352,0.937,15
+"without_Module_overlap","Reversal+Target_network+Target_genes",352,0.92,12

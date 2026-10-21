@@ -1,0 +1,25 @@
+"Comparison","Collection","Call","Message"
+"GSE37250_LTBI_HIVneg_vs_ATB_HIVneg","HALLMARK","GSEA","There are ties in the preranked stats (1.56% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE37250_LTBI_HIVneg_vs_ATB_HIVneg","REACTOME","GSEA","There are ties in the preranked stats (1.56% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE37250_LTBI_HIVneg_vs_ATB_HIVneg","GOBP","GSEA","There are ties in the preranked stats (1.56% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE37250_LTBI_HIVneg_vs_ATB_HIVneg","CELLTYPE","GSEA","There are ties in the preranked stats (1.56% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE37250_LTBI_HIVpos_vs_ATB_HIVpos","HALLMARK","GSEA","There are ties in the preranked stats (1.56% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE37250_LTBI_HIVpos_vs_ATB_HIVpos","REACTOME","GSEA","There are ties in the preranked stats (1.56% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE37250_LTBI_HIVpos_vs_ATB_HIVpos","GOBP","GSEA","There are ties in the preranked stats (1.56% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE37250_LTBI_HIVpos_vs_ATB_HIVpos","CELLTYPE","GSEA","There are ties in the preranked stats (1.56% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE37250_OD_HIVpos_vs_ATB_HIVpos","HALLMARK","GSEA","There are ties in the preranked stats (1.56% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE37250_OD_HIVpos_vs_ATB_HIVpos","REACTOME","GSEA","There are ties in the preranked stats (1.56% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE37250_OD_HIVpos_vs_ATB_HIVpos","GOBP","GSEA","There are ties in the preranked stats (1.56% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."
+"GSE37250_OD_HIVpos_vs_ATB_HIVpos","CELLTYPE","GSEA","There are ties in the preranked stats (1.56% of the list).
+The order of those tied genes will be arbitrary, which may produce unexpected results."

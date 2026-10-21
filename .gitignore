@@ -54,3 +54,5 @@ private_notes/
 # Local manuscript drafts and the status checklist are not part of the reproducible analysis.
 manuscript*/
 reproducibility/PROJECT_STATUS_CHECKLIST.md
+GSE37250/04_normalized/GSE37250_vst_normalized_matrix.csv
+GSE37250/09_wgcna_input/GSE37250_WGCNA_expression_matrix.csv

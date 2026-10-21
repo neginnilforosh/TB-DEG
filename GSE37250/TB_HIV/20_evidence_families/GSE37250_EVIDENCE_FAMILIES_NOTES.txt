@@ -1,0 +1,5 @@
+Evidence-family consensus for GSE37250 (LTBI_HIVpos vs ATB_HIVpos).
+Gene families: Expression, Coexpression, Network, Replication, Infection. Drug families: Reversal, Target_network, Target_genes, Module_overlap; proximity is reported and tested as a sensitivity variant only.
+Each family score is a within-run percentile (0 = weakest, 1 = strongest); the evidence score is the mean over available families.
+A family supports a gene or drug when its score is >= 0.8. Proposed tiers: High = support from at least 75% of the families (genes 4 of 5, drugs 3 of 4) and score >= 0.75; Medium = at least 2 supporting families or score >= 0.6; otherwise Low. Genes need 3 families with data, drugs need reversal evidence and 3 families.
+Rank_best/worst_across_variants: range of the rank when each family is left out in turn (and, for drugs, when proximity is added). Stable_topN = in the top 50 genes / 20 drugs in every variant.
