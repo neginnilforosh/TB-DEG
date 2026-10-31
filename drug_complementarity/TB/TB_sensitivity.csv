@@ -1,0 +1,11 @@
+,Value
+Pairs,300
+Pairs with network distances,300
+Spearman nearest vs mean distance,0.66
+Spearman nearest vs separation,0.33
+Candidate pairs,0
+"Candidate pairs, both compounds well supported",0
+Candidate pairs with >= 2 network targets each,0
+Candidate pairs also more separated at p < 0.05,0
+Chemical clustering,"best k=2, silhouette 0.06 (weak: no clusters reported); stability (ARI) radius 3, 2048 bits: 0.79, radius 2, 1024 bits: 1.00"
+Not tested,alternative STRING confidence thresholds (would require re-querying STRING)
