@@ -31,12 +31,14 @@ COL <- c(up = "#B2182B", down = "#2166AC", ns = "grey75")
 theme_ms <- theme_classic(base_size = 9) + theme(plot.title = element_text(face = "bold", size = 10), legend.key.size = unit(3.5, "mm"),
                                                   strip.background = element_blank(), strip.text = element_text(face = "bold"))
 save_gg <- function(p, name, w = 85, h = 70) {
+  wrap <- function(x, n) if (is.null(x)) x else paste(strwrap(x, n), collapse = "\n")
+  p$labels$title <- wrap(p$labels$title, floor(w / 1.9)); p$labels$subtitle <- wrap(p$labels$subtitle, floor(w / 1.6))
   for (ext in c("png", "pdf")) ggsave(file.path(OUT, paste0(name, ".", ext)), p, width = w, height = h, units = "mm", dpi = 600)
   message("  saved ", name)
 }
 save_base <- function(fun, name, w = 85, h = 70) {
   png(file.path(OUT, paste0(name, ".png")), width = w, height = h, units = "mm", res = 600); fun(); dev.off()
-  pdf(file.path(OUT, paste0(name, ".pdf")), width = w / 25.4, height = h / 25.4); fun(); dev.off()
+  pdf(file.path(OUT, paste0(name, ".pdf")), width = w / 25.4, height = h / 25.4, onefile = FALSE); fun(); dev.off()
   message("  saved ", name)
 }
 fam_cols <- c(Fam_Expression = "Expression", Fam_Coexpression = "Co-expression", Fam_Network = "Network",
@@ -87,14 +89,14 @@ for (k in names(CTX)) {
     cm <- stats::cor(m[, -1], method = "spearman", use = "pairwise.complete.obs")
     save_base(function() pheatmap::pheatmap(cm, display_numbers = TRUE, number_format = "%.2f", fontsize = 7, fontsize_number = 6,
                                             color = grDevices::colorRampPalette(c("white", "#FDDBC7", COL["up"]))(50), breaks = seq(0, 1, length.out = 51),
-                                            main = paste0("Agreement between network scores (Spearman): ", c0$label), border_color = NA),
-              paste0("Fig3D_score_agreement_", k), 100, 85)
+                                            main = paste0("Network score agreement (Spearman)\n", c0$label), border_color = NA),
+              paste0("Fig3D_score_agreement_", k), 120, 95)
     rk <- m; for (v in names(m)[-1]) rk[[v]] <- rank(-m[[v]], ties.method = "min")
     top <- rk[order(rowMeans(rk[, -1])), ][1:20, ]; rownames(top) <- top$Gene
     save_base(function() pheatmap::pheatmap(as.matrix(top[, -1]), cluster_rows = FALSE, cluster_cols = FALSE, display_numbers = TRUE,
                                             number_format = "%.0f", fontsize = 7, fontsize_number = 5.5, border_color = NA,
                                             color = grDevices::colorRampPalette(c(COL["up"], "#FDDBC7", "white"))(50),
-                                            main = paste0("Rank of the 20 best genes by each network score: ", c0$label)),
+                                            main = paste0("Ranks of the top 20 genes by each score\n", c0$label)),
               paste0("Fig3D_top_gene_ranks_", k), 110, 110)
   }
   ## ---- 4A UpSet of strong evidence families, 4B top genes ----
@@ -209,7 +211,7 @@ if (!is.null(gc) && !is.null(dc)) {
   colnames(mat) <- c("TB", "TB with diabetes", "TB with HIV"); lim <- max(abs(mat), na.rm = TRUE)
   save_base(function() pheatmap::pheatmap(mat, cluster_cols = FALSE, display_numbers = TRUE, number_format = "%.2f", fontsize = 8, fontsize_number = 6.5,
                                           border_color = NA, color = grDevices::colorRampPalette(c(COL["down"], "white", COL["up"]))(51), breaks = seq(-lim, lim, length.out = 52),
-                                          main = "Core genes (High priority in all three contexts): log2 fold change"), "Fig8A_core_genes_across_contexts", 95, 90)
+                                          main = "Core genes: log2 fold change by context"), "Fig8A_core_genes_across_contexts", 110, 95)
 }
 hp <- rd("comparisons", "contexts", "context_hallmark_pathways.csv")
 if (!is.null(hp)) {
@@ -218,7 +220,7 @@ if (!is.null(hp)) {
   mat <- mat[order(-mat[, 1]), , drop = FALSE]
   save_base(function() pheatmap::pheatmap(mat, cluster_rows = FALSE, cluster_cols = FALSE, display_numbers = TRUE, number_format = "%.2f", fontsize = 7, fontsize_number = 6,
                                           border_color = NA, color = grDevices::colorRampPalette(c(COL["down"], "white", COL["up"]))(51), breaks = seq(-3, 3, length.out = 52),
-                                          main = "Hallmark gene sets significant in all three contexts (NES)"), "Fig8B_hallmark_across_contexts", 110, 110)
+                                          main = "Hallmark sets significant in all contexts (NES)"), "Fig8B_hallmark_across_contexts", 130, 115)
 }
 mc <- rd("comparisons", "contexts", "context_module_correspondence.csv")
 if (!is.null(mc)) {
@@ -268,7 +270,7 @@ for (k in names(CTX)) {
   mat <- as.matrix(pr[, -(1:2)]); rownames(mat) <- paste0(pr$Group, " (n=", pr$N_genes, ")")
   save_base(function() pheatmap::pheatmap(mat, cluster_rows = FALSE, display_numbers = TRUE, number_format = "%.0f", fontsize = 7, fontsize_number = 5.5, border_color = NA,
                                           color = grDevices::colorRampPalette(c("white", "#FDDBC7", COL["up"]))(50),
-                                          main = paste0("Share of module-gene expression by cell type (%): ", CTX[[k]]$label, "\n(lung granuloma scRNA-seq; even spread = 9%)")),
-            paste0("Fig9C_celltype_origin_", k), 150, 70)
+                                          main = paste0("Module-gene expression by cell type (%)\n", CTX[[k]]$label, "; even spread = 9%")),
+            paste0("Fig9C_celltype_origin_", k), 170, 75)
 }
 message(">>> DONE. Panels in ", OUT)
