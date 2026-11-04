@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Figure 1: study workflow. Run: python3 scripts/make_fig1.py  -> manuscript_figures/Fig1_workflow.png/.pdf"""
+
 from pathlib import Path
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
