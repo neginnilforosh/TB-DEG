@@ -1,13 +1,5 @@
 #!/usr/bin/env python3
-"""Assemble the manuscript's multi-panel figures from existing panels.
 
-Panels come from the pipeline's figure folders and from manuscript_figures/ (made by manuscript_figures.R).
-Each figure is a stack of rows; panels in a row are scaled to a common height and the row to the page width
-(180 mm, double column, 300 dpi). Panel letters are added in bold. A missing panel is replaced by a grey box
-naming the file, so the layout can be checked before every panel exists.
-Run from the repository root:  python3 scripts/assemble_figures.py
-Output: manuscript_figures/assembled/Fig2.png ... Fig9.png, FigS1.png (and PDF versions).
-"""
 import glob, sys
 from pathlib import Path
 from PIL import Image, ImageDraw, ImageFont
