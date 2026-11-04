@@ -44,6 +44,28 @@ save_base <- function(fun, name, w = 85, h = 70) {
 fam_cols <- c(Fam_Expression = "Expression", Fam_Coexpression = "Co-expression", Fam_Network = "Network",
               Fam_Replication = "Replication", Fam_Infection = "Infection response")
 
+## ---- 2A volcano of the reference comparison, labelled with gene symbols ----
+message("== TB volcano")
+dv <- rd("GSE114192", "06_deg_results", "GSE114192_HealthyControl_vs_TBOnly_DEG.csv")
+if (!is.null(dv)) {
+  ens <- sub("\\..*$", "", dv$gene); sym <- setNames(rep(NA_character_, nrow(dv)), ens)
+  if (requireNamespace("AnnotationDbi", quietly = TRUE) && requireNamespace("org.Hs.eg.db", quietly = TRUE))
+    sym <- suppressMessages(AnnotationDbi::mapIds(org.Hs.eg.db::org.Hs.eg.db, keys = ens, column = "SYMBOL", keytype = "ENSEMBL", multiVals = "first"))
+  evv <- rd("GSE114192", "20_evidence_families", "GSE114192_Gene_evidence_families.csv")
+  if (!is.null(evv)) { m <- setNames(evv$Gene, evv$Ensembl); fill <- is.na(sym) & ens %in% names(m); sym[fill] <- m[ens[fill]] }
+  dv$symbol <- unname(sym); dv <- dv[!is.na(dv$padj), ]
+  dv$dir <- ifelse(dv$padj < 0.05 & dv$log2FoldChange >= 1, "up", ifelse(dv$padj < 0.05 & dv$log2FoldChange <= -1, "down", "ns"))
+  key <- c("STAT1", "GBP1", "GBP5", "BATF2", "FCGR1A", "ANKRD22", "SERPING1", "CASP1", "AIM2", "IFI27")
+  top <- order(dv$padj)[seq_len(min(12, nrow(dv)))]
+  dv$Label <- ifelse((seq_len(nrow(dv)) %in% top | dv$symbol %in% key) & dv$dir != "ns" & !is.na(dv$symbol), dv$symbol, "")
+  p <- ggplot(dv, aes(log2FoldChange, -log10(padj), colour = dir)) + geom_point(size = 0.5, alpha = 0.7) +
+    geom_vline(xintercept = c(-1, 1), linetype = 2, linewidth = 0.3, colour = "grey50") + geom_hline(yintercept = -log10(0.05), linetype = 2, linewidth = 0.3, colour = "grey50") +
+    geom_text_repel(aes(label = Label), size = 2.1, colour = "black", max.overlaps = 40, segment.size = 0.2) + scale_colour_manual(values = COL, guide = "none") +
+    labs(title = "TB vs healthy controls (GSE114192)", subtitle = sprintf("%d up, %d down (FDR < 0.05, |log2FC| >= 1)", sum(dv$dir == "up"), sum(dv$dir == "down")),
+         x = "log2 fold change", y = "-log10 adjusted p") + theme_ms
+  save_gg(p, "Fig2A_volcano_TB")
+}
+
 for (k in names(CTX)) {
   c0 <- CTX[[k]]; message("== ", k)
   ## ---- 2C module-trait ----
