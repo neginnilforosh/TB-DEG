@@ -1,6 +1,6 @@
 # Network medicine for tuberculosis
 
-This repository asks a simple question: **which host genes drive tuberculosis, and which existing drugs might push them back towards normal?**
+This repository asks a simple question: **which host genes respond to tuberculosis in blood, and which existing drugs have expression effects that run against that response?**
 
 It starts from blood gene-expression data of people with TB and healthy controls, finds the genes and gene networks that change, ranks them by several independent kinds of evidence, and then looks for approved or experimental compounds whose effects run opposite to the disease. The same analysis was run separately for TB with diabetes and TB with HIV, and the three contexts were then compared.
 
@@ -15,7 +15,8 @@ Everything here is computational. A drug that ranks highly is a hypothesis worth
 3. **Protein networks.** Place the module genes on the STRING protein-interaction network and measure how central each one is (degree, betweenness, random walk with restart, network diffusion).
 4. **Gene ranking.** Group the evidence into independent families (expression, co-expression, network, replication in other cohorts, response to infection), give each family one score, combine them, and check how much the ranking moves when one family is left out.
 5. **Drug search.** Look for compounds whose expression signature reverses the disease signature (iLINCS), map their known targets onto the disease network (DGIdb), rank them by evidence families in the same way, and examine the best candidates one by one in evidence cards.
-6. **Supporting layers.** Pathway analysis of the whole ranked gene list (GSEA), cell-type mapping (single-cell data), chromatin accessibility (ATAC-seq), plasma metabolites, literature labels (CTD), and checks in independent cohorts.
+6. **Drug similarity.** Compare the best candidates of each context in pairs by targets, network distance between their targets, chemical structure and pathways, to see whether any pair might act through different mechanisms (`scripts/drug_complementarity.py`, Python).
+7. **Supporting layers.** Pathway analysis of the whole ranked gene list (GSEA), cell-type mapping (single-cell data), chromatin accessibility (ATAC-seq), plasma metabolites, literature labels (CTD), and checks in independent cohorts.
 
 ## Datasets
 
@@ -40,7 +41,7 @@ Everything here is computational. A drug that ranks highly is a hypothesis worth
 - **The blood changes in composition, not only in gene activity.** One large module mixes lymphocyte genes that go down with neutrophil and macrophage genes that go up. Single-cell data and cell-type gene sets agree with this reading.
 - **The core TB genes respond directly to infection.** 44 of the 47 High-priority genes also change significantly when alveolar macrophages from healthy donors are infected with *M. tuberculosis* in the lab, and 32 of 47 in cells from people living with HIV (GSE165709). Some genes appear to respond less in the cells from people living with HIV, but a formal test of the difference between the two groups found no gene or chromatin region significant after multiple-testing correction, so this is a descriptive observation only.
 - **Interferon may link genes to metabolites.** In the GC6-74 cohort the kynurenine/tryptophan ratio, a read-out of the interferon-induced enzyme IDO1, did not differ between future TB cases and controls at enrolment or more than five months before diagnosis, but rose within five months of diagnosis in plasma and in serum (adjusted p 0.12 and 0.03), with a matching fall in tryptophan. IDO1, KYNU and WARS1 are higher in active-TB blood in GSE114192. The metabolite and gene data come from different people, so this is a supporting observation; sample numbers close to diagnosis are small.
-- **Drug predictions are the least stable part.** Ranking compounds by signature reversal changes noticeably between similar inputs, and network proximity does not separate drugs from random after correcting for multiple tests. Only a few compounds reverse both halves of the signature consistently across LINCS experiments and act on a high-priority gene, and many top candidates also have cell-division targets, so part of the drug ranking reflects antiproliferative effects rather than TB biology.
+- **Drug predictions are the least stable part.** Ranking compounds by signature reversal changes noticeably between similar inputs, and network proximity does not separate drugs from random after correcting for multiple tests. Only a few compounds reverse both halves of the signature consistently across LINCS experiments and act on a high-priority gene, and many top candidates also have cell-division targets, so part of the drug ranking reflects antiproliferative effects rather than TB biology. Pairwise comparison of the 25 best candidates per context found no pair of well-supported compounds with separate targets and little pathway overlap, and the candidates do not form chemical clusters, so no drug combinations are proposed.
 - **TB with and without diabetes share an interferon-gamma core.** 25 genes are high-priority in both contexts, nearly all interferon-gamma related (STAT1, GBP1, GBP5, CASP1, CD274, ...). The type I interferon genes (ISG15, IFIT3, IFI6, OASL, ...) still go up in TB with diabetes but form a separate small module there instead of joining the core, which fits the weaker interferon-alpha response in diabetes.
 - **TB with HIV keeps the core but changes the interferon picture.** Eight genes are high-priority in all three contexts (GBP1, PARP9, FCGR1A, SERPING1, AIM2, CASP1, TNFSF10, FBXO6). In people with HIV, interferon genes are already higher with or without active TB, so the extra increase from TB is smaller; the TNF/NF-κB inflammatory response is raised by TB in all three HIV datasets, while the interferon response is raised in two of them but not in untreated advanced HIV. The TB-HIV signature validates in two independent cohorts (91% and 95% of high-priority genes in the same direction; AUC 0.90 and 0.79).
 
@@ -50,10 +51,12 @@ Everything here is computational. A drug that ranks highly is a hypothesis worth
 |---|---|
 | TB vs healthy | Complete. Genes and drugs are ranked by evidence families (`20_evidence_families/`), with the criteria count of step 15 kept for comparison. A site sensitivity analysis (`GSE114192/sensitivity_site/`) keeps all 47 High genes of the criteria count significant with unchanged direction and the interferon responses as the top pathways |
 | Supporting layers (GSEA, single-cell, ATAC-seq, metabolomics, CTD) | Complete. The metabolomics result does not change when smoking is added as a covariate (serum) |
-| TB + diabetes | Complete. The main comparison is TB with diabetes vs TB alone on all samples with recruitment site as a covariate (`GSE114192/TB_DM/tb_vs_tbdm_site_adjusted/`); both groups come from all four sites. The interferon-gamma and interferon-alpha responses are weaker in TB with diabetes (NES −1.84 and −2.22), and the TB × diabetes interaction, fitted on the two sites that have all four groups and adjusted for site, gives the same result (`GSE114192/TB_DM/sensitivity_site/`). Neutrophil-granule and red-cell genes are higher in TB with diabetes, which may reflect blood cell composition |
+| TB + diabetes | Complete. The network analysis compares TB with diabetes and diabetes alone (`GSE114192/TB_DM/`). The effect of diabetes is tested as TB with diabetes vs TB alone on all samples with recruitment site as a covariate (`GSE114192/TB_DM/tb_vs_tbdm_site_adjusted/`); both groups come from all four sites. The interferon-gamma and interferon-alpha responses are weaker in TB with diabetes (NES −1.84 and −2.22), and the TB × diabetes interaction, fitted on the two sites that have all four groups and adjusted for site, gives the same result (`GSE114192/TB_DM/sensitivity_site/`). Neutrophil-granule and red-cell genes are higher in TB with diabetes, which may reflect blood cell composition |
 | Independent cohorts (GSE161829, GSE222001) | Sample labels corrected; all analyses redone. Pathways and the interferon module replicate; drug candidates do not |
 | TB + HIV | Complete. Discovery in GSE37250 (BeadChips recovered from the data and modelled as a block; `GSE37250/`), the TB × HIV interaction and a within-group HIV comparison, and validation in GSE107104 and GSE162164 (`GSE37250/TB_HIV/23_hiv_validation/`) |
 | Comparison across contexts | Complete for all three contexts (`comparisons/contexts/`), on the genes measured in every dataset. The TB-HIV contrast is active vs latent TB, so genes found only there may partly reflect the different comparison group |
+| Drug similarity | Complete for all three contexts (`drug_complementarity/`): compound library with PubChem structures, pairwise target, network, chemical and pathway similarity, and a sensitivity summary per context |
+| Manuscript figures and tables | Built from the outputs above by scripts (`manuscript_figures/`, `manuscript_tables/`); a manuscript draft is in preparation |
 
 
 ## Repository layout
@@ -63,6 +66,11 @@ scripts/
   deg_pipeline/      one script per dataset: download, filter, normalise, differential expression
   wgcna_network/     the network analysis, run step by step (step1 ... step27); config.R picks the dataset
   helpers/           small Python tools for annotated tables and checks
+  drug_complementarity.py   pairwise drug similarity for the three contexts (Python)
+  manuscript_figures.R      figure panels not made by the step scripts
+  assemble_figures.py       multi-panel figures (Fig. 2-9, Fig. S1)
+  make_fig1.py              Fig. 1, the study workflow
+  manuscript_tables.py      main and supplementary tables (Excel)
   record_reproducibility.R
 GSE114192/           main analysis; TB_DM/ holds the TB-diabetes analysis in the same structure
 GSE161829/ GSE222001/ GSE99374/ GSE229020/   other cohorts
@@ -70,6 +78,9 @@ GSE37250/ GSE107104/ GSE162164/   TB-HIV discovery and validation; GSE50834/ hol
 external_results/    GSE165709 RNA-seq and ATAC-seq results
 reproducibility/     package versions, parameters, seeds, external resources
 comparisons/         reference vs replication run (step 14) and comparison across clinical contexts (contexts/, step 27)
+drug_complementarity/  drug library, drug pairs, heatmaps and sensitivity per context
+manuscript_figures/  figure panels and assembled figures (assembled/)
+manuscript_tables/   Main_tables.xlsx and Supplementary_tables.xlsx
 ```
 
 Inside each dataset the folders are numbered in the order they are produced: `01_raw_counts` → `02_metadata` → … → `09_wgcna_input` for the expression stage, `10_wgcna_results` → … → `19_consensus` for the network stage, `20_evidence_families` for the final ranking, and `21`–`26` for the supporting layers, validation and drug evidence cards. Figures are in `figures/`; the full figure set for each analysis is in `figures_manuscript/` (600 dpi PNG and PDF).
@@ -87,6 +98,8 @@ The final tables most people will want are:
 3. **Network stage:** choose the analysis in `scripts/wgcna_network/config.R` (or set `TB_RUN`, for example `TB_RUN=GSE114192_TB Rscript WGCNA_TBmodules_step1.R`) and run the steps in order. Steps 4, 5, 7, 8 and 12 query web services and need an internet connection.
 4. **Single-cell data:** download the SCP1749 four-week granuloma matrix from [this repository](https://github.com/RajarshiRay25/Single-Cell-Analysis---Tuberculosis) into `external_data/SCP1749/`.
 5. **CTD:** download `CTD_curated_genes_diseases.csv.gz` (and optionally `CTD_chem_gene_ixns.csv.gz`) from ctdbase.org/downloads into `external_data/CTD/`.
+6. **Drug similarity (Python):** `pip3 install rdkit networkx seaborn scikit-learn certifi`, then `python3 scripts/drug_complementarity.py` from the repository root. It needs internet access for PubChem the first time; the structures are then cached in `drug_complementarity/drug_library.csv`.
+7. **Manuscript figures and tables:** `Rscript scripts/manuscript_figures.R`, then `python3 scripts/make_fig1.py` and `python3 scripts/assemble_figures.py` for the figures, and `pip3 install openpyxl` and `python3 scripts/manuscript_tables.py` for the tables.
 
 Large raw files and downloads stay out of Git; the scripts fetch them again.
 
@@ -105,5 +118,6 @@ Large raw files and downloads stay out of Git; the scripts fetch them again.
 - **TB with HIV.** GSE37250 has no group of people with HIV and no TB-related condition, so the discovery comparison is active vs latent TB in people with HIV; genes found only in this context may partly reflect that comparison group. Age, sex, CD4 count and antiretroviral treatment are not available, so only country and BeadChip are modelled. The interferon increase with TB is seen in two of the three HIV datasets but not in the untreated advanced-HIV cohort (GSE107104).
 - **Comparison across contexts.** It uses only the genes measured in all three datasets, so gene counts there are lower than in each context on its own.
 - **Metabolomics and transcriptomics come from different people and disease stages.** The kynurenine/tryptophan result supports the interferon–IDO1 link but cannot show cause and effect; few samples were taken within five months of diagnosis, plasma and serum partly come from the same participants, and smoking status is missing for about a third of the plasma samples.
+- **Drug similarity is descriptive.** Distant targets and low pathway overlap are only a hint of different mechanisms; the analysis does not predict synergy, and no pair's targets were significantly further apart than random target sets.
 - The single-cell reference is macaque lung tissue from two animals and is used only to say which cell type a gene belongs to.
 - CTD contains very few curated TB genes, so the absence of a TB label there does not mean a gene is new.
