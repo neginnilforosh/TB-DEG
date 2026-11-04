@@ -121,6 +121,7 @@ def standardise(smi):
     if m is None: return None
     return uncharger.uncharge(chooser.choose(m))
 std = {}
+lib["SMILES_standardised"] = pd.Series([None] * len(lib), dtype=object); lib["InChIKey_standardised"] = pd.Series([None] * len(lib), dtype=object)
 for i, r in lib.iterrows():
     m = standardise(r.get("SMILES_PubChem"))
     std[r.Drug] = m

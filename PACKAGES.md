@@ -97,3 +97,4 @@ install.packages(c("msigdbr", "msigdbdf"),
 | `05_cross_dataset_upset.R` | org.Hs.eg.db, AnnotationDbi; plus the `00_functions.R` packages it sources (incl. UpSetR) |
 | `record_reproducibility.R` | org.Hs.eg.db, AnnotationDbi (for annotation source dates) |
 | `scripts/helpers/*.py` | Python 3 with pandas and numpy; Pillow for `figure_inventory.py` (no R needed) |
+| `scripts/drug_complementarity.py`, `make_fig1.py`, `assemble_figures.py`, `manuscript_tables.py` | Python 3 with pandas, numpy, matplotlib, seaborn, networkx, scikit-learn, RDKit, certifi, Pillow and openpyxl (`pip3 install rdkit networkx seaborn scikit-learn certifi pillow openpyxl`) |

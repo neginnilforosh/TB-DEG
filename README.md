@@ -80,7 +80,7 @@ reproducibility/     package versions, parameters, seeds, external resources
 comparisons/         reference vs replication run (step 14) and comparison across clinical contexts (contexts/, step 27)
 drug_complementarity/  drug library, drug pairs, heatmaps and sensitivity per context
 manuscript_figures/  figure panels and assembled figures (assembled/)
-manuscript_tables/   Main_tables.xlsx and Supplementary_tables.xlsx
+manuscript_tables/   Main_tables.xlsx and Supplementary_tables.xlsx (made by scripts/manuscript_tables.py; not tracked in Git)
 ```
 
 Inside each dataset the folders are numbered in the order they are produced: `01_raw_counts` → `02_metadata` → … → `09_wgcna_input` for the expression stage, `10_wgcna_results` → … → `19_consensus` for the network stage, `20_evidence_families` for the final ranking, and `21`–`26` for the supporting layers, validation and drug evidence cards. Figures are in `figures/`; the full figure set for each analysis is in `figures_manuscript/` (600 dpi PNG and PDF).
