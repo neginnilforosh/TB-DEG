@@ -1,17 +1,4 @@
-## Manuscript figure panels that the per-step figure scripts do not produce.
-##
-## Every panel is drawn from outputs the pipeline has already written; nothing is recomputed except the two GSEA
-## running-score curves (4D), which need the ranked gene list and are skipped if clusterProfiler is missing.
-## Panels (numbering follows the manuscript guide; 7-9 follow the agreed Results structure):
-##   2C module-trait correlations      2D gene dendrogram with module colours
-##   3B degree distribution            3D agreement between network scores (and top-gene ranks)
-##   4A UpSet of evidence families     4B top genes with their family scores       4D GSEA curves
-##   6D drug reversal vs network proximity
-##   7A TB-HIV volcano   7B TB-HIV PCA   7C interferon in the TB x diabetes and TB x HIV models
-##   8A core genes across contexts     8B Hallmark NES across contexts            8C module correspondence
-##   9A macrophage infection response  9B kynurenine/tryptophan by time to diagnosis   9C cell-type origin
-## Run from anywhere in the repository:  Rscript scripts/manuscript_figures.R
-## Output: manuscript_figures/ (PNG at 600 dpi and PDF for every panel).
+
 
 for (p in c("ggplot2", "pheatmap", "UpSetR", "ggrepel", "scales"))
   if (!requireNamespace(p, quietly = TRUE)) stop("Missing package: ", p)
