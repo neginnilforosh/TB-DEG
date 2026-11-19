@@ -96,9 +96,15 @@ rows = [["Environment", "R", "4.5.0", "All R analyses", ""], ["Environment", "Bi
 for r in pv.itertuples():
     if str(r.Version).strip().lower() == "not installed": continue
     rows.append(["R package", r.Package, r.Version, use.get(r.Package, "Support"), ""])
-for p, u in [("Python 3", "Drug complementarity, figure assembly and tables"), ("RDKit", "Structure standardisation and Morgan fingerprints"), ("NetworkX", "Network distances for drug pairs"),
-             ("pandas, numpy, matplotlib, seaborn, scikit-learn, openpyxl", "Tables, figures and clustering")]:
-    rows.append(["Python", p, "not recorded in the repository", u, ""])
+pyuse = {"rdkit": "Structure standardisation and Morgan fingerprints", "networkx": "Network distances for drug pairs",
+         "scikit-learn": "Clustering and silhouette (drug pairs)", "pandas": "Tables", "numpy": "Tables and figures",
+         "matplotlib": "Figures", "seaborn": "Figures", "pillow": "Figure assembly", "openpyxl": "Excel tables"}
+pyf = ROOT / "reproducibility" / "python_package_versions.csv"
+if pyf.exists():
+    for r in pd.read_csv(pyf).itertuples():
+        rows.append(["Python package", r.Package, r.Version, pyuse.get(r.Package.lower(), "Support"), "version installed when the tables were rebuilt"])
+else:
+    rows.append(["Python package", "rdkit, networkx, pandas, numpy, matplotlib, seaborn, scikit-learn, openpyxl", "not recorded in the repository", "Drug complementarity, figures and tables", ""])
 ext = rd("reproducibility/external_resource_versions.csv")
 for r in ext.itertuples():
     rows.append(["Online resource or database", r.resource, r.version_evidence, f"Run: {r.run}", re.sub(r"\s*\(scripts/[^)]*\)", "", str(r.settings)) if isinstance(r.settings, str) and not r.settings.startswith("scripts/") else ""])
@@ -125,7 +131,7 @@ P = [("Differential expression", "Threshold", "adjusted p < 0.05 and |log2FC| â‰
      ("Random seed", "All steps", "42")]
 for a, b, c in P: rows.append(["Parameter", a, "", b, c])
 s11 = pd.DataFrame(rows, columns=["Category", "Software, resource or step", "Version", "Used for / setting", "Parameters or notes"])
-add("S11_software", s11, "Software, versions, online resources and key parameters. Python package versions were not recorded in the repository. Online resources were queried at run time; STRING version for the networks reported here was not recorded (current scripts pin 12.5).", "reproducibility/package_versions.csv; reproducibility/external_resource_versions.csv; <run>/10_wgcna_results/*_WGCNA_soft_threshold.csv; step scripts")
+add("S11_software", s11, "Software, versions, online resources and key parameters. Python package versions are those installed when the tables were rebuilt (reproducibility/python_package_versions.csv). Online resources were queried at run time; STRING version for the networks reported here was not recorded (current scripts pin 12.5).", "reproducibility/package_versions.csv; reproducibility/external_resource_versions.csv; <run>/10_wgcna_results/*_WGCNA_soft_threshold.csv; step scripts")
 
 # ---- extended main tables
 EXT = [("Table3_top30_genes", "Table3_priority_genes", "Extended Table 3: the 30 best-ranked genes of each context with all evidence."),
