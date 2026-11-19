@@ -13,6 +13,11 @@
 ##   - signature score (mean z of up genes minus mean z of down genes) AUC, bootstrap CI, and 1,000 random gene sets
 ##   - Hallmark GSEA (interferon sets reported)
 ## Run after the TB-HIV pipeline:  Rscript scripts/deg_pipeline/tbhiv_validation.R
+## Label sensitivity: in GSE107104, sample IR-1-016 is labelled "No TB but HIV+" in GEO but has a laboratory ID
+## of the TB-HIV series, and the original study reports 16 ART-naive participants with TB and 15 without (GEO
+## labels give 15 and 16). Run with RELABEL_IR1016=1 to count it as TB-HIV:
+##   RELABEL_IR1016=1 Rscript scripts/deg_pipeline/tbhiv_validation.R
+## This repeats the GSE107104 part only and writes to 23_hiv_validation/label_sensitivity_IR-1-016/.
 ## Outputs in GSE37250/TB_HIV/23_hiv_validation/.
 
 CORE <- c("GBP1", "PARP9", "FCGR1A", "SERPING1", "AIM2", "CASP1", "TNFSF10", "FBXO6")
@@ -21,7 +26,10 @@ for (p in c("limma", "DESeq2", "readxl", "GEOquery", "Biobase", "org.Hs.eg.db"))
 here <- local({ a <- grep("^--file=", commandArgs(FALSE), value = TRUE)
   if (length(a)) dirname(normalizePath(sub("^--file=", "", a[1]))) else getwd() })
 ROOT <- local({ d <- here; while (!dir.exists(file.path(d, "scripts")) && dirname(d) != d) d <- dirname(d); d })
-OUT <- file.path(ROOT, "GSE37250", "TB_HIV", "23_hiv_validation"); dir.create(OUT, recursive = TRUE, showWarnings = FALSE)
+OUT <- file.path(ROOT, "GSE37250", "TB_HIV", "23_hiv_validation")
+RELABEL <- Sys.getenv("RELABEL_IR1016", "0") == "1"
+if (RELABEL) OUT <- file.path(OUT, "label_sensitivity_IR-1-016")
+dir.create(OUT, recursive = TRUE, showWarnings = FALSE)
 ev <- read.csv(file.path(ROOT, "GSE37250", "TB_HIV", "20_evidence_families", "GSE37250_Gene_evidence_families.csv"), stringsAsFactors = FALSE)
 ev <- ev[!is.na(ev$log2FC), ]
 
@@ -105,6 +113,10 @@ all_tiers <- list(); all_auc <- list()
 cat("\n================ GSE107104 (Uganda, ART-naive) ================\n")
 pd <- pheno("GSE107104")
 grp <- ifelse(grepl("TB", pd$`disease status:ch1`), "TB_HIV", "HIV")
+if (RELABEL) {
+  i <- grep("IR-1-016", pd$title, fixed = TRUE); if (length(i) != 1) stop("Sample IR-1-016 not found exactly once in the GEO titles")
+  grp[i] <- "TB_HIV"; cat(">>> label sensitivity:", pd$geo_accession[i], pd$title[i], "counted as TB-HIV\n")
+}
 naive <- grepl("naive|naïve", pd$`treatment:ch1`, ignore.case = TRUE)
 x <- as.data.frame(readxl::read_excel(file.path(ROOT, "external_data", "GSE107104", "GSE107104_normalizedCounts.xlsx")))
 idc <- names(x)[!vapply(x, is.numeric, TRUE)][1]; ids <- x[[idc]]; x <- as.matrix(x[, vapply(x, is.numeric, TRUE)])
@@ -121,6 +133,11 @@ de <- data.frame(gene = rownames(t), log2FoldChange = t$logFC, pvalue = t$P.Valu
 write.csv(de[order(de$pvalue), ], file.path(OUT, "GSE107104_TBHIV_vs_HIV_limma.csv"), row.names = FALSE)
 cat(">>> genes:", nrow(lx), "| padj < 0.05:", sum(de$padj < PADJ), "\n")
 r <- validate("GSE107104", de, lx, y); all_tiers[[1]] <- r$tiers; all_auc[[1]] <- r$auc
+if (RELABEL) {                                          # label sensitivity concerns GSE107104 only
+  write.csv(do.call(rbind, all_tiers), file.path(OUT, "TBHIV_validation_replication_summary.csv"), row.names = FALSE)
+  write.csv(do.call(rbind, all_auc), file.path(OUT, "TBHIV_validation_signature_AUC.csv"), row.names = FALSE)
+  cat("\n>>> DONE (label sensitivity, GSE107104 only). Outputs in", OUT, "\n"); quit(save = "no")
+}
 
 ## ---------- GSE162164 ----------
 cat("\n================ GSE162164 (India) ================\n")

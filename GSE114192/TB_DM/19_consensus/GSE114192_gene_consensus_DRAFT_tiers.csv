@@ -1,0 +1,1564 @@
+Gene,Ensembl,Module,Final_Priority,DEG_WGCNA_overlap,In_PPI_network,N_criteria,max_achievable_criteria,DRAFT_tier_D4,DRAFT_assessability,DRAFT_family_score,family_coverage
+PDCD1LG2,ENSG00000197646,black,High,True,True,4,4,High,fully assessable,0.9504,3
+C1QC,ENSG00000159189,black,High,True,True,4,4,High,fully assessable,0.9182,3
+AIM2,ENSG00000163568,black,High,True,True,4,4,High,fully assessable,0.9478,3
+SOCS3,ENSG00000184557,black,High,True,True,4,4,High,fully assessable,0.9467,3
+FCGR1A,ENSG00000150337,black,High,True,True,4,4,High,fully assessable,0.9799,3
+CD274,ENSG00000120217,black,High,True,True,4,4,High,fully assessable,0.9859,3
+C1QB,ENSG00000173369,black,High,True,True,4,4,High,fully assessable,0.9175,3
+GBP2,ENSG00000162645,black,High,True,True,4,4,High,fully assessable,0.965,3
+CASP1,ENSG00000137752,black,High,False,True,4,4,High,fully assessable,0.9413,3
+CASP4,ENSG00000196954,black,High,False,True,4,4,High,fully assessable,0.8651,3
+GBP5,ENSG00000154451,black,High,True,True,4,4,High,fully assessable,0.9694,3
+LMNB1,ENSG00000113368,black,High,True,True,4,4,High,fully assessable,0.9198,3
+BATF2,ENSG00000168062,black,High,True,True,4,4,High,fully assessable,0.9409,3
+SERPING1,ENSG00000149131,black,High,True,True,4,4,High,fully assessable,0.9521,3
+GATA3,ENSG00000107485,black,High,False,True,4,4,High,fully assessable,0.8863,3
+HSPA6,ENSG00000173110,green,High,True,True,4,4,High,fully assessable,0.8811,3
+NLRC4,ENSG00000091106,black,High,False,True,4,4,High,fully assessable,0.8849,3
+ICAM1,ENSG00000090339,black,High,False,True,4,4,High,fully assessable,0.925,3
+IL1B,ENSG00000125538,green,High,True,True,4,4,High,fully assessable,0.9616,3
+TLR5,ENSG00000187554,greenyellow,High,True,True,4,4,High,fully assessable,0.9345,3
+GBP1,ENSG00000117228,black,High,True,True,4,4,High,fully assessable,0.9606,3
+IRF1,ENSG00000125347,black,High,False,True,4,4,High,fully assessable,0.9506,3
+H2BC21,ENSG00000184678,green,High,True,True,4,4,High,fully assessable,0.9399,3
+UBE2L6,ENSG00000156587,black,High,True,True,4,4,High,fully assessable,0.9494,3
+ITGAM,ENSG00000169896,green,High,False,True,4,4,High,fully assessable,0.9305,3
+MAPK14,ENSG00000112062,greenyellow,High,False,True,4,4,High,fully assessable,0.9215,3
+RTP4,ENSG00000136514,black,High,True,True,4,4,High,fully assessable,0.9149,3
+FCGR2A,ENSG00000143226,green,High,False,True,4,4,High,fully assessable,0.9183,3
+SRGN,ENSG00000122862,green,High,False,True,4,4,High,fully assessable,0.8914,3
+CYBB,ENSG00000165168,black,High,False,True,4,4,High,fully assessable,0.8861,3
+ZAP70,ENSG00000115085,green,High,False,True,4,4,High,fully assessable,0.895,3
+STAT1,ENSG00000115415,black,High,False,True,4,4,High,fully assessable,0.9422,3
+GBP4,ENSG00000162654,black,High,True,True,4,4,High,fully assessable,0.9214,3
+CD59,ENSG00000085063,black,High,False,True,4,4,High,fully assessable,0.8297,3
+TNFSF10,ENSG00000121858,black,High,False,True,4,4,High,fully assessable,0.8772,3
+EPSTI1,ENSG00000133106,black,High,True,True,4,4,High,fully assessable,0.9168,3
+PARP9,ENSG00000138496,black,High,False,True,4,4,High,fully assessable,0.8942,3
+FYN,ENSG00000010810,greenyellow,High,False,True,4,4,High,fully assessable,0.8949,3
+SMARCD3,ENSG00000082014,black,Medium,True,True,3,4,Medium,fully assessable,0.8845,3
+SEPTIN4,ENSG00000108387,black,Medium,True,True,3,4,Medium,fully assessable,0.7886,3
+ANKRD22,ENSG00000152766,black,Medium,True,True,3,4,Medium,fully assessable,0.8966,3
+DUSP3,ENSG00000108861,black,Medium,True,True,3,4,Medium,fully assessable,0.8141,3
+SCARF1,ENSG00000074660,black,Medium,True,True,3,4,Medium,fully assessable,0.8436,3
+GBP6,ENSG00000183347,black,Medium,True,True,3,4,Medium,fully assessable,0.7711,3
+DRC8,ENSG00000203666,black,Medium,True,True,3,4,Medium,fully assessable,0.6397,3
+LIMK1,ENSG00000106683,black,Medium,True,True,3,4,Medium,fully assessable,0.8174,3
+VPS9D1,ENSG00000075399,black,Medium,True,True,3,4,Medium,fully assessable,0.6823,3
+FAM20A,ENSG00000108950,black,Medium,True,True,3,4,Medium,fully assessable,0.7993,3
+PSTPIP2,ENSG00000152229,black,Medium,True,True,3,4,Medium,fully assessable,0.7301,3
+CACNA1E,ENSG00000198216,black,Medium,True,True,3,4,Medium,fully assessable,0.8357,3
+APOL2,ENSG00000128335,black,Medium,True,True,3,4,Medium,fully assessable,0.7743,3
+APOL4,ENSG00000100336,black,Medium,True,True,3,4,Medium,fully assessable,0.6348,3
+C1QA,ENSG00000173372,black,Medium,True,True,3,4,Medium,fully assessable,0.9226,3
+RAB20,ENSG00000139832,black,Medium,True,True,3,4,Medium,fully assessable,0.6613,3
+CASP5,ENSG00000137757,black,Medium,True,True,3,4,Medium,fully assessable,0.8695,3
+C2,ENSG00000166278,black,Medium,True,True,3,4,Medium,fully assessable,0.816,3
+TIFA,ENSG00000145365,black,Medium,True,True,3,4,Medium,fully assessable,0.6755,3
+LIPM,ENSG00000173239,black,Medium,True,True,3,4,Medium,fully assessable,0.6492,3
+TAP1,ENSG00000168394,black,Medium,False,True,3,4,Medium,fully assessable,0.8581,3
+ASPHD2,ENSG00000128203,black,Medium,True,True,3,4,Medium,fully assessable,0.6739,3
+ANXA3,ENSG00000138772,black,Medium,True,True,3,4,Medium,fully assessable,0.732,3
+CETP,ENSG00000087237,black,Medium,True,True,3,4,Medium,fully assessable,0.7609,3
+APOL1,ENSG00000100342,black,Medium,True,True,3,4,Medium,fully assessable,0.8906,3
+TIMM10,ENSG00000134809,black,Medium,True,True,3,4,Medium,fully assessable,0.7055,3
+LHFPL2,ENSG00000145685,black,Medium,True,True,3,4,Medium,fully assessable,0.6784,3
+GK,ENSG00000198814,greenyellow,Medium,True,True,3,4,Medium,fully assessable,0.7978,3
+P2RY14,ENSG00000174944,black,Medium,True,True,3,4,Medium,fully assessable,0.6934,3
+GPR84,ENSG00000139572,black,Medium,True,True,3,4,Medium,fully assessable,0.8495,3
+ADM,ENSG00000148926,green,Medium,True,True,3,4,Medium,fully assessable,0.8033,3
+DHRS9,ENSG00000073737,black,Medium,True,True,3,4,Medium,fully assessable,0.6891,3
+HTATIP2,ENSG00000109854,black,Medium,False,True,3,4,Medium,fully assessable,0.7355,3
+OSM,ENSG00000099985,greenyellow,Medium,True,True,3,4,Medium,fully assessable,0.8781,3
+KCNJ15,ENSG00000157551,green,Medium,True,True,3,4,Medium,fully assessable,0.6987,3
+IL27,ENSG00000197272,black,Medium,True,True,3,4,Medium,fully assessable,0.837,3
+FBXO6,ENSG00000116663,black,Medium,True,True,3,4,Medium,fully assessable,0.7956,3
+KREMEN1,ENSG00000183762,green,Medium,True,True,3,4,Medium,fully assessable,0.616,3
+TNFAIP6,ENSG00000123610,black,Medium,True,True,3,4,Medium,fully assessable,0.8545,3
+IL15RA,ENSG00000134470,black,Medium,False,True,3,4,Medium,fully assessable,0.7905,3
+NMI,ENSG00000123609,black,Medium,False,True,3,4,Medium,fully assessable,0.7933,3
+SDC3,ENSG00000162512,black,Medium,True,True,3,4,Medium,fully assessable,0.7601,3
+DNAH17,ENSG00000187775,greenyellow,Medium,True,True,3,4,Medium,fully assessable,0.707,3
+MLKL,ENSG00000168404,black,Medium,False,True,3,4,Medium,fully assessable,0.8244,3
+CCRL2,ENSG00000121797,black,Medium,True,True,3,4,Medium,fully assessable,0.8843,3
+SEPTIN9,ENSG00000184640,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8274,3
+FFAR2,ENSG00000126262,green,Medium,False,True,3,4,Medium,fully assessable,0.8075,3
+RNF149,ENSG00000163162,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8001,3
+HCAR3,ENSG00000255398,greenyellow,Medium,True,True,3,4,Medium,fully assessable,0.7171,3
+CD5,ENSG00000110448,green,Medium,False,True,3,4,Medium,fully assessable,0.8843,3
+CD6,ENSG00000013725,green,Medium,False,True,3,4,Medium,fully assessable,0.8466,3
+TRIM69,ENSG00000185880,black,Medium,False,True,3,4,Medium,fully assessable,0.7606,3
+PLEK,ENSG00000115956,black,Medium,False,True,3,4,Medium,fully assessable,0.8149,3
+ETV7,ENSG00000010030,black,Medium,True,True,3,4,Medium,fully assessable,0.8491,3
+APOL6,ENSG00000221963,black,Medium,False,True,3,4,Medium,fully assessable,0.8276,3
+RPA1,ENSG00000132383,green,Medium,False,True,3,4,Medium,fully assessable,0.8235,3
+CALM1,ENSG00000198668,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8139,3
+TRAFD1,ENSG00000135148,black,Medium,False,True,3,4,Medium,fully assessable,0.7707,3
+CALCOCO2,ENSG00000136436,black,Medium,False,True,3,4,Medium,fully assessable,0.7503,3
+TRIM25,ENSG00000121060,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8546,3
+PML,ENSG00000140464,black,Medium,False,True,3,4,Medium,fully assessable,0.8631,3
+TRIM22,ENSG00000132274,black,Medium,False,True,3,4,Medium,fully assessable,0.8482,3
+ALPK1,ENSG00000073331,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.6442,3
+PLSCR1,ENSG00000188313,black,Medium,True,True,3,4,Medium,fully assessable,0.8905,3
+NAMPT,ENSG00000105835,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8402,3
+CTSS,ENSG00000163131,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8653,3
+H2BC5,ENSG00000158373,black,Medium,True,True,3,4,Medium,fully assessable,0.8987,3
+BST1,ENSG00000109743,green,Medium,False,True,3,4,Medium,fully assessable,0.7678,3
+ESYT1,ENSG00000139641,green,Medium,False,True,3,4,Medium,fully assessable,0.8394,3
+NAT10,ENSG00000135372,green,Medium,False,True,3,4,Medium,fully assessable,0.7575,3
+IFNAR1,ENSG00000142166,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.9016,3
+NELL2,ENSG00000184613,green,Medium,True,True,3,4,Medium,fully assessable,0.6753,3
+CLEC12A,ENSG00000172322,green,Medium,True,True,3,4,Medium,fully assessable,0.7948,3
+CD40LG,ENSG00000102245,green,Medium,False,True,3,4,Medium,fully assessable,0.8635,3
+CEACAM1,ENSG00000079385,black,Medium,True,True,3,4,Medium,fully assessable,0.8116,3
+ACACB,ENSG00000076555,green,Medium,False,True,3,4,Medium,fully assessable,0.6767,3
+CPVL,ENSG00000106066,black,Medium,False,True,3,4,Medium,fully assessable,0.8146,3
+TLR2,ENSG00000137462,green,Medium,False,True,3,4,Medium,fully assessable,0.9018,3
+AQP9,ENSG00000103569,green,Medium,False,True,3,4,Medium,fully assessable,0.7831,3
+ATF3,ENSG00000162772,black,Medium,True,True,3,4,Medium,fully assessable,0.8708,3
+SAMD9L,ENSG00000177409,black,Medium,False,True,3,4,Medium,fully assessable,0.8459,3
+ACSL1,ENSG00000151726,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8454,3
+SP110,ENSG00000135899,black,Medium,False,True,3,4,Medium,fully assessable,0.8067,3
+NFATC1,ENSG00000131196,green,Medium,False,True,3,4,Medium,fully assessable,0.8116,3
+FCGR3B,ENSG00000162747,green,Medium,False,True,3,4,Medium,fully assessable,0.8773,3
+RNASEL,ENSG00000135828,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8182,3
+PARP14,ENSG00000173193,black,Medium,False,True,3,4,Medium,fully assessable,0.8385,3
+CR1,ENSG00000203710,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8135,3
+TLR1,ENSG00000174125,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8499,3
+LRRK2,ENSG00000188906,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8368,3
+TGFA,ENSG00000163235,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8113,3
+TLR8,ENSG00000101916,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.852,3
+TLR4,ENSG00000136869,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8662,3
+ENTPD1,ENSG00000138185,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8185,3
+LYN,ENSG00000254087,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.8062,3
+IL6R,ENSG00000160712,greenyellow,Medium,False,True,3,4,Medium,fully assessable,0.7697,3
+,ENSG00000260943,black,Medium,True,False,2,2,Medium,partially assessable (no STRING node),0.9552,1
+CIMAP1B,ENSG00000177989,black,Medium,True,False,2,2,Medium,partially assessable (no STRING node),0.9693,1
+RHBDF2,ENSG00000129667,black,Medium,False,True,2,4,Medium,fully assessable,0.5037,3
+ZNF438,ENSG00000183621,black,Medium,True,False,2,2,Medium,partially assessable (no STRING node),0.9415,1
+ATG3,ENSG00000144848,black,Medium,False,True,2,4,Medium,fully assessable,0.7067,3
+,ENSG00000253193,black,Medium,True,False,2,2,Medium,partially assessable (no STRING node),0.9894,1
+,ENSG00000198019,black,Medium,True,False,2,2,Medium,partially assessable (no STRING node),0.9875,1
+EDEM2,ENSG00000088298,black,Medium,False,True,2,4,Medium,fully assessable,0.5681,3
+POLB,ENSG00000070501,black,Medium,False,True,2,4,Medium,fully assessable,0.7955,3
+,ENSG00000234571,black,Medium,True,False,2,2,Medium,partially assessable (no STRING node),0.9149,1
+ADAMTS2,ENSG00000087116,green,Medium,True,True,2,4,Medium,fully assessable,0.6944,3
+JAK3,ENSG00000105639,black,Medium,False,True,2,4,Medium,fully assessable,0.852,3
+CNIH4,ENSG00000143771,black,Medium,False,True,2,4,Medium,fully assessable,0.5054,3
+IFI30,ENSG00000216490,black,Medium,False,True,2,4,Medium,fully assessable,0.8029,3
+,ENSG00000152022,black,Medium,False,False,2,2,Medium,partially assessable (no STRING node),0.9171,1
+SORT1,ENSG00000134243,black,Medium,False,True,2,4,Medium,fully assessable,0.7866,3
+LIMK2,ENSG00000182541,green,Medium,False,True,2,4,Medium,fully assessable,0.6678,3
+FLVCR2,ENSG00000119686,black,Medium,True,True,2,4,Medium,fully assessable,0.6639,3
+TCN2,ENSG00000185339,black,Medium,True,True,2,4,Medium,fully assessable,0.7335,3
+,ENSG00000255221,black,Medium,True,False,2,2,Medium,partially assessable (no STRING node),0.8983,1
+AANAT,ENSG00000129673,black,Medium,True,True,2,4,Medium,fully assessable,0.6736,3
+DHRS12,ENSG00000102796,black,Medium,True,True,2,4,Medium,fully assessable,0.6241,3
+VSIG4,ENSG00000155659,black,Medium,True,True,2,4,Medium,fully assessable,0.7893,3
+SAT1,ENSG00000130066,black,Medium,False,True,2,4,Medium,fully assessable,0.6044,3
+TMEM150B,ENSG00000180061,black,Medium,True,False,2,2,Medium,partially assessable (no STRING node),0.8896,1
+IFFO2,ENSG00000169991,green,Medium,False,True,2,4,Medium,fully assessable,0.3312,3
+LYRM1,ENSG00000102897,black,Medium,False,True,2,4,Medium,fully assessable,0.3403,3
+IL10RB,ENSG00000243646,green,Medium,False,True,2,4,Medium,fully assessable,0.7673,3
+ERP44,ENSG00000023318,black,Medium,False,True,2,4,Medium,fully assessable,0.6146,3
+SLC26A8,ENSG00000112053,green,Medium,True,True,2,4,Medium,fully assessable,0.6274,3
+SLC68A1,ENSG00000138111,black,Medium,False,False,2,2,Medium,partially assessable (no STRING node),0.9101,1
+AGFG2,ENSG00000106351,greenyellow,Medium,False,False,2,2,Medium,partially assessable (no STRING node),0.9331,1
+LOC124904411,ENSG00000233030,black,Medium,True,False,2,2,Medium,partially assessable (no STRING node),0.8839,1
+,ENSG00000225492,black,Medium,True,False,2,2,Medium,partially assessable (no STRING node),0.8663,1
+,ENSG00000233029,black,Medium,True,False,2,2,Medium,partially assessable (no STRING node),0.9018,1
+OPLAH,ENSG00000178814,black,Medium,True,True,2,4,Medium,fully assessable,0.6755,3
+CDCP1,ENSG00000163814,black,Medium,True,True,2,4,Medium,fully assessable,0.5931,3
+DYNLT1,ENSG00000146425,black,Medium,False,True,2,4,Medium,fully assessable,0.6514,3
+CARS2,ENSG00000134905,black,Medium,False,True,2,4,Medium,fully assessable,0.8016,3
+HCAR2,ENSG00000182782,green,Medium,False,True,2,4,Medium,fully assessable,0.7835,3
+MCEMP1,ENSG00000183019,black,Medium,True,True,2,4,Medium,fully assessable,0.7634,3
+TMEM140,ENSG00000146859,black,Medium,False,True,2,4,Medium,fully assessable,0.5443,3
+SBNO2,ENSG00000064932,green,Medium,False,True,2,4,Medium,fully assessable,0.5005,3
+GNS,ENSG00000135677,black,Medium,False,True,2,4,Medium,fully assessable,0.5585,3
+SH3BP2,ENSG00000087266,green,Medium,False,True,2,4,Medium,fully assessable,0.6269,3
+ZMYND15,ENSG00000141497,green,Medium,True,True,2,4,Medium,fully assessable,0.5926,3
+SMTNL1,ENSG00000214872,black,Medium,True,False,2,2,Medium,partially assessable (no STRING node),0.8906,1
+SLC6A12,ENSG00000111181,black,Medium,True,True,2,4,Medium,fully assessable,0.5681,3
+HP,ENSG00000257017,green,Medium,True,True,2,4,Medium,fully assessable,0.8411,3
+SPOCK2,ENSG00000107742,green,Medium,False,True,2,4,Medium,fully assessable,0.4699,3
+PRPS1,ENSG00000147224,green,Medium,False,True,2,4,Medium,fully assessable,0.681,3
+IFNGR2,ENSG00000159128,green,Medium,False,True,2,4,Medium,fully assessable,0.793,3
+CDC25B,ENSG00000101224,green,Medium,False,True,2,4,Medium,fully assessable,0.722,3
+SLC2A3,ENSG00000059804,green,Medium,False,True,2,4,Medium,fully assessable,0.6561,3
+GLRX,ENSG00000173221,black,Medium,False,True,2,4,Medium,fully assessable,0.5038,3
+,ENSG00000272821,black,Medium,True,False,2,2,Medium,partially assessable (no STRING node),0.9143,1
+LACTB,ENSG00000103642,black,Medium,False,True,2,4,Medium,fully assessable,0.5047,3
+CD177,ENSG00000204936,black,Medium,True,True,2,4,Medium,fully assessable,0.821,3
+GCN1,ENSG00000089154,green,Medium,False,True,2,4,Medium,fully assessable,0.7101,3
+ZNF395,ENSG00000186918,black,Medium,False,True,2,4,Medium,fully assessable,0.3654,3
+RFTN1,ENSG00000131378,green,Medium,False,False,2,2,Medium,partially assessable (no STRING node),0.9015,1
+FBXL5,ENSG00000118564,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.695,3
+UNC5A,ENSG00000113763,black,Medium,True,True,2,4,Medium,fully assessable,0.6123,3
+CALHM6,ENSG00000188820,black,Medium,True,True,2,4,Medium,fully assessable,0.7459,3
+DENND1A,ENSG00000119522,black,Medium,False,True,2,4,Medium,fully assessable,0.5184,3
+FBXO31,ENSG00000103264,green,Medium,False,True,2,4,Medium,fully assessable,0.4658,3
+NIT1,ENSG00000158793,black,Medium,False,True,2,4,Medium,fully assessable,0.5716,3
+SH3GLB1,ENSG00000097033,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.6062,3
+VNN2,ENSG00000112303,green,Medium,False,True,2,4,Medium,fully assessable,0.7435,3
+TESPA1,ENSG00000135426,green,Medium,False,True,2,4,Medium,fully assessable,0.6464,3
+FRMD3,ENSG00000172159,black,Medium,True,True,2,4,Medium,fully assessable,0.6932,3
+NOD2,ENSG00000167207,black,Medium,True,True,2,4,Medium,fully assessable,0.8738,3
+TDP1,ENSG00000042088,green,Medium,False,True,2,4,Medium,fully assessable,0.5548,3
+CARNS1,ENSG00000172508,green,Medium,False,True,2,4,Medium,fully assessable,0.5081,3
+EXOSC10,ENSG00000171824,green,Medium,False,True,2,4,Medium,fully assessable,0.6907,3
+NOP14,ENSG00000087269,green,Medium,False,True,2,4,Medium,fully assessable,0.652,3
+GAS6,ENSG00000183087,black,Medium,False,True,2,4,Medium,fully assessable,0.7197,3
+SIGLEC9,ENSG00000129450,green,Medium,False,True,2,4,Medium,fully assessable,0.7305,3
+G0S2,ENSG00000123689,black,Medium,True,True,2,4,Medium,fully assessable,0.6038,3
+SLC22A4,ENSG00000197208,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.559,3
+EEIG1,ENSG00000167106,green,Medium,False,True,2,4,Medium,fully assessable,0.338,3
+AKIRIN2,ENSG00000135334,green,Medium,False,True,2,4,Medium,fully assessable,0.5496,3
+SPN,ENSG00000197471,green,Medium,False,True,2,4,Medium,fully assessable,0.7221,3
+DKC1,ENSG00000130826,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.6829,3
+CYREN,ENSG00000122783,black,Medium,False,False,2,2,Medium,partially assessable (no STRING node),0.8653,1
+ARL11,ENSG00000152213,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.4132,3
+MARCHF9,ENSG00000139266,green,Medium,False,True,2,4,Medium,fully assessable,0.4121,3
+LY9,ENSG00000122224,green,Medium,False,True,2,4,Medium,fully assessable,0.5921,3
+H4C8,ENSG00000158406,black,Medium,True,True,2,4,Medium,fully assessable,0.8208,3
+SH2D3A,ENSG00000125731,green,Medium,False,True,2,4,Medium,fully assessable,0.68,3
+,ENSG00000112096,green,Medium,False,False,2,2,Medium,partially assessable (no STRING node),0.8554,1
+EIF5B,ENSG00000158417,green,Medium,False,True,2,4,Medium,fully assessable,0.6531,3
+DDX10,ENSG00000178105,green,Medium,False,True,2,4,Medium,fully assessable,0.6483,3
+IL11RA,ENSG00000137070,green,Medium,False,True,2,4,Medium,fully assessable,0.7229,3
+VAMP3,ENSG00000049245,green,Medium,False,True,2,4,Medium,fully assessable,0.7951,3
+MCM3,ENSG00000112118,green,Medium,False,True,2,4,Medium,fully assessable,0.7865,3
+CHMP7,ENSG00000147457,green,Medium,False,True,2,4,Medium,fully assessable,0.604,3
+DPP4,ENSG00000197635,green,Medium,False,True,2,4,Medium,fully assessable,0.8299,3
+,ENSG00000268734,green,Medium,False,False,2,2,Medium,partially assessable (no STRING node),0.857,1
+SKAP1,ENSG00000141293,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.6641,3
+TRPV4,ENSG00000111199,black,Medium,True,True,2,4,Medium,fully assessable,0.7631,3
+KDM1A,ENSG00000004487,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7526,3
+COP1,ENSG00000143207,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7471,3
+H3-3A,ENSG00000163041,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7858,3
+RGL2,ENSG00000237441,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.3749,3
+RALB,ENSG00000144118,green,Medium,False,True,2,4,Medium,fully assessable,0.5874,3
+CDS2,ENSG00000101290,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.5491,3
+TAP2,ENSG00000204267,black,Medium,False,True,2,4,Medium,fully assessable,0.6302,3
+NFE2L2,ENSG00000116044,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.8656,3
+LILRB2,ENSG00000131042,green,Medium,False,True,2,4,Medium,fully assessable,0.7785,3
+SPTAN1,ENSG00000197694,green,Medium,False,True,2,4,Medium,fully assessable,0.7437,3
+ISM1,ENSG00000101230,black,Medium,True,True,2,4,Medium,fully assessable,0.5846,3
+ATF6,ENSG00000118217,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7445,3
+MAP4K1,ENSG00000104814,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.6331,3
+FCAR,ENSG00000186431,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.6888,3
+SART3,ENSG00000075856,green,Medium,False,True,2,4,Medium,fully assessable,0.7622,3
+RHOH,ENSG00000168421,green,Medium,False,True,2,4,Medium,fully assessable,0.6287,3
+PRRG4,ENSG00000135378,black,Medium,False,True,2,4,Medium,fully assessable,0.6084,3
+B2M,ENSG00000166710,green,Medium,False,True,2,4,Medium,fully assessable,0.8151,3
+KCNJ2,ENSG00000123700,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7714,3
+SOCS1,ENSG00000185338,black,Medium,True,True,2,4,Medium,fully assessable,0.8622,3
+CFLAR,ENSG00000003402,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7794,3
+TCF7,ENSG00000081059,green,Medium,False,True,2,4,Medium,fully assessable,0.8388,3
+H2AC6,ENSG00000180573,green,Medium,False,True,2,4,Medium,fully assessable,0.8368,3
+FPR2,ENSG00000171049,green,Medium,False,True,2,4,Medium,fully assessable,0.8425,3
+RNF24,ENSG00000101236,green,Medium,False,True,2,4,Medium,fully assessable,0.4765,3
+ITGAX,ENSG00000140678,green,Medium,False,True,2,4,Medium,fully assessable,0.8555,3
+MORC2,ENSG00000133422,green,Medium,False,True,2,4,Medium,fully assessable,0.6751,3
+SNX27,ENSG00000143376,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.794,3
+FCGR3A,ENSG00000203747,green,Medium,False,True,2,4,Medium,fully assessable,0.8598,3
+ITGB7,ENSG00000139626,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7601,3
+NTNG2,ENSG00000196358,green,Medium,False,True,2,4,Medium,fully assessable,0.6864,3
+PARP1,ENSG00000143799,green,Medium,False,True,2,4,Medium,fully assessable,0.8489,3
+AP5B1,ENSG00000254470,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.6225,3
+BCL6,ENSG00000113916,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.8327,3
+EPHX2,ENSG00000120915,green,Medium,False,True,2,4,Medium,fully assessable,0.743,3
+CXCR3,ENSG00000186810,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.8498,3
+LPCAT3,ENSG00000111684,green,Medium,False,True,2,4,Medium,fully assessable,0.7263,3
+GCA,ENSG00000115271,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.5641,3
+HDAC4,ENSG00000068024,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7469,3
+POLR1E,ENSG00000137054,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7101,3
+CDC42,ENSG00000070831,green,Medium,False,True,2,4,Medium,fully assessable,0.8018,3
+MYD88,ENSG00000172936,green,Medium,False,True,2,4,Medium,fully assessable,0.8334,3
+TNFSF13B,ENSG00000102524,black,Medium,False,True,2,4,Medium,fully assessable,0.8496,3
+KCNE3,ENSG00000175538,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.6385,3
+EGF,ENSG00000138798,green,Medium,False,True,2,4,Medium,fully assessable,0.7848,3
+IL4R,ENSG00000077238,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.8331,3
+CD86,ENSG00000114013,black,Medium,False,True,2,4,Medium,fully assessable,0.8214,3
+MCTP2,ENSG00000140563,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.549,3
+MECP2,ENSG00000169057,black,Medium,False,True,2,4,Medium,fully assessable,0.7524,3
+ETV6,ENSG00000139083,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7451,3
+TLR6,ENSG00000174130,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7529,3
+RAB31,ENSG00000168461,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.6641,3
+STAT3,ENSG00000168610,green,Medium,False,True,2,4,Medium,fully assessable,0.8427,3
+DTX3L,ENSG00000163840,black,Medium,False,True,2,4,Medium,fully assessable,0.7751,3
+AXL,ENSG00000167601,green,Medium,True,True,2,4,Medium,fully assessable,0.7276,3
+PICALM,ENSG00000073921,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.699,3
+FCGR2B,ENSG00000072694,green,Medium,False,True,2,4,Medium,fully assessable,0.7439,3
+PTPN1,ENSG00000196396,green,Medium,False,True,2,4,Medium,fully assessable,0.685,3
+SRPK1,ENSG00000096063,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7331,3
+ACE,ENSG00000159640,green,Medium,False,True,2,4,Medium,fully assessable,0.7929,3
+APBB1,ENSG00000166313,green,Medium,False,True,2,4,Medium,fully assessable,0.742,3
+LAMP2,ENSG00000005893,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.6941,3
+GAB2,ENSG00000033327,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.6948,3
+PPARD,ENSG00000112033,green,Medium,False,True,2,4,Medium,fully assessable,0.6979,3
+IL15,ENSG00000164136,black,Medium,False,True,2,4,Medium,fully assessable,0.7393,3
+CD55,ENSG00000196352,green,Medium,False,True,2,4,Medium,fully assessable,0.7471,3
+CD40,ENSG00000101017,black,Medium,False,True,2,4,Medium,fully assessable,0.7449,3
+MYC,ENSG00000136997,green,Medium,False,True,2,4,Medium,fully assessable,0.7951,3
+FOS,ENSG00000170345,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.8081,3
+PSEN1,ENSG00000080815,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.6922,3
+SDCBP,ENSG00000137575,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7392,3
+GRB2,ENSG00000177885,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7955,3
+RFC4,ENSG00000163918,green,Medium,False,True,2,4,Medium,fully assessable,0.6849,3
+SMARCA4,ENSG00000127616,green,Medium,False,True,2,4,Medium,fully assessable,0.751,3
+RIGI,ENSG00000107201,black,Medium,False,True,2,4,Medium,fully assessable,0.7936,3
+NOS3,ENSG00000164867,green,Medium,False,True,2,4,Medium,fully assessable,0.696,3
+IL18,ENSG00000150782,black,Medium,False,True,2,4,Medium,fully assessable,0.7057,3
+CALM2,ENSG00000143933,green,Medium,False,True,2,4,Medium,fully assessable,0.6586,3
+MUC1,ENSG00000185499,black,Medium,False,True,2,4,Medium,fully assessable,0.6465,3
+IFIT5,ENSG00000152778,black,Medium,False,True,2,4,Medium,fully assessable,0.6859,3
+MCL1,ENSG00000143384,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.7227,3
+NUP85,ENSG00000125450,green,Medium,False,True,2,4,Medium,fully assessable,0.6521,3
+RAF1,ENSG00000132155,greenyellow,Medium,False,True,2,4,Medium,fully assessable,0.6829,3
+SERPINE1,ENSG00000106366,black,Medium,False,True,2,4,Medium,fully assessable,0.5999,3
+SPP1,ENSG00000118785,black,Medium,False,True,2,4,Medium,fully assessable,0.6624,3
+GNB5,ENSG00000069966,green,Medium,False,True,2,4,Medium,fully assessable,0.5879,3
+CXCL10,ENSG00000169245,black,Medium,False,True,2,4,Medium,fully assessable,0.7106,3
+ACO2,ENSG00000100412,green,Medium,False,True,2,4,Medium,fully assessable,0.5682,3
+COL6A1,ENSG00000142156,green,Medium,False,True,2,4,Medium,fully assessable,0.6345,3
+HK3,ENSG00000160883,black,Low,False,True,1,4,Low,fully assessable,0.7599,3
+CFAP58-DT,ENSG00000231233,black,Low,True,False,1,2,Low,partially assessable (no STRING node),0.8173,1
+RAB24,ENSG00000169228,black,Low,False,True,1,4,Low,fully assessable,0.3187,3
+GYG1,ENSG00000163754,black,Low,False,True,1,4,Low,fully assessable,0.5271,3
+HPSE,ENSG00000173083,black,Low,False,True,1,4,Low,fully assessable,0.6662,3
+SEPHS2,ENSG00000179918,black,Low,False,True,1,4,Low,fully assessable,0.3216,3
+DECR1,ENSG00000104325,black,Low,False,True,1,4,Low,fully assessable,0.5887,3
+,ENSG00000224067,black,Low,True,False,1,2,Low,partially assessable (no STRING node),0.745,1
+MPZ,ENSG00000158887,green,Low,False,False,1,2,Low,partially assessable (no STRING node),0.7751,1
+DRAM1,ENSG00000136048,black,Low,False,True,1,4,Low,fully assessable,0.3439,3
+,ENSG00000234518,black,Low,True,False,1,2,Low,partially assessable (no STRING node),0.794,1
+BAHD1,ENSG00000140320,black,Low,False,True,1,4,Low,fully assessable,0.3055,3
+ITGA7,ENSG00000135424,black,Low,True,True,1,4,Low,fully assessable,0.7348,3
+,ENSG00000204791,black,Low,True,False,1,2,Low,partially assessable (no STRING node),0.7726,1
+KLHDC7B-DT,ENSG00000272666,black,Low,True,False,1,2,Low,partially assessable (no STRING node),0.8394,1
+LILRB3,ENSG00000204577,black,Low,False,True,1,4,Low,fully assessable,0.6315,3
+CYBC1,ENSG00000178927,green,Low,False,True,1,4,Low,fully assessable,0.3531,3
+,ENSG00000171101,black,Low,True,False,1,2,Low,partially assessable (no STRING node),0.7163,1
+GRAMD1B,ENSG00000023171,black,Low,False,True,1,4,Low,fully assessable,0.3654,3
+,ENSG00000243055,greenyellow,Low,True,False,1,2,Low,partially assessable (no STRING node),0.8433,1
+MS4A6A,ENSG00000110077,green,Low,False,True,1,4,Low,fully assessable,0.7664,3
+,ENSG00000241886,black,Low,True,False,1,2,Low,partially assessable (no STRING node),0.7876,1
+GALNT14,ENSG00000158089,black,Low,True,True,1,4,Low,fully assessable,0.6334,3
+DGCR8,ENSG00000128191,green,Low,False,True,1,4,Low,fully assessable,0.6711,3
+ITPKB,ENSG00000143772,black,Low,False,True,1,4,Low,fully assessable,0.3697,3
+LILRA6,ENSG00000244482,green,Low,False,True,1,4,Low,fully assessable,0.608,3
+RMI2,ENSG00000175643,black,Low,True,True,1,4,Low,fully assessable,0.6491,3
+TMT1B,ENSG00000170439,black,Low,True,False,1,2,Low,partially assessable (no STRING node),0.7406,1
+SPATC1,ENSG00000186583,black,Low,True,True,1,4,Low,fully assessable,0.5999,3
+SRBD1,ENSG00000068784,black,Low,False,True,1,4,Low,fully assessable,0.5322,3
+MRPL44,ENSG00000135900,black,Low,False,True,1,4,Low,fully assessable,0.5353,3
+,ENSG00000232912,green,Low,False,False,1,2,Low,partially assessable (no STRING node),0.7476,1
+GRIPAP1,ENSG00000068400,black,Low,False,True,1,4,Low,fully assessable,0.6349,3
+UNG,ENSG00000076248,green,Low,False,True,1,4,Low,fully assessable,0.6931,3
+HAUS4,ENSG00000092036,green,Low,False,True,1,4,Low,fully assessable,0.5917,3
+TMEM121B,ENSG00000183307,green,Low,False,True,1,4,Low,fully assessable,0.2731,3
+,ENSG00000163113,green,Low,False,False,1,2,Low,partially assessable (no STRING node),0.6216,1
+CCDC71L,ENSG00000253276,green,Low,False,False,1,2,Low,partially assessable (no STRING node),0.8209,1
+TNFAIP2,ENSG00000185215,green,Low,False,True,1,4,Low,fully assessable,0.6465,3
+MIR3945HG,ENSG00000251230,black,Low,True,False,1,2,Low,partially assessable (no STRING node),0.7505,1
+,ENSG00000268965,black,Low,True,False,1,2,Low,partially assessable (no STRING node),0.7153,1
+,ENSG00000248166,greenyellow,Low,True,False,1,2,Low,partially assessable (no STRING node),0.7572,1
+SFT2D1,ENSG00000198818,greenyellow,Low,False,False,1,2,Low,partially assessable (no STRING node),0.7281,1
+CYP1B1-AS1,ENSG00000232973,greenyellow,Low,True,False,1,2,Low,partially assessable (no STRING node),0.6264,1
+ABCA7,ENSG00000064687,green,Low,False,True,1,4,Low,fully assessable,0.4735,3
+SF3A3,ENSG00000183431,black,Low,False,True,1,4,Low,fully assessable,0.6447,3
+FANCA,ENSG00000187741,black,Low,False,True,1,4,Low,fully assessable,0.6786,3
+TRAV13-1,ENSG00000211788,green,Low,False,False,1,2,Low,partially assessable (no STRING node),0.7959,1
+LINC00937,ENSG00000226091,green,Low,True,False,1,2,Low,partially assessable (no STRING node),0.6478,1
+THRA,ENSG00000126351,black,Low,False,True,1,4,Low,fully assessable,0.514,3
+PJA1,ENSG00000181191,green,Low,False,True,1,4,Low,fully assessable,0.527,3
+PSMB8-AS1,ENSG00000204261,black,Low,False,False,1,2,Low,partially assessable (no STRING node),0.7901,1
+IGSF6,ENSG00000140749,green,Low,False,True,1,4,Low,fully assessable,0.765,3
+PGS1,ENSG00000087157,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3931,3
+MAP4,ENSG00000047849,green,Low,False,True,1,4,Low,fully assessable,0.586,3
+CLEC4D,ENSG00000166527,greenyellow,Low,True,True,1,4,Low,fully assessable,0.8031,3
+PFKFB3,ENSG00000170525,greenyellow,Low,False,True,1,4,Low,fully assessable,0.6972,3
+SIPA1L1,ENSG00000197555,green,Low,False,True,1,4,Low,fully assessable,0.4246,3
+PFAS,ENSG00000178921,green,Low,False,True,1,4,Low,fully assessable,0.6587,3
+LSS,ENSG00000160285,green,Low,False,True,1,4,Low,fully assessable,0.4905,3
+B4GALT5,ENSG00000158470,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5468,3
+BAZ1B,ENSG00000009954,green,Low,False,True,1,4,Low,fully assessable,0.7159,3
+CAD,ENSG00000084774,green,Low,False,True,1,4,Low,fully assessable,0.708,3
+MYBPC3,ENSG00000134571,green,Low,False,True,1,4,Low,fully assessable,0.5096,3
+PDCD11,ENSG00000148843,green,Low,False,True,1,4,Low,fully assessable,0.6647,3
+CNGB1,ENSG00000070729,greenyellow,Low,True,True,1,4,Low,fully assessable,0.7129,3
+PANK2,ENSG00000125779,green,Low,False,True,1,4,Low,fully assessable,0.6194,3
+H3C4,ENSG00000197409,black,Low,True,True,1,4,Low,fully assessable,0.7915,3
+TTC9,ENSG00000133985,green,Low,False,True,1,4,Low,fully assessable,0.3984,3
+,ENSG00000182319,green,Low,False,False,1,2,Low,partially assessable (no STRING node),0.7786,1
+NBEAL2,ENSG00000160796,green,Low,False,True,1,4,Low,fully assessable,0.7032,3
+,ENSG00000235081,greenyellow,Low,True,False,1,2,Low,partially assessable (no STRING node),0.6392,1
+,ENSG00000255328,black,Low,True,False,1,2,Low,partially assessable (no STRING node),0.7642,1
+,ENSG00000141720,green,Low,False,False,1,2,Low,partially assessable (no STRING node),0.7306,1
+EZR,ENSG00000092820,green,Low,False,True,1,4,Low,fully assessable,0.7266,3
+FFAR3,ENSG00000185897,black,Low,True,True,1,4,Low,fully assessable,0.7241,3
+MGAT5,ENSG00000152127,black,Low,False,True,1,4,Low,fully assessable,0.6753,3
+P2RX1,ENSG00000108405,green,Low,False,True,1,4,Low,fully assessable,0.5547,3
+DDX24,ENSG00000089737,greenyellow,Low,False,True,1,4,Low,fully assessable,0.7352,3
+ZNF783,ENSG00000204946,green,Low,False,True,1,4,Low,fully assessable,0.3254,3
+,ENSG00000270972,black,Low,True,False,1,2,Low,partially assessable (no STRING node),0.7837,1
+GEMIN4,ENSG00000179409,greenyellow,Low,False,True,1,4,Low,fully assessable,0.6281,3
+TMC6,ENSG00000141524,green,Low,False,True,1,4,Low,fully assessable,0.4573,3
+MYBBP1A,ENSG00000132382,green,Low,False,True,1,4,Low,fully assessable,0.7437,3
+ADAMTSL4,ENSG00000143382,green,Low,False,True,1,4,Low,fully assessable,0.4281,3
+AMIGO1,ENSG00000181754,green,Low,False,False,1,2,Low,partially assessable (no STRING node),0.8215,1
+ACOT9,ENSG00000123130,black,Low,False,True,1,4,Low,fully assessable,0.5649,3
+COL13A1,ENSG00000197467,black,Low,True,True,1,4,Low,fully assessable,0.5057,3
+DAPP1,ENSG00000070190,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5086,3
+GLOD4,ENSG00000167699,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5047,3
+LRRC14,ENSG00000160959,green,Low,False,True,1,4,Low,fully assessable,0.2955,3
+WARS1,ENSG00000140105,black,Low,False,True,1,4,Low,fully assessable,0.7593,3
+MICB,ENSG00000204516,black,Low,False,True,1,4,Low,fully assessable,0.7015,3
+CIRSR,ENSG00000138433,green,Low,False,False,1,2,Low,partially assessable (no STRING node),0.8023,1
+SLC9A8,ENSG00000197818,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3397,3
+SNHG12,ENSG00000197989,green,Low,False,False,1,2,Low,partially assessable (no STRING node),0.7447,1
+C1RL,ENSG00000139178,green,Low,False,True,1,4,Low,fully assessable,0.6084,3
+LPCAT2,ENSG00000087253,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5091,3
+CSNK2A1,ENSG00000101266,black,Low,False,True,1,4,Low,fully assessable,0.7289,3
+LAP3,ENSG00000002549,black,Low,True,True,1,4,Low,fully assessable,0.8279,3
+CERK,ENSG00000100422,black,Low,False,True,1,4,Low,fully assessable,0.4591,3
+CHD3,ENSG00000170004,green,Low,False,True,1,4,Low,fully assessable,0.7728,3
+KCNE5,ENSG00000176076,green,Low,True,True,1,4,Low,fully assessable,0.5408,3
+FCMR,ENSG00000162894,green,Low,False,True,1,4,Low,fully assessable,0.4465,3
+PATZ1,ENSG00000100105,green,Low,False,True,1,4,Low,fully assessable,0.439,3
+DPRXP2,ENSG00000271304,black,Low,True,False,1,2,Low,partially assessable (no STRING node),0.7095,1
+BHLHE40,ENSG00000134107,black,Low,False,True,1,4,Low,fully assessable,0.7075,3
+SF3B3,ENSG00000189091,greenyellow,Low,False,True,1,4,Low,fully assessable,0.7133,3
+STX11,ENSG00000135604,greenyellow,Low,False,True,1,4,Low,fully assessable,0.6424,3
+UBTF,ENSG00000108312,green,Low,False,True,1,4,Low,fully assessable,0.676,3
+MAGED1,ENSG00000179222,green,Low,False,True,1,4,Low,fully assessable,0.6645,3
+SUPV3L1,ENSG00000156502,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5486,3
+ABL1,ENSG00000097007,green,Low,False,True,1,4,Low,fully assessable,0.7555,3
+DLST,ENSG00000119689,green,Low,False,True,1,4,Low,fully assessable,0.6633,3
+WNT7A,ENSG00000154764,green,Low,False,True,1,4,Low,fully assessable,0.587,3
+CREB5,ENSG00000146592,greenyellow,Low,False,True,1,4,Low,fully assessable,0.486,3
+BMS1,ENSG00000165733,green,Low,False,True,1,4,Low,fully assessable,0.6233,3
+TULP3,ENSG00000078246,black,Low,False,True,1,4,Low,fully assessable,0.7271,3
+NRN1,ENSG00000124785,green,Low,True,True,1,4,Low,fully assessable,0.5844,3
+TLE2,ENSG00000065717,green,Low,False,True,1,4,Low,fully assessable,0.6149,3
+TMC8,ENSG00000167895,green,Low,False,True,1,4,Low,fully assessable,0.3784,3
+TRIM65,ENSG00000141569,green,Low,False,True,1,4,Low,fully assessable,0.4971,3
+MBOAT2,ENSG00000143797,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5966,3
+PTBP1,ENSG00000011304,green,Low,False,True,1,4,Low,fully assessable,0.5956,3
+NFIL3,ENSG00000165030,green,Low,False,True,1,4,Low,fully assessable,0.7536,3
+GGA2,ENSG00000103365,green,Low,False,True,1,4,Low,fully assessable,0.4539,3
+WWC3,ENSG00000047644,greenyellow,Low,False,True,1,4,Low,fully assessable,0.2943,3
+VMP1,ENSG00000062716,greenyellow,Low,False,True,1,4,Low,fully assessable,0.6057,3
+MOV10,ENSG00000155363,black,Low,False,True,1,4,Low,fully assessable,0.7887,3
+FASN,ENSG00000169710,green,Low,False,True,1,4,Low,fully assessable,0.7116,3
+PTK2B,ENSG00000120899,green,Low,False,True,1,4,Low,fully assessable,0.7162,3
+DDB1,ENSG00000167986,green,Low,False,True,1,4,Low,fully assessable,0.7596,3
+CYRIB,ENSG00000153310,greenyellow,Low,False,False,1,2,Low,partially assessable (no STRING node),0.7921,1
+POLR1A,ENSG00000068654,green,Low,False,True,1,4,Low,fully assessable,0.6816,3
+RALGAPA2,ENSG00000188559,greenyellow,Low,False,True,1,4,Low,fully assessable,0.2861,3
+TRAV29DV5,ENSG00000211810,green,Low,False,False,1,2,Low,partially assessable (no STRING node),0.7524,1
+ITPRIP,ENSG00000148841,green,Low,False,True,1,4,Low,fully assessable,0.3178,3
+TTC22,ENSG00000006555,green,Low,False,False,1,2,Low,partially assessable (no STRING node),0.6935,1
+RELT,ENSG00000054967,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3397,3
+NR1D1,ENSG00000126368,green,Low,False,True,1,4,Low,fully assessable,0.6557,3
+KRI1,ENSG00000129347,green,Low,False,True,1,4,Low,fully assessable,0.6017,3
+ECHDC2,ENSG00000121310,green,Low,False,True,1,4,Low,fully assessable,0.5109,3
+GPR27,ENSG00000170837,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5385,3
+ENO2,ENSG00000111674,green,Low,False,True,1,4,Low,fully assessable,0.6577,3
+ARHGAP27,ENSG00000159314,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3618,3
+NOL9,ENSG00000162408,green,Low,False,True,1,4,Low,fully assessable,0.5763,3
+NUMA1,ENSG00000137497,green,Low,False,True,1,4,Low,fully assessable,0.7004,3
+BCR,ENSG00000186716,black,Low,False,True,1,4,Low,fully assessable,0.7122,3
+NUB1,ENSG00000013374,black,Low,False,True,1,4,Low,fully assessable,0.5465,3
+RAB1A,ENSG00000138069,greenyellow,Low,False,True,1,4,Low,fully assessable,0.7306,3
+SLAMF8,ENSG00000158714,black,Low,False,True,1,4,Low,fully assessable,0.5592,3
+POMT1,ENSG00000130714,green,Low,False,True,1,4,Low,fully assessable,0.4504,3
+RPTOR,ENSG00000141564,green,Low,False,True,1,4,Low,fully assessable,0.6633,3
+,ENSG00000260359,greenyellow,Low,False,False,1,2,Low,partially assessable (no STRING node),0.7303,1
+SIPA1L2,ENSG00000116991,greenyellow,Low,False,True,1,4,Low,fully assessable,0.496,3
+CLEC5A,ENSG00000258227,greenyellow,Low,False,True,1,4,Low,fully assessable,0.6959,3
+UBASH3A,ENSG00000160185,green,Low,False,True,1,4,Low,fully assessable,0.6881,3
+CARMIL2,ENSG00000159753,green,Low,False,True,1,4,Low,fully assessable,0.4077,3
+MMADHC,ENSG00000168288,green,Low,False,True,1,4,Low,fully assessable,0.4357,3
+AQP3,ENSG00000165272,green,Low,False,True,1,4,Low,fully assessable,0.65,3
+TNFRSF25,ENSG00000215788,green,Low,False,True,1,4,Low,fully assessable,0.7006,3
+SLC29A2,ENSG00000174669,green,Low,False,True,1,4,Low,fully assessable,0.407,3
+DENND3,ENSG00000105339,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3428,3
+PLXNB3,ENSG00000198753,black,Low,True,True,1,4,Low,fully assessable,0.5699,3
+RSAD1,ENSG00000136444,green,Low,False,True,1,4,Low,fully assessable,0.5,3
+PLEKHB1,ENSG00000021300,green,Low,False,True,1,4,Low,fully assessable,0.2811,3
+PLIN5,ENSG00000214456,green,Low,False,True,1,4,Low,fully assessable,0.628,3
+PPP1R3D,ENSG00000132825,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3,3
+NUP88,ENSG00000108559,green,Low,False,True,1,4,Low,fully assessable,0.6714,3
+VSIG1,ENSG00000101842,green,Low,False,True,1,4,Low,fully assessable,0.266,3
+CDK5RAP2,ENSG00000136861,green,Low,False,True,1,4,Low,fully assessable,0.5062,3
+SUPT16H,ENSG00000092201,green,Low,False,True,1,4,Low,fully assessable,0.7263,3
+LEF1,ENSG00000138795,green,Low,False,True,1,4,Low,fully assessable,0.7863,3
+RIPK3,ENSG00000129465,green,Low,False,True,1,4,Low,fully assessable,0.6787,3
+PPP1R3B,ENSG00000173281,greenyellow,Low,False,True,1,4,Low,fully assessable,0.4608,3
+PABPC4,ENSG00000090621,green,Low,False,True,1,4,Low,fully assessable,0.6618,3
+LDLRAP1,ENSG00000157978,green,Low,False,True,1,4,Low,fully assessable,0.7259,3
+MGAM,ENSG00000257335,greenyellow,Low,False,True,1,4,Low,fully assessable,0.6185,3
+NCL,ENSG00000115053,green,Low,False,True,1,4,Low,fully assessable,0.7268,3
+SDR39U1,ENSG00000100445,green,Low,False,True,1,4,Low,fully assessable,0.5724,3
+RRAGD,ENSG00000025039,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5984,3
+LTBP3,ENSG00000168056,green,Low,False,True,1,4,Low,fully assessable,0.6446,3
+CHST15,ENSG00000182022,greenyellow,Low,False,True,1,4,Low,fully assessable,0.2986,3
+RRS1,ENSG00000179041,green,Low,False,True,1,4,Low,fully assessable,0.605,3
+HTT,ENSG00000197386,green,Low,False,True,1,4,Low,fully assessable,0.7006,3
+HSD17B11,ENSG00000198189,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3503,3
+HCG27,ENSG00000206344,greenyellow,Low,False,False,1,2,Low,partially assessable (no STRING node),0.6798,1
+CSF2RB,ENSG00000100368,greenyellow,Low,False,True,1,4,Low,fully assessable,0.6889,3
+PROS1,ENSG00000184500,black,Low,True,True,1,4,Low,fully assessable,0.6302,3
+EMC1,ENSG00000127463,green,Low,False,True,1,4,Low,fully assessable,0.7063,3
+PTTG1IP,ENSG00000183255,greenyellow,Low,False,True,1,4,Low,fully assessable,0.4009,3
+GRIK5,ENSG00000105737,black,Low,False,True,1,4,Low,fully assessable,0.4256,3
+WDFY3,ENSG00000163625,greenyellow,Low,False,True,1,4,Low,fully assessable,0.4799,3
+FOSL2,ENSG00000075426,greenyellow,Low,False,True,1,4,Low,fully assessable,0.7375,3
+PCED1B,ENSG00000179715,green,Low,False,True,1,4,Low,fully assessable,0.2768,3
+ANKRD13A,ENSG00000076513,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3417,3
+PTPRE,ENSG00000132334,greenyellow,Low,False,True,1,4,Low,fully assessable,0.4875,3
+APOBEC3A,ENSG00000128383,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3979,3
+WNT10A,ENSG00000135925,green,Low,False,True,1,4,Low,fully assessable,0.6666,3
+STX3,ENSG00000166900,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5127,3
+FLNB,ENSG00000136068,green,Low,False,True,1,4,Low,fully assessable,0.6811,3
+HADHB,ENSG00000138029,green,Low,False,True,1,4,Low,fully assessable,0.6283,3
+ARHGEF11,ENSG00000132694,green,Low,False,True,1,4,Low,fully assessable,0.627,3
+GOT2,ENSG00000125166,greenyellow,Low,False,True,1,4,Low,fully assessable,0.7331,3
+ECI2,ENSG00000198721,black,Low,False,True,1,4,Low,fully assessable,0.5857,3
+GHRL,ENSG00000157017,green,Low,False,True,1,4,Low,fully assessable,0.6779,3
+TDRD9,ENSG00000156414,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5269,3
+ATIC,ENSG00000138363,greenyellow,Low,False,True,1,4,Low,fully assessable,0.662,3
+BAZ1A,ENSG00000198604,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5784,3
+LAT,ENSG00000213658,green,Low,False,True,1,4,Low,fully assessable,0.6693,3
+DHX37,ENSG00000150990,green,Low,False,True,1,4,Low,fully assessable,0.5513,3
+C1R,ENSG00000159403,greenyellow,Low,False,True,1,4,Low,fully assessable,0.6832,3
+CD83,ENSG00000112149,green,Low,False,True,1,4,Low,fully assessable,0.7045,3
+SLA,ENSG00000155926,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5847,3
+MKNK1,ENSG00000079277,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3662,3
+NRBF2,ENSG00000148572,greenyellow,Low,False,True,1,4,Low,fully assessable,0.4033,3
+TSPEAR,ENSG00000175894,black,Low,True,True,1,4,Low,fully assessable,0.4921,3
+EFHD1,ENSG00000115468,green,Low,True,True,1,4,Low,fully assessable,0.4822,3
+WDR77,ENSG00000116455,green,Low,False,True,1,4,Low,fully assessable,0.6888,3
+KAT2A,ENSG00000108773,green,Low,False,True,1,4,Low,fully assessable,0.7316,3
+FBLN5,ENSG00000140092,green,Low,False,True,1,4,Low,fully assessable,0.6093,3
+MXD1,ENSG00000059728,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3269,3
+DENND5A,ENSG00000184014,greenyellow,Low,False,True,1,4,Low,fully assessable,0.4142,3
+AP3B2,ENSG00000103723,green,Low,True,True,1,4,Low,fully assessable,0.4349,3
+CTBS,ENSG00000117151,greenyellow,Low,False,False,1,2,Low,partially assessable (no STRING node),0.6875,1
+RBM47,ENSG00000163694,greenyellow,Low,False,True,1,4,Low,fully assessable,0.2762,3
+SEPTIN6,ENSG00000125354,green,Low,False,True,1,4,Low,fully assessable,0.539,3
+IL5RA,ENSG00000091181,green,Low,False,True,1,4,Low,fully assessable,0.5671,3
+ALDH1A2,ENSG00000128918,greenyellow,Low,False,True,1,4,Low,fully assessable,0.6018,3
+PSMA4,ENSG00000041357,green,Low,False,True,1,4,Low,fully assessable,0.6056,3
+PFKM,ENSG00000152556,green,Low,False,True,1,4,Low,fully assessable,0.6173,3
+STEAP4,ENSG00000127954,greenyellow,Low,False,False,1,2,Low,partially assessable (no STRING node),0.6859,1
+KDF1,ENSG00000175707,black,Low,False,True,1,4,Low,fully assessable,0.6372,3
+STAT5B,ENSG00000173757,green,Low,False,True,1,4,Low,fully assessable,0.7547,3
+,ENSG00000264868,greenyellow,Low,False,False,1,2,Low,partially assessable (no STRING node),0.5243,1
+CEP63,ENSG00000182923,greenyellow,Low,False,True,1,4,Low,fully assessable,0.6539,3
+GALNT6,ENSG00000139629,green,Low,False,True,1,4,Low,fully assessable,0.5137,3
+CPD,ENSG00000108582,greenyellow,Low,False,True,1,4,Low,fully assessable,0.4362,3
+ZFP41,ENSG00000181638,green,Low,False,True,1,4,Low,fully assessable,0.4204,3
+MSL1,ENSG00000188895,greenyellow,Low,False,True,1,4,Low,fully assessable,0.4274,3
+MACROH2A1,ENSG00000113648,green,Low,False,True,1,4,Low,fully assessable,0.6532,3
+KHSRP,ENSG00000088247,green,Low,False,True,1,4,Low,fully assessable,0.5656,3
+CBX6,ENSG00000183741,green,Low,False,True,1,4,Low,fully assessable,0.5659,3
+BAG5,ENSG00000166170,green,Low,False,True,1,4,Low,fully assessable,0.5621,3
+HCAR1,ENSG00000196917,green,Low,False,True,1,4,Low,fully assessable,0.5016,3
+SUSD6,ENSG00000100647,greenyellow,Low,False,False,1,2,Low,partially assessable (no STRING node),0.6136,1
+MYO1C,ENSG00000197879,green,Low,False,True,1,4,Low,fully assessable,0.6347,3
+CLEC4A,ENSG00000111729,green,Low,False,True,1,4,Low,fully assessable,0.6133,3
+UBE2A,ENSG00000077721,green,Low,False,True,1,4,Low,fully assessable,0.6526,3
+MOB3C,ENSG00000142961,black,Low,False,True,1,4,Low,fully assessable,0.6418,3
+FLT3LG,ENSG00000090554,green,Low,False,True,1,4,Low,fully assessable,0.6105,3
+MAEA,ENSG00000090316,greenyellow,Low,False,True,1,4,Low,fully assessable,0.389,3
+SEMA6C,ENSG00000143434,green,Low,False,True,1,4,Low,fully assessable,0.4341,3
+UBXN2B,ENSG00000215114,greenyellow,Low,False,True,1,4,Low,fully assessable,0.338,3
+RASSF2,ENSG00000101265,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3052,3
+XPNPEP2,ENSG00000122121,green,Low,False,True,1,4,Low,fully assessable,0.5939,3
+CCR7,ENSG00000126353,green,Low,False,True,1,4,Low,fully assessable,0.7683,3
+AMN,ENSG00000166126,green,Low,False,True,1,4,Low,fully assessable,0.3455,3
+COL7A1,ENSG00000114270,green,Low,False,True,1,4,Low,fully assessable,0.6001,3
+ELL,ENSG00000105656,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5515,3
+MTMR3,ENSG00000100330,greenyellow,Low,False,True,1,4,Low,fully assessable,0.4163,3
+NELFCD,ENSG00000101158,green,Low,False,True,1,4,Low,fully assessable,0.6348,3
+MAP3K3,ENSG00000198909,greenyellow,Low,False,True,1,4,Low,fully assessable,0.4287,3
+LYAR,ENSG00000145220,green,Low,False,True,1,4,Low,fully assessable,0.5007,3
+ROBO3,ENSG00000154134,green,Low,False,True,1,4,Low,fully assessable,0.486,3
+NUMB,ENSG00000133961,greenyellow,Low,False,True,1,4,Low,fully assessable,0.6044,3
+IL13RA1,ENSG00000131724,greenyellow,Low,False,True,1,4,Low,fully assessable,0.6878,3
+CXCR2,ENSG00000180871,greenyellow,Low,False,True,1,4,Low,fully assessable,0.7396,3
+MSRB3,ENSG00000174099,green,Low,False,True,1,4,Low,fully assessable,0.4117,3
+ALDH1A1,ENSG00000165092,black,Low,False,True,1,4,Low,fully assessable,0.5924,3
+APOL3,ENSG00000128284,black,Low,False,True,1,4,Low,fully assessable,0.4627,3
+ZNF516,ENSG00000101493,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3063,3
+FAM20C,ENSG00000177706,black,Low,False,True,1,4,Low,fully assessable,0.615,3
+RRP8,ENSG00000132275,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5932,3
+SUSD4,ENSG00000143502,black,Low,False,True,1,4,Low,fully assessable,0.4209,3
+PPAN,ENSG00000130810,green,Low,False,True,1,4,Low,fully assessable,0.526,3
+IQSEC1,ENSG00000144711,greenyellow,Low,False,True,1,4,Low,fully assessable,0.4257,3
+PLXNC1,ENSG00000136040,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5732,3
+TERF2,ENSG00000132604,green,Low,False,True,1,4,Low,fully assessable,0.5295,3
+TRIB1,ENSG00000173334,greenyellow,Low,False,True,1,4,Low,fully assessable,0.6154,3
+GNAO1,ENSG00000087258,black,Low,False,True,1,4,Low,fully assessable,0.5963,3
+NIBAN1,ENSG00000135842,greenyellow,Low,False,True,1,4,Low,fully assessable,0.2091,3
+HADH,ENSG00000138796,green,Low,False,True,1,4,Low,fully assessable,0.5348,3
+SLC6A6,ENSG00000131389,greenyellow,Low,False,True,1,4,Low,fully assessable,0.2668,3
+GPC1,ENSG00000063660,green,Low,False,True,1,4,Low,fully assessable,0.5685,3
+COL8A2,ENSG00000171812,green,Low,False,True,1,4,Low,fully assessable,0.4156,3
+FAM53C,ENSG00000120709,greenyellow,Low,False,False,1,2,Low,partially assessable (no STRING node),0.517,1
+SUSD2,ENSG00000099994,green,Low,False,True,1,4,Low,fully assessable,0.3438,3
+AP3S2,ENSG00000157823,black,Low,False,True,1,4,Low,fully assessable,0.405,3
+LGMN,ENSG00000100600,green,Low,False,True,1,4,Low,fully assessable,0.509,3
+DEF8,ENSG00000140995,greenyellow,Low,False,True,1,4,Low,fully assessable,0.4509,3
+CDH2,ENSG00000170558,black,Low,False,True,1,4,Low,fully assessable,0.5964,3
+FIP1L1,ENSG00000145216,green,Low,False,True,1,4,Low,fully assessable,0.5109,3
+PPP2R3C,ENSG00000092020,green,Low,False,True,1,4,Low,fully assessable,0.5356,3
+HLA-G,ENSG00000204632,black,Low,False,True,1,4,Low,fully assessable,0.5834,3
+BTD,ENSG00000169814,black,Low,False,True,1,4,Low,fully assessable,0.3631,3
+FSD1,ENSG00000105255,green,Low,False,True,1,4,Low,fully assessable,0.3736,3
+CACNG8,ENSG00000142408,green,Low,False,True,1,4,Low,fully assessable,0.5705,3
+RNF112,ENSG00000128482,green,Low,False,True,1,4,Low,fully assessable,0.5312,3
+NOL10,ENSG00000115761,greenyellow,Low,False,True,1,4,Low,fully assessable,0.3797,3
+ADGRB1,ENSG00000181790,green,Low,False,True,1,4,Low,fully assessable,0.4163,3
+IL23A,ENSG00000110944,green,Low,False,True,1,4,Low,fully assessable,0.6256,3
+LYPD3,ENSG00000124466,green,Low,False,True,1,4,Low,fully assessable,0.4344,3
+CD1E,ENSG00000158488,black,Low,False,True,1,4,Low,fully assessable,0.5258,3
+CCR3,ENSG00000183625,green,Low,False,True,1,4,Low,fully assessable,0.5073,3
+ZNF746,ENSG00000181220,greenyellow,Low,False,True,1,4,Low,fully assessable,0.5787,3
+TRPM2,ENSG00000142185,green,Low,False,True,1,4,Low,fully assessable,0.4278,3
+CXCR6,ENSG00000172215,green,Low,False,True,1,4,Low,fully assessable,0.5067,3
+,ENSG00000270426,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.7345,1
+ZNF329,ENSG00000181894,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6958,1
+WSB2,ENSG00000176871,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2643,3
+DHRS13,ENSG00000167536,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6212,1
+EXOC2,ENSG00000112685,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6166,3
+,ENSG00000237927,green,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5339,1
+AIG1,ENSG00000146416,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3092,3
+PLCH2,ENSG00000149527,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3095,3
+CLEC1B,ENSG00000165682,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5714,3
+,ENSG00000257433,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.642,1
+NUP188,ENSG00000095319,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6583,3
+RAB5IF,ENSG00000101084,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6148,1
+DGLUCY,ENSG00000133943,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6631,1
+CD53,ENSG00000143119,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.7454,3
+,ENSG00000272914,greenyellow,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.7198,1
+,ENSG00000272669,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6376,1
+LOC124903564,ENSG00000259182,green,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6583,1
+TSPAN18,ENSG00000157570,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.251,3
+RGS3,ENSG00000138835,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6347,3
+KYNU,ENSG00000115919,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5026,3
+LOXL1,ENSG00000129038,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6078,3
+CRY2,ENSG00000121671,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.7279,3
+ELP3,ENSG00000134014,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5196,3
+TEF,ENSG00000167074,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5029,3
+KCNJ2-AS1,ENSG00000267365,greenyellow,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.7028,1
+GRB10,ENSG00000106070,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5225,3
+DNAJA1,ENSG00000086061,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.7038,3
+TMEM25,ENSG00000149582,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5088,3
+FHIP1B,ENSG00000051009,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.7076,1
+UBIAD1,ENSG00000120942,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2661,3
+MRPS27,ENSG00000113048,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5143,3
+,ENSG00000207939,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.7284,1
+ACVRL1,ENSG00000139567,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4296,3
+LLGL1,ENSG00000131899,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4742,3
+,ENSG00000179101,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4766,1
+BTN3A1,ENSG00000026950,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5404,3
+COG2,ENSG00000135775,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5525,3
+FOXP1,ENSG00000114861,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6078,3
+IRF2-DT,ENSG00000271646,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5435,1
+ERI1,ENSG00000104626,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2721,3
+ASAH1,ENSG00000104763,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5666,3
+BORCS8,ENSG00000254901,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2453,3
+KCND1,ENSG00000102057,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3119,3
+FZD5,ENSG00000163251,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5948,3
+CSNK1E,ENSG00000213923,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6556,3
+CLSTN1,ENSG00000171603,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4674,3
+NUP43,ENSG00000120253,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6558,3
+ZNF3,ENSG00000166526,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.246,3
+GALNS,ENSG00000141012,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4837,3
+MACO1,ENSG00000204178,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3342,3
+LOC124909446,ENSG00000243273,black,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6225,1
+PYGM,ENSG00000068976,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6418,3
+LINC01270,ENSG00000203999,green,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.7057,1
+LMO2,ENSG00000135363,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5358,3
+,ENSG00000254667,black,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.531,1
+ZFP82,ENSG00000181007,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6139,1
+DCUN1D3,ENSG00000188215,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5927,3
+BASP1-AS1,ENSG00000215196,greenyellow,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.7313,1
+VAPA,ENSG00000101558,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6814,3
+GAS7,ENSG00000007237,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4675,3
+TRAV26-1,ENSG00000211807,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4443,1
+PIK3CD-AS1,ENSG00000179840,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4862,1
+C2orf68,ENSG00000168887,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6923,1
+AZIN2,ENSG00000142920,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3479,3
+LINC01303,ENSG00000250548,black,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.659,1
+,ENSG00000204282,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.7329,1
+SFI1,ENSG00000198089,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4387,3
+PHF19,ENSG00000119403,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6081,3
+SLC12A9,ENSG00000146828,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3501,3
+NDRG2,ENSG00000165795,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3513,3
+TCOF1,ENSG00000070814,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6078,3
+LTAP1,ENSG00000143612,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.475,1
+ST6GALNAC6,ENSG00000160408,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.404,3
+INTS14,ENSG00000138614,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2601,3
+,ENSG00000273133,black,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6206,1
+HSPA7,ENSG00000225217,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5531,1
+EFEMP2,ENSG00000172638,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4593,3
+TRAV8-2,ENSG00000211786,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5877,1
+CASP10,ENSG00000003400,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6426,3
+MYL5,ENSG00000215375,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2549,3
+,ENSG00000272941,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5313,1
+STN1,ENSG00000107960,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5144,3
+PASK,ENSG00000115687,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.296,3
+ADAMTSL4-AS2,ENSG00000237781,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.627,1
+PITRM1,ENSG00000107959,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6079,3
+,ENSG00000261211,black,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5665,1
+FAM225A,ENSG00000231528,black,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6097,1
+USP20,ENSG00000136878,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6452,3
+POMGNT1,ENSG00000085998,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4805,3
+CEP89,ENSG00000121289,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3312,3
+ZNF853,ENSG00000236609,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6558,1
+CDKAL1,ENSG00000145996,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4794,3
+PCMT1,ENSG00000120265,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4969,3
+PITPNC1,ENSG00000154217,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6606,1
+,ENSG00000233214,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6484,1
+ZBTB46,ENSG00000130584,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.515,3
+JPT2,ENSG00000206053,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6235,1
+BEST1,ENSG00000167995,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5771,3
+TMEM97,ENSG00000109084,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3481,3
+NCOA5,ENSG00000124160,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4743,3
+PLIN4,ENSG00000167676,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5544,3
+,ENSG00000265298,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6532,1
+IVD,ENSG00000128928,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6214,3
+IL17RC,ENSG00000163702,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4689,3
+MAP2K6,ENSG00000108984,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6386,3
+GCH1,ENSG00000131979,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.61,3
+EPN2,ENSG00000072134,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.514,3
+,ENSG00000203804,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6644,1
+,ENSG00000246082,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5563,1
+HEBP2,ENSG00000051620,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2977,3
+RNF114,ENSG00000124226,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5657,3
+RARG,ENSG00000172819,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6715,3
+NT5C3A,ENSG00000122643,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3953,3
+VIPR1,ENSG00000114812,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4769,3
+ZNF773,ENSG00000152439,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6081,1
+PPIL2,ENSG00000100023,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3995,3
+BDH1,ENSG00000161267,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3735,3
+PRKAR2B,ENSG00000005249,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5447,3
+DDX51,ENSG00000185163,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5366,3
+APBB3,ENSG00000113108,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2293,3
+ADAP2,ENSG00000184060,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3879,3
+RBM14,ENSG00000239306,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6283,3
+NF2,ENSG00000186575,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6051,3
+,ENSG00000249673,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4283,1
+TRIM46,ENSG00000163462,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6314,3
+RABL2B,ENSG00000079974,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4963,3
+SP140,ENSG00000079263,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4517,3
+UCKL1,ENSG00000198276,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4875,3
+,ENSG00000261015,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6539,1
+,ENSG00000161326,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6052,1
+ZNF200,ENSG00000010539,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3293,3
+,ENSG00000254258,black,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3954,1
+ARL2BP,ENSG00000102931,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4952,3
+BMX,ENSG00000102010,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4092,3
+ZNF575,ENSG00000176472,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4125,3
+PBX4,ENSG00000105717,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3091,3
+DNAJC1,ENSG00000136770,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5747,3
+SIGLEC16,ENSG00000161643,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5841,1
+SLC25A42,ENSG00000181035,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3639,3
+TMEM116,ENSG00000198270,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3771,3
+ZNF284,ENSG00000186026,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5665,1
+MCCC2,ENSG00000131844,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6309,3
+TRAF3IP1,ENSG00000204104,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5016,3
+QPCT,ENSG00000115828,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2852,3
+TRAV8-4,ENSG00000211790,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4754,1
+PRKCQ-AS1,ENSG00000237943,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6507,1
+HNRNPH2,ENSG00000126945,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6052,3
+NAMPTP1,ENSG00000229644,greenyellow,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5608,1
+MUC20,ENSG00000176945,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6139,3
+MTRFR,ENSG00000130921,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5022,1
+,ENSG00000090920,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6036,1
+TESK2,ENSG00000070759,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2855,3
+LINC02649,ENSG00000215244,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6142,1
+,ENSG00000269640,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6286,1
+ZNF212,ENSG00000170260,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3236,3
+CKAP5,ENSG00000175216,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5064,3
+CCDC17,ENSG00000159588,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2385,3
+CACTIN,ENSG00000105298,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5802,3
+STOML1,ENSG00000067221,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.534,3
+PGRMC1,ENSG00000101856,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6234,3
+,ENSG00000224950,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4187,1
+,ENSG00000197536,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5979,1
+GOLGA7B,ENSG00000155265,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3288,3
+FBXL16,ENSG00000127585,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6073,3
+KLHL25,ENSG00000183655,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4766,1
+IGFBP3,ENSG00000146674,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6284,3
+SLC49A4,ENSG00000138463,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.322,3
+PACSIN1,ENSG00000124507,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4781,3
+SCPEP1,ENSG00000121064,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2621,3
+,ENSG00000262823,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4645,1
+,ENSG00000246016,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3852,1
+LINC02596,ENSG00000233431,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5467,1
+KLC2,ENSG00000174996,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6616,3
+CNNM3,ENSG00000168763,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.331,3
+EVA1C,ENSG00000166979,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2866,3
+SIGLEC15,ENSG00000197046,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4403,3
+TXLNA,ENSG00000084652,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2845,3
+MDS2,ENSG00000197880,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5838,1
+TRANK1,ENSG00000168016,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3294,3
+ZDHHC11B,ENSG00000206077,green,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5077,1
+SLC51A,ENSG00000163959,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.548,1
+CREG1,ENSG00000143162,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5969,1
+FAM200B,ENSG00000237765,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6078,1
+,ENSG00000270441,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5729,1
+CDC16,ENSG00000130177,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4566,3
+RABL2B,ENSG00000144134,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4641,3
+CROCC,ENSG00000058453,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4879,3
+PRPF40B,ENSG00000110844,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4985,3
+N4BP3,ENSG00000145911,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3122,3
+MEGF6,ENSG00000162591,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2549,3
+ULK3,ENSG00000140474,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3125,3
+LOC124900372,ENSG00000261971,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6436,1
+LINC01359,ENSG00000226891,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4405,1
+KALRN,ENSG00000160145,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6123,3
+SGK1,ENSG00000118515,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5882,3
+RAB11FIP5,ENSG00000135631,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4732,3
+PLEKHG3,ENSG00000126822,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4495,3
+ATP1A1,ENSG00000163399,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6386,3
+OVGP1,ENSG00000085465,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3544,3
+DSTN,ENSG00000125868,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.534,3
+ASPRV1,ENSG00000244617,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3379,3
+TECPR2,ENSG00000196663,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.293,3
+REPS1,ENSG00000135597,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5288,3
+CLCF1,ENSG00000175505,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5934,3
+CLYBL,ENSG00000125246,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3807,3
+STOM,ENSG00000148175,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5973,3
+MAN1C1,ENSG00000117643,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4067,3
+MIA3,ENSG00000154305,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5787,3
+GPR55,ENSG00000135898,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5096,3
+,ENSG00000184441,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5598,1
+ZNF263,ENSG00000006194,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4059,3
+ZIK1,ENSG00000171649,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4706,1
+LRRC4,ENSG00000128594,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.462,3
+ADGRE2,ENSG00000127507,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3507,3
+,ENSG00000237683,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5531,1
+LYSMD2,ENSG00000140280,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6411,1
+ZNF512B,ENSG00000196700,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3807,3
+RHOF,ENSG00000139725,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4535,3
+ACSS1,ENSG00000154930,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6193,3
+TMEM147-AS1,ENSG00000236144,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6036,1
+APBA2,ENSG00000034053,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5631,3
+UBE2B,ENSG00000119048,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6778,3
+TNK1,ENSG00000174292,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6478,1
+TJP3,ENSG00000105289,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3008,3
+,ENSG00000231770,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3842,1
+NHLH1,ENSG00000171786,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2311,3
+RPL13AP26,ENSG00000250318,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4645,1
+SHISAL2A,ENSG00000182183,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6536,1
+RNF175,ENSG00000145428,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2508,3
+MAGEH1,ENSG00000187601,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3597,3
+TRIM7,ENSG00000146054,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.376,3
+,ENSG00000243797,green,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4047,1
+TATDN3,ENSG00000203705,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2292,3
+MEFV,ENSG00000103313,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.7328,3
+ASTN2,ENSG00000148219,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3938,3
+ZNF287,ENSG00000141040,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.231,1
+TRBV29-1,ENSG00000232869,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3551,1
+UBE3D,ENSG00000118420,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1504,3
+,ENSG00000187990,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3682,1
+RASSF1,ENSG00000068028,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5807,3
+,ENSG00000175873,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3241,1
+DUSP13B,ENSG00000079393,green,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5,1
+LINC00402,ENSG00000235532,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6996,1
+CEP295NL,ENSG00000178404,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3554,1
+RPL31P46,ENSG00000241170,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4392,1
+ABCA3,ENSG00000167972,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2418,3
+CYB561,ENSG00000008283,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2008,3
+ODF2,ENSG00000136811,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6306,3
+LINC02422,ENSG00000255760,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.381,1
+SFXN3,ENSG00000107819,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3871,3
+SPTBN5,ENSG00000137877,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2932,3
+,ENSG00000179837,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4878,1
+,ENSG00000254363,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5,1
+TRBV5-4,ENSG00000230099,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.635,1
+GIMAP4,ENSG00000133574,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4987,1
+MADD,ENSG00000110514,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4228,3
+LINC00877,ENSG00000241163,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4802,1
+DUSP4,ENSG00000120875,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2915,3
+VPS9D1-AS1,ENSG00000261373,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4168,1
+FAHD2A,ENSG00000115042,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3035,3
+WDR81,ENSG00000167716,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2563,3
+GPA33,ENSG00000143167,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6264,1
+INTS3,ENSG00000143624,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2768,3
+,ENSG00000205018,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3858,1
+,ENSG00000272468,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3551,1
+WNT10B,ENSG00000169884,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5538,3
+TXNL4B,ENSG00000140830,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2286,3
+OLIG2,ENSG00000205927,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4866,3
+CTSL,ENSG00000135047,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6712,3
+NID1,ENSG00000116962,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4794,3
+GALM,ENSG00000143891,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4228,3
+ZNFX1,ENSG00000124201,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6146,3
+LMNB2,ENSG00000176619,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5415,3
+TRIM16,ENSG00000221926,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3762,3
+BLMH,ENSG00000108578,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4943,3
+CAMKK2,ENSG00000110931,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5332,3
+,ENSG00000238164,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3471,1
+DNAI2,ENSG00000171595,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5654,3
+DIS3L2,ENSG00000144535,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.45,3
+PPM1H,ENSG00000111110,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.441,3
+EHD4,ENSG00000103966,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3016,3
+AIFM3,ENSG00000183773,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2329,3
+ZNF584,ENSG00000171574,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2661,3
+ELOVL7,ENSG00000164181,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2426,3
+WDR33,ENSG00000136709,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5153,3
+TMEM268,ENSG00000157693,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.181,3
+NSUN5P1,ENSG00000223705,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6456,1
+CRTC1,ENSG00000105662,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3431,3
+MRFAP1L2,ENSG00000170846,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6036,1
+TRAF4,ENSG00000076604,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4891,3
+ATP6V1D,ENSG00000100554,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3449,3
+RSPH9,ENSG00000172426,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5352,3
+,ENSG00000251139,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4578,1
+NAAA,ENSG00000138744,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4381,3
+MEG3,ENSG00000214548,black,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.571,1
+MFF,ENSG00000168958,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2447,3
+RNF157,ENSG00000141576,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.406,3
+TRBV3-1,ENSG00000237702,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.485,1
+PPFIA3,ENSG00000177380,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2741,3
+,ENSG00000269044,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4255,1
+CACNA1I,ENSG00000100346,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6226,3
+TRAV41,ENSG00000211820,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4814,1
+SAMD4A,ENSG00000020577,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2016,3
+SNX20,ENSG00000167208,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4045,3
+,ENSG00000264469,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5035,1
+LOC105370792,ENSG00000174171,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.356,1
+GAL3ST4,ENSG00000197093,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5413,1
+,ENSG00000260496,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3768,1
+SLC4A3,ENSG00000114923,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2879,3
+PMP22,ENSG00000109099,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4139,1
+GSTM2,ENSG00000213366,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3508,3
+PTPRS,ENSG00000105426,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4829,3
+TRABD2A,ENSG00000186854,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6081,1
+NKAP,ENSG00000101882,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4278,3
+PROK2,ENSG00000163421,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5897,3
+MTND5P28,ENSG00000223549,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.388,1
+SLC9B2,ENSG00000164038,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2109,3
+ADAMTS10,ENSG00000142303,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3802,3
+SYN2,ENSG00000157152,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4885,3
+EIF4B,ENSG00000063046,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5803,3
+TAMALIN,ENSG00000161835,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4953,3
+ZNF341,ENSG00000131061,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2828,3
+DENND3-AS1,ENSG00000253210,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3807,1
+PPCS,ENSG00000127125,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3011,3
+NEURL1,ENSG00000107954,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.269,3
+NEXN,ENSG00000162614,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3855,3
+FAAH2,ENSG00000165591,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.483,3
+PRDM11,ENSG00000019485,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4012,1
+LUC7L,ENSG00000007392,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5324,3
+LINC00189,ENSG00000215533,green,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3157,1
+ZNF497,ENSG00000174586,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3042,1
+CYP2E1,ENSG00000130649,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5113,3
+TRBV19,ENSG00000211746,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.6695,1
+RTN4R,ENSG00000040608,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4246,3
+,ENSG00000273314,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3004,1
+TOR1AIP2,ENSG00000169905,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3927,3
+ZNF500,ENSG00000103199,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.29,3
+MEGF8,ENSG00000105429,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4325,3
+PPP1R3F,ENSG00000049769,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2068,3
+NPTXR,ENSG00000221890,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4456,3
+EXT1,ENSG00000182197,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5681,3
+LMTK3,ENSG00000142235,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2693,3
+,ENSG00000235944,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5505,1
+MIR4257,ENSG00000264553,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3583,1
+,ENSG00000262001,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3509,1
+WDFY3-AS2,ENSG00000180769,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4402,1
+CALHM2,ENSG00000138172,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3088,3
+HMGB3,ENSG00000029993,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3211,3
+LOC400499,ENSG00000188897,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5313,1
+RCC2,ENSG00000179051,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2954,3
+OLIG1,ENSG00000184221,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.181,3
+ZFR2,ENSG00000105278,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3528,1
+RPS10P1,ENSG00000217275,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3269,1
+,ENSG00000249684,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3788,1
+CACNA2D3,ENSG00000157445,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5461,3
+METTL9,ENSG00000197006,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3428,3
+CDHR5,ENSG00000099834,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3507,3
+AEBP1,ENSG00000106624,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3922,3
+,ENSG00000272098,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5282,1
+ASTE1,ENSG00000034533,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3475,3
+AGPAT3,ENSG00000160216,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4495,3
+LINC01637,ENSG00000237476,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3369,1
+HARS1,ENSG00000170445,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4808,3
+PPP5C,ENSG00000011485,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6171,3
+ENTR1,ENSG00000165689,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4801,3
+IL18RAP,ENSG00000115607,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5562,3
+BRD9,ENSG00000028310,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5849,3
+,ENSG00000237940,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4165,1
+MEAF6,ENSG00000163875,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4555,3
+PYROXD2,ENSG00000119943,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1918,3
+LGALS4,ENSG00000171747,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5251,3
+CTIF,ENSG00000134030,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2266,3
+HMGB3P29,ENSG00000254503,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4562,1
+TRBJ2-2P,ENSG00000211766,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2642,1
+NT5DC4,ENSG00000144130,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3875,3
+,ENSG00000233058,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2361,1
+FLYWCH1,ENSG00000059122,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3509,1
+,ENSG00000226012,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4347,1
+METTL25B,ENSG00000143303,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1504,3
+IL16,ENSG00000172349,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5478,3
+,ENSG00000234160,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.215,1
+GM2A,ENSG00000196743,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4409,3
+TRAV12-2,ENSG00000211789,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4869,1
+MARCHF3,ENSG00000173926,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1173,3
+GIPR,ENSG00000010310,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3981,3
+CLIP3,ENSG00000105270,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2188,3
+FBXL8,ENSG00000135722,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3156,3
+MTND4P26,ENSG00000234065,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.5,1
+MFSD6L,ENSG00000185156,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1354,3
+GATM,ENSG00000171766,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3798,3
+CCNY,ENSG00000108100,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2144,3
+SDK2,ENSG00000069188,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2279,3
+SHROOM4,ENSG00000158352,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2081,3
+,ENSG00000229331,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3826,1
+NUDT16-DT,ENSG00000250608,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2777,1
+MTARC1,ENSG00000186205,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2847,3
+OBSCN,ENSG00000154358,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3766,3
+CACNA1A,ENSG00000141837,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6033,3
+LDOC1,ENSG00000182195,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3411,3
+COQ2,ENSG00000173085,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4545,3
+DNASE1L3,ENSG00000163687,black,Low,True,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4162,1
+EFNA5,ENSG00000184349,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.37,3
+FAM114A1,ENSG00000197712,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2678,1
+RDH16,ENSG00000139547,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2932,3
+OR2B6,ENSG00000124657,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3116,1
+NLGN2,ENSG00000169992,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5038,3
+CAV2,ENSG00000105971,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5206,3
+CACNB1,ENSG00000067191,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6229,3
+TNFRSF21,ENSG00000146072,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4557,3
+HIC1,ENSG00000177374,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5388,3
+SV2A,ENSG00000159164,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2922,3
+SREBF2,ENSG00000198911,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6354,3
+OARD1,ENSG00000124596,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3175,3
+FGD1,ENSG00000102302,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2194,3
+ALS2CL,ENSG00000178038,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3458,3
+HCP5,ENSG00000206337,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3967,1
+FILIP1L,ENSG00000168386,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1327,3
+FGF13,ENSG00000129682,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6346,3
+HRK,ENSG00000135116,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1339,3
+DTX1,ENSG00000135144,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5696,3
+PLPP1,ENSG00000067113,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4126,3
+GLB1L2,ENSG00000149328,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1385,3
+TRAJ45,ENSG00000211844,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3724,1
+MICA,ENSG00000204520,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4239,3
+ABCF1,ENSG00000204574,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4837,3
+PNPLA1,ENSG00000180316,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1517,3
+PTGDR2,ENSG00000183134,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6012,3
+SLC41A3,ENSG00000114544,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2167,3
+PEX5,ENSG00000139197,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2987,3
+SEMA3B,ENSG00000012171,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4847,3
+CYB5B,ENSG00000103018,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3689,3
+,ENSG00000231584,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.421,1
+CLEC4C,ENSG00000198178,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4937,3
+,ENSG00000133624,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3186,1
+ALOX15,ENSG00000161905,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5809,3
+MLX,ENSG00000108788,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2092,3
+AARS1,ENSG00000090861,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5494,3
+SDC2,ENSG00000169439,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.6091,3
+CRYBG2,ENSG00000176092,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2678,1
+ARF4,ENSG00000168374,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5728,3
+CFAP92,ENSG00000114656,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4104,1
+ITGA6-AS1,ENSG00000232788,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3167,1
+ADCY4,ENSG00000129467,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5976,3
+EPHA1,ENSG00000146904,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4303,3
+BTBD19,ENSG00000222009,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1772,1
+ASNS,ENSG00000070669,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5803,3
+TRAV20,ENSG00000211800,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2649,1
+,ENSG00000270107,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3282,1
+TSPAN16,ENSG00000130167,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1667,3
+TRAV21,ENSG00000211801,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4085,1
+CC2D1B,ENSG00000154222,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2894,3
+RAPGEF3,ENSG00000079337,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3818,3
+,ENSG00000236624,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2553,1
+SLC12A3,ENSG00000070915,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2534,3
+PARN,ENSG00000140694,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3876,3
+GUCY1A1,ENSG00000164116,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.378,3
+OSGEP,ENSG00000092094,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3028,3
+,ENSG00000230839,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4171,1
+BEND7,ENSG00000165626,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3234,3
+SYT17,ENSG00000103528,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.349,1
+PLXDC2,ENSG00000120594,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3936,3
+ARSD,ENSG00000006756,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1792,3
+ZDHHC9,ENSG00000188706,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2756,3
+OR52B3P,ENSG00000175800,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2198,1
+,ENSG00000261245,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.255,1
+,ENSG00000124593,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2409,1
+FHIT,ENSG00000189283,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5077,3
+SMPD3,ENSG00000103056,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3381,3
+LOC101928893,ENSG00000251442,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4315,1
+ATG9B,ENSG00000181652,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4161,3
+,ENSG00000235579,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4207,1
+VEPH1,ENSG00000197415,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1709,3
+TJAP1,ENSG00000137221,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4632,3
+SNN,ENSG00000184602,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4082,1
+MYO15B,ENSG00000266714,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.207,1
+TUBB4A,ENSG00000104833,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5745,3
+TRIP10,ENSG00000125733,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5658,3
+CACNA1H,ENSG00000196557,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.553,3
+PAQR6,ENSG00000160781,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1637,3
+BLCAP,ENSG00000166619,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.226,3
+FCSK,ENSG00000157353,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3908,3
+TRAV12-3,ENSG00000211794,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3871,1
+JADE1,ENSG00000077684,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2118,3
+ZBTB3,ENSG00000185670,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1044,3
+RNF214,ENSG00000167257,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2956,1
+RAB43,ENSG00000172780,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2729,3
+SLC25A34,ENSG00000162461,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1451,3
+RBM3,ENSG00000102317,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4301,3
+INSC,ENSG00000188487,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2292,3
+PREP,ENSG00000085377,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4676,3
+TRDV2,ENSG00000211821,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.15,1
+TRAP1,ENSG00000126602,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5642,3
+,ENSG00000267121,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1814,1
+C12orf42,ENSG00000179088,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3445,1
+TRAV19,ENSG00000211799,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3455,1
+ARHGEF4,ENSG00000136002,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3024,3
+,ENSG00000226380,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3225,1
+ACVR1B,ENSG00000135503,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3138,3
+AGBL5,ENSG00000084693,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2067,3
+MATN1-AS1,ENSG00000186056,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1583,1
+DDR1,ENSG00000204580,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4739,3
+SIGLEC8,ENSG00000105366,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5596,3
+SEMA4D,ENSG00000187764,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5551,3
+,ENSG00000225450,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2617,1
+P4HTM,ENSG00000178467,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1811,3
+FAM174B,ENSG00000185442,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1475,1
+ZNF707,ENSG00000181135,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1672,3
+ZNF213-AS1,ENSG00000263072,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3023,1
+SFRP5,ENSG00000120057,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4262,3
+ABCB8,ENSG00000197150,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2295,3
+NEURL4,ENSG00000215041,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4427,3
+KAZN,ENSG00000189337,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1852,3
+AKAP6,ENSG00000151320,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3253,3
+OR52K3P,ENSG00000225101,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3228,1
+ELOVL3,ENSG00000119915,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2802,3
+AIFM2,ENSG00000042286,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.433,3
+MAGEF1,ENSG00000177383,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2901,3
+USP30,ENSG00000135093,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3981,3
+CCDC149,ENSG00000181982,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1959,3
+COPB2,ENSG00000184432,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4834,3
+,ENSG00000212743,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4213,1
+TFAP4,ENSG00000090447,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4373,3
+TCF7L1,ENSG00000152284,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5241,3
+LNCATV,ENSG00000238005,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4504,1
+KPNB1-DT,ENSG00000263766,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3221,1
+SPNS3,ENSG00000182557,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1935,3
+NCF4-AS1,ENSG00000183822,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.388,1
+NRAV,ENSG00000248008,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2738,1
+MROH8,ENSG00000101353,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1814,1
+,ENSG00000273174,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0877,1
+ATP6V0E2-AS1,ENSG00000204934,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3557,1
+PLXNB1,ENSG00000164050,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5275,3
+ZBTB12,ENSG00000204366,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1529,3
+,ENSG00000229180,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3404,1
+AK5,ENSG00000154027,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3717,3
+UICLM,ENSG00000233392,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4373,1
+SLC15A4,ENSG00000139370,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4631,3
+KCTD15,ENSG00000153885,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2004,3
+,ENSG00000272734,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3343,1
+,ENSG00000272953,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3516,1
+FAHD2B,ENSG00000144199,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2006,3
+TRBV7-1,ENSG00000211707,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3093,1
+NOG,ENSG00000183691,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4761,3
+TEAD2,ENSG00000074219,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5296,3
+FOCAD,ENSG00000188352,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1536,1
+LINC02273,ENSG00000245954,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3065,1
+,ENSG00000261731,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3717,1
+,ENSG00000229200,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3861,1
+LINC02361,ENSG00000256576,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3781,1
+FBLN7,ENSG00000144152,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1853,3
+CYP4F3,ENSG00000186529,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5132,3
+ABLIM2,ENSG00000163995,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2081,3
+LMNTD2-AS1,ENSG00000254815,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2559,1
+METAP1D,ENSG00000172878,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2668,3
+SYNPO,ENSG00000171992,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5414,3
+MIX23,ENSG00000160124,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2159,1
+MINCR,ENSG00000253716,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2412,1
+ARVCF,ENSG00000099889,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1767,3
+,ENSG00000272091,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1827,1
+METTL2B,ENSG00000165055,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3608,3
+MLEC,ENSG00000110917,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.29,3
+ZDHHC4P1,ENSG00000238025,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3676,1
+TRMT61B,ENSG00000171103,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3984,3
+H2AC11,ENSG00000196787,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5762,3
+GADD45A,ENSG00000116717,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4134,3
+CCDC157,ENSG00000187860,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2412,3
+SRGAP3,ENSG00000196220,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3496,3
+,ENSG00000250397,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.166,1
+TOX2,ENSG00000124191,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2717,3
+TRAV23DV6,ENSG00000211803,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3001,1
+B4GAT1-DT,ENSG00000255468,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3423,1
+SCCPDH,ENSG00000143653,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2993,3
+PVT1,ENSG00000249859,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3855,1
+LOC124902694,ENSG00000255320,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1932,1
+GTPBP2,ENSG00000172432,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3632,3
+,ENSG00000230202,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2025,1
+PRRT1,ENSG00000204314,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2283,3
+TSNARE1,ENSG00000171045,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3233,3
+TMEM70,ENSG00000175606,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1577,3
+CDC42BPA,ENSG00000143776,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4583,3
+TOP6BL,ENSG00000173715,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3826,1
+TMEM79,ENSG00000163472,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1513,3
+PLAAT5,ENSG00000168004,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1682,3
+DACT1,ENSG00000165617,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.13,3
+PDE6C,ENSG00000095464,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.507,3
+SLC37A4,ENSG00000137700,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3043,3
+MRPL38,ENSG00000204316,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3203,3
+CRACDL,ENSG00000196872,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.144,1
+ZNF671,ENSG00000083814,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1353,1
+PEAR1,ENSG00000187800,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1384,3
+KANK3,ENSG00000186994,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1254,1
+SNX21,ENSG00000124104,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.296,3
+PALD1,ENSG00000107719,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1939,1
+FBXL19,ENSG00000099364,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2818,3
+SPRED2,ENSG00000198369,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1583,3
+LETM1,ENSG00000168924,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3099,3
+NFS1,ENSG00000244005,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4931,3
+BTN3A2,ENSG00000186470,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2904,3
+LZTS3,ENSG00000088899,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4385,3
+,ENSG00000170089,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3704,1
+TRAV6,ENSG00000211780,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1248,1
+CHI3L2,ENSG00000064886,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1388,3
+ZSCAN2,ENSG00000176371,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.126,3
+PRPSAP2,ENSG00000141127,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2442,3
+,ENSG00000229754,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3202,1
+,ENSG00000269918,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3132,1
+SLC2A6,ENSG00000160326,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1565,3
+TMEM106A,ENSG00000184988,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1769,1
+TRAV8-1,ENSG00000211782,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3471,1
+,ENSG00000228274,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1692,1
+DOCK8-AS1,ENSG00000183784,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.317,1
+,ENSG00000273058,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2806,1
+OGG1,ENSG00000114026,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5083,3
+ZDHHC7,ENSG00000153786,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2543,3
+SNHG10,ENSG00000247092,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1331,1
+TRAV16,ENSG00000211796,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1852,1
+MYOM1,ENSG00000101605,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2048,3
+ASIC3,ENSG00000213199,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3975,3
+ARRDC5,ENSG00000205784,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1923,3
+RGS16,ENSG00000143333,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3698,3
+CCR5AS,ENSG00000223552,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0771,1
+GUCY1B1,ENSG00000061918,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3101,3
+TRIM3,ENSG00000110171,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4882,3
+CEP170B,ENSG00000099814,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1171,3
+,ENSG00000249138,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3314,1
+CDH24,ENSG00000139880,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2257,3
+PIP4P2,ENSG00000155099,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2568,3
+FUCA1,ENSG00000179163,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3168,3
+ADAMTSL5,ENSG00000185761,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3653,1
+,ENSG00000240356,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1113,1
+MTA3,ENSG00000057935,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.523,3
+IGLV3-12,ENSG00000211667,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2319,1
+COG1,ENSG00000166685,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4041,3
+CRELD1,ENSG00000163703,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1401,3
+KNDC1,ENSG00000171798,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2066,3
+PLCXD1,ENSG00000182378,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1961,3
+NDST1,ENSG00000070614,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5496,3
+ASF1B,ENSG00000105011,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5496,3
+CUTC,ENSG00000119929,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.042,3
+ENTPD2,ENSG00000054179,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2304,3
+SLC2A11,ENSG00000133460,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0792,3
+PDE9A,ENSG00000160191,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3939,3
+TMEM80,ENSG00000177042,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1891,1
+TRAV12-1,ENSG00000211785,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1344,1
+CHAD,ENSG00000136457,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3671,3
+LEF1-AS1,ENSG00000232021,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2345,1
+FBF1,ENSG00000188878,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3739,3
+TRAV36DV7,ENSG00000211815,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2642,1
+TDRD7,ENSG00000196116,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5508,3
+,ENSG00000227512,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2559,1
+RNASEH2B,ENSG00000136104,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.339,3
+MIPEP,ENSG00000027001,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4741,3
+PRPSAP1,ENSG00000161542,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2973,3
+BTBD9,ENSG00000183826,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1633,3
+PRSS16,ENSG00000112812,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1892,3
+ADAMTS13,ENSG00000160323,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3863,3
+TRAV2,ENSG00000211776,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2764,1
+ACER3,ENSG00000078124,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1952,3
+PHF24,ENSG00000122733,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1574,3
+RDH13,ENSG00000160439,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3748,3
+F2RL3,ENSG00000127533,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3015,3
+PARP11-AS1,ENSG00000256862,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2678,1
+,ENSG00000260793,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1817,1
+MAGI2-AS3,ENSG00000234456,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0345,1
+RNFT2,ENSG00000135119,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3138,1
+ZNF839,ENSG00000022976,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2492,1
+PRKAR1B-AS1,ENSG00000237181,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1641,1
+CAMK1D,ENSG00000183049,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4035,3
+PHF7,ENSG00000010318,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3528,3
+TGIF1,ENSG00000177426,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2045,3
+CD63-AS1,ENSG00000258056,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.118,1
+TTLL5,ENSG00000119685,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.235,3
+FSTL1,ENSG00000163430,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4993,3
+TPM1,ENSG00000140416,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4932,3
+RNF216P1,ENSG00000196204,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4047,1
+ACOT11,ENSG00000162390,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3849,3
+KDM8,ENSG00000155666,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.127,3
+ANKZF1,ENSG00000163516,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1009,3
+LINC01569,ENSG00000262468,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.222,1
+PCSK4,ENSG00000115257,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3813,1
+TRBV9,ENSG00000211716,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4447,1
+INTS6-AS1,ENSG00000236778,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0854,1
+ZNF552,ENSG00000178935,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2799,1
+,ENSG00000218422,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3404,1
+ENHO,ENSG00000168913,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2738,1
+,ENSG00000239736,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1472,1
+TRAV3,ENSG00000211777,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.4299,1
+AGMAT,ENSG00000116771,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3878,3
+TRBJ2-3,ENSG00000211767,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.357,1
+WBP1L,ENSG00000166272,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1781,3
+LANCL3,ENSG00000147036,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0867,1
+RCVRN,ENSG00000109047,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3711,3
+RNF212,ENSG00000178222,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0768,1
+TAMM41,ENSG00000144559,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2155,3
+SLC29A1,ENSG00000112759,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3853,3
+FAM177A1,ENSG00000151327,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1264,3
+,ENSG00000263276,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2054,1
+CEACAM19,ENSG00000186567,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0544,1
+,ENSG00000224597,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1392,1
+,ENSG00000258082,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1347,1
+UAP1L1,ENSG00000197355,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1892,3
+PTDSS1,ENSG00000156471,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3821,3
+THAP7-AS1,ENSG00000230513,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1939,1
+ZNF319,ENSG00000166188,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1583,3
+AKAP3,ENSG00000111254,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4564,3
+CDKN1C,ENSG00000129757,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4809,3
+SLC7A8,ENSG00000092068,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1347,1
+,ENSG00000251992,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0592,1
+TSPAN15,ENSG00000099282,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2582,3
+DNASE1L2,ENSG00000167968,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1486,3
+HEMK1,ENSG00000114735,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1844,3
+SHMT1,ENSG00000176974,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.555,3
+,ENSG00000261172,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1193,1
+TSPAN32,ENSG00000064201,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4056,3
+MADCAM1,ENSG00000099866,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3555,3
+C1QTNF6,ENSG00000133466,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.121,3
+ITGA3,ENSG00000005884,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5142,3
+OXTR,ENSG00000180914,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4676,3
+METTL17,ENSG00000165792,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3035,3
+PAFAH1B2,ENSG00000168092,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2252,3
+PGM5,ENSG00000154330,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2755,3
+LINC00665,ENSG00000232677,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2358,1
+CCDC183,ENSG00000213213,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3748,3
+GPR157,ENSG00000180758,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1338,3
+KRABD3,ENSG00000133619,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2073,1
+SLAMF7,ENSG00000026751,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4795,3
+,ENSG00000258810,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0275,1
+,ENSG00000260891,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1615,1
+PDE2A-AS2,ENSG00000256633,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1312,1
+SUMF1,ENSG00000144455,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2756,3
+MMD,ENSG00000108960,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0275,1
+IL9R,ENSG00000124334,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3558,3
+,ENSG00000225940,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2025,1
+,ENSG00000183473,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1647,1
+TRBJ2-6,ENSG00000211770,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1552,1
+TBX19,ENSG00000143178,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1104,1
+NBAS,ENSG00000151779,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3353,3
+PRSS27,ENSG00000172382,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1436,1
+SPEG,ENSG00000072195,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1835,3
+PDGFB,ENSG00000100311,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5314,3
+EEF1AKMT3,ENSG00000123427,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3443,3
+PPT1,ENSG00000131238,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4411,3
+,ENSG00000273160,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1935,1
+CBS,ENSG00000160200,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5188,3
+CCN3,ENSG00000136999,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1788,1
+ADM5,ENSG00000224420,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0685,3
+PLEKHG5,ENSG00000171680,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2452,3
+,ENSG00000256448,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1555,1
+TRAV1-1,ENSG00000255569,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1075,1
+LINC00987,ENSG00000237248,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3045,1
+SLC2A14,ENSG00000173262,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1387,3
+SPX,ENSG00000134548,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1772,1
+TRAV4,ENSG00000211778,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2905,1
+CCNI2,ENSG00000205089,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2473,1
+PNMA3,ENSG00000183837,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.15,1
+,ENSG00000204169,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1529,1
+LINC01963,ENSG00000260804,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1536,1
+C1orf216,ENSG00000142686,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1232,1
+TONSL,ENSG00000160949,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4871,3
+CNPY2,ENSG00000257727,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1811,1
+MEOX1,ENSG00000005102,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.08,3
+,ENSG00000261005,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1504,1
+STT3A,ENSG00000134910,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4569,3
+,ENSG00000266904,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3874,1
+DGCR6,ENSG00000183628,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1526,1
+PRSS33,ENSG00000103355,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3909,3
+ADCK1,ENSG00000063761,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2239,1
+CCNH,ENSG00000134480,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4011,3
+SLC22A16,ENSG00000004809,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2649,3
+ZNF835,ENSG00000127903,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1599,1
+SAMD12,ENSG00000177570,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1884,1
+CEROX1,ENSG00000260807,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.39,1
+CAMK1,ENSG00000134072,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3959,3
+INCA1,ENSG00000196388,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0401,3
+WDR83,ENSG00000123154,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2412,3
+RNF41,ENSG00000181852,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4315,3
+LOC124903852,ENSG00000228140,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1951,1
+TIGD3,ENSG00000173825,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1155,1
+WHRN,ENSG00000095397,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.421,3
+APOBEC3B,ENSG00000179750,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1411,3
+DBH-AS1,ENSG00000225756,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1727,1
+PIANP,ENSG00000139200,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1542,1
+CD300LD,ENSG00000204345,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2901,1
+CHST10,ENSG00000115526,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1001,3
+,ENSG00000214776,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0649,1
+C19orf44,ENSG00000105072,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0665,1
+NSG1,ENSG00000168824,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.308,3
+HSBP1L1,ENSG00000226742,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2274,3
+HAL,ENSG00000084110,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2464,3
+ARMH3,ENSG00000120029,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2287,1
+DDX11,ENSG00000013573,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2855,3
+CCDC24,ENSG00000159214,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0888,3
+,ENSG00000234769,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.079,1
+METTL5,ENSG00000138382,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1199,3
+,ENSG00000261474,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0915,1
+ITPK1-AS1,ENSG00000258730,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0624,1
+SPR,ENSG00000116096,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2151,3
+,ENSG00000260698,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.166,1
+TRBV7-7,ENSG00000253291,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1865,1
+,ENSG00000272927,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2051,1
+TRBV30,ENSG00000237254,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2127,1
+C20orf204,ENSG00000196421,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0835,1
+TRBC1,ENSG00000211751,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1724,1
+P3H4,ENSG00000141696,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.245,1
+KTN1-AS1,ENSG00000186615,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0371,1
+ANKRD13B,ENSG00000198720,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.111,3
+TRAV13-2,ENSG00000211791,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0909,1
+RAB3D,ENSG00000105514,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4662,3
+TMEM143,ENSG00000161558,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.088,3
+LINC02328,ENSG00000258733,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0653,1
+LTK,ENSG00000062524,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3006,3
+GRAP,ENSG00000154016,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.497,3
+PCBP3,ENSG00000183570,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0553,3
+SLC45A4,ENSG00000022567,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1833,3
+,ENSG00000269430,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0877,1
+CA6,ENSG00000131686,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.268,3
+USP51,ENSG00000247746,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3732,3
+TCEA3,ENSG00000204219,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2991,3
+PRIM2,ENSG00000146143,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3056,3
+,ENSG00000265787,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.223,1
+TRBV6-6,ENSG00000211724,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2655,1
+ZG16B,ENSG00000162078,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3164,3
+,ENSG00000230910,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1142,1
+,ENSG00000204933,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1481,1
+PRXL2C,ENSG00000158122,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0358,3
+MDGA1,ENSG00000112139,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2662,3
+TRBV6-1,ENSG00000211706,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.3218,1
+,ENSG00000231793,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0979,1
+HAPLN3,ENSG00000140511,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1189,3
+UBQLNL,ENSG00000175518,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.182,1
+,ENSG00000268061,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0294,1
+STK32B,ENSG00000152953,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2108,3
+,ENSG00000267010,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2051,1
+,ENSG00000205664,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1139,1
+CR1L,ENSG00000197721,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2549,3
+TFB1M,ENSG00000029639,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3271,3
+CTSC,ENSG00000109861,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4092,3
+CCZ1P1,ENSG00000243554,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.2124,1
+RPS6KL1,ENSG00000198208,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0669,1
+IQCE,ENSG00000106012,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0501,3
+CLC,ENSG00000105205,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2721,3
+ST6GALNAC1,ENSG00000070526,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4532,3
+PLD6,ENSG00000179598,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4017,3
+PDHA1,ENSG00000131828,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.5401,3
+RBM6,ENSG00000004534,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2431,3
+RHPN1,ENSG00000158106,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2605,3
+ANXA4,ENSG00000196975,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1107,3
+THADA,ENSG00000115970,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2879,3
+SARDH,ENSG00000123453,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3715,3
+TRBV5-5,ENSG00000211725,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1638,1
+,ENSG00000271857,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0675,1
+RNF166,ENSG00000158717,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2065,3
+STIMATE,ENSG00000213533,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1256,3
+TTC34,ENSG00000215912,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0467,3
+PLEKHH3,ENSG00000068137,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0966,3
+,ENSG00000256581,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0947,1
+DAZAP1,ENSG00000071626,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2429,3
+,ENSG00000233609,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1244,1
+TRNP1,ENSG00000253368,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.135,1
+,ENSG00000197549,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1782,1
+EXO5,ENSG00000164002,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1823,3
+HNRNPA1P21,ENSG00000228168,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0771,1
+TMEM177,ENSG00000144120,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2283,3
+GPN2,ENSG00000142751,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0691,3
+SATB2,ENSG00000119042,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3514,3
+EGLN2,ENSG00000269858,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1529,3
+HEY1,ENSG00000164683,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3947,3
+KRT10-AS1,ENSG00000167920,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1001,1
+LINC02289,ENSG00000258819,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.08,1
+BAIAP2L2,ENSG00000128298,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3237,3
+POLM,ENSG00000122678,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3234,3
+C19orf12,ENSG00000131943,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2299,3
+HAUS7,ENSG00000213397,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.319,3
+TRAV1-2,ENSG00000256553,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1308,1
+CACNG6,ENSG00000130433,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4562,3
+RPGRIP1,ENSG00000092200,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3805,3
+FKBP9,ENSG00000122642,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4336,3
+IFT22,ENSG00000128581,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2952,3
+MPP2,ENSG00000108852,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1854,3
+,ENSG00000163486,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1036,1
+KRT73-AS1,ENSG00000257495,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.152,1
+,ENSG00000260992,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0643,1
+,ENSG00000160172,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0637,1
+RAB11FIP1,ENSG00000156675,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4038,3
+ZNF687,ENSG00000143373,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2552,3
+CABP7,ENSG00000100314,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1356,3
+,ENSG00000233297,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0656,1
+PLA2G6,ENSG00000184381,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3885,3
+,ENSG00000269890,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0944,1
+PRKAR2A-AS1,ENSG00000224424,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0563,1
+SLC22A17,ENSG00000092096,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1273,3
+ERFL,ENSG00000268041,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0655,3
+,ENSG00000225931,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.024,1
+EOLA2-DT,ENSG00000235703,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0518,1
+PDGFA-DT,ENSG00000223855,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0192,1
+,ENSG00000167765,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1222,1
+ATP9A,ENSG00000054793,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1196,1
+RAB4A,ENSG00000168118,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4307,3
+ATAD3C,ENSG00000215915,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1369,1
+TRBV10-1,ENSG00000211717,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1136,1
+ADD2,ENSG00000075340,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2967,3
+,ENSG00000129270,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0809,1
+,ENSG00000212978,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0787,1
+LSM14B,ENSG00000149657,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2675,3
+PSMD9,ENSG00000110801,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2257,3
+TRBV11-2,ENSG00000241657,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.079,1
+OCM,ENSG00000122543,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0867,3
+SLC5A5,ENSG00000105641,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3647,3
+,ENSG00000228601,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.008,1
+DNAJB6,ENSG00000105993,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4312,3
+NOTCH4,ENSG00000204301,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4447,3
+,ENSG00000261586,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1286,1
+STX1B,ENSG00000099365,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3292,3
+SLC25A33,ENSG00000171612,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0757,3
+SLC45A1,ENSG00000162426,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.133,3
+,ENSG00000184208,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.1267,1
+MMP11,ENSG00000099953,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.1037,3
+KRTCAP2,ENSG00000163463,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2071,3
+HID1,ENSG00000167861,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2612,3
+PPM1F,ENSG00000100034,greenyellow,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.2489,3
+BEND5,ENSG00000162373,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0466,3
+INSYN2B,ENSG00000204767,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0658,3
+SYT15,ENSG00000204176,black,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.039,1
+,ENSG00000228037,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0534,1
+DUSP5,ENSG00000138166,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.3199,3
+,ENSG00000250182,greenyellow,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0822,1
+FCER1A,ENSG00000179639,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4998,3
+CMTM8,ENSG00000170293,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0492,3
+KRT72,ENSG00000170486,green,Low,False,False,0,2,Unsupported (0 criteria),partially assessable (no STRING node),0.0115,1
+ACSL5,ENSG00000197142,black,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.4107,3
+PROCA1,ENSG00000167525,green,Low,False,True,0,4,Unsupported (0 criteria),fully assessable,0.0225,3

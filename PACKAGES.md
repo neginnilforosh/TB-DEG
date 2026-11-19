@@ -24,8 +24,10 @@ install.packages(c(
   "data.table"   # optional: faster reading of the CTD bulk files (step 23)
 ))
 
-# drugfindR (iLINCS, steps 6-7) is distributed via r-universe
-install.packages("drugfindR", repos = c("https://cogdisreslab.r-universe.dev", "https://cloud.r-project.org"))
+# drugfindR (iLINCS, steps 6-7; version 1.0.0 was used) is a Bioconductor package:
+BiocManager::install("drugfindR")
+# the same package is also built on r-universe:
+# install.packages("drugfindR", repos = c("https://cogdisreslab.r-universe.dev", "https://cloud.r-project.org"))
 
 # msigdbr changed its data delivery in v10+: the gene-set data itself moved
 # out of the CRAN package into a separate 'msigdbdf' package (too big for
@@ -95,6 +97,8 @@ install.packages(c("msigdbr", "msigdbdf"),
 | `figures_step24.R` | ggplot2, igraph, ggrepel |
 | `GSE114192_interaction_gsea.R` | clusterProfiler, msigdbr, org.Hs.eg.db |
 | `05_cross_dataset_upset.R` | org.Hs.eg.db, AnnotationDbi; plus the `00_functions.R` packages it sources (incl. UpSetR) |
-| `record_reproducibility.R` | org.Hs.eg.db, AnnotationDbi (for annotation source dates) |
-| `scripts/helpers/*.py` | Python 3 with pandas and numpy; Pillow for `figure_inventory.py` (no R needed) |
+| `record_reproducibility.R` | org.Hs.eg.db, AnnotationDbi (annotation version) |
+| `WGCNA_soft_threshold_record.R` | base R only |
+| `scripts/helpers/*.py` | Python 3 with pandas and numpy; Pillow for `figure_inventory.py`, PyMuPDF for `strip_pdf_dates.py` (no R needed) |
+| `scripts/additional_file_1.py`, `scripts/additional_file_2.py` | Python 3 with pandas, numpy, matplotlib, PyMuPDF and openpyxl (`pip3 install matplotlib pymupdf openpyxl`) |
 | `scripts/drug_complementarity.py`, `make_fig1.py`, `assemble_figures.py`, `manuscript_tables.py` | Python 3 with pandas, numpy, matplotlib, seaborn, networkx, scikit-learn, RDKit, certifi, Pillow and openpyxl (`pip3 install rdkit networkx seaborn scikit-learn certifi pillow openpyxl`) |

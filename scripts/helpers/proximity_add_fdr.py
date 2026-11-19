@@ -10,7 +10,8 @@ def bh(ps):
         i = order[rank - 1]; prev = min(prev, ps[i] * m / rank); q[i] = prev
     return q, m
 for rel in ["GSE114192/15_network_algorithms/GSE114192_NetworkProximity.csv",
-            "GSE114192/TB_DM/15_network_algorithms/GSE114192_NetworkProximity.csv"]:
+            "GSE114192/TB_DM/15_network_algorithms/GSE114192_NetworkProximity.csv",
+            "GSE37250/TB_HIV/15_network_algorithms/GSE37250_NetworkProximity.csv"]:
     src = os.path.join(ROOT, rel); rows = list(csv.DictReader(open(src))); hdr = list(rows[0])
     ps = [None if r["P_empirical"] in ("NA", "") else float(r["P_empirical"]) for r in rows]
     q, m = bh(ps)

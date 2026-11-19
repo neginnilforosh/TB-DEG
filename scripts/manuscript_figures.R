@@ -155,9 +155,13 @@ if (all(vapply(c("clusterProfiler", "msigdbr", "enrichplot", "org.Hs.eg.db"), re
   map <- suppressMessages(clusterProfiler::bitr(de$gene, "ENSEMBL", "SYMBOL", OrgDb = org.Hs.eg.db::org.Hs.eg.db))
   de <- de[!is.na(de$pvalue), ]; de$stat <- sign(de$log2FoldChange) * -log10(pmax(de$pvalue, 1e-300))
   de <- merge(de[, c("gene", "stat")], map, by.x = "gene", by.y = "ENSEMBL"); de <- de[order(-abs(de$stat)), ]; de <- de[!duplicated(de$SYMBOL), ]
-  set.seed(42); g <- clusterProfiler::GSEA(sort(setNames(de$stat, de$SYMBOL), decreasing = TRUE), TERM2GENE = t2g, pvalueCutoff = 1, seed = TRUE, verbose = FALSE, eps = 0)
+  ## same gene-set size limits as WGCNA_GSEA_step11.R (15-500), so the curves are drawn from the same test; the NES
+  ## and FDR in the titles are read from the step-11 Hallmark table, which is the result reported in the text
+  set.seed(42); g <- clusterProfiler::GSEA(sort(setNames(de$stat, de$SYMBOL), decreasing = TRUE), TERM2GENE = t2g, minGSSize = 15, maxGSSize = 500,
+                                          pvalueCutoff = 1, seed = TRUE, verbose = FALSE, eps = 0)
+  hm <- rd("GSE114192", "17_gsea", "GSE114192_HealthyControl_vs_TBOnly_GSEA_HALLMARK.csv")
   for (s in c("HALLMARK_INTERFERON_GAMMA_RESPONSE", "HALLMARK_INTERFERON_ALPHA_RESPONSE")) {
-    r <- g@result[g@result$ID == s, ]
+    r <- hm[hm$ID == s, ]
     p <- enrichplot::gseaplot2(g, geneSetID = s, title = sprintf("%s (NES %+.2f, FDR %.1e)", gsub("_", " ", sub("HALLMARK_", "", s)), r$NES, r$p.adjust), base_size = 8)
     save_gg(p, paste0("Fig4D_GSEA_", sub("HALLMARK_", "", s), "_TB"), 110, 85)
   }

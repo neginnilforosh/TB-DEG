@@ -6,9 +6,8 @@ Outputs per run (reference = GSE114192/10_wgcna_results, TB-DM = GSE114192/TB_DM
   GSE114192_module_merging_summary.csv            module counts before / after merging
 Validation: correlation of each eigengene with the case trait must reproduce ModuleTrait_Correlation.csv
 (max abs difference < 1e-12), otherwise the script stops.
-Soft-threshold power: NOT stored in the workspace. See ../../reproducibility/
-WGCNA_soft_threshold_reconstructed_from_figure.csv (reconstructed from the saved figure, approximate).
-WGCNA_TBmodules_step1.R now writes <ACC>_WGCNA_soft_threshold.csv (fit table + power used) on its next run.
+Soft-threshold power: NOT stored in the workspace. wgcna_network/WGCNA_soft_threshold_record.R recomputes the
+fit table from the saved expression matrix; WGCNA_TBmodules_step1.R writes <ACC>_WGCNA_soft_threshold.csv on every new run.
 Uses rds_min.py (minimal R serialization reader) because R is not available in the checkpoint environment.
 """
 import os, sys

@@ -19,8 +19,6 @@ Package versions: `package_versions.csv`. Full session: `sessionInfo.txt`.
 | WGCNA | 1.74 |
 | DESeq2 | 1.50.2 |
 
-org.Hs.eg.db source dates: EGSOURCEDATE = 2025-Sep24; GOSOURCEDATE = 2025-07-22; ENSOURCEDATE = 2025-Sep03
-
 Web resources queried at run time (versions are those live on the run date): STRING, iLINCS,
 Enrichr, DGIdb, KEGG REST, Metabolomics Workbench. Query dates are not stored in the public outputs;
 see reproducibility/external_resource_versions.csv for which resources are version-pinned.
